@@ -1,0 +1,65 @@
+<!-- This file is covered by the GNU Public Licence v3 licence. See http://www.gnu.org/licenses/gpl.txt -->
+{% load i18n %}
+<html>
+
+	<head>
+		<title>Dungeon Twister Online</title>
+		<meta http-equiv="content" content="text/html; charset=utf-8"/>
+		<link type="text/css" href="/static/css/jquery.css" rel="stylesheet" />
+		<link type="text/css" href="/static/css/dt.css" rel="stylesheet" />		
+		<script type="text/javascript" src="/static/js/jquery.js"></script>
+		<script type="text/javascript" src="/static/js/jquery-ui.js"></script>
+		<script type="text/javascript" src="/static/js/jquery-dialog.js"></script>
+		<script type="text/javascript" src="/static/js/dtui-auth.js"></script>
+		<link rel="shortcut icon" href="/static/images/interface/favicon.ico" />
+		<link rel="icon" type="image/png" href="/static/images/interface/favicon.png" />
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('a.checkbox').checkbox(1);
+			});
+		</script>		
+	</head>
+
+	<body class="bodystyle">
+		<div id="dialog_generatepassword">
+			{% trans "PASSWORD_GENERATION_EMAIL" %} <input type="text" id="generatepassword_email" size="20"/>
+		</div>
+		<div class="translation" id="translation-PASSWORD_GENERATION">{% trans "PASSWORD_GENERATION" %}</div>
+		<div class="translation" id="translation-PASSWORD_GENERATION_PROGRESS">{% trans "PASSWORD_GENERATION_PROGRESS" %}</div>
+		<form id="form_authentication" action="/authenticate" method="post">
+			<div class="text-center">
+				<img src="/static/images/interface/sitelogo.png"/>
+				<br/><br/>
+				{% if error %}
+				<div class="ui-widget">
+					<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+						<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+						{% trans "ERROR" %} {{ error }}.</p>
+					</div>
+				</div>
+				{% endif %}
+				<div>
+					<div class="container text-right" style="width:300px">{% trans "LOGIN" %}</div>
+					<div class="container text-left" style="width: 400px"><input type="text" name="login" size="20"/></div>
+				</div>
+				<div>
+					<div class="container text-right" style="width:300px">{% trans "PASSWORD" %}</div>
+					<div class="container text-left" style="width: 400px"><input type="password" name="password" size="20"/></div>
+				</div>
+				<div>
+					<div class="container text-right" style="width:300px">{% trans "AUTOCONNECT" %}</div>
+					<div class="container text-left" style="width: 400px"><a id="autoconnect" class="checkbox" href="javascript:void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a></div>
+				</div>
+				<div>
+					<div class="container text-center"><input type="submit" class="dtbutton" value="{% trans "CONNECT" %}"/>&nbsp;&nbsp;&nbsp;<input type="button" onClick="generatePassword()" class="dtbutton" value="{% trans "PASSWORD_GENERATION" %}"/></div>
+					<div id="password_generation"></div>
+				</div>
+				<br/><br/>
+				<div class="small-info">
+					{% trans "DISCLAMER" %}
+				</div>
+			</div>
+		</form>
+	</body>
+
+</html>

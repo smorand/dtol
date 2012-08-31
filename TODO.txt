@@ -1,0 +1,46 @@
+2012
+------
+
+BUG : A priori seb.morand@gmail.com ne recoit pas les mails
+
+* Rajouter le paramètre du temps de rafraichissement des chats
+
+* Faire un profil admin pouvant blocké debloké
+
+* Coder les contraintes et leur gestion (dans les équipes) uniquement pour le profil admin.
+Pour la création des équipes penser à mettre un mode contrainte pour pouvoir faire des équipes sous contrainte
+Les contraintes intéressantes => Prestigieux, jeteurs de sort, déplacement min/max, déplacement compensé min/max, combat min/max, volant ?
+
+* Création des équipes une barre à gauche permettant les filtres (traits [ jeteurs de sort, volant, prestigieux, mort-vivant, elfe, nain, sans, eau, feu, tenebres, intangible, archer ] ou [ utile, magique, parchemin, non-magique ], force, déplacement, extension, type (objet, salle personnage, par défaut personnage)
+* tout en haut à droite la liste des contraintes
+Ensuite l'écran du milieu est divisé en 2, les pions de l'équipe (de la catégorie sélectionnée mais sans appliquer les filtres), sinon les pions choisis
+
+* Penser à mettre un mode adversaire inconnu pour les parties
+
+=> tournoi lié à des contraintes, faut vraiment réfléchir
+
+OLD
+-----
+* Ajouter des paramétrages utilisateurs
+Clic Gauche pour menu de jeu Activé
+Si non : Long Clic activé / Double Clic Activé / Sélection Rotative Activé
+
+* Faire l'implémentation de la création des équipes par Drag'n Drop
+=> Filtres :
+- Extensions
+- Catégories : Magiciens, Prestigieux, Volant, Mort-Vivant, Elfe, Nain, Immatériel, Ténèbres, Anti-Fontaine, Herse Manager, Bêtes
+- Force <=/>=/= Chiffre
+- Déplacement <=/>=/= Chiffre
+
+* Faire le module des tournois
+
+
+* Module Statistique
+- Automatique pour un tournoi
+
+* Faire le module de jeu
+- Actions générales (toujours disponible)
+1/ Prendre la main dans la partie
+2/ Terminer la partie (la partie s'arrête les stats sont sauvegardées)
+3/ Passer en mode Permissif (permet de rajouter/supprimer modifier l'état de tous les pions)
+4/ Envoyer un message à l'adversaire

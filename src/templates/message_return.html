@@ -1,0 +1,71 @@
+<!-- This file is covered by the GNU Public Licence v3 licence. See http://www.gnu.org/licenses/gpl.txt -->
+{% load i18n %}
+{% if errors %}
+<div class="message-error">
+	<div class="ui-widget">
+		<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
+	{% for error in errors %} 
+			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+			{% trans "ERROR" %} {{ error }}</p>
+	{% endfor %}
+			</p>
+		</div>
+	</div>
+</div><br/>
+{% endif %}
+{% if not errors and error %}
+<div class="message-error">
+	<div class="ui-widget">
+		<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+			{% trans "ERROR" %} {{ error }}</p>
+		</div>
+	</div>
+</div><br/>
+{% endif %}
+{% if warnings %}
+<div class="message-warning">
+	<div class="ui-widget">
+		<div class="ui-state-highlight ui-corner-all" style="padding: 0 .7em;">
+	{% for warning in warnings %} 
+			<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span> 
+	 		{% trans "WARNING" %} {{ warning }}</p>		
+	{% endfor %}
+		</div>
+	</div>
+</div><br/>
+{% endif %}
+{% if not warnings and warning %}
+<div class="message-warning">
+	<div class="ui-widget">
+		<div class="ui-state-highlight ui-corner-all" style="padding: 0 .7em;"> 
+			<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span> 
+			{% trans "WARNING" %} {{ warning }}</p>
+		</div>
+	</div>
+</div><br/>
+{% endif %}
+{% if notices %}
+<div class="message-warning">
+	<div class="ui-widget">
+		<div class="ui-state-highlight ui-corner-all" style="padding: 0 .7em;">
+	{% for notice in notices %} 
+			<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span> 
+	 		{{ notice }}</p>		
+	{% endfor %}
+		</div>
+	</div>
+</div><br/>
+{% endif %}
+{% if not notices and notice %}
+<div class="message-warning">
+	<div class="ui-widget">
+		<div class="ui-state-highlight ui-corner-all" style="padding: 0 .7em;"> 
+			<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span> 
+			{{ notice }}</p>
+		</div>
+	</div>
+</div><br/>
+{% endif %}
+{% if messages %}{% for message in messages %}{{ message }}<br/>{% endfor %}{% endif %}
+{% if not messages and message %}{{ message }}{% endif %}

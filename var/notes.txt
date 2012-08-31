@@ -1,0 +1,46 @@
+Twist : Sélection du twister + Clic droit salle
+Révéler, Masquer, Oublier : Sélection du révélateur + Clic droit salle
+Déplacer : Sélection + Clic gauche case cible
+Changer l'état d'un pion
+Agir sur une herse ou un mur : Sélection du pion faisant l'action + Demande des actions si clic droit ou autre
+Lancer Boule de Feu : Sélection personnage + Sélection
+Utiliser potion
+Changer sous la pluie
+Tirer à l'arme à distance
+Transformer (personnage changeant de forme)
+Faire un passage vers l'au-delà
+Utiliser un parchemin
+
+Clic gauche sur une case => Si case pas sélectionnée, sélection, si c'est la même case, déselection, si case diff, déplacement + Sélection de la case cible
+Clic droit sur une case => Si pas de case sélectionnée, Sélection + Actions, si case sélectionnée, action
+
+Mort d'un personnage :
+- Tué au combat
+- Tué par une boule de feu
+- Tué par un Zat
+- Tué par un parchemin de mort/sang
+- Faire rouler le rocher
+- Tué sur une case mortelle (attention : suppression corde)
+
+Les actions génériques :
+- Fin de tour
+
+Algorithme de détection des combats :
+Tous personnages vivant adjacent aux deux premiers protagonistes.
+Spécial : Si seulement deux protagonistes, alors berserker possible
+Si maître d'arme : Option visualisation de la carte adverse
+Pas de tireur => 
+Vérifier tous les tireurs en ligne de vue (arbalétrier, archer elfe, arc, arbalète)
+Problème :
+1/ Maitresse du fouet : Action d'exclusion préalable
+2/ Gel : Proposition automatique de toutes les possibilités
+
+Algorithme de ligne de vue
+=> Murs (mur+herse+support torche+support clé) / Objets 3D / Brume / Ténèbres
+Si dans arbre => les objets 3D ne cache plus
+Un personnage est visible si :
+On peut aller de la case source à la case cible en ligne droite ou en rebondissant sur des mirroirs sans traverser un obstacle 3D à moins d'être dans un arbre et sans traverser ni brume ni ténèbres et si la case cible n'est pas non plus dans la brume.
+Note spéciale : Si la case source et la première case sont séparées par une meurtrière alors la ligne de vue n'est pas coupée.
+Note spéciale : Si la case cible est un objet 3D et que soit on a une amulette elfique soit ce n'est pas un elfe dans un arbre alors la cible est visible
+Note spéciale : Pour aller d'une case à une autre il faut tester les 4 chemins de ligne de vue en raison des mirroirs
+

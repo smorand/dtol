@@ -1,0 +1,4 @@
+#!/bin/bash
+
+find . \( -name '*.pyc' -o -name 'project.log*' \) -delete
+

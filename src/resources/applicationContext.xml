@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file is covered by the GNU Public Licence v3 licence. See http://www.gnu.org/licenses/gpl.txt -->
+<objects xmlns="http://www.springframework.org/springpython/schema/objects/1.1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/springpython/schema/objects/1.1 http://springpython.webfactional.com/schema/context/spring-python-context-1.1.xsd">
+
+    <object id="templatesContainer" class="core.controllers.TemplatesContainer" scope="singleton">
+    </object>
+    
+    <!--  Prehangler -->
+    <object id="stayConnected" class="dtol.common.PreHandlerConnect">
+    </object>
+    
+    <!-- Controllers -->
+    <object id="welcomeController" class="dtol.welcome.WelcomeController.WelcomeController" scope="singleton">
+    	<property name="templates" ref="templatesContainer"/>
+    	<property name="userManager" ref="userManager"/>
+    	<property name="extensionManager" ref="extensionManager"/>
+    	<property name="prehandler">
+    		<list>
+    			<ref object="stayConnected"/>
+    		</list>
+    	</property>
+    </object>
+
+    <object id="teamController" class="dtol.team.TeamController.TeamController" scope="singleton">
+    	<property name="templates" ref="templatesContainer"/>
+    	<property name="teamManager" ref="teamManager"/>
+    	<property name="prehandler">
+    		<list>
+    			<ref object="stayConnected"/>
+    		</list>
+    	</property>
+    </object>
+    
+    <object id="challengeController" class="dtol.challenge.ChallengeController.ChallengeController" scope="singleton">
+    	<property name="templates" ref="templatesContainer"/>
+    	<property name="prehandler">
+    		<list>
+    			<ref object="stayConnected"/>
+    		</list>
+    	</property>
+    </object>
+    
+    <object id="tournamentController" class="dtol.tournament.TournamentController.TournamentController" scope="singleton">
+    	<property name="templates" ref="templatesContainer"/>
+    	<property name="prehandler">
+    		<list>
+    			<ref object="stayConnected"/>
+    		</list>
+    	</property>
+    </object>
+
+    <object id="gameController" class="dtol.game.GameController.GameController" scope="singleton">
+    	<property name="templates" ref="templatesContainer"/>
+    	<property name="prehandler">
+    		<list>
+    			<ref object="stayConnected"/>
+    		</list>
+    	</property>
+    </object>
+    
+    <object id="statisticsController" class="dtol.statistics.StatisticsController.StatisticsController" scope="singleton">
+    	<property name="templates" ref="templatesContainer"/>
+    	<property name="prehandler">
+    		<list>
+    			<ref object="stayConnected"/>
+    		</list>
+    	</property>
+    </object>
+    
+    <object id="userController" class="dtol.user.UserController.UserController" scope="singleton">
+    	<property name="templates" ref="templatesContainer"/>
+    	<property name="userManager" ref="userManager"/>
+    	<property name="extensionManager" ref="extensionManager"/>
+    	<property name="prehandler">
+    		<list>
+    			<ref object="stayConnected"/>
+    		</list>
+    	</property>
+    </object>
+    
+    <!-- Managers -->
+    <object id="userManager" class="dtol.user.UserManager.UserManager" scope="singleton">
+    	<property name="templates" ref="templatesContainer"/>
+    </object>
+    
+    <object id="teamManager" class="dtol.team.TeamManager.TeamManager" scope="singleton">
+    </object>
+    
+    <object id="spawnManager" class="dtol.common.SpawnManager.SpawnManager" scope="singleton">
+    </object>
+    
+    <object id="extensionManager" class="dtol.common.ExtensionManager.ExtensionManager" scope="singleton">
+    </object>
+    
+</objects>

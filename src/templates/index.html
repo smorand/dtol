@@ -1,0 +1,60 @@
+<!-- This file is covered by the GNU Public Licence v3 licence. See http://www.gnu.org/licenses/gpl.txt -->
+{% load i18n %}
+<html>
+
+	<head>
+		<title>Dungeon Twister Online</title>
+		<meta http-equiv="content" content="text/html; charset=utf-8"/>
+		<link type="text/css" href="/static/css/jquery.css" rel="stylesheet" />
+		<link type="text/css" href="/static/css/dt.css" rel="stylesheet" />		
+		<script type="text/javascript" src="/static/js/jquery.js"></script>
+		<script type="text/javascript" src="/static/js/jquery-ui.js"></script>
+		<script type="text/javascript" src="/static/js/jquery-dialog.js"></script>
+		<script type="text/javascript" src="/static/js/jquery-history.js"></script>
+		<script type="text/javascript" src="/static/js/dtui.js"></script>
+		<script type="text/javascript" src="/static/js/dtgame.js"></script>
+		<link rel="shortcut icon" href="/static/images/interface/favicon.ico" />
+		<link rel="icon" type="image/png" href="/static/images/interface/favicon.png" />
+	</head>
+
+	<body>
+		<img src="/static/images/interface/hideheader.gif" id="headerarrow" onclick="toggleheader()" border="0"/>
+		<div class="header">
+			<div class="header-lang">
+{% for lang in languages %}
+				<img onClick="changeLang('{{ lang }} ');" src="/static/images/flags/{{ lang }}.gif" border="0" class="lang-flag"/>
+{% endfor %}
+				<br/>
+				{{ welcome }}
+				<div id="user-connected"></div>
+			</div>
+			<img src="/static/images/interface/sitelogo.png"/>
+			<div class="header-chat">
+			 	<div class="chat" id="chat"></div>
+			 	<form id="chat_form" action="/sendchat" onSubmit="return postchat()" style="margin: 0px;"><input id="chat_message" name="message" type="text"/></form>
+			</div>
+		</div>
+		<div id="menubutton" class="menu">
+			<button type="button" class="dtmenu" id="menu_challenges" onclick="load_automenu(this)">{% trans "CHALLENGES" %}</button>
+			<button type="button" class="dtmenu" id="menu_tournaments" onclick="load_automenu(this)">{% trans "TOURNAMENTS" %}</button>
+			<button type="button" class="dtmenu" id="menu_teams" onclick="load_automenu(this)">{% trans "TEAMS" %}</button>
+			<button type="button" class="dtmenu" id="menu_statistics" onclick="load_automenu(this)">{% trans "STATISTICS" %}</button>
+			<button type="button" class="dtmenu" id="menu_profile" onclick="load_automenu(this)">{% trans "PROFILE" %}</button>
+			<button type="button" class="dtmenu" id="menu_admin" onclick="load_automenu(this)">{% trans "ADMIN" %}</button>
+			<button type="button" class="dtmenu" id="menu_admin" onclick="togglechat()">{% trans "CHAT" %}</button>
+			<button type="button" class="dtmenu" id="menu_logout" onclick="load_automenu(this)">{% trans "LOGOUT" %}</button>
+		</div>
+		<div id="content" class="content"></div>
+
+		<div class="translation" id="translation-SAVE">{% trans "SAVE" %}</div>
+		<div class="translation" id="translation-SAVING">{% trans "SAVING" %}</div>
+		<div class="translation" id="translation-SPONSORING">{% trans "SPONSORING" %}</div>
+		<div class="translation" id="translation-ACTION_IN_PROGRESS">{% trans "ACTION_IN_PROGRESS" %}</div>
+		<div class="translation" id="translation-LOAD_USER">{% trans "LOAD_USER" %}</div>
+		<div id="dialog_sponsor">
+			{% trans "EMAIL_TO_SPONSOR" %} <input type="text" id="sponsor_email" size="20"/>
+		</div>
+
+	</body>
+
+</html>

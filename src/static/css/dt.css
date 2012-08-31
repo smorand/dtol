@@ -1,0 +1,328 @@
+/*
+ * This file is covered by the GNU Public Licence v3 licence. See http://www.gnu.org/licenses/gpl.txt
+ */
+
+body {
+    background-image: url("/static/images/interface/background.jpg");
+    color: #e0b245;
+    font-family: Arial;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+i.small {
+    font-size: 9px;
+}
+
+.translation {
+	display: none
+}
+
+.extensionlogo {
+	display: inline;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.extensionlogo img {
+	cursor: pointer;
+}
+
+.extensionlogo-notselected {
+	border: 2px solid #FFFFFF;
+}
+
+.extensionlogo-selected {
+	border: 2px solid #FF0000;
+}
+
+.dtbutton {
+    cursor: pointer; 
+    text-decoration: none; 
+    display: inline-block; 
+    font-weight: bold; 
+    color: #ffffff; 
+    background-color: #946400; 
+    padding: 4px 14px 6px;
+    border: 2px solid #FFFFFF;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    text-shadow: 0 0 8px #FFFFFF;
+    -moz-box-shadow: inset 0 0 12px #000000;
+    -webkit-box-shadow: inset 0 0 12px #000000;
+    box-shadow: inset 0 0 12px #000000;
+}
+.dtbutton-disabled, .dtbutton-disabled:hover, .dtbutton:disabled {
+    text-decoration: none; 
+    display: inline-block; 
+    font-weight: bold; 
+    color: #999999; 
+    background-color: #946400; 
+    padding: 4px 14px 6px;
+    border: 2px solid #AAAAAA;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    text-shadow: 0 0 8px #FFFFFF;
+    -moz-box-shadow: inset 0 0 12px #000000;
+    -webkit-box-shadow: inset 0 0 12px #000000;
+    box-shadow: inset 0 0 12px #000000;
+}
+
+.dtbutton:hover {
+	border: 2px solid #999999;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+	background: #506d9b url(/static/images/jquery/ui-bg_gloss-wave_75_506d9b_500x100.png) 50% 50% repeat-x;
+	font-weight: bold;
+	color: #212121;
+	text-shadow: 0.2em 0.2em 10px #FFFFFF;
+}
+
+.dtmenu {
+    cursor: pointer; 
+    text-decoration: none; 
+    display: inline-block; 
+    font-weight: bold; 
+    color: #ffffff; 
+    background-color: #009311; 
+    padding: 4px 14px 6px;
+    border: 2px solid #FFFFFF;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    text-shadow: 0 0 8px #FFFFFF;
+    -moz-box-shadow: inset 0 0 12px #000000;
+    -webkit-box-shadow: inset 0 0 12px #000000;
+    box-shadow: inset 0 0 12px #000000;
+    text-transform: uppercase;
+}
+
+.dtmenuselected {
+    background-color: #609311;
+    color: #D0D0D0;
+}
+
+.dtmenu:hover {
+    background-color: #8a9300; 
+}
+
+input {
+    background-color: #e3d7bd;
+    color: #223148;
+    border: 2px solid #FFFFFF;
+    -moz-box-shadow: inset 0 0 12px #000000;
+    -webkit-box-shadow: inset 0 0 12px #000000;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    padding: 4px 6px 4px;
+}
+
+select {
+    background-color: #e3d7bd;
+    color: #223148;
+    border: 2px solid #FFFFFF;
+    -moz-box-shadow: inset 0 0 12px #000000;
+    -webkit-box-shadow: inset 0 0 12px #000000;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    padding: 4px 6px 4px;
+}
+
+h1 {
+	text-align: center;
+}
+
+h1, h2 {
+    text-shadow: 0.2em 0.2em 10px #AAAAAA;
+}
+
+a, a:visited {
+	color: #e3d7bd;
+	text-decoration: underline;
+}
+
+div.container {
+    display: inline-block;
+    padding: 10px 10px 10px 10px;
+}
+
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-center, .center { text-align: center; }
+.small-info { font-size: 9px; font-style: italic; }
+
+div.iconcontainer {
+    display: inline-block;
+    padding: 10px 10px 10px 10px;
+}
+
+img.icon {
+    -moz-box-shadow: 0px 0px 10px #FFFFFF;
+    -webkit-box-shadow: 0px 0px 10px #FFFFFF;
+    background-color: rgba(34, 49, 72, 0.5);
+}
+
+img.icon:hover {
+    -moz-box-shadow: 0px 0px 10px #FF0000;
+    -webkit-box-shadow: 0px 0px 10px #FF0000;
+    background-color: rgba(34, 49, 72, 0.5);
+}
+
+.absolute { position: absolute; }
+
+.dungeon {
+}
+
+.slider {
+    width: 200px;
+}
+
+.progressbar {
+    position: absolute;
+    width: 300px;
+    height: 20px;
+    z-index: 9;
+}
+
+.zindex0 { z-index: 0; }
+.zindex1 { z-index: 1; }
+.zindex2 { z-index: 2; }
+.zindex3 { z-index: 3; }
+
+.menu {
+	text-align: center;
+}
+
+.forbidden {
+	text-align: center;
+	display: inline-block;
+	width: 300px;
+}
+
+.message-warning {
+	text-align: center;
+	display: inline-block;
+	width: 300px;
+}
+
+.header-lang {
+	margin-top: 20px;
+	margin-left: 20px;
+	position: absolute;
+}
+
+#user-connected {
+	width: 200px;
+	text-align: left;
+}
+
+.lang-flag {
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+.message-error {
+	text-align: center;
+	display: inline-block;
+	width: 300px;
+}
+
+.header {
+	text-align: center;
+}
+
+.header img {
+	vertical-align: top;
+}
+
+.header-chat {
+	text-align: left;
+	position: absolute;
+	display: none;
+	right: 5px;
+	top: 5px;
+	height: 180px;
+	//border: 1px solid white;
+}
+
+.header-chat div.chat {
+	width: 100%;
+	height: 150;
+	border: 1px solid #e0b245;
+	-moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background-color: #506d9b;
+    margin: 0px;
+    overflow: auto;
+}
+
+#headerarrow {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	cursor: pointer;
+}
+
+.header-chat input {
+	width: 100%;
+    margin: 0px;
+}
+
+.chat-message {
+}
+
+.chat-login {
+	color: #FFFFFF;
+}
+
+.chat-login-self {
+	color: #ff7979
+}
+
+.content { 
+	margin-top: 20px;
+}
+
+table.data th {
+	text-align: center;
+	font-weight: bold;
+	background-color: #506d9b;
+	border: 2px solid #FFFFFF;
+	padding: 7px;
+}
+
+table.data td.data1 {
+	background-color: #8a9300;
+	color: #FFFFFF;
+	border: 2px solid #FFFFFF;
+	padding: 7px;
+}
+
+table.data td.data2 {
+	background-color: #009311;
+	color: #FFFFFF;
+	border: 2px solid #FFFFFF;
+	padding: 7px;
+}
+
+table.data tr:hover td.data1, table.data tr:hover td.data2 {
+	background-color: #e3d7bd;
+	color: #000000;
+	border: 2px solid #000000;
+}
+
+a.teamlist {
+	font-size: 13px;
+	text-decoration: none;
+}
+
+a.teamlist img {
+	vertical-align: middle;
+}

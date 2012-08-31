@@ -1,0 +1,33 @@
+<!-- This file is covered by the GNU Public Licence v3 licence. See http://www.gnu.org/licenses/gpl.txt -->
+{% load i18n %}
+<h1>{% trans "USERS_LIST" %}</h1>
+
+<center>
+	<div id="userlist"></div>
+	<table class="data">
+		<tr>
+			<th>{% trans "USER_LOGIN" %}</th>
+			<th>{% trans "USER_ACTIVE" %}</th>
+			<th>{% trans "USER_EMAIL" %}</th>
+			<th>{% trans "USER_CREATION_DATETIME" %}</th>
+			<th>{% trans "USER_LASTCON_DATETIME" %}</th>
+			<th>{% trans "USER_LANG" %}</th>
+			<th>{% trans "USER_COUNTRY" %}</th>
+			<th>{% trans "USER_COLORS" %}</th>
+			<td></td>
+		</tr>
+	{% for user in users %}
+		<tr class="data{% cycle 1 2 %}">
+			<td class="data{% cycle 1 2 %}">{{ user.login }}</td>
+			<td class="data{% cycle 1 2 %} center"><img style="cursor:pointer" onclick="toggleBlockUser(this, {{user.id}})" src="/static/images/interface/{% if user.active == 1 %}ok{% else %}ko{% endif %}.gif" border="0"/></td>
+			<td class="data{% cycle 1 2 %}">{{ user.email }}</td>
+			<td class="data{% cycle 1 2 %}">{{ user.creation }}</td>
+			<td class="data{% cycle 1 2 %}">{{ user.lastconnection }}</td>
+			<td class="data{% cycle 1 2 %} center">{% if user.lang %}<img src="/static/images/flags/{{ user.lang }}.gif" border="0"/>{% else %}&nbsp;{% endif %}</td>
+			<td class="data{% cycle 1 2 %} center"><img src="/static/images/flags/{{ user.country }}.gif" border="0"/></td>
+			<td class="data{% cycle 1 2 %} center"><img src="/static/images/spawns/fond-{{ user.primarycolor }}.png" border="0" height="20" width="20"/>&nbsp;<img src="/static/images/spawns/fond-{{ user.secondarycolor }}.png" border="0" height="20" width="20"/></td>
+			<td class="data{% cycle 1 2 %} center"><img style="cursor:pointer" onclick="becomeUser({{ user.id }})" src="/static/images/interface/become.gif" border="0" height="20" width="20"/>&nbsp;<img style="cursor:pointer" onclick="editUser({{ user.id }})" src="/static/images/interface/edit.gif" border="0" height="20" width="20"/>&nbsp;</td>
+		</tr>
+	{% endfor %}
+	</table>
+</center>

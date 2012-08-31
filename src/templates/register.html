@@ -1,0 +1,157 @@
+<!-- This file is covered by the GNU Public Licence v3 licence. See http://www.gnu.org/licenses/gpl.txt -->
+{% load i18n %}
+<html>
+	<head>
+		<title>Dungeon Twister Online</title>
+		<meta http-equiv="content" content="text/html; charset=utf-8"/>
+		<link type="text/css" href="/static/css/jquery.css" rel="stylesheet" />
+		<link type="text/css" href="/static/css/dt.css" rel="stylesheet" />		
+		<script type="text/javascript" src="/static/js/jquery.js"></script>
+		<script type="text/javascript" src="/static/js/jquery-ui.js"></script>
+		<script type="text/javascript" src="/static/js/jquery-dialog.js"></script>
+		<script type="text/javascript" src="/static/js/jquery-history.js"></script>
+		<script type="text/javascript" src="/static/js/dtui.js"></script>
+		<script type="text/javascript" src="/static/js/dtgame.js"></script>
+		<link rel="shortcut icon" href="/static/images/interface/favicon.ico" />
+		<link rel="icon" type="image/png" href="/static/images/interface/favicon.png" />
+		<script type="text/javascript" language="javascript">
+			$(document).ready(function() {
+				$('[name=primarycolor]').radio($('#profile_ini_primarycolor').val(), function() {
+					checkProfileForm();
+				});
+				$('[name=secondarycolor]').radio($('#profile_ini_secondarycolor').val());
+				updateSecondaryColor($('#profile_ini_primarycolor').val())
+			});
+		
+		</script>
+	</head>
+
+	<body>
+		<div class="header">
+			<div class="header-lang">
+{% for lang in languages %}
+			<img onClick="changeLang('{{ lang }} ');" src="/static/images/flags/{{ lang }}.gif" border="0" class="lang-flag"/>
+{% endfor %}
+			</div>
+			<img src="/static/images/interface/sitelogo.png"/>
+			<div class="header-info">
+				 
+			</div>
+		</div>
+		<h1>{% trans "REGISTER_YOUR_PROFILE" %}</h1>
+		
+		<input type="hidden" id="profile_ini_primarycolor" value="orange"/>
+		<input type="hidden" id="profile_ini_secondarycolor" value="bleu"/>
+		
+		<br/><br/><div id="profile_updateanswer"></div>
+		<form method="post" action="/register" id="profile_form">
+			<input type="hidden" name="key" value="{{ key }}"/>
+			<input type="hidden" name="extensions" id="profile_extensions"/>
+			<table>
+				<tr>
+					<td>{% trans "LOGIN" %}</td>
+					<td><input type="text" name="login" id="profile_login" size="10"/></td>
+				</tr>
+				<tr>
+					<td>{% trans "PASSWORD" %}</td>
+					<td><input type="password" name="password" id="profile_password" onChange="checkProfileForm()" size="10"/></td>
+				</tr>
+				<tr>
+					<td>{% trans "CONFIRM_PASSWORD" %}</td>
+					<td>
+						<input type="password" name="confirmpassword" id="profile_confirmpassword" onChange="checkProfileForm()" size="10"/>
+						<div class="message-error" id="passworddiffers" style="display:none;width:400px">
+							<div class="ui-widget">
+								<div class="ui-state-error ui-corner-all" style="padding: 0 .7em; font-size: 9px">
+									<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+									{% trans "ERROR" %}&nbsp;{% trans "PASSWORD_DIFFERS" %}.</p>
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>{% trans "COUNTRY" %}</td>
+					<td>
+						<div style="margin-left: 5px; margin-top:10px; position:absolute;"><img id="profile_flag" src="/static/images/flags/ad.gif"/></div>
+						<select id="profile_country" name="country" onchange="$('#profile_flag').attr('src', '/images/flags/' + $('#profile_country').val() + '.gif')">
+							{% for c in countries %}
+							<option value="{{ c }}" style="background-image: url(/images/flags/{{ c }}.gif); background-repeat: no-repeat;"{%if c == country %} selected="selected"{% endif %}>&nbsp;&nbsp;&nbsp;&nbsp;{{ c }}</option>
+							{% endfor %}
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>{% trans "PRIMARY_COLOR" %}</td>
+					<td>
+		                                <br/><br/>
+						<img name="primarycolor" onClick="updateSecondaryColor('orange')" id="primarycolor_orange" class="checkbox" src="/static/images/interface/radio.gif" border="0"/>&nbsp;<img onClick="$('#primarycolor_orange').click();" src="/static/images/spawns/fond-orange.png"/>&nbsp;&nbsp;&nbsp;
+						<img name="primarycolor" onClick="updateSecondaryColor('jaune')" id="primarycolor_jaune" class="checkbox" src="/static/images/interface/radio.gif" border="0"/>&nbsp;<img onClick="$('#primarycolor_jaune').click();" src="/static/images/spawns/fond-jaune.png"/>&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<img name="primarycolor" onClick="updateSecondaryColor('bleu')" id="primarycolor_bleu" class="checkbox" src="/static/images/interface/radio.gif" border="0"/>&nbsp;<img onClick="$('#primarycolor_bleu').click();" src="/static/images/spawns/fond-bleu.png"/>&nbsp;&nbsp;&nbsp;
+						<img name="primarycolor" onClick="updateSecondaryColor('cyan')" id="primarycolor_cyan" class="checkbox" src="/static/images/interface/radio.gif" border="0"/>&nbsp;<img onClick="$('#primarycolor_cyan').click();" src="/static/images/spawns/fond-cyan.png"/>&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<img name="primarycolor" onClick="updateSecondaryColor('rouge')" id="primarycolor_rouge" class="checkbox" src="/static/images/interface/radio.gif" border="0"/>&nbsp;<img onClick="$('#primarycolor_rouge').click();" src="/static/images/spawns/fond-rouge.png"/>&nbsp;&nbsp;&nbsp;
+						<img name="primarycolor" onClick="updateSecondaryColor('violet')" id="primarycolor_violet" class="checkbox" src="/static/images/interface/radio.gif" border="0"/>&nbsp;<img onClick="$('#primarycolor_violet').click();" src="/static/images/spawns/fond-violet.png"/>&nbsp;&nbsp;&nbsp;
+						<br/>
+						<img name="primarycolor" onClick="updateSecondaryColor('vert')" id="primarycolor_vert" class="checkbox" src="/static/images/interface/radio.gif" border="0"/>&nbsp;<img onClick="$('#primarycolor_vert').click();" src="/static/images/spawns/fond-vert.png"/>&nbsp;&nbsp;&nbsp;
+						<img name="primarycolor" onClick="updateSecondaryColor('vertflash')" id="primarycolor_vertflash" class="checkbox" src="/static/images/interface/radio.gif" border="0"/>&nbsp;<img onClick="$('#primarycolor_vertflash').click();" src="/static/images/spawns/fond-vertflash.png"/>&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<img name="primarycolor" onClick="updateSecondaryColor('noir')" id="primarycolor_noir" class="checkbox" src="/static/images/interface/radio.gif" border="0"/>&nbsp;<img onClick="$('#primarycolor_noir').click();" src="/static/images/spawns/fond-noir.png"/>&nbsp;&nbsp;&nbsp;
+						<img name="primarycolor" onClick="updateSecondaryColor('marron')" id="primarycolor_marron" class="checkbox" src="/static/images/interface/radio.gif" border="0"/>&nbsp;<img onClick="$('#primarycolor_marron').click();" src="/static/images/spawns/fond-marron.png"/>&nbsp;&nbsp;&nbsp;
+					</td>
+				</tr>
+				<tr>
+					<td>{% trans "SECONDARY_COLOR" %}</td>
+					<td>
+		                                <br/><br/>
+						<span class="fondgroupe fondgroupejaune fondgroupeorange">
+							<img name="secondarycolor" id="secondarycolor_orange" class="checkbox" src="/static/images/interface/radio.gif" border="0"/>&nbsp;<img onClick="$('#secondarycolor_orange').click();" src="/static/images/spawns/fond-orange.png"/>&nbsp;&nbsp;&nbsp;
+							<img name="secondarycolor" id="secondarycolor_jaune" class="checkbox" src="/static/images/interface/radio.gif" border="0"/>&nbsp;<img onClick="$('#secondarycolor_jaune').click();" src="/static/images/spawns/fond-jaune.png"/>&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</span>
+						<span class="fondgroupe fondgroupebleu fondgroupecyan">
+							<img name="secondarycolor" id="secondarycolor_bleu" class="checkbox" src="/static/images/interface/radio.gif" border="0"/>&nbsp;<img onClick="$('#secondarycolor_bleu').click();" src="/static/images/spawns/fond-bleu.png"/>&nbsp;&nbsp;&nbsp;
+							<img name="secondarycolor" id="secondarycolor_cyan" class="checkbox" src="/static/images/interface/radio.gif" border="0"/>&nbsp;<img onClick="$('#secondarycolor_cyan').click();" src="/static/images/spawns/fond-cyan.png"/>&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</span>
+						<span class="fondgroupe fondgrouperouge fondgroupeviolet">
+							<img name="secondarycolor" id="secondarycolor_rouge" class="checkbox" src="/static/images/interface/radio.gif" border="0"/>&nbsp;<img onClick="$('#secondarycolor_rouge').click();" src="/static/images/spawns/fond-rouge.png"/>&nbsp;&nbsp;&nbsp;
+							<img name="secondarycolor" id="secondarycolor_violet" class="checkbox" src="/static/images/interface/radio.gif" border="0"/>&nbsp;<img onClick="$('#secondarycolor_violet').click();" src="/static/images/spawns/fond-violet.png"/>&nbsp;&nbsp;&nbsp;
+						</span>
+						<br/>
+						<span class="fondgroupe fondgroupevert fondgroupevertflash">
+							<img name="secondarycolor" id="secondarycolor_vert" class="checkbox" src="/static/images/interface/radio.gif" border="0"/>&nbsp;<img onClick="$('#secondarycolor_vert').click();" src="/static/images/spawns/fond-vert.png"/>&nbsp;&nbsp;&nbsp;
+							<img name="secondarycolor" id="secondarycolor_vertflash" class="checkbox" src="/static/images/interface/radio.gif" border="0"/>&nbsp;<img onClick="$('#secondarycolor_vertflash').click();" src="/static/images/spawns/fond-vertflash.png"/>&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</span>
+						<span class="fondgroupe fondgroupenoir fondgroupemarron">
+							<img name="secondarycolor" id="secondarycolor_noir" class="checkbox" src="/static/images/interface/radio.gif" border="0"/>&nbsp;<img onClick="$('#secondarycolor_noir').click();" src="/static/images/spawns/fond-noir.png"/>&nbsp;&nbsp;&nbsp;
+							<img name="secondarycolor" id="secondarycolor_marron" class="checkbox" src="/static/images/interface/radio.gif" border="0"/>&nbsp;<img onClick="$('#secondarycolor_marron').click();" src="/static/images/spawns/fond-marron.png"/>&nbsp;&nbsp;&nbsp;
+						</span>
+					</td>
+				</tr>
+				<tr>
+					<td>{% trans "EXTENSIONS" %}</td>
+					<td>
+						{% for c in extensions %}
+						<div class="extensionlogo"><img id="extlogo_{{ c.id }}" class="extensionlogo-notselected" src="/static/images/interface/logo{{ c.id }}.jpg" border="0" title="{% trans c.name %}" onclick="selectExtension({{ c.id }});"/></div>
+						{% endfor %}
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><button class="dtbutton" id="submit_profile" onClick="registerProfile();" type="button">{% trans "REGISTER_PROFILE" %}</button></td>
+				</tr>
+			</table>
+		</form>
+
+		<div class="translation" id="translation-SAVE">{% trans "SAVE" %}</div>
+		<div class="translation" id="translation-SAVING">{% trans "SAVING" %}</div>
+		<div class="translation" id="translation-SPONSORING">{% trans "SPONSORING" %}</div>
+		<div id="dialog_sponsor">
+			{% trans "EMAIL_TO_SPONSOR" %} <input type="text" id="sponsor_email" size="20"/>
+		</div>
+
+	</body>
+
+</html>

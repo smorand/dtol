@@ -1,0 +1,12 @@
+<!-- This file is covered by the GNU Public Licence v3 licence. See http://www.gnu.org/licenses/gpl.txt -->
+{% load i18n %}
+<h1>{% trans "TEAMS_LIST" %}</h1>
+<br/>
+<button class="dtbutton" onClick="load_createteam()">{% trans "CREATE_TEAM" %}</button>
+<br/><br/>
+
+<ul>
+{% for team in teams %}
+	<a href="javascript:loadTeam({{ team.id }}); void(0);" class="teamlist"><img id="teamimg_{{ team.id }}" border="0" src="/images/interface/treeplus.gif"/>&nbsp;{{ team.name }}&nbsp;- {{ team.modification }}</a>&nbsp;<a href="javascript:delTeam({{ team.id }}); void(0);" class="teamlist"><img border="0" src="/images/interface/ko.gif"/></a>	
+{% endfor %}
+</ul>

@@ -26,6 +26,10 @@ i.small {
 	margin-bottom: 10px;
 }
 
+.pointer {
+	cursor: pointer;
+}
+
 .extensionlogo img {
 	cursor: pointer;
 }
@@ -325,4 +329,9 @@ a.teamlist {
 
 a.teamlist img {
 	vertical-align: middle;
+}
+
+table.form th {
+	font-weight: normal;
+	text-align: right;
 }

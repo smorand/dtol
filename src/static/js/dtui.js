@@ -150,6 +150,16 @@ function load_challenges() {
 }
 
 /**
+ * Load constraints teams
+ */
+function load_teamsconstraints() {
+	$.get('/teams/constraints', function(content) {
+		window.location.hash = '#teams/constraints';
+		display_content(content);
+	});
+}
+
+/**
  * Load challenge page
  */
 function load_admin(userId) {
@@ -174,8 +184,34 @@ function load_tournaments() {
  * Load challenge page
  */
 function load_teams(args) {
-	$.get('/teams', function(content) {
+	if (args && args == 'constraints') {
+		load_teamsconstraints();
+	} else {
+		$.get('/teams', function(content) {
+			display_content(content);
+		});
+	}
+}
+
+function delteamconstraint(id) {
+	$.get('/teams/constraints/remove/' + id, function(content) {
+		load_teamsconstraints();
+	});
+}
+
+function createteamconstraint() { editteamconstraint(0); }
+function editteamconstraint(id) {
+	$.get('/teams/constraints/edit/' + id, function(content) {
 		display_content(content);
+		$('.accordion').accordion({
+			collapsible: true,
+			active: 0,
+			autoHeight: false
+		});
+		var extensions = $('#tc_extensions').val().trim().split(',');
+		for (var i = 0; i < extensions.length; i++) {
+			selectExtension(extensions[i].trim());
+		}
 	});
 }
 
@@ -420,4 +456,44 @@ function recvChat() {
 		}
 		setTimeout('recvChat()', 1000);
 	});
+}
+
+/** Load constraint data for edition */
+function loadconstraintdata() {
+	$.get('/teams/constraints/load/' + $('#createconstraint_loadconstraint').val(), function(content) {
+		loadformdata(content);
+	});
+}
+
+/** Load data from a form to prefill another one */
+function loadformdata(rawdata) {
+	var fields = rawdata.trim().split('|')
+	for (i = 0; i < fields.length; i++) {
+		var info = fields[i].trim().split('=');
+		// TODO: Better support for checkbox/radio
+		if (info.length == 2) {
+			$('#'+info[0]).val(info[1]);
+		}
+	}
+}
+
+/** Save a teams constraints */
+function saveconstraintdata() {
+	var exts = $('.extensionlogo-selected')
+	var extsString = '';
+	var joiner = ''
+	for (var i = 0; i < exts.length; i++) {
+		extsString += joiner + exts.get(i).id.replace('extlogo_', ''); 
+		joiner = ',';
+	}
+	$('#tc_extensions').val(extsString);
+	var form = $('#tc_form');
+	$.post(form.attr('action'), form.serialize(), function(content) {
+		if (content.length == 0) {
+			load_teamsconstraints();
+		} else {
+			$('#tc_error').html(content);
+		}
+	});
+	return false;
 }

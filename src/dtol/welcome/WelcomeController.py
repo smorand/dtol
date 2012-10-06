@@ -35,7 +35,7 @@ class WelcomeController(CommonController):
 			{ 'pattern': '^register$', 'method': 'register' },
 			{ 'pattern': '^confirmemail/([A-Z0-9]+)$', 'method': 'confirmemail' },
 			{ 'pattern': '^spawn/([a-z0-9]+)/([a-z0-9]+)$', 'method': 'drawspawn' },
-			{ 'pattern': '^spawn/([a-z0-9]+)/([a-z0-9]+)/([a-z0-9]+)$', 'method': 'dra	wspawn' }
+			{ 'pattern': '^spawn/([a-z0-9]+)/([a-z0-9]+)/([a-z0-9]+)$', 'method': 'drawspawn' }
 		]
 
 	def index(self, request):

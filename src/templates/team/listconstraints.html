@@ -1,0 +1,24 @@
+<!-- This file is covered by the GNU Public Licence v3 licence. See http://www.gnu.org/licenses/gpl.txt -->
+{% load i18n %}
+<h1>{% trans "TEAMS_CONSTRAINTS_LIST" %}</h1>
+<br/>
+<button class="dtbutton" onClick="createteamconstraint()">{% trans "CREATE_CONSTRAINT" %}</button>
+<br/><br/>
+
+<center>
+	<table class="data">
+		<tr>
+			<th>{% trans "CONSTRAINTS" %}</th>
+			<th>&nbsp;</th>
+		</tr>
+	{% for constraint in constraints %}
+		<tr>
+			<td class="data{% cycle 1 2 %}">{{ constraint.name }}</td>
+			<td class="data{% cycle 1 2 %}">
+				{% if constraint.protected == 0 %}<img border="0" src="/static/images/interface/edit.gif" class="pointer" onclick="editteamconstraint({{ constraint.id }})"/>{% endif %}	
+				{% if constraint.protected == 0 %}<img border="0" src="/static/images/interface/ko.gif" class="pointer" onclick="delteamconstraint({{ constraint.id }})"/>{% endif %}
+			</td>
+		</tr>
+	{% endfor %}
+	</table>
+</center>

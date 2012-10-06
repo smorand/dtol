@@ -26,6 +26,7 @@
     <object id="teamController" class="dtol.team.TeamController.TeamController" scope="singleton">
     	<property name="templates" ref="templatesContainer"/>
     	<property name="teamManager" ref="teamManager"/>
+    	<property name="extensionManager" ref="extensionManager"/>
     	<property name="prehandler">
     		<list>
     			<ref object="stayConnected"/>

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-16 15:57+0100\n"
+"POT-Creation-Date: 2012-10-01 01:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,443 +16,674 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: scm/dtol/settings.py:52
-msgid "French"
-msgstr "French"
-
-#: scm/dtol/settings.py:53
+#: core/settings.py:113
 msgid "English"
 msgstr "English"
 
-#: scm/dtol/user/UserManager.py:51
-msgid "EMAIL_CONFIRM_CHANGE_BODY_%s"
-msgstr "Hi,\n\nYou asked for an email address change. Click on the link below to confirm:\n\n%s\n\nHappy Twist,\nDTOnline Administrator"
+#: dtol/team/TeamController.py:68
+msgid "TEAM_CONSTRAINT_EMPTY_NAME"
+msgstr ""
 
-#: scm/dtol/user/UserManager.py:52
-msgid "EMAIL_CONFIRM_CHANGE_SUBJECT"
-msgstr "Email changement confirmation"
-
-#: scm/dtol/user/UserManager.py:70
-msgid "EMAIL_SPONSOR_BODY_%s_%s"
-msgstr "Hi,\n\nYou have been sponsored to DTOnline website by %s. Click on the link below to register your account:\n\n%s\n\nHappy Twist,\nDTOnline Administrator"
-
-#: scm/dtol/user/UserManager.py:71
-msgid "EMAIL_SPONSOR_SUBJECT_%s"
-msgstr "Sponsored by %s"
-
-#: scm/dtol/welcome/WelcomeController.py:60
-msgid "LOGIN_PASSWORD_EMPTY"
-msgstr "Login password empty"
-
-#: scm/dtol/welcome/WelcomeController.py:75
-msgid "AUTHENTICATION_FAILURE"
-msgstr "Authentication failure"
-
-#: scm/dtol/welcome/WelcomeController.py:131 templates/view_profile.html:23
-msgid "PASSWORD_DIFFERS"
-msgstr "Password and confirm passwords are not the same"
-
-#: scm/dtol/welcome/WelcomeController.py:131 templates/view_profile.html:23
-msgid "PASSWORD_EMPTY"
-msgstr "Empty password forbidden"
-
-#: scm/dtol/welcome/WelcomeController.py:137
-msgid "EMAIL_EXISTS"
-msgstr "The new email already in the database"
-
-#: scm/dtol/welcome/WelcomeController.py:140
-msgid "COUNTRY_DOES_NOT_EXIST"
-msgstr "Country doesn't exist"
-
-#: scm/dtol/welcome/WelcomeController.py:145
-msgid "UPDATE_PROFILE_OK"
-msgstr "Update profile ok"
-
-#: scm/dtol/welcome/WelcomeController.py:152
-msgid "SPONSORING_OK"
-msgstr "Sponsoring done"
-
-#: templates/authentication.html:30 templates/message_return.html:8
-#: templates/message_return.html.py:20 templates/view_profile.html:23
-msgid "ERROR"
-msgstr "Error:"
-
-#: templates/authentication.html:35
-msgid "LOGIN"
-msgstr "Login:"
-
-#: templates/authentication.html:35
+#: dtol/user/UserController.py:43 dtol/welcome/WelcomeController.py:242
 msgid "LOGIN_ALREADY_TAKEN"
 msgstr "This is login is already in use"
 
-#: templates/authentication.html:39 templates/view_profile.html:12
-msgid "PASSWORD"
-msgstr "Password:"
-
-#: templates/authentication.html:43
-msgid "AUTOCONNECT"
-msgstr "Auto-Connect"
-
-#: templates/authentication.html:47
-msgid "CONNECT"
-msgstr "Connect"
-
-#: templates/authentication.html:51
-msgid "DISCLAMER"
-msgstr "This is a private website. If you have an unauthorized access, please warn me to <a href=\"mailto:dtol@alwaysdata.com\">par email</a>."
-
-#: templates/forbidden.html:6
-msgid "FORBIDDEN"
-msgstr "Forbidden"
-
-#: templates/index.html:32
-msgid "CHALLENGES"
-msgstr "Challenges"
-
-#: templates/index.html:33
-msgid "TOURNAMENTS"
-msgstr "Tournaments"
-
-#: templates/index.html:34
-msgid "TEAMS"
-msgstr "Teams"
-
-#: templates/index.html:35
-msgid "STATISTICS"
-msgstr "Statistics"
-
-#: templates/index.html:36
-msgid "PROFILE"
-msgstr "Profile"
-
-#: templates/index.html:37
-msgid "LOGOUT"
-msgstr "Logout"
-
-#: templates/index.html:37
-msgid "ADMIN"
-msgstr "Administration"
-
-#: templates/index.html:41
-msgid "SAVE"
-msgstr "Save"
-
-#: templates/index.html:42
-msgid "SAVING"
-msgstr "Saving..."
-
-#: templates/index.html:43
-msgid "SPONSORING"
-msgstr "Sponsorin in progress..."
-
-#: templates/index.html:45
-msgid "EMAIL_TO_SPONSOR"
-msgstr "Email to sponsor:"
-
-#: templates/message_return.html:31 templates/message_return.html.py:42
-msgid "WARNING"
-msgstr "Warning:"
-
-#: templates/under_construction.html:8
-msgid "UNDER_CONSTRUCTION"
-msgstr "Under construction"
-
-#: templates/view_profile.html:2
-msgid "UPDATE_YOUR_PROFILE"
-msgstr "Update your profile"
-
-#: templates/view_profile.html:7
-msgid "SPONSOR_SOMEONE"
-msgstr "Sponsor someone"
-
-#: templates/view_profile.html:16
-msgid "CONFIRM_PASSWORD"
-msgstr "Confirm Password:"
-
-#: templates/view_profile.html:30
-msgid "NEW_EMAIL"
-msgstr "New Email:"
-
-#: templates/view_profile.html:31
-msgid "EMAIL_CHANGE_REQUIRE_VALIDATION"
-msgstr "Email changement require a validation. An email will be sent to you to check the new email address."
-
-#: templates/view_profile.html:34
-msgid "COUNTRY"
-msgstr "Country:"
-
-#: templates/view_profile.html:45
-msgid "PRIMARY_COLOR"
-msgstr "Primary Color:"
-
-#: templates/view_profile.html:65
-msgid "SECONDARY_COLOR"
-msgstr "Secondary Color:"
-
-#: templates/view_profile.html:95
-msgid "UPDATE_PROFILE"
-msgstr "Update profile"
-
-#: templates/register.html:95
-msgid "REGISTER_PROFILE"
-msgstr "Register"
-
-#: templates/register.html:95
-msgid "REGISTER_OK"
-msgstr "Registring ok, Administrator has been warned to validate. You will receive an email when your account is activated."
-
-#: templates/register.html:95
-msgid "REGISTER_YOUR_PROFILE"
-msgstr "Register your Profile"
-
-#: templates/register.html:85
-msgid "EXTENSIONS"
-msgstr "Extensions:"
-
-#: extensions
-msgid "EXTENSION_base"
-msgstr "Base Game"
-
-#: extensions
-msgid "EXTENSION_34j"
-msgstr "Base Game 3/4 players"
-
-#: extensions
-msgid "EXTENSION_p&d"
-msgstr "Paladin & Dragon"
-
-#: extensions
-msgid "EXTENSION_e&f"
-msgstr "Fire & Water"
-
-#: extensions
-msgid "EXTENSION_pdt"
-msgstr "Forces of Darkness"
-
-#: extensions
-msgid "EXTENSION_merc"
-msgstr "Mercenaries"
-
-#: extensions
-msgid "EXTENSION_cs"
-msgstr "Sylvian Creatures"
-
-#: extensions
-msgid "EXTENSION_tdg"
-msgstr "Ice Land"
-
-#: extensions
-msgid "EXTENSION_af&as"
-msgstr "Fire & Blood"
-
-msgid "EXTENSION_prison"
-msgstr "Prison"
-
-#: extensions
-msgid "EXTENSION_goodies1"
-msgstr "Goodies Official"
-
-#: extensions
-msgid "EXTENSION_goodies2"
-msgstr "Goodies Official Powerful"
-
-#: extensions
-msgid "EXTENSION_ms"
-msgstr "Wild Moutain"
-
-#: extensions
-msgid "EXTENSION_goodies3"
-msgstr "Goodies Online"
-
-#: extensions
-msgid "EXTENSION_goodies4"
-msgstr "Goodies Online Powerful"
-
-#: extensions
-msgid "EXTENSION_fo"
-msgstr "Forces of Dark Death"
-
-#: extensions
-msgid "EXTENSION_mo"
-msgstr "Orient Mysteries"
-
-#: extensions
-msgid "EXTENSION_verm"
-msgstr "Vermins"
-
-#: extensions
-msgid "EXTENSION_tc"
-msgstr "Throne & Cell"
-
-#: extensions
-msgid "EXTENSION_cm"
-msgstr "Sea Creatures"
-
-#: extensions
-msgid "EXTENSION_da"
-msgstr "Deadalus of Apocalypse"
-
-#: register
-msgid "KEY_INACTIVE"
-msgstr "This key is inactive, you can't create your account. Please contact your sponsor."
-
-#: register
-msgid "SPONSOR_SUSPENDED"
-msgstr "You sponsor has been suspended, so you can't create your account. Please contact your sponsor."
-
-#: register email confirm
-msgid "EMAIL_NEW_USER_SUBJECT"
-msgstr "New player"
-
-#: register email confirm
-msgid "EMAIL_NEW_USER_BODY_%s"
-msgstr "Hi,\n\nA new player %s has been created. Thanks to go on the administration part of the website to validate the inscription.\n\nHappy Twist,\nDTOnline"
-
-#: user_list
-msgid "USER_LOGIN"
-msgstr "Login"
-
-#: user_list
-msgid "USER_ACTIVE"
-msgstr "Active"
-
-#: user_list
-msgid "USER_EMAIL"
-msgstr "Email"
-
-#: user_list
-msgid "USER_CREATION_DATETIME"
-msgstr "Date Creation"
-
-#: user_list
-msgid "USER_LASTCON_DATETIME"
-msgstr "Last Connection"
-
-#: user_list
-msgid "USER_LANG"
-msgstr "Lang"
-
-#: user_list
-msgid "USER_COUNTRY"
-msgstr "Country"
-
-#: user_list
-msgid "USER_PRIMARY_COLOR"
-msgstr "Color 1"
-
-#: user_list
-msgid "USER_SECONDARY_COLOR"
-msgstr "Color 2"
-
-#: user_list
-msgid "USER_COLORS"
-msgstr "Colors"
-
-#: user_list
-msgid "BLOCK_DONE"
-msgstr "Blocking done"
-
-#: user_list
-msgid "UNBLOCK_DONE"
-msgstr "Unblocking done"
-
-#: user_list
-msgid "ACTION_IN_PROGRESS"
-msgstr "Action in process..."
-
-#: user_list
-msgid "USERS_LIST"
-msgstr "Users list"
-
-#: user_list
-msgid "UPDATE_USER"
-msgstr "Update user"
-
-#: index
-msgid "WELCOME_%s"
-msgstr "Welcome %s"
-
-#: connected
-msgid "USERS_CONNECTED"
-msgstr "Connected:"
-
-#: view_user
-msgid "LOAD_USER"
-msgstr "Loading user..."
-
-#: scm/dtol/welcome/view_user.py
-msgid "GAME_ACTION_MENU_MODE"
-msgstr "Action menu mode:"
-
-#: view_user
-msgid "CANCEL"
-msgstr "Cancel"
-
-#: view_user
+#: dtol/user/UserController.py:49 dtol/welcome/WelcomeController.py:188
+#: dtol/welcome/WelcomeController.py:252
+msgid "COUNTRY_DOES_NOT_EXIST"
+msgstr "Country doesn't exist"
+
+#: dtol/user/UserController.py:63
 msgid "SAVE_USER_OK"
 msgstr "User saved successfully"
 
-#: view_user
-msgid "BACK_USERS_LIST"
-msgstr "Go back to the user list"
+#: dtol/user/UserController.py:71
+msgid "BLOCK_DONE"
+msgstr "Blocking done"
 
-#: view_user
-msgid "EMAIL_NEW_PASSWORD_BODY_%s"
-msgstr "Hi,\n\nYour password has been reseted.\nHere is the new one: %s.\n\nHappy Twist,\nDTOnline Administrator"
+#: dtol/user/UserController.py:75
+msgid "UNBLOCK_DONE"
+msgstr "Unblocking done"
 
-#: view_user
-msgid "EMAIL_NEW_PASSWORD_SUBJECT"
-msgstr "Password reseted"
-
-#: chat
-msgid "CHAT_ONLINE"
-msgstr "Chat OnLine!"
-
-#: chat
-msgid "CHAT"
-msgstr "Chat"
-
-#: register
-msgid "EMAIL_ACCOUNT_UNLOCKED_BODY_%s"
-msgstr "Hi,\n\nYou DTOnline account has been unlocked. You can play by connecting to %s. Your password has not been changed.\n\nHappy Twist,\nDTOnline Admnistrator"
-
-#: register
-msgid "EMAIL_ACCOUNT_UNLOCKED_SUBJECT"
-msgstr "Account unlocked"
-
-#: generate password
-msgid "PASSWORD_GENERATION"
-msgstr "Regenerate password"
-
-#: generate password
+#: dtol/user/UserController.py:80
 msgid "PASSWORD_GENERATION_DONE"
 msgstr "Email send with new password"
 
-#: generate password
+#: dtol/user/UserController.py:82
 msgid "PASSWORD_GENERATION_INVALID_EMAIL"
 msgstr "Invalid email"
 
-#: generate password
-msgid "PASSWORD_GENERATION_PROGRESS"
-msgstr "Generating new password..."
+#: dtol/user/UserManager.py:68
+#, python-format
+msgid "EMAIL_CONFIRM_CHANGE_BODY_%s"
+msgstr ""
+"Hi,\n"
+"\n"
+"You asked for an email address change. Click on the link below to confirm:\n"
+"\n"
+"%s\n"
+"\n"
+"Happy Twist,\n"
+"DTOnline Administrator"
 
-#: generate password
-msgid "PASSWORD_GENERATION_EMAIL"
+#: dtol/user/UserManager.py:69
+msgid "EMAIL_CONFIRM_CHANGE_SUBJECT"
+msgstr "Email changement confirmation"
+
+#: dtol/user/UserManager.py:80
+#, python-format
+msgid "EMAIL_NEW_PASSWORD_BODY_%s"
+msgstr ""
+"Hi,\n"
+"\n"
+"Your password has been reseted.\n"
+"Here is the new one: %s.\n"
+"\n"
+"Happy Twist,\n"
+"DTOnline Administrator"
+
+#: dtol/user/UserManager.py:81
+msgid "EMAIL_NEW_PASSWORD_SUBJECT"
+msgstr "Password reseted"
+
+#: dtol/user/UserManager.py:106
+#, python-format
+msgid "EMAIL_NEW_USER_BODY_%s"
+msgstr ""
+"Hi,\n"
+"\n"
+"A new player %s has been created. Thanks to go on the administration part of "
+"the website to validate the inscription.\n"
+"\n"
+"Happy Twist,\n"
+"DTOnline"
+
+#: dtol/user/UserManager.py:107
+msgid "EMAIL_NEW_USER_SUBJECT"
+msgstr "New player"
+
+#: dtol/user/UserManager.py:127
+#, fuzzy, python-format
+msgid "PASSWORD_GENERATION_EMAIL_%s"
 msgstr "Email:"
 
-#: generate password
+#: dtol/user/UserManager.py:128
 msgid "PASSWORD_GENERATION_EMAIL_SUBJECT"
 msgstr "New password"
 
-#: generate password
-msgid "PASSWORD_GENERATION_EMAIL_BODY_%s"
-msgstr "Hi,\n\nYou requested a new password for your account, here is the new password: %s\n\nHappy Twist,\nDTOnline Administrator"
+#: dtol/user/UserManager.py:136
+#, python-format
+msgid "EMAIL_ACCOUNT_UNLOCKED_BODY_%s"
+msgstr ""
+"Hi,\n"
+"\n"
+"You DTOnline account has been unlocked. You can play by connecting to %s. "
+"Your password has not been changed.\n"
+"\n"
+"Happy Twist,\n"
+"DTOnline Admnistrator"
 
-#: team
-msgid "CREATE_TEAM"
-msgstr "Create New Team"
+#: dtol/user/UserManager.py:137
+msgid "EMAIL_ACCOUNT_UNLOCKED_SUBJECT"
+msgstr "Account unlocked"
 
-#: team
+#: dtol/user/UserManager.py:153
+#, fuzzy, python-format
+msgid "EMAIL_SPONSOR_BODY_%(login)s_%(url)s"
+msgstr ""
+"Hi,\n"
+"\n"
+"You have been sponsored to DTOnline website by %s. Click on the link below "
+"to register your account:\n"
+"\n"
+"%s\n"
+"\n"
+"Happy Twist,\n"
+"DTOnline Administrator"
+
+#: dtol/user/UserManager.py:154
+#, python-format
+msgid "EMAIL_SPONSOR_SUBJECT_%s"
+msgstr "Sponsored by %s"
+
+#: dtol/welcome/WelcomeController.py:53 dtol/welcome/WelcomeController.py:62
+#, python-format
+msgid "WELCOME_%s"
+msgstr "Welcome %s"
+
+#: dtol/welcome/WelcomeController.py:56 dtol/welcome/WelcomeController.py:59
+#: dtol/welcome/WelcomeController.py:70 templates/authentication.html:28
+msgid "PASSWORD_GENERATION_PROGRESS"
+msgstr "Generating new password..."
+
+#: dtol/welcome/WelcomeController.py:82
+msgid "LOGIN_PASSWORD_EMPTY"
+msgstr "Login password empty"
+
+#: dtol/welcome/WelcomeController.py:97
+msgid "AUTHENTICATION_FAILURE"
+msgstr "Authentication failure"
+
+#: dtol/welcome/WelcomeController.py:179 dtol/welcome/WelcomeController.py:248
+#: templates/register.html:67 templates/view_profile.html:25
+msgid "PASSWORD_DIFFERS"
+msgstr "Password and confirm passwords are not the same"
+
+#: dtol/welcome/WelcomeController.py:185 dtol/welcome/WelcomeController.py:201
+msgid "EMAIL_EXISTS"
+msgstr "The new email already in the database"
+
+#: dtol/welcome/WelcomeController.py:194
+msgid "UPDATE_PROFILE_OK"
+msgstr "Update profile ok"
+
+#: dtol/welcome/WelcomeController.py:204
+msgid "SPONSORING_OK"
+msgstr "Sponsoring done"
+
+#: dtol/welcome/WelcomeController.py:234
+msgid "KEY_INACTIVE"
+msgstr ""
+"This key is inactive, you can't create your account. Please contact your "
+"sponsor."
+
+#: dtol/welcome/WelcomeController.py:236
+msgid "SPONSOR_SUSPENDED"
+msgstr ""
+"You sponsor has been suspended, so you can't create your account. Please "
+"contact your sponsor."
+
+#: dtol/welcome/WelcomeController.py:246
+#, fuzzy
+msgid "PASSWORD_NULL"
+msgstr "Password:"
+
+#: dtol/welcome/WelcomeController.py:261
+msgid "REGISTER_OK"
+msgstr ""
+"Registring ok, Administrator has been warned to validate. You will receive "
+"an email when your account is activated."
+
+#: templates/authentication.html:25
+msgid "PASSWORD_GENERATION_EMAIL"
+msgstr "Email:"
+
+#: templates/authentication.html:27 templates/authentication.html.py:54
+msgid "PASSWORD_GENERATION"
+msgstr "Regenerate password"
+
+#: templates/authentication.html:37 templates/message_return.html:9
+#: templates/message_return.html.py:21 templates/register.html:67
+#: templates/view_profile.html:25
+msgid "ERROR"
+msgstr "Error:"
+
+#: templates/authentication.html:42 templates/register.html:52
+#: templates/view_user.html:17
+msgid "LOGIN"
+msgstr "Login:"
+
+#: templates/authentication.html:46 templates/register.html:56
+#: templates/view_profile.html:14 templates/view_user.html:21
+msgid "PASSWORD"
+msgstr "Password:"
+
+#: templates/authentication.html:50
+msgid "AUTOCONNECT"
+msgstr "Auto-Connect"
+
+#: templates/authentication.html:54
+msgid "CONNECT"
+msgstr "Connect"
+
+#: templates/authentication.html:59
+msgid "DISCLAMER"
+msgstr ""
+"This is a private website. If you have an unauthorized access, please warn "
+"me to <a href=\"mailto:dtol@alwaysdata.com\">par email</a>."
+
+#: templates/connected.html:3
+msgid "USERS_CONNECTED"
+msgstr "Connected:"
+
+#: templates/forbidden.html:7
+msgid "FORBIDDEN"
+msgstr "Forbidden"
+
+#: templates/index.html:38
+msgid "CHALLENGES"
+msgstr "Challenges"
+
+#: templates/index.html:39
+msgid "TOURNAMENTS"
+msgstr "Tournaments"
+
+#: templates/index.html:40
+msgid "TEAMS"
+msgstr "Teams"
+
+#: templates/index.html:41
+msgid "STATISTICS"
+msgstr "Statistics"
+
+#: templates/index.html:42
+msgid "PROFILE"
+msgstr "Profile"
+
+#: templates/index.html:43
+msgid "ADMIN"
+msgstr "Administration"
+
+#: templates/index.html:44
+msgid "CHAT"
+msgstr "Chat"
+
+#: templates/index.html:45
+msgid "LOGOUT"
+msgstr "Logout"
+
+#: templates/index.html:49 templates/register.html:148
+msgid "SAVE"
+msgstr "Save"
+
+#: templates/index.html:50 templates/register.html:149
+msgid "SAVING"
+msgstr "Saving..."
+
+#: templates/index.html:51 templates/register.html:150
+msgid "SPONSORING"
+msgstr "Sponsorin in progress..."
+
+#: templates/index.html:52
+msgid "ACTION_IN_PROGRESS"
+msgstr "Action in process..."
+
+#: templates/index.html:53
+msgid "LOAD_USER"
+msgstr "Loading user..."
+
+#: templates/index.html:55 templates/register.html:152
+msgid "EMAIL_TO_SPONSOR"
+msgstr "Email to sponsor:"
+
+#: templates/message_return.html:32 templates/message_return.html.py:43
+msgid "WARNING"
+msgstr "Warning:"
+
+#: templates/register.html:41
+msgid "REGISTER_YOUR_PROFILE"
+msgstr "Register your Profile"
+
+#: templates/register.html:60 templates/view_profile.html:18
+msgid "CONFIRM_PASSWORD"
+msgstr "Confirm Password:"
+
+#: templates/register.html:74 templates/view_profile.html:36
+#: templates/view_user.html:25
+msgid "COUNTRY"
+msgstr "Country:"
+
+#: templates/register.html:85 templates/view_profile.html:56
+#: templates/view_user.html:45
+msgid "PRIMARY_COLOR"
+msgstr "Primary Color:"
+
+#: templates/register.html:105 templates/view_profile.html:76
+#: templates/view_user.html:65
+msgid "SECONDARY_COLOR"
+msgstr "Secondary Color:"
+
+#: templates/register.html:135 templates/view_user.html:95
+#: templates/team/createconstraint.html:65
+msgid "EXTENSIONS"
+msgstr "Extensions:"
+
+#: templates/register.html:143
+msgid "REGISTER_PROFILE"
+msgstr "Register"
+
+#: templates/under_construction.html:9
+msgid "UNDER_CONSTRUCTION"
+msgstr "Under construction"
+
+#: templates/user_list.html:3
+msgid "USERS_LIST"
+msgstr "Users list"
+
+#: templates/user_list.html:9
+msgid "USER_LOGIN"
+msgstr "Login"
+
+#: templates/user_list.html:10
+msgid "USER_ACTIVE"
+msgstr "Active"
+
+#: templates/user_list.html:11
+msgid "USER_EMAIL"
+msgstr "Email"
+
+#: templates/user_list.html:12
+msgid "USER_CREATION_DATETIME"
+msgstr "Date Creation"
+
+#: templates/user_list.html:13
+msgid "USER_LASTCON_DATETIME"
+msgstr "Last Connection"
+
+#: templates/user_list.html:14
+msgid "USER_LANG"
+msgstr "Lang"
+
+#: templates/user_list.html:15
+msgid "USER_COUNTRY"
+msgstr "Country"
+
+#: templates/user_list.html:16
+msgid "USER_COLORS"
+msgstr "Colors"
+
+#: templates/view_profile.html:3
+msgid "UPDATE_YOUR_PROFILE"
+msgstr "Update your profile"
+
+#: templates/view_profile.html:9
+msgid "SPONSOR_SOMEONE"
+msgstr "Sponsor someone"
+
+#: templates/view_profile.html:32
+msgid "NEW_EMAIL"
+msgstr "New Email:"
+
+#: templates/view_profile.html:33
+msgid "EMAIL_CHANGE_REQUIRE_VALIDATION"
+msgstr ""
+"Email changement require a validation. An email will be sent to you to check "
+"the new email address."
+
+#: templates/view_profile.html:47 templates/view_user.html:36
+msgid "GAME_ACTION_MENU_MODE"
+msgstr "Action menu mode:"
+
+#: templates/view_profile.html:106 templates/view_user.html:103
+msgid "UPDATE_PROFILE"
+msgstr "Update profile"
+
+#: templates/view_user.html:3
+msgid "UPDATE_USER"
+msgstr "Update user"
+
+#: templates/view_user.html:10
+msgid "BACK_USERS_LIST"
+msgstr "Go back to the user list"
+
+#: templates/team/createconstraint.html:3
+#, fuzzy
+msgid "NEW_CONSTRAINT"
+msgstr "Under construction"
+
+#: templates/team/createconstraint.html:3
+#, fuzzy
+msgid "EDIT_CONSTRAINT"
+msgstr "Under construction"
+
+#: templates/team/createconstraint.html:5
+msgid "CANCEL_CREATE_CONSTRAINT"
+msgstr ""
+
+#: templates/team/createconstraint.html:7
+#, fuzzy
+msgid "LOAD_CONSTRAINT"
+msgstr "Under construction"
+
+#: templates/team/createconstraint.html:18
+msgid "CONSTRAINT_NAME"
+msgstr ""
+
+#: templates/team/createconstraint.html:21
+msgid "TEAM_STRUCTURE"
+msgstr ""
+
+#: templates/team/createconstraint.html:23
+msgid "CHARACTERS"
+msgstr ""
+
+#: templates/team/createconstraint.html:24
+msgid "OBJECTS"
+msgstr ""
+
+#: templates/team/createconstraint.html:25
+msgid "ROOMS"
+msgstr ""
+
+#: templates/team/createconstraint.html:27
+msgid "CHARACTERS_VALUE"
+msgstr ""
+
+#: templates/team/createconstraint.html:29
+msgid "CHARACTER_DEPLACEMENT"
+msgstr ""
+
+#: templates/team/createconstraint.html:30
+msgid "CHARACTER_ADVANCED_DEPLACEMENT"
+msgstr ""
+
+#: templates/team/createconstraint.html:31
+msgid "CHARACTER_FORCE"
+msgstr ""
+
+#: templates/team/createconstraint.html:33
+#, fuzzy
+msgid "TEAMS_VALUE"
+msgstr "Team List"
+
+#: templates/team/createconstraint.html:35
+msgid "TEAM_DEPLACEMENT"
+msgstr ""
+
+#: templates/team/createconstraint.html:36
+msgid "TEAM_ADVANCED_DEPLACEMENT"
+msgstr ""
+
+#: templates/team/createconstraint.html:37
+msgid "TEAM_FORCE"
+msgstr ""
+
+#: templates/team/createconstraint.html:39
+msgid "CHARACTERS_TYPES"
+msgstr ""
+
+#: templates/team/createconstraint.html:41
+msgid "CHARACTER_PRESTIGIOUS"
+msgstr ""
+
+#: templates/team/createconstraint.html:42
+msgid "CHARACTER_SPELLCASTERS"
+msgstr ""
+
+#: templates/team/createconstraint.html:43
+msgid "CHARACTER_FLYING"
+msgstr ""
+
+#: templates/team/createconstraint.html:44
+msgid "CHARACTER_INTANGIBLE"
+msgstr ""
+
+#: templates/team/createconstraint.html:45
+msgid "CHARACTER_SHADOWWALKER"
+msgstr ""
+
+#: templates/team/createconstraint.html:46
+msgid "CHARACTER_COUNTERFOUNTAIN"
+msgstr ""
+
+#: templates/team/createconstraint.html:47
+msgid "CHARACTER_SAME"
+msgstr ""
+
+#: templates/team/createconstraint.html:49
+msgid "OBJECT_LIMITS"
+msgstr ""
+
+#: templates/team/createconstraint.html:51
+msgid "OBJECT_CURSED"
+msgstr ""
+
+#: templates/team/createconstraint.html:52
+msgid "OBJECT_SAME"
+msgstr ""
+
+#: templates/team/createconstraint.html:53
+msgid "OBJECT_COMMON"
+msgstr ""
+
+#: templates/team/createconstraint.html:55
+msgid "ROOMS_CONSTRAINTS"
+msgstr ""
+
+#: templates/team/createconstraint.html:57
+msgid "ROOM_SHADOW"
+msgstr ""
+
+#: templates/team/createconstraint.html:58
+msgid "ROOM_ANTIMAGIC"
+msgstr ""
+
+#: templates/team/createconstraint.html:59
+msgid "ROOM_FOUNTAIN"
+msgstr ""
+
+#: templates/team/createconstraint.html:60
+msgid "ROOM_SAME"
+msgstr ""
+
+#: templates/team/createconstraint.html:62
+#, fuzzy
+msgid "EXTENSIONS_LIMIT"
+msgstr "Extensions:"
+
+#: templates/team/createconstraint.html:64
+#, fuzzy
+msgid "TEAM_EXTENSIONS"
+msgstr "Extensions:"
+
+#: templates/team/createconstraint.html:73
+#, fuzzy
+msgid "SAVE_CONSTRAINT"
+msgstr "Under construction"
+
+#: templates/team/list.html:3
 msgid "TEAMS_LIST"
 msgstr "Team List"
 
+#: templates/team/list.html:5
+msgid "CREATE_TEAM"
+msgstr "Create New Team"
+
+#: templates/team/list.html:5
+msgid "LIST_CONSTRAINT_TEAM"
+msgstr ""
+
+#: templates/team/listconstraints.html:3
+#, fuzzy
+msgid "TEAMS_CONSTRAINTS_LIST"
+msgstr "Team List"
+
+#: templates/team/listconstraints.html:5
+#, fuzzy
+msgid "CREATE_CONSTRAINT"
+msgstr "Create New Team"
+
+#: templates/team/listconstraints.html:11
+msgid "CONSTRAINTS"
+msgstr ""
+
+#~ msgid "French"
+#~ msgstr "French"
+
+#~ msgid "PASSWORD_EMPTY"
+#~ msgstr "Empty password forbidden"
+
+#~ msgid "EXTENSION_base"
+#~ msgstr "Base Game"
+
+#~ msgid "EXTENSION_34j"
+#~ msgstr "Base Game 3/4 players"
+
+#~ msgid "EXTENSION_p&d"
+#~ msgstr "Paladin & Dragon"
+
+#~ msgid "EXTENSION_e&f"
+#~ msgstr "Fire & Water"
+
+#~ msgid "EXTENSION_pdt"
+#~ msgstr "Forces of Darkness"
+
+#~ msgid "EXTENSION_merc"
+#~ msgstr "Mercenaries"
+
+#~ msgid "EXTENSION_cs"
+#~ msgstr "Sylvian Creatures"
+
+#~ msgid "EXTENSION_tdg"
+#~ msgstr "Ice Land"
+
+#~ msgid "EXTENSION_af&as"
+#~ msgstr "Fire & Blood"
+
+#~ msgid "EXTENSION_prison"
+#~ msgstr "Prison"
+
+#~ msgid "EXTENSION_goodies1"
+#~ msgstr "Goodies Official"
+
+#~ msgid "EXTENSION_goodies2"
+#~ msgstr "Goodies Official Powerful"
+
+#~ msgid "EXTENSION_ms"
+#~ msgstr "Wild Moutain"
+
+#~ msgid "EXTENSION_goodies3"
+#~ msgstr "Goodies Online"
+
+#~ msgid "EXTENSION_goodies4"
+#~ msgstr "Goodies Online Powerful"
+
+#~ msgid "EXTENSION_fo"
+#~ msgstr "Forces of Dark Death"
+
+#~ msgid "EXTENSION_mo"
+#~ msgstr "Orient Mysteries"
+
+#~ msgid "EXTENSION_verm"
+#~ msgstr "Vermins"
+
+#~ msgid "EXTENSION_tc"
+#~ msgstr "Throne & Cell"
+
+#~ msgid "EXTENSION_cm"
+#~ msgstr "Sea Creatures"
+
+#~ msgid "EXTENSION_da"
+#~ msgstr "Deadalus of Apocalypse"
+
+#~ msgid "USER_PRIMARY_COLOR"
+#~ msgstr "Color 1"
+
+#~ msgid "USER_SECONDARY_COLOR"
+#~ msgstr "Color 2"
+
+#~ msgid "CANCEL"
+#~ msgstr "Cancel"
+
+#~ msgid "CHAT_ONLINE"
+#~ msgstr "Chat OnLine!"
+
+#~ msgid "PASSWORD_GENERATION_EMAIL_BODY_%s"
+#~ msgstr ""
+#~ "Hi,\n"
+#~ "\n"
+#~ "You requested a new password for your account, here is the new password: "
+#~ "%s\n"
+#~ "\n"
+#~ "Happy Twist,\n"
+#~ "DTOnline Administrator"

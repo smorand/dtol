@@ -150,5 +150,5 @@ class UserManager(object):
 	def sponsor(self, user, email):
 		key = commons.randomstring(20)
 		DtSponsored(key=key, email=email, sponsor=DtUser(id=user.id)).save()
-		body = _("EMAIL_SPONSOR_BODY_%s_%s") % (user.login, core.settings.URL_ROOT + "/register/" + key)
+		body = _("EMAIL_SPONSOR_BODY_%(login)s_%(url)s") % { 'login': user.login, 'url': core.settings.URL_ROOT + "/register/" + key }
 		commons.sendmail(_("EMAIL_SPONSOR_SUBJECT_%s") % (user.login), [ email ], [ core.settings.ADMINS[0][1] ], body)

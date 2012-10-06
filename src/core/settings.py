@@ -179,6 +179,8 @@ INSTALLED_APPS = (
 	# Uncomment the next line to enable the admin:
 	#'django.contrib.admin',
 )
+for app in config['installedapps'].split(','):
+	INSTALLED_APPS += (app, )
 
 APPLICATION_CONTEXT_PATH = APPLICATION_ROOT + os.path.sep + 'resources' if 'context_path' not in config else config['context_path'] 
 APPLICATION_CONTEXTS = [ springpython.config.XMLConfig(APPLICATION_CONTEXT_PATH + os.path.sep + 'applicationContext.xml') ] if 'contexts' not in config else [ springpython.config.XMLConfig(APPLICATION_CONTEXT_PATH + os.path.sep + f.strip() + '.xml') for f in config['contexts'].split(',') ]

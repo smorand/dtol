@@ -84,12 +84,20 @@ class TemplatesContainer(object):
 		if DEBUG:
 			self.__load()
 		if name not in self.__templates:
-			LOGGER.error('Internal error: Template is missing')
-			raise Exception('Internal error: Template is missing')
+			LOGGER.error('Internal error: Template %s is missing' % (name))
+			raise Exception('Internal error: Template %s is missing' % (name))
 		return self.__templates[name]
 	
 	def render(self, name, context={}):
-		return self.__getattr__(name).render(Context(context))
+		name_i = name.split('.', 2)
+		tpl = self
+		while type(tpl) == TemplatesContainer:
+			try:
+				tpl = tpl.__getattr__(name_i.pop(0))
+			except:
+				LOGGER.error('Internal error: Template %s is missing' % (name))
+				raise Exception('Internal error: Template %s is missing' % (name))
+		return tpl.render(Context(context))
 			
 	def content(self, content):
 		return HttpResponse(content=content, mimetype="text/html", status=200)

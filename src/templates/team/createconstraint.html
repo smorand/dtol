@@ -1,0 +1,75 @@
+<!-- This file is covered by the GNU Public Licence v3 licence. See http://www.gnu.org/licenses/gpl.txt -->
+{% load i18n %}
+<h1>{% if new %}{% trans "NEW_CONSTRAINT" %}{% else %}{% trans "EDIT_CONSTRAINT" %}{% endif %}</h1>
+<br/>
+<button class="dtbutton" onClick="load_teamsconstraints()">{% trans "CANCEL_CREATE_CONSTRAINT" %}</button>
+<br/><br/>
+<button class="dtbutton" onClick="loadconstraintdata()">{% trans "LOAD_CONSTRAINT" %}</button><select id="createconstraint_loadconstraint">
+{% for constraint in constraints %}
+	<option value="{{ constraint.id }}">{{ constraint.name }}</option>
+{% endfor %}
+</select>
+<br/><br/>
+<div id="tc_error"></div>
+<form action="/teams/constraints/save" method="POST" onsubmit="return saveconstraintdata()" id="tc_form">
+	<input type="hidden" value="{{ constraint.id }}" name="id" id="tc_id"/>
+	<input type="hidden" value="{{ extensions }}" name="extensions" id="tc_extensions"/>
+	<table class="form">
+		<tr><th>{% trans "CONSTRAINT_NAME" %}</th><td><input type="text" size="10" name="name" id="tc_name" value="{{ constraint.name }}"/></td></tr>
+	</table>
+	<div class="accordion">
+		<h3><a href="#">{% trans "TEAM_STRUCTURE" %}</a></h3><div>
+		<table class="form">
+			<tr><th>{% trans "CHARACTERS" %}</th><td><input type="text" size="5" name="mincharacters" id="tc_mincharacters" value="{{ constraint.mincharacters }}"/>&ge;...&ge;<input type="text" size="5" name="maxcharacters" id="tc_maxcharacters" value="{{ constraint.maxcharacters }}"/></td></tr>
+			<tr><th>{% trans "OBJECTS" %}</th><td><input type="text" size="5" name="minobjects" id="tc_minobjects" value="{{ constraint.minobjects }}"/>&ge;...&ge;<input type="text" size="5" name="maxobjects" id="tc_maxobjects" value="{{ constraint.maxobjects }}"/></td></tr>
+			<tr><th>{% trans "ROOMS" %}</th><td><input type="text" size="5" name="minrooms" id="tc_minrooms" value="{{ constraint.minrooms }}"/>&ge;...&ge;<input type="text" size="5" name="maxrooms" id="tc_maxrooms" value="{{ constraint.maxrooms }}"/></td></tr>
+		</table></div>
+		<h3><a href="#">{% trans "CHARACTERS_VALUE" %}</a></h3><div>
+		<table class="form">
+			<tr><th>{% trans "CHARACTER_DEPLACEMENT" %}</th><td><input type="text" size="5" name="mindeplacement" id="tc_mindeplacement" value="{{ constraint.mindeplacement }}"/>&ge;...&ge;<input type="text" size="5" name="maxdeplacement" id="tc_maxdeplacement" value="{{ constraint.maxdeplacement }}"/></td></tr>
+			<tr><th>{% trans "CHARACTER_ADVANCED_DEPLACEMENT" %}</th><td><input type="text" size="5" name="minadvdeplacement" id="tc_minadvdeplacement" value="{{ constraint.minadvdeplacement }}"/>&ge;...&ge;<input type="text" size="5" name="maxadvdeplacement" id="tc_maxadvdeplacement" value="{{ constraint.maxadvdeplacement }}"/></td></tr>
+			<tr><th>{% trans "CHARACTER_FORCE" %}</th><td><input type="text" size="5" name="minforce" id="tc_minforce" value="{{ constraint.minforce }}"/>&ge;...&ge;<input type="text" size="5" name="maxforce" id="tc_maxforce" value="{{ constraint.maxforce }}"/></td></tr>
+		</table></div>
+		<h3><a href="#">{% trans "TEAMS_VALUE" %}</a></h3><div>
+		<table class="form">
+			<tr><th>{% trans "TEAM_DEPLACEMENT" %}</th><td><input type="text" size="5" name="mintotaldeplacement" id="tc_mintotaldeplacement" value="{{ constraint.mintotaldeplacement }}"/>&ge;...&ge;<input type="text" size="5" name="maxtotaldeplacement" id="tc_maxtotaldeplacement" value="{{ constraint.maxtotaldeplacement }}"/></td></tr>
+			<tr><th>{% trans "TEAM_ADVANCED_DEPLACEMENT" %}</th><td><input type="text" size="5" name="mintotaladvdeplacement" id="tc_mintotaladvdeplacement" value="{{ constraint.mintotaladvdeplacement }}"/>&ge;...&ge;<input type="text" size="5" name="maxtotaladvdeplacement" id="tc_maxtotaladvdeplacement" value="{{ constraint.maxtotaladvdeplacement }}"/></td></tr>
+			<tr><th>{% trans "TEAM_FORCE" %}</th><td><input type="text" size="5" name="mintotalforce" id="tc_mintotalforce" value="{{ constraint.mintotalforce }}"/>&ge;...&ge;<input type="text" size="5" name="maxtotalforce" id="tc_maxtotalforce" value="{{ constraint.maxtotalforce }}"/></td></tr>
+		</table></div>
+		<h3><a href="#">{% trans "CHARACTERS_TYPES" %}</a></h3><div>
+		<table class="form">
+			<tr><th>{% trans "CHARACTER_PRESTIGIOUS" %}</th><td><input type="text" size="5" name="minprestigious" id="tc_minprestigious" value="{{ constraint.minprestigious }}"/>&ge;...&ge;<input type="text" size="5" name="maxprestigious" id="tc_maxprestigious" value="{{ constraint.maxprestigious }}"/></td></tr>
+			<tr><th>{% trans "CHARACTER_SPELLCASTERS" %}</th><td><input type="text" size="5" name="minspellcaster" id="tc_minspellcaster" value="{{ constraint.minspellcaster }}"/>&ge;...&ge;<input type="text" size="5" name="maxspellcaster" id="tc_maxspellcaster" value="{{ constraint.maxspellcaster }}"/></td></tr>
+			<tr><th>{% trans "CHARACTER_FLYING" %}</th><td><input type="text" size="5" name="minflying" id="tc_minflying" value="{{ constraint.minflying }}"/>&ge;...&ge;<input type="text" size="5" name="maxflying" id="tc_maxflying" value="{{ constraint.maxflying }}"/></td></tr>
+			<tr><th>{% trans "CHARACTER_INTANGIBLE" %}</th><td><input type="text" size="5" name="minintangible" id="tc_minintangible" value="{{ constraint.minintangible }}"/>&ge;...&ge;<input type="text" size="5" name="maxintangible" id="tc_maxintangible" value="{{ constraint.maxintangible }}"/></td></tr>
+			<tr><th>{% trans "CHARACTER_SHADOWWALKER" %}</th><td><input type="text" size="5" name="minshadowwalker" id="tc_minshadowwalker" value="{{ constraint.minshadowwalker }}"/>&ge;...&ge;<input type="text" size="5" name="maxshadowwalker" id="tc_maxshadowwalker" value="{{ constraint.maxshadowwalker }}"/></td></tr>
+			<tr><th>{% trans "CHARACTER_COUNTERFOUNTAIN" %}</th><td><input type="text" size="5" name="mincounterfountain" id="tc_mincounterfountain" value="{{ constraint.mincounterfountain }}"/>&ge;...&ge;<input type="text" size="5" name="maxcounterfountain" id="tc_maxcounterfountain" value="{{ constraint.maxcounterfountain }}"/></td></tr>
+			<tr><th>{% trans "CHARACTER_SAME" %}</th><td><input type="text" size="5" name="maxsamecharacter" id="tc_maxsamecharacter" value="{{ constraint.maxsamecharacter }}"/></td></tr>
+		</table></div>
+		<h3><a href="#">{% trans "OBJECT_LIMITS" %}</a></h3><div>
+		<table class="form">
+			<tr><th>{% trans "OBJECT_CURSED" %}</th><td><input type="text" size="5" name="mincursed" id="tc_mincursed" value="{{ constraint.mincursed }}"/>&ge;...&ge;<input type="text" size="5" name="maxcursed" id="tc_maxcursed" value="{{ constraint.maxcursed }}"/></td></tr>
+			<tr><th>{% trans "OBJECT_SAME" %}</th><td><input type="text" size="5" name="maxsameobject" id="tc_maxsameobject" value="{{ constraint.maxsameobject }}"/></td></tr>
+			<tr><th>{% trans "OBJECT_COMMON" %}</th><td><input type="text" size="5" name="maxcommonobject" id="tc_maxcommonobject" value="{{ constraint.maxcommonobject }}"/></td></tr>
+		</table></div>
+		<h3><a href="#">{% trans "ROOMS_CONSTRAINTS" %}</a></h3><div>
+		<table class="form">
+			<tr><th>{% trans "ROOM_SHADOW" %}</th><td><input type="text" size="5" name="minshadowroom" id="tc_minshadowroom" value="{{ constraint.minshadowroom }}"/>&ge;...&ge;<input type="text" size="5" name="maxshadowroom" id="tc_maxshadowroom" value="{{ constraint.maxshadowroom }}"/></td></tr>
+			<tr><th>{% trans "ROOM_ANTIMAGIC" %}</th><td><input type="text" size="5" name="minantimagicroom" id="tc_minantimagicroom" value="{{ constraint.minantimagicroom }}"/>&ge;...&ge;<input type="text" size="5" name="maxantimagicroom" id="tc_maxantimagicroom" value="{{ constraint.maxantimagicroom }}"/></td></tr>
+			<tr><th>{% trans "ROOM_FOUNTAIN" %}</th><td><input type="text" size="5" name="minfountain" id="tc_minfountain" value="{{ constraint.minfountain }}"/>&ge;...&ge;<input type="text" size="5" name="maxfountain" id="tc_maxfountain" value="{{ constraint.maxfountain }}"/></td></tr>
+			<tr><th>{% trans "ROOM_SAME" %}</th><td><input type="text" size="5" name="maxsameroom" id="tc_maxsameroom" value="{{ constraint.maxsameroom }}"/></td></tr>
+		</table></div>
+		<h3><a href="#">{% trans "EXTENSIONS_LIMIT" %}</a></h3><div>
+		<table class="form">
+			<tr><th>{% trans "TEAM_EXTENSIONS" %}</th><td><input type="text" size="5" name="minextensions" id="tc_minextensions" value="{{ constraint.minextensions }}"/>&ge;...&ge;<input type="text" size="5" name="maxextensions" id="tc_maxextensions" value="{{ constraint.maxextensions }}"/></td></tr>
+			<tr><th>{% trans "EXTENSIONS" %}</th><td>
+				{% for c in extensionslist %}
+				<div class="extensionlogo"><img id="extlogo_{{ c.id }}" class="extensionlogo-notselected" src="/static/images/interface/logo{{ c.id }}.jpg" border="0" title="{% trans c.name %}" onclick="selectExtension({{ c.id }});"/></div>
+				{% endfor %}
+			</td></tr>
+		</table></div>
+	</div>
+	<br/><br/>
+	<button type="submit" class="dtbutton">{% trans "SAVE_CONSTRAINT" %}</button>
+	<br/><br/>
+</form>

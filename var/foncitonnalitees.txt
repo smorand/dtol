@@ -1,0 +1,20 @@
+Création des contraintes d'équipes
+Création des équipes
+
+Création des terrains (taille en n x n)
+Création des parties => Peut amener à la constitution d'une équipe
+Paramètres :
+ - Contraintes équipes
+ - Contraintes cycles
+ - Contraintes temps / tour
+ - Données visible
+ - Salles aléatoires
+ - Salles réparties
+
+Création des tournois => Le tournoi reprends les paramètres des parties qu'il impose à chaque partie. Ensuite on définit le mode
+Nombre min / max de joueurs
+Mode tournoi :
+ - Ronde suisse (tout le monde contre tout le monde)
+ - Championnat (tout le monde contre tout le monde avec match retour. Dans ce cas le joueur qui démarre la partie
+ 
+

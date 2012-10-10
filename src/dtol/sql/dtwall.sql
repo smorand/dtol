@@ -20,4 +20,4 @@ insert into dt_walls (id, name, walkable, lineofsight) values (17, 'portail', 2,
 insert into dt_walls (id, name, walkable, lineofsight) values (18, 'murportail', 0, 0);
 insert into dt_walls (id, name, walkable, lineofsight) values (19, 'penteraidemontante', 0, 3);
 insert into dt_walls (id, name, walkable, lineofsight) values (20, 'penteraidedescendante', 0, 3);
-insert into dt_walls (id, name, walkable, lineofsight) values (20, 'bambou', 0, 0);
+insert into dt_walls (id, name, walkable, lineofsight) values (21, 'bambou', 0, 0);

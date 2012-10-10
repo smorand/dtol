@@ -4,3 +4,4 @@
 *.pyc
 project.log
 *.mo
+dtol.db

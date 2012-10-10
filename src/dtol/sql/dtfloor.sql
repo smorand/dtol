@@ -18,7 +18,7 @@ insert into dt_floors (id, name, walkable, ftype, lineofsight) values (13, 'esca
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (14, 'bibliotheque', 0, 3, 2);
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (15, 'artefactantimagie', 0, 3, 2);
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (16, 'tombeau', 0, 3, 2);
-insert into dt_floors (id, name, walkable, ftype, lineofsight) values (17, 'zonetombeau', 1, 1, 1);
+insert into dt_floors (id, name, walkable, ftype, lineofsight) values (17, 'sacre', 1, 1, 1);
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (18, 'tenebres', 3, 0, 3);
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (19, 'tombe', 1, 3, 2);
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (20, 'statue', 0, 3, 2);
@@ -39,7 +39,7 @@ insert into dt_floors (id, name, walkable, ftype, lineofsight) values (34, 'casc
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (35, 'arbre', 1, 3, 2);
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (36, 'arbrecoupe', 1, 0, 1);
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (37, 'lianescorde', 1, 0, 1);
-insert into dt_floors (id, name, walkable, ftype, lineofsight) values (38, 'trondarbre', 1, 0, 1);
+insert into dt_floors (id, name, walkable, ftype, lineofsight) values (38, 'ponttroncarbre', 1, 0, 1);
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (39, 'canneaulave', 3, 2, 1);
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (40, 'tresor', 1, 0, 1);
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (41, 'canalisation', 3, 0, 1);
@@ -79,7 +79,7 @@ insert into dt_floors (id, name, walkable, ftype, lineofsight) values (74, 'supe
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (75, 'levierpontlevis', 1, 0, 1);
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (76, 'levierinverseur', 1, 0, 1);
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (77, 'coffre', 1, 3, 2);
-insert into dt_floors (id, name, walkable, ftype, lineofsight) values (78, 'jarre', 1, 3, 2);
+insert into dt_floors (id, name, walkable, ftype, lineofsight) values (78, 'jarre', 1, -1, 1);
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (79, 'stalagtite', 1, 3, 2);
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (80, 'rocher', 1, 3, 2);
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (81, 'declencheur_orangeatre', 1, 0, 1);
@@ -95,3 +95,25 @@ insert into dt_floors (id, name, walkable, ftype, lineofsight) values (90, 'mirr
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (91, 'mirroir_no', -1, -1, 3);
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (92, 'fletrissure', 0, -1, 3);
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (93, 'tenebresmagiques', 3, 0, 3);
+insert into dt_floors (id, name, walkable, ftype, lineofsight) values (94, 'verminophage', 3, 0, 1);
+insert into dt_floors (id, name, walkable, ftype, lineofsight) values (95, 'trouvermine', 1, 0, 1);
+insert into dt_floors (id, name, walkable, ftype, lineofsight) values (96, 'pentedouce_n', 3, 3, 3);
+insert into dt_floors (id, name, walkable, ftype, lineofsight) values (97, 'pentedouce_e', 3, 3, 3);
+insert into dt_floors (id, name, walkable, ftype, lineofsight) values (98, 'pentedouce_s', 3, 3, 3);
+insert into dt_floors (id, name, walkable, ftype, lineofsight) values (99, 'pentedouce_o', 3, 3, 3);
+-- no vers se vide
+insert into dt_floors (id, name, walkable, ftype, lineofsight) values (100, 'triangle_1_v', -1, -1, 1);
+-- ne vers so vide
+insert into dt_floors (id, name, walkable, ftype, lineofsight) values (101, 'triangle_2_v', -1, -1, 1);
+-- no vers se bambou
+insert into dt_floors (id, name, walkable, ftype, lineofsight) values (102, 'triangle_1_b', -1, -1, 1);
+-- ne vers so bambou
+insert into dt_floors (id, name, walkable, ftype, lineofsight) values (103, 'triangle_2_b', -1, -1, 1);
+-- no vers se toit
+insert into dt_floors (id, name, walkable, ftype, lineofsight) values (104, 'triangle_1_t', -1, -1, 1);
+-- ne vers so toit
+insert into dt_floors (id, name, walkable, ftype, lineofsight) values (105, 'triangle_2_t', -1, -1, 1);
+insert into dt_floors (id, name, walkable, ftype, lineofsight) values (106, 'tatami', 1, 1, 1);
+insert into dt_floors (id, name, walkable, ftype, lineofsight) values (107, 'broyeur', 1, 0, 1);
+insert into dt_floors (id, name, walkable, ftype, lineofsight) values (108, 'interrupteur', 1, 0, 1);
+insert into dt_floors (id, name, walkable, ftype, lineofsight) values (109, 'pontbois', 1, 0, 1);

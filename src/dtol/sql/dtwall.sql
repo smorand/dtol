@@ -1,6 +1,6 @@
 -- Walls
 -- walkable : 0 for no, 1 for yes, 2 for special (portail)
--- lineofsight : 0 for no, 1 for yes, 2 for yes but only adjacent (meurtriere)
+-- lineofsight : 0 for no, 1 for yes, 2 for yes but only adjacent (meurtriere), 3 for special (penteraide)
 insert into dt_walls (id, name, walkable, lineofsight) values (1, 'vide', 1, 1);
 insert into dt_walls (id, name, walkable, lineofsight) values (2, 'mur', 0, 0);
 insert into dt_walls (id, name, walkable, lineofsight) values (3, 'murbrise', 1, 1);
@@ -18,3 +18,5 @@ insert into dt_walls (id, name, walkable, lineofsight) values (15, 'cle', 0, 0);
 insert into dt_walls (id, name, walkable, lineofsight) values (16, 'cleprise', 0, 0);
 insert into dt_walls (id, name, walkable, lineofsight) values (17, 'portail', 2, 0);
 insert into dt_walls (id, name, walkable, lineofsight) values (18, 'murportail', 0, 0);
+insert into dt_walls (id, name, walkable, lineofsight) values (19, 'penteraidemontante', 0, 3);
+insert into dt_walls (id, name, walkable, lineofsight) values (20, 'penteraidedescendante', 0, 3);

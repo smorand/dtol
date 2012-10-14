@@ -27,8 +27,10 @@ with codecs.open(CONFIG_FILE, 'r', 'utf8') as f:
 			sys.stderr.write('Line %s is not conform in configuration file')
 
 EXTERNAL_PATH = config['external_path'].split(':') if 'external_path' in config else []
-
 sys.path.extend(EXTERNAL_PATH)
+EXTERNAL_PATH_BEFORE = config['external_path_before'].split(':') if 'external_path_before' in config else []
+EXTERNAL_PATH_BEFORE.reverse()
+for p in EXTERNAL_PATH_BEFORE: sys.path.insert(0, p)
 
 import springpython.config
 

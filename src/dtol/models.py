@@ -405,7 +405,7 @@ class DtTeamConstraint(models.Model):
 	id = models.AutoField(primary_key=True)
 	name = models.CharField(max_length=150)
 	deleted = models.BooleanField(default=False)
-	game = models.ForeignKey(DtGame, null=True, on_delete=models.CASCADE)
+	game = models.ForeignKey(DtGame, null=True, on_delete=models.deletion.CASCADE)
 	protected = models.IntegerField(default=0)
 	mincharacters = models.IntegerField(default=8)
 	maxcharacters = models.IntegerField(default=8)

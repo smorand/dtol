@@ -36,9 +36,9 @@
 			<td>{% trans "COUNTRY" %}</td>
 			<td>
 				<div style="margin-left: 5px; margin-top:10px; position:absolute;"><img id="profile_flag" src="/static/images/flags/{{ user.country }}.gif"/></div>
-				<select id="profile_country" name="country" onchange="$('#profile_flag').attr('src', 'images/flags/' + $('#profile_country').val() + '.gif')">
+				<select id="profile_country" name="country" onchange="$('#profile_flag').attr('src', '/static/images/flags/' + $('#profile_country').val() + '.gif')">
 					{% for c in countries %}
-					<option value="{{ c }}" style="background-image: url(images/flags/{{ c }}.gif); background-repeat: no-repeat;"{%if c == user.country %} selected="selected"{% endif %}>&nbsp;&nbsp;&nbsp;&nbsp;{{ c }}</option>
+					<option value="{{ c }}" style="background-image: url(/static/images/flags/{{ c }}.gif); background-repeat: no-repeat;"{%if c == user.country %} selected="selected"{% endif %}>&nbsp;&nbsp;&nbsp;&nbsp;{{ c }}</option>
 					{% endfor %}
 				</select>
 			</td>

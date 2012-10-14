@@ -7,7 +7,6 @@ import sys
 import os
 import codecs
 import re
-import springpython.config
 
 # APPLICATION_ROOT and CONFIG
 APPLICATION_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -28,6 +27,10 @@ with codecs.open(CONFIG_FILE, 'r', 'utf8') as f:
 			sys.stderr.write('Line %s is not conform in configuration file')
 
 EXTERNAL_PATH = config['external_path'].split(':') if 'external_path' in config else []
+
+sys.path.extend(EXTERNAL_PATH)
+
+import springpython.config
 
 DEBUG_GENERIC = 'APACHE_RUN_DIR' not in os.environ
 DEBUG = config['debug'] in ['true', '1'] if 'debug' in config else DEBUG_GENERIC 
@@ -62,7 +65,7 @@ if 'databases' in config:
 	for database in config['databases'].split(','):
 		DATABASES[database] = {
 			'ENGINE': config['database_%s_engine' % database] if 'database_%s_engine' % database in config else '',					# Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-			'NAME': config['database_%s_name' % database] if 'database_%s_name' % database in config else '',						# Or path to database file if using sqlite3.
+			'NAME': config['database_%s_name' % database].replace('%APPLICATION_ROOT%', APPLICATION_ROOT) if 'database_%s_name' % database in config else '',						# Or path to database file if using sqlite3.
 			'USER': config['database_%s_user' % database] if 'database_%s_user' % database in config else '',								# Not used with sqlite3.
 			'PASSWORD': config['database_%s_password' % database] if 'database_%s_password' % database in config else '',	# Not used with sqlite3.
 			'HOST': config['database_%s_host' % database] if 'database_%s_host' % database in config else '',								# Set to empty string for localhost. Not used with sqlite3.

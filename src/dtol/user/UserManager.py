@@ -48,7 +48,7 @@ class UserManager(object):
 	def getUser(self, userId):
 		return DtUser.objects.get(id=userId)
 	
-	def updateProfile(self, login, password=None, email=None, country=None, primarycolor=None, secondarycolor=None, menujeu=None):
+	def updateProfile(self, login, password=None, email=None, country=None, primarycolor=None, secondarycolor=None):
 		user = self.getUserInfo(login)
 		if password != None and len(password) > 0:
 			user.password = sha1(password).hexdigest()
@@ -58,8 +58,6 @@ class UserManager(object):
 			user.primarycolor = primarycolor
 		if secondarycolor != None and len(secondarycolor) > 0:
 			user.secondarycolor = secondarycolor
-		if menujeu != None:
-			user.menujeu = menujeu
 		user.save()
 		
 		if email != None and len(email) != 0:
@@ -70,7 +68,7 @@ class UserManager(object):
 		
 		return User(user)
 	
-	def saveProfile(self, cid, login, password, country, primarycolor, secondarycolor, menujeu, extensions):
+	def saveProfile(self, cid, login, password, country, primarycolor, secondarycolor, extensions):
 		user = DtUser.objects.get(id=cid)
 		if len(login) > 0:
 			user.login = login
@@ -82,7 +80,6 @@ class UserManager(object):
 		user.country = country
 		user.primarycolor = primarycolor
 		user.secondarycolor = secondarycolor
-		user.menujeu = menujeu
 		user.extensions = DtExtension.objects.filter(id__in=extensions)
 		user.save()
 	

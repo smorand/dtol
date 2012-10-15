@@ -4,7 +4,6 @@
 
 <input type="hidden" id="profile_ini_primarycolor" value="{{ user.primarycolor }}"/>
 <input type="hidden" id="profile_ini_secondarycolor" value="{{ user.secondarycolor }}"/>
-<input type="hidden" id="profile_ini_menujeu" value="{{ user.menujeu }}"/>
 
 <br/>
 <button class="dtbutton" id="submit_profile" onClick="load_admin();" type="button">{% trans "BACK_USERS_LIST" %}</button>
@@ -32,15 +31,6 @@
 				</select>
 			</td>
 		</tr>
-                <tr>
-			<td>{% trans "GAME_ACTION_MENU_MODE" %}</td>
-			<td>
-                        	Clic&nbsp;Gauche&nbsp;<img name="menujeu" id="menujeu_0" src="/static/images/interface/radio.gif" border="0"/>&nbsp;&nbsp;&nbsp;
-                                Long&nbsp;clic&nbsp;droit&nbsp;<img name="menujeu" id="menujeu_1" src="/static/images/interface/radio.gif" border="0"/>&nbsp;&nbsp;&nbsp;
-                                Double&nbsp;clic&nbsp;droit&nbsp;<img name="menujeu" id="menujeu_2" src="/static/images/interface/radio.gif" border="0"/>&nbsp;&nbsp;&nbsp;
-                                Clic&nbsp;droit&nbsp;par&nbsp;Rotation&nbsp;<img name="menujeu" id="menujeu_3" src="/static/images/interface/radio.gif" border="0">&nbsp;&nbsp;&nbsp;
-                        </td>
-                </tr>
 		<tr>
 			<td>{% trans "PRIMARY_COLOR" %}</td>
 			<td>

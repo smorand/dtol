@@ -50,7 +50,6 @@ class UserController(CommonController):
 			
 		primarycolor = request.POST['primarycolor']
 		secondarycolor = request.POST['secondarycolor']
-		menujeu = int(request.POST['menujeu'])
 		
 		extensions = request.POST['extensions'].strip()
 		if len(extensions) == 0:
@@ -59,7 +58,7 @@ class UserController(CommonController):
 			extensions = extensions.split(',')
 
 		if len(errors) == 0:
-			self.userManager.saveProfile(cid, login, password, country, primarycolor, secondarycolor, menujeu, extensions)
+			self.userManager.saveProfile(cid, login, password, country, primarycolor, secondarycolor, extensions)
 			c = { 'notice': _("SAVE_USER_OK") }
 		else:
 			c = { 'errors': errors }

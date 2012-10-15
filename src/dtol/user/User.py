@@ -16,7 +16,6 @@ class User(object):
 		self.packgraphique = user.packgraphique
 		self.primarycolor = user.primarycolor
 		self.secondarycolor = user.secondarycolor
-		self.menujeu = user.menujeu
 		self.country = user.country
 		self.email = user.email
 		self.zoom = user.zoom

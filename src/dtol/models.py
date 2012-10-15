@@ -46,16 +46,9 @@ class DtUser(models.Model):
 	isadmin = models.BooleanField(default=False)
 	primarycolor = models.CharField(max_length=20)
 	secondarycolor = models.CharField(max_length=20)
-	menujeu = models.IntegerField(default=0)
-	extensions = models.ManyToManyField(DtExtension, through='DtUserExtension')
+	extensions = models.ManyToManyField(DtExtension)
 	class Meta:
 		db_table = u'dt_users'
-
-class DtUserExtension(models.Model):
-	user = models.ForeignKey(DtUser)
-	extension = models.ForeignKey(DtExtension)
-	class Meta:
-		db_table = u'dt_users_extensions'
 
 class DtEmailChange(models.Model):
 	id = models.AutoField(primary_key=True)
@@ -98,17 +91,11 @@ class DtCharacter(models.Model):
 	name = models.CharField(max_length=50)
 	deplacement = models.IntegerField()
 	force = models.IntegerField()
-	extensions = models.ManyToManyField(DtExtension, through='DtCharacterExtension')
+	extensions = models.ManyToManyField(DtExtension)
 	def capacities(self):
 		return DtCharacterCapacity.objects.filter(id=self.id)
 	class Meta:
 		db_table = u'dt_characters'
-
-class DtCharacterExtension(models.Model):
-	dtcharacter = models.ForeignKey(DtCharacter)
-	dtextension = models.ForeignKey(DtExtension)
-	class Meta:
-		db_table = u'dt_characters_extensions'
 
 class DtCharacterCapacity(models.Model):
 	id = models.AutoField(primary_key=True)
@@ -120,17 +107,11 @@ class DtCharacterCapacity(models.Model):
 class DtObject(models.Model):
 	id = models.AutoField(primary_key=True)
 	name = models.CharField(max_length=50)
-	extensions = models.ManyToManyField(DtExtension, through='DtObjectExtension')
+	extensions = models.ManyToManyField(DtExtension)
 	def capacities(self):
 		return DtObjectCapacity.objects.filter(id=self.id)
 	class Meta:
 		db_table = u'dt_objects'
-
-class DtObjectExtension(models.Model):
-	dtobject = models.ForeignKey(DtObject)
-	dtextension = models.ForeignKey(DtExtension)
-	class Meta:
-		db_table = u'dt_objects_extensions'
 	
 class DtObjectCapacity(models.Model):
 	id = models.AutoField(primary_key=True)
@@ -166,71 +147,34 @@ class DtRoom(models.Model):
 	id = models.AutoField(primary_key=True)
 	number = models.CharField(max_length=4)
 	rotation = models.IntegerField()
-	categories = models.ManyToManyField(DtRoomCategorie, through='DtRoomCategorieRoom')
-	extensions = models.ManyToManyField(DtExtension, through='DtRoomExtension')
+	categories = models.ManyToManyField(DtRoomCategorie)
+	extensions = models.ManyToManyField(DtExtension)
 	def cases(self):
 		DtRoomCase.objects.filter(room=self.id)
 	class Meta:
 		db_table = u'dt_rooms'
-
-class DtRoomCategorieRoom(models.Model):
-	dtroom = models.ForeignKey(DtRoom)
-	dtcategorie = models.ForeignKey(DtRoomCategorie)
-	class Meta:
-		db_table = u'dt_rooms_categories'
-
-class DtRoomExtension(models.Model):
-	dtroom = models.ForeignKey(DtRoom)
-	dtextension = models.ForeignKey(DtExtension)
-	class Meta:
-		db_table = u'dt_rooms_extensions'
 
 class DtTeam(models.Model):
 	id = models.AutoField(primary_key=True)
 	name = models.CharField(max_length=150)
 	user = models.ForeignKey(DtUser)
 	modification = models.DateTimeField(auto_now=True, auto_now_add=True)
-	characters = models.ManyToManyField(DtCharacter, through='DtTeamCharacter')
-	objs = models.ManyToManyField(DtObject, through='DtTeamObject')
-	rooms = models.ManyToManyField(DtRoom, through='DtTeamRoom')
-	sack = models.ManyToManyField(DtObject, through='DtTeamObjectSack', related_name='sack')
+	characters = models.ManyToManyField(DtCharacter)
+	objs = models.ManyToManyField(DtObject)
+	rooms = models.ManyToManyField(DtRoom)
+	sack = models.ManyToManyField(DtObject, related_name='sack')
 	played = models.IntegerField(default=0)
 	wins = models.IntegerField(default=0)
 	lost = models.IntegerField(default=0)
 	class Meta:
 		db_table = u'dt_teams'
 
-class DtTeamCharacter(models.Model):
-	dtcharacter = models.ForeignKey(DtCharacter)
-	dtteam = models.ForeignKey(DtTeam)
-	class Meta:
-		db_table = u'dt_teams_characters'
-
-class DtTeamObject(models.Model):
-	dtobject = models.ForeignKey(DtObject)
-	dtteam = models.ForeignKey(DtTeam)
-	class Meta:
-		db_table = u'dt_teams_objects'
-
-class DtTeamObjectSack(models.Model):
-	sack = models.ForeignKey(DtObject)
-	dtteam = models.ForeignKey(DtTeam)
-	class Meta:
-		db_table = u'dt_teams_objectssack'
-
-class DtTeamRoom(models.Model):
-	dtroom = models.ForeignKey(DtRoom)
-	dtteam = models.ForeignKey(DtTeam)
-	class Meta:
-		db_table = u'dt_teams_rooms'
-
-
 class DtRoomCase(models.Model):
 	id = models.AutoField(primary_key=True)
 	room = models.ForeignKey(DtRoom)
 	x = models.IntegerField()
 	y = models.IntegerField()
-	sol = models.ManyToManyField(DtFloor, through='DtRoomCaseFloor')
+	sol = models.ManyToManyField(DtFloor)
 	mur_nord = models.ForeignKey(DtWall, related_name='r_mur_nord')
 	mur_est = models.ForeignKey(DtWall, related_name='r_mur_est')
 	mur_sud = models.ForeignKey(DtWall, related_name='r_mur_sud')
@@ -238,46 +182,28 @@ class DtRoomCase(models.Model):
 	class Meta:
 		db_table = u'dt_rooms_cases'
 
-class DtRoomCaseFloor(models.Model):
-	case = models.ForeignKey(DtRoomCase)
-	floor = models.ForeignKey(DtFloor)
-	class Meta:
-		db_table = u'dt_roomcases_floors'
-
 class DtTile(models.Model):
 	id = models.AutoField(primary_key=True)
 	name = models.CharField(max_length=60)
 	size = models.IntegerField()
-	extensions = models.ManyToManyField(DtExtension, through='DtTileExtension')
+	extensions = models.ManyToManyField(DtExtension)
 	def cases(self):
 		DtTileCase.objects.filter(tile=self.id)
 	class Meta:
 		db_table = u'dt_tiles'
-
-class DtTileExtension(models.Model):
-	dttile = models.ForeignKey(DtTile)
-	dtextension = models.ForeignKey(DtExtension)
-	class Meta:
-		db_table = u'dt_tiles_extensions'
 
 class DtTileCase(models.Model):
 	id = models.AutoField(primary_key=True)
 	tile = models.ForeignKey(DtTile)
 	x = models.IntegerField()
 	y = models.IntegerField()
-	sol = models.ManyToManyField(DtFloor, through='DtTileCaseFloor')
+	sol = models.ManyToManyField(DtFloor)
 	mur_nord = models.ForeignKey(DtWall, related_name='t_mur_nord')
 	mur_est = models.ForeignKey(DtWall, related_name='t_mur_est')
 	mur_sud = models.ForeignKey(DtWall, related_name='t_mur_sud')
 	mur_ouest = models.ForeignKey(DtWall, related_name='t_mur_ouest')
 	class Meta:
 		db_table = u'dt_tiles_cases'
-
-class DtTileCaseFloor(models.Model):
-	case = models.ForeignKey(DtTileCase)
-	floor = models.ForeignKey(DtFloor)
-	class Meta:
-		db_table = u'dt_tilecases_floors'
 
 class DtSpawnState(models.Model):
 	id = models.AutoField(primary_key=True)
@@ -287,7 +213,7 @@ class DtSpawnState(models.Model):
 
 class DtGame(models.Model):
 	id = models.AutoField(primary_key=True)
-	parameters = models.ManyToManyField(DtParameter, through='DtGameParameter')
+	parameters = models.ManyToManyField(DtParameter)
 	def players(self):
 		return DtPlayer.objects.filter(game=self.id)
 	def characters(self, player=None):
@@ -314,12 +240,6 @@ class DtGame(models.Model):
 	class Meta:
 		db_table = u'dt_games'
 
-class DtGameParameter(models.Model):
-	game = models.ForeignKey(DtGame)
-	parameter = models.ForeignKey(DtParameter)
-	class Meta:
-		db_table = u'dt_games_parameters'
-
 class DtGameChat(models.Model):
 	id = models.AutoField(primary_key=True)
 	user = models.ForeignKey(DtUser)
@@ -333,7 +253,7 @@ class DtGameChat(models.Model):
 class DtPlayer(models.Model):
 	id = models.AutoField(primary_key=True)
 	game = models.ForeignKey(DtGame)
-	parameters = models.ManyToManyField(DtParameter, through='DtPlayerParameters')
+	parameters = models.ManyToManyField(DtParameter)
 	user = models.ForeignKey(DtUser)
 	color = models.CharField(max_length=60)
 	def characters(self):
@@ -342,12 +262,6 @@ class DtPlayer(models.Model):
 		return DtGameObject.objects.filter(game=self.game, player=self.id)
 	class Meta:
 		db_table = u'dt_players'
-
-class DtPlayerParameters(models.Model):
-	player = models.ForeignKey(DtPlayer)
-	parameter = models.ForeignKey(DtParameter)
-	class Meta:
-		db_table = u'dt_players_parameters'
 
 class DtGameCharacter(models.Model):
 	id = models.AutoField(primary_key=True)
@@ -451,12 +365,6 @@ class DtTeamConstraint(models.Model):
 	maxsameobject = models.IntegerField(default=-1)
 	maxcommonobject = models.IntegerField(default=-1)
 	maxsameroom = models.IntegerField(default=-1)
-	extensions = models.ManyToManyField(DtExtension, through='DtTeamConstraintExtension')
+	extensions = models.ManyToManyField(DtExtension)
 	class Meta:
 		db_table = u'dt_team_constraints'
-
-class DtTeamConstraintExtension(models.Model):
-	teamconstraint = models.ForeignKey(DtTeamConstraint)
-	extension = models.ForeignKey(DtExtension)
-	class Meta:
-		db_table = u'dt_team_constraints_extensions'

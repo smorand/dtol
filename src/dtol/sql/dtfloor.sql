@@ -118,4 +118,5 @@ insert into dt_floors (id, name, walkable, ftype, lineofsight) values (107, 'toi
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (108, 'tatami', 1, 1, 1);
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (109, 'broyeur', 1, 0, 1);
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (110, 'interrupteur', 1, 0, 1);
+insert into dt_floors (id, name, walkable, ftype, lineofsight) values (111, 'rail', 1, 0, 1);
 

@@ -20,11 +20,11 @@ with codecs.open(CONFIG_FILE, 'r', 'utf8') as f:
 		rowclean = reg_comment.sub('', row).strip()
 		if len(rowclean) > 0:
 			vals = rowclean.split('=')
-		if len(vals) == 2:
-			key, value = vals[0], vals[1] 
-			config[key.strip()] = value.strip().replace('%APPLICATION_ROOT%', APPLICATION_ROOT)
-		else:
-			sys.stderr.write('Line %s is not conform in configuration file')
+			if len(vals) == 2:
+				key, value = vals[0], vals[1] 
+				config[key.strip()] = value.strip().replace('%APPLICATION_ROOT%', APPLICATION_ROOT)
+			else:
+				sys.stderr.write('Line %s is not conform in configuration file')
 
 EXTERNAL_PATH = config['external_path'].split(':') if 'external_path' in config else []
 sys.path.extend(EXTERNAL_PATH)
@@ -67,7 +67,7 @@ if 'databases' in config:
 	for database in config['databases'].split(','):
 		DATABASES[database] = {
 			'ENGINE': config['database_%s_engine' % database] if 'database_%s_engine' % database in config else '',					# Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-			'NAME': config['database_%s_name' % database].replace('%APPLICATION_ROOT%', APPLICATION_ROOT) if 'database_%s_name' % database in config else '',						# Or path to database file if using sqlite3.
+			'NAME': config['database_%s_name' % database] if 'database_%s_name' % database in config else '',						# Or path to database file if using sqlite3.
 			'USER': config['database_%s_user' % database] if 'database_%s_user' % database in config else '',								# Not used with sqlite3.
 			'PASSWORD': config['database_%s_password' % database] if 'database_%s_password' % database in config else '',	# Not used with sqlite3.
 			'HOST': config['database_%s_host' % database] if 'database_%s_host' % database in config else '',								# Set to empty string for localhost. Not used with sqlite3.

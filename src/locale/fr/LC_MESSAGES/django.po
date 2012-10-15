@@ -596,6 +596,10 @@ msgstr "Créer Nouvelle Contrainte d'Equipe"
 msgid "CONSTRAINTS"
 msgstr "Contraintes"
 
+#: js/dtui.js
+msgid "LOADING"
+msgstr "Chargement en cours"
+
 #~ msgid "French"
 #~ msgstr "Français"
 

@@ -132,6 +132,13 @@ function load_page(page) {
 }
 
 /**
+ * Affiche un message d'attente de chargement de page
+ */
+function display_wait() {
+	$('#content').html('<center><img src="/static/images/interface/loading.gif"/><br/>' + translate("LOADING") + '</center>');
+}
+
+/**
  * Load the content and parse forbidden page
  * @param content: The content itself
  */
@@ -144,6 +151,7 @@ function display_content(content) {
  * Load challenge page
  */
 function load_challenges() {
+	display_wait();
 	$.get('/challenges', function(content) {
 		display_content(content);
 	});
@@ -153,6 +161,7 @@ function load_challenges() {
  * Load constraints teams
  */
 function load_teamsconstraints() {
+	display_wait();
 	$.get('/teams/constraints', function(content) {
 		window.location.hash = '#teams/constraints';
 		display_content(content);
@@ -166,6 +175,7 @@ function load_admin(userId) {
 	if (userId) {
 		$.get('/user/view/' + userId, editUser_callback);
 	} else {
+		display_wait();
 		window.location.hash = '#admin';
 		$.get('/admin', display_content);
 	}
@@ -175,6 +185,7 @@ function load_admin(userId) {
  * Load challenge page
  */
 function load_tournaments() {
+	display_wait();
 	$.get('/tournaments', function(content) {
 		display_content(content);
 	});
@@ -187,6 +198,7 @@ function load_teams(args) {
 	if (args && args == 'constraints') {
 		load_teamsconstraints();
 	} else {
+		display_wait();
 		$.get('/teams', function(content) {
 			display_content(content);
 		});
@@ -201,6 +213,7 @@ function delteamconstraint(id) {
 
 function createteamconstraint() { editteamconstraint(0); }
 function editteamconstraint(id) {
+	display_wait();
 	$.get('/teams/constraints/edit/' + id, function(content) {
 		display_content(content);
 		$('.accordion').accordion({
@@ -219,6 +232,7 @@ function editteamconstraint(id) {
  * Load challenge page
  */
 function load_statistics(user) {
+	display_wait();
 	$.get('/statistics', function(content) {
 		display_content(content);
 	});
@@ -228,6 +242,7 @@ function load_statistics(user) {
  * Load challenge page
  */
 function load_profile() {
+	display_wait();
 	$.get('/profile', function(content) {
 		display_content(content);
 		$('[name=menujeu]').radio($('#profile_ini_menujeu').val());
@@ -246,6 +261,7 @@ function load_game(args) {
 	if (args.length == 0) {
 		load_page('challenges');
 	} else {
+		display_wait();
 		$.get('/game/' + args, function(content) {
 			display_content(content);
 		});

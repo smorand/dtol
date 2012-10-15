@@ -4,7 +4,7 @@
 #
 
 from core.controllers import CommonController
-from dtol.models import DtTeamConstraint, DtTeamConstraintExtension, DtExtension
+from dtol.models import DtTeamConstraint, DtExtension
 from django.utils.translation import ugettext as _
 
 class TeamController(CommonController):
@@ -204,9 +204,11 @@ class TeamController(CommonController):
 			tc.maxcommonobject = tc.maxcommonobject if tc.maxcommonobject >= 0 else -1
 			tc.maxsameroom = tc.maxsameroom if tc.maxsameroom >= 0 else -1
 			tc.save()
+			tc.extensions = []
 			if 'extensions' in request.POST and request.POST['extensions'] != '':
 				for ext in request.POST['extensions'].strip().split(','):
-					DtTeamConstraintExtension(teamconstraint=tc	, extension=DtExtension(id=int(ext))).save()
+					tc.extensions.append(DtExtension(id=int(ext)))
+			tc.save()
 		except Exception as err:
 			return self.templates.response('message_return', context={ 'error': str(err)})
 		return self.templates.empty()

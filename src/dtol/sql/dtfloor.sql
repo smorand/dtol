@@ -116,9 +116,9 @@ insert into dt_floors (id, name, walkable, ftype, lineofsight) values (105, 'tri
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (106, 'triangle_2_t', -1, -1, 1);
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (107, 'toit', -1, -1, -1);
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (108, 'tatami', 1, 1, 1);
-insert into dt_floors (id, name, walkable, ftype, lineofsight) values (109, 'broyeursol', 1, 0, 1);
-insert into dt_floors (id, name, walkable, ftype, lineofsight) values (110, 'broyeur', 1, 0, 1);
+insert into dt_floors (id, name, walkable, ftype, lineofsight) values (109, 'broyeursol', 1, 1, 1);
+insert into dt_floors (id, name, walkable, ftype, lineofsight) values (110, 'broyeur', 0, 3, 2);
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (111, 'interrupteurbroyeur', 1, 0, 1);
-insert into dt_floors (id, name, walkable, ftype, lineofsight) values (112, 'rail', 1, 0, 1);
-insert into dt_floors (id, name, walkable, ftype, lineofsight) values (113, 'cellulemutant', 1, 1, 1);
+insert into dt_floors (id, name, walkable, ftype, lineofsight) values (112, 'rail', 1, 1, 1);
+insert into dt_floors (id, name, walkable, ftype, lineofsight) values (113, 'cellulemutant', 1, 0, 1);
 

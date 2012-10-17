@@ -1,3 +1,4 @@
+-- This file is covered by the GNU Public Licence v3 licence. See http://www.gnu.org/licenses/gpl.txt
 -- Character Base
 insert into dt_characters (id, name, deplacement, `force`) values (1, 'voleuse', 5, 2);
 insert into dt_characters_capacities (character_id, name) values (1, 'woman');
@@ -2041,6 +2042,48 @@ insert into dt_rooms (id, number, rotation) values (129, 'S2', 1);
 insert into dt_rooms_extensions (dtroom_id, dtextension_id) values (129, 40);
 insert into dt_rooms (id, number, rotation) values (130, 'S2', 2);
 insert into dt_rooms_extensions (dtroom_id, dtextension_id) values (130, 40);
+insert into dt_rooms (id, number, rotation) values (147, 'B4', 1);
+insert into dt_rooms_categories (dtroom_id, dtroomcategorie_id) values (147, 11);
+insert into dt_rooms_extensions (dtroom_id, dtextension_id) values (147, 40);
+insert into dt_rooms (id, number, rotation) values (148, 'B4', 2);
+insert into dt_rooms_extensions (dtroom_id, dtextension_id) values (148, 40);
+insert into dt_rooms (id, number, rotation) values (149, 'B5', 1);
+insert into dt_rooms_categories (dtroom_id, dtroomcategorie_id) values (149, 11);
+insert into dt_rooms_categories (dtroom_id, dtroomcategorie_id) values (149, 3);
+insert into dt_rooms_extensions (dtroom_id, dtextension_id) values (149, 40);
+insert into dt_rooms (id, number, rotation) values (150, 'B5', 2);
+insert into dt_rooms_categories (dtroom_id, dtroomcategorie_id) values (150, 3);
+insert into dt_rooms_extensions (dtroom_id, dtextension_id) values (150, 40);
+insert into dt_rooms (id, number, rotation) values (151, 'B6', 1);
+insert into dt_rooms_categories (dtroom_id, dtroomcategorie_id) values (151, 17);
+insert into dt_rooms_extensions (dtroom_id, dtextension_id) values (151, 40);
+insert into dt_rooms (id, number, rotation) values (152, 'B6', 2);
+insert into dt_rooms_categories (dtroom_id, dtroomcategorie_id) values (152, 16);
+insert into dt_rooms_categories (dtroom_id, dtroomcategorie_id) values (152, 17);
+insert into dt_rooms_extensions (dtroom_id, dtextension_id) values (152, 40);
+insert into dt_rooms (id, number, rotation) values (153, 'B8', 1);
+insert into dt_rooms_extensions (dtroom_id, dtextension_id) values (153, 40);
+insert into dt_rooms (id, number, rotation) values (154, 'B8', 2);
+insert into dt_rooms_categories (dtroom_id, dtroomcategorie_id) values (154, 5);
+insert into dt_rooms_extensions (dtroom_id, dtextension_id) values (154, 40);
+insert into dt_rooms (id, number, rotation) values (155, 'B10', 1);
+insert into dt_rooms_categories (dtroom_id, dtroomcategorie_id) values (155, 5);
+insert into dt_rooms_categories (dtroom_id, dtroomcategorie_id) values (155, 11);
+insert into dt_rooms_categories (dtroom_id, dtroomcategorie_id) values (155, 12);
+insert into dt_rooms_extensions (dtroom_id, dtextension_id) values (155, 40);
+insert into dt_rooms (id, number, rotation) values (156, 'B10', 2);
+insert into dt_rooms_categories (dtroom_id, dtroomcategorie_id) values (156, 3);
+insert into dt_rooms_categories (dtroom_id, dtroomcategorie_id) values (156, 11);
+insert into dt_rooms_categories (dtroom_id, dtroomcategorie_id) values (156, 12);
+insert into dt_rooms_extensions (dtroom_id, dtextension_id) values (156, 40);
+insert into dt_rooms (id, number, rotation) values (157, 'B11', 1);
+insert into dt_rooms_categories (dtroom_id, dtroomcategorie_id) values (157, 19);
+insert into dt_rooms_categories (dtroom_id, dtroomcategorie_id) values (157, 5);
+insert into dt_rooms_extensions (dtroom_id, dtextension_id) values (157, 40);
+insert into dt_rooms (id, number, rotation) values (158, 'B11', 2);
+insert into dt_rooms_categories (dtroom_id, dtroomcategorie_id) values (158, 19);
+insert into dt_rooms_categories (dtroom_id, dtroomcategorie_id) values (158, 16);
+insert into dt_rooms_extensions (dtroom_id, dtextension_id) values (158, 40);
 
 -- Tiles (Light for darkness)
 insert into dt_tiles (id, name, size) values (1, 'dalle-1', 3);

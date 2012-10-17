@@ -126,6 +126,7 @@ class DtFloor(models.Model):
 	walkable = models.IntegerField() # walkable : -1 for not applicable, 0 for no, 1 for yes, 2 for yes with rope, 3 for yes special (water, bridge, tree, etc.)
 	ftype = models.IntegerField() # ftype : -1 for not applicable, 0 for special, 1 for normal, 2 for obstacle, 3 for obstacle 3d, 4 notfranchable)
 	lineofsight = models.IntegerField() # line of sight : 0 for no, 1 for yes, 2 for yes but stop, 3 for special
+	marker = models.IntegerField() # line of sight : 1 for no, 1 for yes
 	class Meta:
 		db_table = u'dt_floors'
 
@@ -134,6 +135,7 @@ class DtWall(models.Model):
 	name = models.CharField(max_length=50)
 	walkable = models.IntegerField() # walkable : 0 for no, 1 for yes, 2 for special (portail)
 	lineofsight = models.IntegerField() # lineofsight : 0 for no, 1 for yes, 2 for yes but only adjacent (meurtriere)
+	marker = models.IntegerField() # line of sight : 1 for no, 1 for yes
 	class Meta:
 		db_table = u'dt_walls'
 

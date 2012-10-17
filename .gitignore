@@ -6,4 +6,3 @@ project.log
 *.mo
 dtol.db
 *#
-src/dtol/sql/dtroomscases.sql

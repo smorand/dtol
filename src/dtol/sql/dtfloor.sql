@@ -74,8 +74,8 @@ insert into dt_floors (id, name, walkable, ftype, lineofsight) values (69, 'orbe
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (70, 'potionvie', 0, 3, 2);
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (71, 'piege_violet', 3, 0, 1);
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (72, 'declencheur_violet', 1, 0, 1);
-insert into dt_floors (id, name, walkable, ftype, lineofsight) values (73, 'piege_orange', 3, 0, 1);
-insert into dt_floors (id, name, walkable, ftype, lineofsight) values (74, 'declencheur_orange', 1, 0, 1);
+insert into dt_floors (id, name, walkable, ftype, lineofsight) values (73, 'piege_vert2', 3, 0, 1);
+insert into dt_floors (id, name, walkable, ftype, lineofsight) values (74, 'declencheur_vert2', 1, 0, 1);
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (75, 'supertorche', 0, 3, 2);
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (76, 'levierpontlevis', 1, 0, 1);
 insert into dt_floors (id, name, walkable, ftype, lineofsight) values (77, 'levierinverseur', 1, 0, 1);

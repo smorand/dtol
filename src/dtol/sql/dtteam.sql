@@ -1453,7 +1453,6 @@ insert into dt_characters_capacities (character_id, name) values (178, 'walker_f
 insert into dt_characters_capacities (character_id, name) values (178, 'shaper_reinearachnide__1_0');
 insert into dt_characters_capacities (character_id, name) values (178, 'stayonfosse');
 insert into dt_characters_capacities (character_id, name) values (178, 'vermine');
-insert into dt_characters_extensions (dtcharacter_id, dtextension_id) values (178, 35);
 insert into dt_characters (id, name, deplacement, `force`) values (179, 'vervorace', 0, 8);
 insert into dt_characters_capacities (character_id, name) values (179, 'beast');
 insert into dt_characters_capacities (character_id, name) values (179, 'big_4');

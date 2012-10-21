@@ -9,10 +9,12 @@ class GameController(CommonController):
 	'''
 	Game controller, main entry point to the engine of the game
 	'''
-	
+
 	def _geturls(self):
 		return [
-			{ 'pattern': r'^/game?$', 'method': 'view' },
+			{ 'pattern': r'^game/?$', 'method': 'view' },
+			{ 'pattern': r'^game/dungeon/([1-9][0-9]*)$', 'method': 'dungeon' },
+			{ 'pattern': r'^game/actions/([0-9]+,[0-9]+|r[0-9]+|0)/([0-9]+,[0-9]+|0)/([0-9]+)$', 'method': 'getactions' }
 		]
 	
 	def view(self, request):
@@ -24,8 +26,11 @@ class GameController(CommonController):
 	def chatsend(self, request):
 		return self.templates.underConstruction()
 
-	def getactions(self, request):
-		return self.templates.underConstruction()
+	def dungeon(self, request, gameid):
+		return self.templates.response('game.dungeon', context={});
+
+	def getactions(self, request, possrc, posdst, spawnid):
+		return self.templates.response('game.getactions', context={});
 
 	def action(self, request):
 		return self.templates.underConstruction()

@@ -11,10 +11,10 @@ class SpawnManager(object):
 	'''
 
 	def getCharacters(self, extensions):
-		return DtCharacter.objects.filter(extension__in=extensions)
+		return DtCharacter.objects.filter(extensions__in=extensions)
 	
 	def getObjects(self, extensions):
-		return DtObject.objects.filter(extension__in=extensions)
+		return DtObject.objects.filter(extensions__in=extensions)
 
 	def getRooms(self, extensions):
-		return DtRoom.objects.filter(extension__in=extensions)
+		return DtRoom.objects.filter(extensions__in=extensions)

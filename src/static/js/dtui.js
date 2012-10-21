@@ -169,6 +169,22 @@ function load_teamsconstraints() {
 }
 
 /**
+ * Load constraints teams
+ */
+function load_teamcreate() {
+	display_wait();
+	$.get('/teams/create', function(content) {
+		window.location.hash = '#teams/create';
+		display_content(content);
+		$('[name=spawnstypes]').radio(1, displaySpawnTypes);
+	});
+}
+
+function displaySpawnTypes() {
+	var st = $('#radio-spawnstypes').val();
+}
+
+/**
  * Load challenge page
  */
 function load_admin(userId) {
@@ -197,6 +213,8 @@ function load_tournaments() {
 function load_teams(args) {
 	if (args && args == 'constraints') {
 		load_teamsconstraints();
+	} else if (args && args == 'create') {
+			load_teamcreate();
 	} else {
 		display_wait();
 		$.get('/teams', function(content) {
@@ -460,15 +478,17 @@ function recvChat() {
 		var messages = content.trim().split('|$|');
 		lastChatId = messages[0].trim() > lastChatId ? messages[0].trim() : lastChatId; 
 		var chat = document.getElementById('chat');
-		if (messages[1] == '1' && firstScroll == false) {
-			if (headerIsVisible == 0) toggleheader()
-			$('.header-chat').show();
-		}
-		var autoscroll = firstScroll || chat.scrollTop+chat.offsetHeight >= chat.scrollHeight-5;
-		firstScroll = false;
-		chat.innerHTML += messages[2].trim();
-		if (autoscroll == true) {
-			chat.scrollTop = chat.scrollHeight + chat.offsetHeight;
+		if (chat) {
+			if (messages[1] == '1' && firstScroll == false) {
+				if (headerIsVisible == 0) toggleheader()
+				$('.header-chat').show();
+			}
+			var autoscroll = firstScroll || chat.scrollTop+chat.offsetHeight >= chat.scrollHeight-5;
+			firstScroll = false;
+			chat.innerHTML += messages[2].trim();
+			if (autoscroll == true) {
+				chat.scrollTop = chat.scrollHeight + chat.offsetHeight;
+			}
 		}
 		setTimeout('recvChat()', 1000);
 	});

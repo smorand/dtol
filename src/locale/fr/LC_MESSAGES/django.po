@@ -334,12 +334,12 @@ msgstr "Pays&nbsp;:"
 #: templates/register.html:85 templates/view_profile.html:56
 #: templates/view_user.html:45
 msgid "PRIMARY_COLOR"
-msgstr "Couleur principale&nbsp;:"
+msgstr "Couleur&nbsp;principale&nbsp;:"
 
 #: templates/register.html:105 templates/view_profile.html:76
 #: templates/view_user.html:65
 msgid "SECONDARY_COLOR"
-msgstr "Couleur secondaire&nbsp;:"
+msgstr "Couleur&nbsp;secondaire&nbsp;:"
 
 #: templates/register.html:135 templates/view_user.html:95
 #: templates/team/createconstraint.html:65
@@ -599,6 +599,31 @@ msgstr "Contraintes"
 #: js/dtui.js
 msgid "LOADING"
 msgstr "Chargement en cours"
+
+#: templates/team/edit.html
+msgid "TEAM_CREATE"
+msgstr "Création d'équipe"
+
+#: templates/team/edit.html
+msgid "SPAWNS_TYPES_CHARACTERS"
+msgstr "Personnages"
+
+#: templates/team/edit.html
+msgid "SPAWNS_TYPES_OBJECTS"
+msgstr "Objets"
+
+#: templates/team/edit.html
+msgid "SPAWNS_TYPES_ROOMS"
+msgstr "Salles"
+
+#: templates/team/edit.html
+msgid "SPAWNS_TYPES"
+msgstr "Types"
+
+
+#: templates/team/edit.html
+msgid "SPAWNS_FILTERS"
+msgstr "Fitres"
 
 #~ msgid "French"
 #~ msgstr "Français"

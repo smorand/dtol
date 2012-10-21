@@ -104,4 +104,3 @@ function Dialog(name) {
 	}
 	
 }
-

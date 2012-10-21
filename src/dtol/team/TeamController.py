@@ -20,6 +20,8 @@ class TeamController(CommonController):
 			{ 'pattern': r'^teams/constraints/remove/([1-9][0-9]*)$', 'method': 'delteamsconstraints' },
 			{ 'pattern': r'^teams/constraints/load/([1-9][0-9]*)$', 'method': 'loadteamsconstraint' },
 			{ 'pattern': r'^teams/constraints/save$', 'method': 'saveteamsconstraint' },
+			{ 'pattern': r'^teams/create$', 'method': 'create' },
+			{ 'pattern': r'^teams/edit/([0-9]+)$', 'method': 'edit' },
 		]
 
 	def list(self, request):
@@ -214,11 +216,11 @@ class TeamController(CommonController):
 		return self.templates.empty()
 
 	def create(self, request):
-		user = request.session['user']
-		return self.templates.response('team_create', context={
-			'characters': self.spawnManager.getCharacters(user.extensions),
-			'objects': self.spawnManager.getObjects(self.user.extensions),
-			'rooms': self.spawnManager.getRooms(user.extensions)
+		extensions = self.userManager.getUser(request.session['user'].id).extensions.all()
+		return self.templates.response('team.edit', context={
+			'characters': self.spawnManager.getCharacters(extensions),
+			'objects': self.spawnManager.getObjects(extensions),
+			'rooms': self.spawnManager.getRooms(extensions)
 		})
 	
 	def update(self, request):

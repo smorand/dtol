@@ -9,13 +9,13 @@
 <button class="dtbutton" onClick="load_sponsor()">{% trans "SPONSOR_SOMEONE" %}</button>
 <br/><br/><div id="profile_updateanswer"></div>
 <form method="post" action="/profile/update" id="profile_form">
-	<table>
+	<table class="form">
 		<tr>
-			<td>{% trans "PASSWORD" %}</td>
+			<th>{% trans "PASSWORD" %}</th>
 			<td><input type="password" name="password" id="profile_password" onChange="checkProfileForm()" size="10"/></td>
 		</tr>
 		<tr>
-			<td>{% trans "CONFIRM_PASSWORD" %}</td>
+			<th>{% trans "CONFIRM_PASSWORD" %}</th>
 			<td>
 				<input type="password" name="confirmpassword" id="profile_confirmpassword" onChange="checkProfileForm()" size="10"/>
 				<div class="message-error" id="passworddiffers" style="display:none;width:400px">
@@ -29,11 +29,11 @@
 			</td>
 		</tr>
 		<tr>
-			<td>{% trans "NEW_EMAIL" %}</td>
+			<th>{% trans "NEW_EMAIL" %}</th>
 			<td><input type="text" name="email" size="20" value="{{ user.email }}"/><i class="small">{% trans "EMAIL_CHANGE_REQUIRE_VALIDATION" %}</i></td>
 		</tr>
 		<tr>
-			<td>{% trans "COUNTRY" %}</td>
+			<th>{% trans "COUNTRY" %}</th>
 			<td>
 				<div style="margin-left: 5px; margin-top:10px; position:absolute;"><img id="profile_flag" src="/static/images/flags/{{ user.country }}.gif"/></div>
 				<select id="profile_country" name="country" onchange="$('#profile_flag').attr('src', '/static/images/flags/' + $('#profile_country').val() + '.gif')">
@@ -44,7 +44,7 @@
 			</td>
 		</tr>
                 <tr>
-			<td>{% trans "GAME_ACTION_MENU_MODE" %}</td>
+			<th>{% trans "GAME_ACTION_MENU_MODE" %}</th>
 			<td>
                         	Clic&nbsp;Gauche&nbsp;<img name="menujeu" id="menujeu_0" src="/static/images/interface/radio.gif" border="0"/>&nbsp;&nbsp;&nbsp;
                                 Long&nbsp;clic&nbsp;droit&nbsp;<img name="menujeu" id="menujeu_1" src="/static/images/interface/radio.gif" border="0"/>&nbsp;&nbsp;&nbsp;
@@ -53,7 +53,7 @@
                         </td>
                 </tr>
 		<tr>
-			<td>{% trans "PRIMARY_COLOR" %}</td>
+			<th>{% trans "PRIMARY_COLOR" %}</th>
 			<td>
                                 <br/><br/>
 				<img name="primarycolor" onClick="updateSecondaryColor('orange')" id="primarycolor_orange" class="checkbox" src="/static/images/interface/radio.gif" border="0"/>&nbsp;<img onClick="$('#primarycolor_orange').click();" src="/static/images/spawns/fond-orange.png"/>&nbsp;&nbsp;&nbsp;
@@ -73,7 +73,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td>{% trans "SECONDARY_COLOR" %}</td>
+			<th>{% trans "SECONDARY_COLOR" %}</th>
 			<td>
                                 <br/><br/>
 				<span class="fondgroupe fondgroupejaune fondgroupeorange">

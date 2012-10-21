@@ -11,17 +11,17 @@
 <form method="post" action="/user/update" id="profile_form">
 	<input type="hidden" name="id" id="profile_id" value="{{ user.id }}"/>
 	<input type="hidden" name="extensions" id="profile_extensions" value="{{ userExtensions }}"/>
-	<table>
+	<table class="form">
 		<tr>
-			<td>{% trans "LOGIN" %}</td>
+			<th>{% trans "LOGIN" %}</th>
 			<td><input type="text" name="login" id="profile_login" size="10" value="{{ user.login }}"/></td>
 		</tr>
 		<tr>
-			<td>{% trans "PASSWORD" %}</td>
+			<th>{% trans "PASSWORD" %}</th>
 			<td><input type="text" name="password" id="profile_password" size="10"/></td>
 		</tr>
 		<tr>
-			<td>{% trans "COUNTRY" %}</td>
+			<th>{% trans "COUNTRY" %}</th>
 			<td>
 				<div style="margin-left: 5px; margin-top:10px; position:absolute;"><img id="profile_flag" src="/static/images/flags/{{ user.country }}.gif"/></div>
 				<select id="profile_country" name="country" onchange="$('#profile_flag').attr('src', '/static/images/flags/' + $('#profile_country').val() + '.gif')">
@@ -32,7 +32,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td>{% trans "PRIMARY_COLOR" %}</td>
+			<th>{% trans "PRIMARY_COLOR" %}</th>
 			<td>
                                 <br/><br/>
 				<img name="primarycolor" onClick="updateSecondaryColor('orange')" id="primarycolor_orange" class="checkbox" src="/static/images/interface/radio.gif" border="0"/>&nbsp;<img onClick="$('#primarycolor_orange').click();" src="/static/images/spawns/fond-orange.png"/>&nbsp;&nbsp;&nbsp;
@@ -52,7 +52,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td>{% trans "SECONDARY_COLOR" %}</td>
+			<th>{% trans "SECONDARY_COLOR" %}</th>
 			<td>
                                 <br/><br/>
 				<span class="fondgroupe fondgroupejaune fondgroupeorange">
@@ -82,7 +82,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td>{% trans "EXTENSIONS" %}</td>
+			<th>{% trans "EXTENSIONS" %}</th>
 			<td>
 				{% for c in extensions %}
 				<div class="extensionlogo"><img id="extlogo_{{ c.id }}" class="extensionlogo-notselected" src="/static/images/interface/logo{{ c.id }}.jpg" border="0" title="{% trans c.name %}" onclick="selectExtension({{ c.id }});"/></div>

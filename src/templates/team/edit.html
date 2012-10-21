@@ -1,0 +1,20 @@
+<!-- This file is covered by the GNU Public Licence v3 licence. See http://www.gnu.org/licenses/gpl.txt -->
+{% load i18n %}
+<h1>{% trans "TEAM_CREATE" %}</h1>
+{% for c in characters %}
+<!-- Type (1 for chararcters, 2 for objects, 3 for rooms | name | Localized name | capacitylist (separated by dash) | extensionslist (separated by dash) -->
+<input type="hidden" name="spawn" id="c.id" value="1|c.name|{% trans c.name %}"/>
+{% endfor %}
+<table class="form" width="100%"><tr>
+	<td>
+			<strong>{% trans "SPAWNS_TYPES"%}</strong><br/>
+			<img name="spawnstypes" id="spawnstypes_1" src="/static/images/interface/radio.gif" border="0"/>{% trans "SPAWNS_TYPES_CHARACTERS"%}<br/>
+			<img name="spawnstypes" id="spawnstypes_2" src="/static/images/interface/radio.gif" border="0"/>{% trans "SPAWNS_TYPES_OBJECTS"%}<br/>
+			<img name="spawnstypes" id="spawnstypes_3" src="/static/images/interface/radio.gif" border="0"/>{% trans "SPAWNS_TYPES_ROOMS"%}<br/>
+			<br/>
+			<strong>{% trans "SPAWNS_RACES"%}</strong><br/>
+			<inp
+	</td>
+	<td>
+	</td>
+</tr></table>

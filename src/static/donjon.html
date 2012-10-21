@@ -1,0 +1,34 @@
+<!-- This file is covered by the GNU Public Licence v3 licence. See http://www.gnu.org/licenses/gpl.txt -->
+<html>
+    <head>
+		<meta http-equiv="content" content="text/html; charset=utf-8"/>
+        <link type="text/css" rel="stylesheet" href="/static/css/jquery.css"></link>
+        <link type="text/css" rel="stylesheet" href="/static/css/dt.css"></link>
+        <script type="text/javascript" src="/static/js/jquery.js"></script>
+        <script type="text/javascript" src="/static/js/jquery-ui.js"></script>
+        <script type="text/javascript" src="/static/js/jquery-dialog.js"></script>
+		<script type="text/javascript" src="/static/js/jquery-history.js"></script>
+        <script type="text/javascript" src="/static/js/dtgame.js"></script>
+        <script type="text/javascript" src="/static/js/dtui.js"></script>
+        <script type="text/javascript">
+            $(document).ready(init_dungeon);
+        </script>
+    </head>
+    
+    <body>
+        <table border="0"><tr><td><div id="zoom_slider" class="slider"></div></td><td><img class="pointer" src="/static/images/interface/rotation-icon.gif" height="50" width="50" border="0"	 onclick="$.dungonRotate(1)"/></td><td><img class="pointer" id="icon_displayposition" src="/static/images/interface/position.png" height="50" width="50" border="0"	 onclick="$.dungonTogglePosition()"/></td><td><img class="pointer" id="icon_displayposition" src="/static/images/interface/actions-icon.png" height="50" width="50" border="0" onclick="updateAction()"/></td></tr></table>
+        <canvas id="dungeon_rooms" class="dungeon absolute zindex1"></canvas>
+        <canvas id="dungeon_spawns" class="dungeon absolute zindex2"></canvas>
+        <canvas id="dungeon_select" class="dungeon absolute zindex4"></canvas>
+        <canvas id="dungeon_position" class="dungeon absolute zindex3"></canvas>
+        <canvas id="dungeon_autre" class="dungeon zindex0"></canvas>
+        <div id="actionsdialog" title=""></div>
+        <div class="translation" id="translation-ACTION_LOADING">Chargement des actions</div>
+        <div class="translation" id="translation-GAME_LOADING">Chargement de la partie</div>
+		<div class="translation" id="translation-ACTION_GENERIC">Actions g&eacute;n&eacute;riques</div>
+		<div class="translation" id="translation-ACTION_ON_CASE">Actions {1}</div>
+		<div class="translation" id="translation-ACTION_FROM_CASE_TO_CASE">Actions de {1} sur {2}</div>
+		<div class="translation" id="translation-REGLETTE">R&eacute;glette</div>
+    </body>
+    
+</html>

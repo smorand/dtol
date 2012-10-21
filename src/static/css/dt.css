@@ -6,7 +6,7 @@ body {
     background-image: url("/static/images/interface/background.jpg");
     color: #e0b245;
     font-family: Arial;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: bold;
 }
 
@@ -198,6 +198,8 @@ img.icon:hover {
 .zindex1 { z-index: 1; }
 .zindex2 { z-index: 2; }
 .zindex3 { z-index: 3; }
+.zindex4 { z-index: 4; }
+.zindex5 { z-index: 5; }
 
 .menu {
 	text-align: center;
@@ -307,6 +309,9 @@ table.data td.data1 {
 	color: #FFFFFF;
 	border: 2px solid #FFFFFF;
 	padding: 7px;
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: bold;
 }
 
 table.data td.data2 {
@@ -314,12 +319,18 @@ table.data td.data2 {
 	color: #FFFFFF;
 	border: 2px solid #FFFFFF;
 	padding: 7px;
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: bold;
 }
 
 table.data tr:hover td.data1, table.data tr:hover td.data2 {
 	background-color: #e3d7bd;
 	color: #000000;
 	border: 2px solid #000000;
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: bold;
 }
 
 a.teamlist {
@@ -332,6 +343,14 @@ a.teamlist img {
 }
 
 table.form th {
-	font-weight: normal;
 	text-align: right;
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+table.form td {
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: normal;
 }

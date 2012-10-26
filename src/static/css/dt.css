@@ -38,6 +38,10 @@ i.small {
 	border: 2px solid #FFFFFF;
 }
 
+.extensionlogo-notselectable {
+	border: 2px solid #FFFFFF;
+}
+
 .extensionlogo-selected {
 	border: 2px solid #FF0000;
 }

@@ -217,10 +217,83 @@ class TeamController(CommonController):
 
 	def create(self, request):
 		extensions = self.userManager.getUser(request.session['user'].id).extensions.all()
+		characters = []
+		objects = []
+		rooms = []
+		for c in self.spawnManager.getCharacters(extensions):
+			sp = {
+				'id': c.id,
+				'name': c.name,
+				'force': c.force,
+				'deplacement': c.deplacement,
+				'extensions': '-'.join([ str(e.id) for e in c.extensions.all() ]),
+				'filters': []
+			}
+			capacities = list()
+			for cap in c.capacities():
+				capinfo = cap.name.split('_')
+				if capinfo[0] == 'walker' or capinfo[0] == 'biendans':
+					capacities.append('%s_%s' % (capinfo[0], capinfo[1]))
+				else:
+					capacities.append(capinfo[0])
+			if 'spellcaster' in capacities: sp['filters'].append('spellcaster')
+			if 'flyer' in capacities: sp['filters'].append('flyer')
+			if 'regenerater' in capacities: sp['filters'].append('regenerater')
+			if 'prestigious' in capacities: sp['filters'].append('prestigious')
+			if 'undead' in capacities: sp['filters'].append('undead')
+			if 'immaterial' in capacities: sp['filters'].append('immaterial')
+			if 'walker_shadow' in capacities: sp['filters'].append('walker_shadow')
+			if 'elf' in capacities: sp['filters'].append('elf')
+			if 'dwarf' in capacities: sp['filters'].append('dwarf')
+			if 'beast' in capacities: sp['filters'].append('beast')
+			if 'antifountain' in capacities: sp['filters'].append('antifountain')
+			if 'biendans_eau' in capacities: sp['filters'].append('biendans_eau')
+			if 'biendans_lave' in capacities: sp['filters'].append('biendans_lave')
+			sp['filters'] = '-'.join(sp['filters']) 
+			characters.append(sp)
+		for c in self.spawnManager.getObjects(extensions):
+			sp = {
+				'id': c.id,
+				'name': c.name,
+				'extensions': '-'.join([ str(e.id) for e in c.extensions.all() ]),
+				'filters': []
+			}
+			capacities = list()
+			for cap in c.capacities():
+				capacities.append(capinfo[0])
+			if 'current' in capacities: sp['filters'].append('current')
+			if 'magical' in capacities: sp['filters'].append('magical')
+			if 'parchemin' in capacities: sp['filters'].append('parchemin')
+			if 'categorie_arme' in capacities: sp['filters'].append('categorie_armeprestigious')
+			if 'shield' in capacities: sp['filters'].append('shield')
+			if 'categorie_powerful' in capacities: sp['filters'].append('categorie_powerful')
+			if 'antifountain' in capacities: sp['filters'].append('antifountain')
+			if 'cursed' in capacities: sp['filters'].append('cursed')
+			sp['filters'] = '-'.join(sp['filters'])
+			objects.append(sp)
+		for c in self.spawnManager.getRooms(extensions):
+			sp = {
+				'id': c.id,
+				'name': '%s-%d' % (c.number, c.rotation),
+				'extensions': '-'.join([ str(e.id) for e in c.extensions.all() ]),
+				'filters': []
+			}
+			capacities = [ cap.name for cap in c.categories.all() ]
+			if 'tenebres' in capacities: sp['filters'].append('tenebres')				
+			if 'eau' in capacities: sp['filters'].append('eau')
+			if 'lave' in capacities: sp['filters'].append('lave')
+			if 'fountain' in capacities: sp['filters'].append('fountain')
+			if 'pente' in capacities: sp['filters'].append('pente')
+			if 'neige' in capacities: sp['filters'].append('neige')
+			if 'brume' in capacities: sp['filters'].append('brume')
+			if 'arbre' in capacities: sp['filters'].append('arbre')
+			sp['filters'] = '-'.join(sp['filters'])
+			rooms.append(sp)
 		return self.templates.response('team.edit', context={
-			'characters': self.spawnManager.getCharacters(extensions),
-			'objects': self.spawnManager.getObjects(extensions),
-			'rooms': self.spawnManager.getRooms(extensions)
+			'extensions': extensions, 
+			'characters': characters,
+			'objects': objects,
+			'rooms': rooms
 		})
 	
 	def update(self, request):

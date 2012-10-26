@@ -171,17 +171,68 @@ function load_teamsconstraints() {
 /**
  * Load constraints teams
  */
+var createTeamElements = new Array();
 function load_teamcreate() {
 	display_wait();
 	$.get('/teams/create', function(content) {
 		window.location.hash = '#teams/create';
 		display_content(content);
 		$('[name=spawnstypes]').radio(1, displaySpawnTypes);
+		$('.checkbox').checkbox();
+		$('.filter_object').hide();
+		$('.filter_room').hide();
+		$('.filter_character').show();
+		createTeamElements = new Array();
+		createTeamElements['characters'] = new Array();
+		createTeamElements['objects'] = new Array();
+		createTeamElements['rooms'] = new Array();
+		var chars = $('[name=characterdef]').each(function(i,e) {
+			var def = $(e).val().split('|');
+			createTeamElements['characters'][i] = {
+				id: def[0],
+				name: def[1],
+				label: def[2],
+				extensions: def[3].split('-'),
+				filters: def[4].split('-'),
+				force: def[5],
+				deplacement: def[6]
+			}
+		});
+		var objects = $('[name=objectdef]').each(function(i,e) {
+			var def = $(e).val().split('|');
+			createTeamElements['objects'][i] = {
+				id: def[0],
+				name: def[1],
+				label: def[2],
+				extensions: def[3].split('-'),
+				filters: def[4].split('-')
+			}
+		});
+		var rooms = $('[name=roomdef]').each(function(i,e) {
+			var def = $(e).val().split('|');
+			createTeamElements['rooms'][i] = {
+				id: def[0],
+				name: def[1],
+				label: def[2],
+				extensions: def[3].split('-'),
+				filters: def[4].split('-')
+			}
+		});
 	});
 }
 
 function displaySpawnTypes() {
+	$('.filter_character').hide();
+	$('.filter_object').hide();
+	$('.filter_room').hide();
 	var st = $('#radio-spawnstypes').val();
+	if (st == 1) {
+		$('.filter_character').show();
+	} else if (st == 2) {
+		$('.filter_object').show();
+	} else if (st == 3) {
+		$('.filter_room').show();
+	}
 }
 
 /**
@@ -389,8 +440,23 @@ function registerProfile() {
 /**
  * select extension for registration
  */
-function selectExtension(id) {
+function selectExtension(id, callback) {
 	$('#extlogo_' + id).toggleClass('extensionlogo-selected');
+}
+
+/**
+ * select extension for registration
+ */
+function selectExtensionAll() {
+	$('.extensionlogo-notselected').addClass('extensionlogo-selected');
+}
+
+
+/**
+ * select extension for registration
+ */
+function selectExtensionNone() {
+	$('.extensionlogo-selected').toggleClass('extensionlogo-selected');
 }
 
 /**
@@ -532,4 +598,41 @@ function saveconstraintdata() {
 		}
 	});
 	return false;
+}
+
+
+
+/**
+ * Runfilter for team creation
+ */
+function runcreateteamfilter() {
+	var typ = $('#radio-spawnstypes').val();
+	if (typ == 1) {
+		typ = 'character';
+	} else if (typ == 2) {
+		typ = 'object';
+	} else if (typ == 3) {
+		typ = 'room';
+	}
+	
+	var exts = new Array();
+	$('.extensionlogo-selected').each(function(i,e) {
+		alert($(e).attr('id').split('_')[1]);
+		exts[exts.length] = $(e).attr('id').split('_')[1];
+	});
+	
+	for (i = 0; i < createTeamElements[typ+'s'].length; i++) { var spawn = createTeamElements[typ+'s'][i];
+		var found = 0;
+		for (e = 0; e < spawn.extensions.length; e++) {
+			alert(spawn.extensions[e]);
+			if ($.inArray(spawn.extensions[e], exts)) {
+				found = 1;
+				break;
+			}
+		}
+		if (found) {
+			alert(spawn['name']);
+		}
+	}
+	
 }

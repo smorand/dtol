@@ -16,6 +16,8 @@ from django.db import models
 class DtExtension(models.Model):
 	id = models.AutoField(primary_key=True)
 	name = models.CharField(max_length=100)
+	def transname(self):
+		return 'EXTENSION_%s' % (self.name)
 	class Meta:
 		db_table = u'dt_extensions'
 
@@ -93,7 +95,7 @@ class DtCharacter(models.Model):
 	force = models.IntegerField()
 	extensions = models.ManyToManyField(DtExtension)
 	def capacities(self):
-		return DtCharacterCapacity.objects.filter(id=self.id)
+		return DtCharacterCapacity.objects.filter(character=self.id)
 	class Meta:
 		db_table = u'dt_characters'
 
@@ -109,7 +111,7 @@ class DtObject(models.Model):
 	name = models.CharField(max_length=50)
 	extensions = models.ManyToManyField(DtExtension)
 	def capacities(self):
-		return DtObjectCapacity.objects.filter(id=self.id)
+		return DtObjectCapacity.objects.filter(object=self.id)
 	class Meta:
 		db_table = u'dt_objects'
 	

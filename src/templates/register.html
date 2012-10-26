@@ -135,7 +135,7 @@
 					<td>{% trans "EXTENSIONS" %}</td>
 					<td>
 						{% for c in extensions %}
-						<div class="extensionlogo"><img id="extlogo_{{ c.id }}" class="extensionlogo-notselected" src="/static/images/interface/logo{{ c.id }}.jpg" border="0" title="{% trans c.name %}" onclick="selectExtension({{ c.id }});"/></div>
+						<div class="extensionlogo"><img id="extlogo_{{ c.id }}" class="extensionlogo-notselected" src="/static/images/interface/logo{{ c.id }}.jpg" border="0" title="{% trans c.transname %}" onclick="selectExtension({{ c.id }});"/></div>
 						{% endfor %}
 					</td>
 				</tr>

@@ -214,8 +214,6 @@ class WelcomeController(CommonController):
 		keyInfo = self.userManager.getSponsoredKeyInfo(key)
 		
 		extensions = self.extensionManager.getExtensions()
-		for c in extensions:
-			c.name = "EXTENSION_" + c.name
 		c = {
 			'languages': [ l[0] for l in LANGUAGES ],
 			'countries': Countries,

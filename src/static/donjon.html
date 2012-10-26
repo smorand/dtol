@@ -16,6 +16,12 @@
     </head>
     
     <body>
+		<map name="mappad">
+			<area shape="rect" coords="17,0,33,18" href="javascript:movewindows(0);void(0);" alt="Sun">
+			<area shape="rect" coords="32,18,50,35" href="javascript:movewindows(1);void(0);" alt="Sun">
+			<area shape="rect" coords="17,34,34,53" href="javascript:movewindows(2);void(0);" alt="Sun">
+			<area shape="rect" coords="0,18,18,35" href="javascript:movewindows(3);void(0);" alt="Sun">
+		</map>		
         <table border="0"><tr><td><div id="zoom_slider" class="slider"></div></td><td><img class="pointer" src="/static/images/interface/rotation-icon.gif" height="50" width="50" border="0"	 onclick="$.dungonRotate(1)"/></td><td><img class="pointer" id="icon_displayposition" src="/static/images/interface/position.png" height="50" width="50" border="0"	 onclick="$.dungonTogglePosition()"/></td><td><img class="pointer" id="icon_displayposition" src="/static/images/interface/actions-icon.png" height="50" width="50" border="0" onclick="updateAction()"/></td></tr></table>
         <canvas id="dungeon_rooms" class="dungeon absolute zindex1"></canvas>
         <canvas id="dungeon_spawns" class="dungeon absolute zindex2"></canvas>

@@ -605,6 +605,46 @@ msgid "TEAM_CREATE"
 msgstr "Création d'équipe"
 
 #: templates/team/edit.html
+msgid "SHOW_TEAM"
+msgstr "Montrer l'équipe"
+
+#: templates/team/edit.html
+msgid "SPAWN_FILTER_WATER"
+msgstr "Eau"
+
+#: templates/team/edit.html
+msgid "SPAWN_FILTER_CURSED"
+msgstr "Maudit"
+
+#: templates/team/edit.html
+msgid "SPAWN_FILTER_LAVA"
+msgstr "Lave"
+
+#: templates/team/edit.html
+msgid "SPAWN_FILTER_FOUNTAIN"
+msgstr "Fontaine"
+
+#: templates/team/edit.html
+msgid "SPAWN_FILTER_SNOW"
+msgstr "Neige"
+
+#: templates/team/edit.html
+msgid "SPAWN_FILTER_FOG"
+msgstr "Brume"
+
+#: templates/team/edit.html
+msgid "SPAWN_FILTER_TREE"
+msgstr "Arbres"
+
+#: templates/team/edit.html
+msgid "SPAWN_FILTER_TORCH"
+msgstr "Torches"
+
+#: templates/team/edit.html
+msgid "SPAWN_FILTER_SLOPE"
+msgstr "Pentes"
+
+#: templates/team/edit.html
 msgid "SPAWNS_TYPES_CHARACTERS"
 msgstr "Personnages"
 
@@ -620,79 +660,1330 @@ msgstr "Salles"
 msgid "SPAWNS_TYPES"
 msgstr "Types"
 
-
 #: templates/team/edit.html
 msgid "SPAWNS_FILTERS"
 msgstr "Fitres"
 
-#~ msgid "French"
-#~ msgstr "Français"
+#: templates/team/edit.html
+msgid "SPAWN_FILTER_ELF"
+msgstr "Elf"
 
-#~ msgid "PASSWORD_EMPTY"
-#~ msgstr "Mots de passe vide interdit"
+#: templates/team/edit.html
+msgid "SPAWN_FILTER_DWARF"
+msgstr "Nain"
 
-#~ msgid "EXTENSION_base"
-#~ msgstr "Jeu de Base"
+#: templates/team/edit.html
+msgid "SPAWN_FILTER_UNDEAD"
+msgstr "Mort-vivant"
 
-#~ msgid "EXTENSION_34j"
-#~ msgstr "Jeu de Base 3/4 Joueurs"
+#: templates/team/edit.html
+msgid "SPAWN_FILTER_IMATERIAL"
+msgstr "Immatériel"
 
-#~ msgid "EXTENSION_p&d"
-#~ msgstr "Paladin & Dragon"
+#: templates/team/edit.html
+msgid "SPAWN_FILTER_PRESIGIOUS"
+msgstr "Prestigieux"
 
-#~ msgid "EXTENSION_e&f"
-#~ msgstr "L'eau & Le Feu"
+#: templates/team/edit.html
+msgid "SPAWN_FILTER_REGENERATOR"
+msgstr "Regénérant"
 
-#~ msgid "EXTENSION_pdt"
-#~ msgstr "Puissance des Ténèbres"
+#: templates/team/edit.html
+msgid "SPAWN_FILTER_BEAST"
+msgstr "Bête"
 
-#~ msgid "EXTENSION_merc"
-#~ msgstr "Mercenaires"
+#: templates/team/edit.html
+msgid "SPAWN_FILTER_SPELLCASTER"
+msgstr "Jeteurs&nbsp;de&nbsp;sort"
 
-#~ msgid "EXTENSION_cs"
-#~ msgstr "Créatures Sylvestres"
+#: templates/team/edit.html
+msgid "SPAWN_FILTER_ANTIFOUNTAIN"
+msgstr "Anti-fontaine"
 
-#~ msgid "EXTENSION_tdg"
-#~ msgstr "Terre des Glaces"
+#: templates/team/edit.html
+msgid "SPAWN_FILTER_FLYER"
+msgstr "Volant"
 
-#~ msgid "EXTENSION_af&as"
-#~ msgstr "A Feu et A Sang"
+#: templates/team/edit.html
+msgid "SPAWN_FILTER_SHADOWWALKER"
+msgstr "Marcheur&nbsp;des&nbsp;Ténèbres"
 
-#~ msgid "EXTENSION_prison"
-#~ msgstr "Prison"
+#: templates/team/edit.html
+msgid "SPAWN_FILTER_MAGICAL"
+msgstr "Magiques"
 
-#~ msgid "EXTENSION_goodies1"
-#~ msgstr "Goodies Officiel"
+#: templates/team/edit.html
+msgid "SPAWN_FILTER_PERCHEMIN"
+msgstr "Parchemins"
 
-#~ msgid "EXTENSION_goodies2"
-#~ msgstr "Goodies Officiels Puissants"
+#: templates/team/edit.html
+msgid "SPAWN_FILTER_WEAPON"
+msgstr "Armes"
 
-#~ msgid "EXTENSION_ms"
-#~ msgstr "Montagne Sauvage"
+#: templates/team/edit.html
+msgid "SPAWN_FILTER_SHIELD"
+msgstr "Boucliers"
 
-#~ msgid "EXTENSION_goodies3"
-#~ msgstr "Goodies Online"
+#: templates/team/edit.html
+msgid "SPAWN_FILTER_POWERFUL"
+msgstr "Puissants"
 
-#~ msgid "EXTENSION_goodies4"
-#~ msgstr "Goodies Online Puissants"
+#: templates/team/edit.html
+msgid "SPAWN_FILTER_CURRENT"
+msgstr "Courants"
 
-#~ msgid "EXTENSION_fo"
-#~ msgstr "Force Obscures"
+#: templates/team/edit.html
+msgid "SPAWN_FILTER_CURSED"
+msgstr "Maudits"
 
-#~ msgid "EXTENSION_mo"
-#~ msgstr "Mystère d'Orient"
+#: templates/team/edit.html
+msgid "SPAWNS_STRENGTH"
+msgstr "Combat"
 
-#~ msgid "EXTENSION_verm"
-#~ msgstr "Vermines"
+#: templates/team/edit.html
+msgid "SPAWNS_DEPLACEMENT"
+msgstr "Déplacement"
 
-#~ msgid "EXTENSION_tc"
-#~ msgstr "Trône & Cachôt"
+#: generique
+msgid "French"
+msgstr "Français"
 
-#~ msgid "EXTENSION_cm"
-#~ msgstr "Créatures Marines"
+#: generique
+msgid "EXTENSION_base"
+msgstr "Jeu de Base"
 
-#~ msgid "EXTENSION_da"
-#~ msgstr "Dédale de l'Apocalypse"
+#: generique
+msgid "EXTENSION_34j"
+msgstr "Jeu de Base 3/4 Joueurs"
+
+#: generique
+msgid "EXTENSION_p&d"
+msgstr "Paladin & Dragon"
+
+#: generique
+msgid "EXTENSION_e&f"
+msgstr "L'eau & Le Feu"
+
+#: generique
+msgid "EXTENSION_pdt"
+msgstr "Puissance des Ténèbres"
+
+#: generique
+msgid "EXTENSION_merc"
+msgstr "Mercenaires"
+
+#: generique
+msgid "EXTENSION_cs"
+msgstr "Créatures Sylvestres"
+
+#: generique
+msgid "EXTENSION_tdg"
+msgstr "Terre des Glaces"
+
+#: generique
+msgid "EXTENSION_af&as"
+msgstr "A Feu et A Sang"
+
+#: generique
+msgid "EXTENSION_prison"
+msgstr "Prison"
+
+#: generique
+msgid "EXTENSION_goodies1"
+msgstr "Goodies Officiel"
+
+#: generique
+msgid "EXTENSION_goodies2"
+msgstr "Goodies Officiels Puissants"
+
+#: generique
+msgid "EXTENSION_ms"
+msgstr "Montagne Sauvage"
+
+#: generique
+msgid "EXTENSION_goodies3"
+msgstr "Goodies Online"
+
+#: generique
+msgid "EXTENSION_goodies4"
+msgstr "Goodies Online Puissants"
+
+#: generique
+msgid "EXTENSION_fo"
+msgstr "Force Obscures"
+
+#: generique
+msgid "EXTENSION_mo"
+msgstr "Mystère d'Orient"
+
+#: generique
+msgid "EXTENSION_verm"
+msgstr "Vermines"
+
+#: generique
+msgid "EXTENSION_tc"
+msgstr "Trône & Cachôt"
+
+#: generique
+msgid "EXTENSION_cm"
+msgstr "Créatures Marines"
+
+#: generique
+msgid "EXTENSION_da"
+msgstr "Dédale de l'Apocalypse"
+
+#: generique
+msgid "EXTENSION_ALL"
+msgstr "Toutes les extensions"
+
+#: generique
+msgid "EXTENSION_NONE"
+msgstr "Aucune extension"
+
+#: spawn
+msgid "abomination"
+msgstr "Abomination"
+
+#: spawn
+msgid "acrobate"
+msgstr "Acrobate"
+
+#: spawn
+msgid "alien"
+msgstr "Alien"
+
+#: spawn
+msgid "alien2"
+msgstr "Alien muté"
+
+#: spawn
+msgid "amazone"
+msgstr "Amazone"
+
+#: spawn
+msgid "ameenpeine"
+msgstr "Ame-en-peine"
+
+#: spawn
+msgid "amulettedragon"
+msgstr "Amulette dragon"
+
+#: spawn
+msgid "amuletteelfique"
+msgstr "Amulette elfique"
+
+#: spawn
+msgid "amulettemarine"
+msgstr "Amulette marine"
+
+#: spawn
+msgid "ancienne"
+msgstr "Ancienne"
+
+#: spawn
+msgid "angelumiere"
+msgstr "Ange de lumière"
+
+#: spawn
+msgid "angenoir"
+msgstr "Ange Noir"
+
+#: spawn
+msgid "angesombre"
+msgstr "Ange Sombre"
+
+#: spawn
+msgid "anneauantimagie"
+msgstr "Anneau anti-magie"
+
+#: spawn
+msgid "anneauchaotique"
+msgstr "Anneau chaotique"
+
+#: spawn
+msgid "anneaudissipation"
+msgstr "Anneau de dissipation"
+
+#: spawn
+msgid "anneaufaiblesse"
+msgstr "Anneau de faiblesse"
+
+#: spawn
+msgid "anneaulumiere"
+msgstr "Anneau de lumière"
+
+#: spawn
+msgid "anneauparalysie"
+msgstr "Anneau de paralysie"
+
+#: spawn
+msgid "anneaurepulsion"
+msgstr "Anneau de répulsion"
+
+#: spawn
+msgid "anneauteleportation"
+msgstr "Anneau de téléportation"
+
+#: spawn
+msgid "araignee"
+msgstr "Araignée"
+
+#: spawn
+msgid "araknis"
+msgstr "Araknis"
+
+#: spawn
+msgid "arbalete"
+msgstr "Arbalète"
+
+#: spawn
+msgid "arbaletrier"
+msgstr "Arbalétrier"
+
+#: spawn
+msgid "arc"
+msgstr "Arc"
+
+#: spawn
+msgid "arcelfique"
+msgstr "Arc elfique"
+
+#: spawn
+msgid "archerelfe"
+msgstr "Archer elfe"
+
+#: spawn
+msgid "armure"
+msgstr "Armure"
+
+#: spawn
+msgid "armurechitine"
+msgstr "Armue de chitine"
+
+#: spawn
+msgid "assassin"
+msgstr "Assassin"
+
+#: spawn
+msgid "astrologuegnome"
+msgstr "Astrologue gnome"
+
+#: spawn
+msgid "barbare"
+msgstr "Barbare"
+
+#: spawn
+msgid "basilic"
+msgstr "Basilic"
+
+#: spawn
+msgid "batonbouledefeu"
+msgstr "Baton de boule de feu"
+
+#: spawn
+msgid "belier"
+msgstr "Bélier"
+
+#: spawn
+msgid "berserk"
+msgstr "Berserk"
+
+#: spawn
+msgid "blade"
+msgstr "Blade"
+
+#: spawn
+msgid "boomerang"
+msgstr "Boomerang"
+
+#: spawn
+msgid "bottespegase"
+msgstr ""
+
+#: spawn
+msgid "bottesplomb"
+msgstr "Bottes de plomb"
+
+#: spawn
+msgid "bottessaut"
+msgstr "Bottes de saut"
+
+#: spawn
+msgid "bottesseptlieues"
+msgstr "Bottes de sept lieues"
+
+#: spawn
+msgid "boucliercontrefeu"
+msgstr "Bouclier contre-feu"
+
+#: spawn
+msgid "boucliermirroir"
+msgstr "Bouclier mirroir"
+
+#: spawn
+msgid "boucliersylvanite"
+msgstr "Bouclier sylvanite"
+
+#: spawn
+msgid "boucliertenebres"
+msgstr "Bouclier des ténèbres"
+
+#: spawn
+msgid "bouffon"
+msgstr "Bouffon"
+
+#: spawn
+msgid "boulet"
+msgstr "Boulet"
+
+#: spawn
+msgid "bourreau"
+msgstr "Bourreau"
+
+#: spawn
+msgid "boussolemagique"
+msgstr "Boussole magique"
+
+#: spawn
+msgid "bretteur"
+msgstr "Bretteur"
+
+#: spawn
+msgid "bucheron"
+msgstr "Bûcheron"
+
+#: spawn
+msgid "bunraku"
+msgstr "Bunkaru"
+
+#: spawn
+msgid "capeinvisibilite"
+msgstr "Cape d'invisibilité"
+
+#: spawn
+msgid "cavalierfantome"
+msgstr "Cavalier fantôme"
+
+#: spawn
+msgid "chamanork"
+msgstr "Chaman ork"
+
+#: spawn
+msgid "chasseurdesprodondeurs"
+msgstr "Chasseur des profondeurs"
+
+#: spawn
+msgid "chauvesouris"
+msgstr "chanve-souris"
+
+#: spawn
+msgid "cle"
+msgstr "Clé"
+
+#: spawn
+msgid "clerc"
+msgstr "Clerc"
+
+#: spawn
+msgid "cloportegeant"
+msgstr "Cloporte géant"
+
+#: spawn
+msgid "collierdail"
+msgstr "Collier d'ail"
+
+#: spawn
+msgid "colosse"
+msgstr "Colosse"
+
+#: spawn
+msgid "condottiere"
+msgstr "Condottière"
+
+#: spawn
+msgid "corbeau"
+msgstr "Corbeau"
+
+#: spawn
+msgid "corde"
+msgstr "Corde"
+
+#: spawn
+msgid "cordegarde"
+msgstr "Cor de garde"
+
+#: spawn
+msgid "courtisane"
+msgstr "Courtisane"
+
+#: spawn
+msgid "croixsainte"
+msgstr "Croix-sainte"
+
+#: spawn
+msgid "daguenuit"
+msgstr "Dague de la nuit"
+
+#: spawn
+msgid "demoncornu"
+msgstr "Démon cornu"
+
+#: spawn
+msgid "dragonacide"
+msgstr "Dragon acide"
+
+#: spawn
+msgid "dragondore"
+msgstr "Dragon doré"
+
+#: spawn
+msgid "dragonfantome"
+msgstr "Dragon fantôme"
+
+#: spawn
+msgid "dragonfouisseur"
+msgstr "Dragon fouisseur"
+
+#: spawn
+msgid "dragonglace"
+msgstr "Dragon de glace"
+
+#: spawn
+msgid "dragonmortvivant"
+msgstr "Dragon mort-vivant"
+
+#: spawn
+msgid "dragonorient"
+msgstr "Dragon d'orient"
+
+#: spawn
+msgid "dragonplatine"
+msgstr "Dragon platine"
+
+#: spawn
+msgid "dragonpourpre"
+msgstr "Dragon pourpre"
+
+#: spawn
+msgid "dragonrouge"
+msgstr "Dragon rouge"
+
+#: spawn
+msgid "dragonvolant"
+msgstr "Dragon volant"
+
+#: spawn
+msgid "druide"
+msgstr "Druide"
+
+#: spawn
+msgid "dryade"
+msgstr "Dryade"
+
+#: spawn
+msgid "eclaireurelfe"
+msgstr "Eclaireur elfe"
+
+#: spawn
+msgid "elementaireacide"
+msgstr "Elémentaire d'acide"
+
+#: spawn
+msgid "elementairebrume"
+msgstr "Elémentaire de brume"
+
+#: spawn
+msgid "elementaireeau"
+msgstr "Elémentaire d'eau"
+
+#: spawn
+msgid "elementairefeu"
+msgstr "Elémentaire de feu"
+
+#: spawn
+msgid "elementairefoudre"
+msgstr "Elémentaire de foudre"
+
+#: spawn
+msgid "elementaireglace"
+msgstr "Elémentaire de glace"
+
+#: spawn
+msgid "elementairepierre"
+msgstr "Elémentaire de pierre"
+
+#: spawn
+msgid "elementairetenebres"
+msgstr "Elémentaire des ténèbres"
+
+#: spawn
+msgid "elfedesbois"
+msgstr "Elfe des bois"
+
+#: spawn
+msgid "elfenoir"
+msgstr "Elfe noir"
+
+#: spawn
+msgid "empoisonneur"
+msgstr "Empoisonneur"
+
+#: spawn
+msgid "enchanteresseelfe"
+msgstr "Enchanteresse Elfe"
+
+#: spawn
+msgid "epee"
+msgstr "Epée"
+
+#: spawn
+msgid "epeeadeuxmains"
+msgstr "Epée à deux mains"
+
+#: spawn
+msgid "epeemaudite"
+msgstr "Epée maudite"
+
+#: spawn
+msgid "ermite"
+msgstr "Ermite"
+
+#: spawn
+msgid "exorciste"
+msgstr "Excorciste"
+
+#: spawn
+msgid "fantome"
+msgstr "Fantôme"
+
+#: spawn
+msgid "faucheuse"
+msgstr "Faucheuse"
+
+#: spawn
+msgid "filet"
+msgstr "Filter"
+
+#: spawn
+msgid "fou"
+msgstr "Fou"
+
+#: spawn
+msgid "fusilharpon"
+msgstr "Fusil harpon"
+
+#: spawn
+msgid "gardien"
+msgstr "Gardien"
+
+#: spawn
+msgid "gardienneforet"
+msgstr "Gardienne de la forêt"
+
+#: spawn
+msgid "gargouille"
+msgstr "Gargouille"
+
+#: spawn
+msgid "gargouillestatue"
+msgstr "Statue"
+
+#: spawn
+msgid "geantmontagnes"
+msgstr "Géant des montagnes"
+
+#: spawn
+msgid "geisha"
+msgstr "Geisha"
+
+#: spawn
+msgid "general"
+msgstr "Général"
+
+#: spawn
+msgid "gobelin"
+msgstr "Gobelin"
+
+#: spawn
+msgid "golem"
+msgstr "Golem"
+
+#: spawn
+msgid "goule"
+msgstr "Goule"
+
+#: spawn
+msgid "grandbouclier"
+msgstr "Grand bouclier"
+
+#: spawn
+msgid "grappin"
+msgstr "Grappin"
+
+#: spawn
+msgid "grenade"
+msgstr "Grenade"
+
+#: spawn
+msgid "griffon"
+msgstr "Griffon"
+
+#: spawn
+msgid "grimoiredeguerre"
+msgstr "Grimoire de guerre"
+
+#: spawn
+msgid "guepecharognard"
+msgstr "Guèpe charognarde"
+
+#: spawn
+msgid "guerrier"
+msgstr "Guerrier"
+
+#: spawn
+msgid "guerriermage"
+msgstr "Guerrier mage"
+
+#: spawn
+msgid "hache"
+msgstr "Hâche"
+
+#: spawn
+msgid "hellboy"
+msgstr "Hellboy"
+
+#: spawn
+msgid "hommepoisson"
+msgstr "Homme-poisson"
+
+#: spawn
+msgid "hommerequin"
+msgstr "Homme-requin"
+
+#: spawn
+msgid "hommeserpent"
+msgstr "Homme-serpent"
+
+#: spawn
+msgid "hulk"
+msgstr "Hulk"
+
+#: spawn
+msgid "hulkire"
+msgstr "Hulk en colère"
+
+#: spawn
+msgid "hurleur"
+msgstr "Hurleur"
+
+#: spawn
+msgid "hydre"
+msgstr "Hydre"
+
+#: spawn
+msgid "illusionniste"
+msgstr "Illusionniste"
+
+#: spawn
+msgid "impitoyable"
+msgstr "Impitoyable"
+
+#: spawn
+msgid "insaisissable"
+msgstr "Insaisissable"
+
+#: spawn
+msgid "insectesanguinaire"
+msgstr "Insecte sanguinaire"
+
+#: spawn
+msgid "irreductible"
+msgstr "Irréductible"
+
+#: spawn
+msgid "journalintime"
+msgstr "Journal intime"
+
+#: spawn
+msgid "kabuki"
+msgstr "Kabuki"
+
+#: spawn
+msgid "katakeyna"
+msgstr "Katakeyna"
+
+#: spawn
+msgid "kirin"
+msgstr "Kirin"
+
+#: spawn
+msgid "kraken"
+msgstr "Kraken"
+
+#: spawn
+msgid "kyudosensei"
+msgstr "Kyudosensei"
+
+#: spawn
+msgid "lancefusee"
+msgstr "Lance-fusée"
+
+#: spawn
+msgid "lancetelescopique"
+msgstr "Lance-téléscopique"
+
+#: spawn
+msgid "liche"
+msgstr "Liche"
+
+#: spawn
+msgid "licorne"
+msgstr "Licorne"
+
+#: spawn
+msgid "loup"
+msgstr "Loup"
+
+#: spawn
+msgid "loupgarou"
+msgstr "Loup-garou"
+
+#: spawn
+msgid "lunettesclarte"
+msgstr "Lunettes de clarté"
+
+#: spawn
+msgid "lycan"
+msgstr "Lycan"
+
+#: spawn
+msgid "magetenebres"
+msgstr "Mage des ténèbres"
+
+#: spawn
+msgid "magicien"
+msgstr "Magicien"
+
+#: spawn
+msgid "magicientroll"
+msgstr "Magicien troll"
+
+#: spawn
+msgid "magophage"
+msgstr "Magophage"
+
+#: spawn
+msgid "magophile"
+msgstr "Magophile"
+
+#: spawn
+msgid "maitrebetes"
+msgstr "Maître bêtes"
+
+#: spawn
+msgid "maitredarmes"
+msgstr "Maître d'armes"
+
+#: spawn
+msgid "maitredesreves"
+msgstr "Maître des rêves"
+
+#: spawn
+msgid "maitredutemps"
+msgstr "Maître du temps"
+
+#: spawn
+msgid "maitressefouet"
+msgstr "Maîtresse du fouet"
+
+#: spawn
+msgid "maitrevermines"
+msgstr "Maître des vermines"
+
+#: spawn
+msgid "mammouth"
+msgstr "Mammouth"
+
+#: spawn
+msgid "marteaurunique"
+msgstr "Marteau runique"
+
+#: spawn
+msgid "masquefer"
+msgstr "Maque de fer"
+
+#: spawn
+msgid "massetonnerre"
+msgstr "Masse tonnerre"
+
+#: spawn
+msgid "mechanork"
+msgstr "Mechanork"
+
+#: spawn
+msgid "menottes"
+msgstr "Menottes"
+
+#: spawn
+msgid "minotaure"
+msgstr "Minotaure"
+
+#: spawn
+msgid "moine"
+msgstr "Moine"
+
+#: spawn
+msgid "momie"
+msgstr "Momie"
+
+#: spawn
+msgid "mutante"
+msgstr "Mutante"
+
+#: spawn
+msgid "mutantefemme"
+msgstr "Mutante-femme"
+
+#: spawn
+msgid "naintueurdetrolls"
+msgstr "Nain tueur de trolls"
+
+#: spawn
+msgid "naintueurelfes"
+msgstr "Nain tueur d'elfes"
+
+#: spawn
+msgid "necromancien"
+msgstr "Nécromancien"
+
+#: spawn
+msgid "necrophage"
+msgstr "Nécrophage"
+
+#: spawn
+msgid "ninja"
+msgstr "Ninja"
+
+#: spawn
+msgid "ninjutsu"
+msgstr "Ninjutsu"
+
+#: spawn
+msgid "ogre"
+msgstr "Ogre"
+
+#: spawn
+msgid "ombre"
+msgstr "Ombre"
+
+#: spawn
+msgid "ondine"
+msgstr "Ondine"
+
+#: spawn
+msgid "orbepaix"
+msgstr "Orbe de paix"
+
+#: spawn
+msgid "orbeportails"
+msgstr "Orbe des portails"
+
+#: spawn
+msgid "ours"
+msgstr "Ours"
+
+#: spawn
+msgid "outrepleine"
+msgstr "Outre-pleine"
+
+#: spawn
+msgid "outrevide"
+msgstr "Outre-vide"
+
+#: spawn
+msgid "paladin"
+msgstr "Paladin"
+
+#: spawn
+msgid "parasite"
+msgstr "Parasite"
+
+#: spawn
+msgid "parcheminaccess"
+msgstr "Parchemin d'accès"
+
+#: spawn
+msgid "parcheminamitie"
+msgstr "Parchemin d'amitié"
+
+#: spawn
+msgid "parcheminattaque"
+msgstr "Parchemin d'attaque"
+
+#: spawn
+msgid "parchemincamouflage"
+msgstr "Parchemin de camouflage"
+
+#: spawn
+msgid "parchemincharme"
+msgstr "Parchemin de charme"
+
+#: spawn
+msgid "parcheminconfusion"
+msgstr "Parchemin de confusion"
+
+#: spawn
+msgid "parchemindefense"
+msgstr "Parchemin de défense"
+
+#: spawn
+msgid "parcheminglace"
+msgstr "Parchemin de glace"
+
+#: spawn
+msgid "parchemininitiative"
+msgstr "Parchemin d'initiative"
+
+#: spawn
+msgid "parchemininversion"
+msgstr "Parchemin d'inversion"
+
+#: spawn
+msgid "parcheminlevitation"
+msgstr "Parchemin de lévitation"
+
+#: spawn
+msgid "parcheminlumiere"
+msgstr "Parchemin de lumière"
+
+#: spawn
+msgid "parcheminmort"
+msgstr "Parchemin de mort"
+
+#: spawn
+msgid "parcheminpermutation"
+msgstr "Parchemin de permutation"
+
+#: spawn
+msgid "parcheminreconstruction"
+msgstr "Parchemin de construction"
+
+#: spawn
+msgid "parcheminsacre"
+msgstr "Parchemin sacré"
+
+#: spawn
+msgid "parchemintelecommande"
+msgstr "Parchemin de télécommande"
+
+#: spawn
+msgid "parchemintransfert"
+msgstr "Parchemin de transfert"
+
+#: spawn
+msgid "passemuraille"
+msgstr "Passe-muraille"
+
+#: spawn
+msgid "passeur"
+msgstr "Passeur"
+
+#: spawn
+msgid "pauvre"
+msgstr "Pauvre"
+
+#: spawn
+msgid "pavois"
+msgstr "Pavois"
+
+#: spawn
+msgid "perenoel"
+msgstr "Père-noël"
+
+#: spawn
+msgid "perlenoire"
+msgstr "Perle noire"
+
+#: spawn
+msgid "phoenix"
+msgstr "Phoenix"
+
+#: spawn
+msgid "pickpocket"
+msgstr "Pickpocket"
+
+#: spawn
+msgid "piegebetes"
+msgstr "Piège à bêtes"
+
+#: spawn
+msgid "piegevivant"
+msgstr "Piège-vivant"
+
+#: spawn
+msgid "piolet"
+msgstr "Piolet"
+
+#: spawn
+msgid "poison"
+msgstr "Poison"
+
+#: spawn
+msgid "pondeur"
+msgstr "Pondeur"
+
+#: spawn
+msgid "porteuroubli"
+msgstr "Porteur de l'oubli"
+
+#: spawn
+msgid "potionforce"
+msgstr "Potion de force"
+
+#: spawn
+msgid "potionmimetique"
+msgstr "Potion mimétique"
+
+#: spawn
+msgid "potionreduction"
+msgstr "Potion de réduction"
+
+#: spawn
+msgid "potionvie"
+msgstr "Potion de vie"
+
+#: spawn
+msgid "potionvitesse"
+msgstr "Potion de vitesse"
+
+#: spawn
+msgid "predator"
+msgstr "Prédator"
+
+#: spawn
+msgid "prophete"
+msgstr "Prophète"
+
+#: spawn
+msgid "psydoloris"
+msgstr "Psydoloris"
+
+#: spawn
+msgid "rampeur"
+msgstr "Rampeur"
+
+#: spawn
+msgid "ranger"
+msgstr "Ranger"
+
+#: spawn
+msgid "reine"
+msgstr "Reine"
+
+#: spawn
+msgid "reinealien"
+msgstr "Reine alien"
+
+#: spawn
+msgid "reinearachnide"
+msgstr "Reine arachnide"
+
+#: spawn
+msgid "roc"
+msgstr "Roc"
+
+#: spawn
+msgid "roi"
+msgstr "Roi"
+
+#: spawn
+msgid "ronin"
+msgstr "Ronin"
+
+#: spawn
+msgid "sabotork"
+msgstr "Sabotork"
+
+#: spawn
+msgid "sabre"
+msgstr "Sabre"
+
+#: spawn
+msgid "sainte"
+msgstr "Sainte"
+
+#: spawn
+msgid "samourai"
+msgstr "Samouraï"
+
+#: spawn
+msgid "samouraifemme"
+msgstr "Samouraï femme"
+
+#: spawn
+msgid "sangsue"
+msgstr "Sangsue"
+
+#: spawn
+msgid "scievapeur"
+msgstr "Scie à vapeur"
+
+#: spawn
+msgid "sentinelleorc"
+msgstr "Sentinelle orc"
+
+#: spawn
+msgid "shinigami"
+msgstr "Shinigami"
+
+#: spawn
+msgid "shuriken"
+msgstr "Shuriken"
+
+#: spawn
+msgid "sirene"
+msgstr "Sirène"
+
+#: spawn
+msgid "sorciereglaces"
+msgstr "Sorcière des glaces"
+
+#: spawn
+msgid "spadassin"
+msgstr "Spadassin"
+
+#: spawn
+msgid "spectre"
+msgstr "Spectre"
+
+#: spawn
+msgid "sceptreroyal"
+msgstr "Sceptre royal"
+
+#: spawn
+msgid "sphereultragravite"
+msgstr "Sphère d'ultra-gravité"
+
+#: spawn
+msgid "squelette"
+msgstr "Squelette"
+
+#: spawn
+msgid "tapisvolant"
+msgstr "Tapis-volant"
+
+#: spawn
+msgid "telekinesiste"
+msgstr "Télékinésiste"
+
+#: spawn
+msgid "telepathe"
+msgstr "Télépathe"
+
+#: spawn
+msgid "tilk"
+msgstr "Tilk"
+
+#: spawn
+msgid "torche"
+msgstr "Toche"
+
+#: spawn
+msgid "totemork"
+msgstr "Totemork"
+
+#: spawn
+msgid "totemterre"
+msgstr "Totem de terre"
+
+#: spawn
+msgid "traitresse"
+msgstr "Traîtresse"
+
+#: spawn
+msgid "trepasse"
+msgstr "Trépassé"
+
+#: spawn
+msgid "tresor"
+msgstr "Trésor"
+
+#: spawn
+msgid "troll"
+msgstr "Troll"
+
+#: spawn
+msgid "trousseaoutils"
+msgstr "Trousse à outils"
+
+#: spawn
+msgid "tueusedragon"
+msgstr "tueuse de dragon"
+
+#: spawn
+msgid "tunnelier"
+msgstr "Tunnelier"
+
+#: spawn
+msgid "vampire"
+msgstr "Vampire"
+
+#: spawn
+msgid "varan"
+msgstr "Varan"
+
+#: spawn
+msgid "veningaz"
+msgstr "Venin à gaz"
+
+#: spawn
+msgid "vermines"
+msgstr "Vermines"
+
+#: spawn
+msgid "verminesmutant1"
+msgstr "Vermine mutante"
+
+#: spawn
+msgid "verminesmutant2"
+msgstr "Vermine mutante"
+
+#: spawn
+msgid "vervorace"
+msgstr "Ver vorace"
+
+#: spawn
+msgid "voleuse"
+msgstr "Voleuse"
+
+#: spawn
+msgid "wagonnet"
+msgstr "Wagonnet"
+
+#: spawn
+msgid "warg"
+msgstr "Warg"
+
+#: spawn
+msgid "yamabushi"
+msgstr "Yamabushi"
+
+#: spawn
+msgid "yeti"
+msgstr "Yéti"
+
+#: spawn
+msgid "zat"
+msgstr "Zat"
+
+#: spawn
+msgid "zephyr"
+msgstr "Zéphyr"
+
+#: spawn
+msgid "zombie"
+msgstr "Zombie"
+
 
 #~ msgid "USER_PRIMARY_COLOR"
 #~ msgstr "Couleur 1"

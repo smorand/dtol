@@ -29,8 +29,6 @@ class UserController(CommonController):
 		
 	def view(self, request, userId):
 		extensions = self.extensionManager.getExtensions()
-		for c in extensions:
-			c.name = "EXTENSION_" + c.name
 		user = self.userManager.getUser(userId)
 		return self.templates.response('view_user', context={ 'countries': Countries, 'extensions': extensions, 'user': user, 'userExtensions': ",".join([ str(ext.id) for ext in user.extensions.all() ]) })
 		

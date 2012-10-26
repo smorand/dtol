@@ -1,20 +1,71 @@
 <!-- This file is covered by the GNU Public Licence v3 licence. See http://www.gnu.org/licenses/gpl.txt -->
 {% load i18n %}
 <h1>{% trans "TEAM_CREATE" %}</h1>
-{% for c in characters %}
 <!-- Type (1 for chararcters, 2 for objects, 3 for rooms | name | Localized name | capacitylist (separated by dash) | extensionslist (separated by dash) -->
-<input type="hidden" name="spawn" id="c.id" value="1|c.name|{% trans c.name %}"/>
+{% for c in characters %}
+<input type="hidden" name="characterdef" id="c.id" value="{{c.id}}|{{c.name}}|{% trans c.name %}|{{c.extensions}}|{{c.filters}}|{{c.force}}|{{c.deplacement}}"/>
 {% endfor %}
-<table class="form" width="100%"><tr>
-	<td>
-			<strong>{% trans "SPAWNS_TYPES"%}</strong><br/>
-			<img name="spawnstypes" id="spawnstypes_1" src="/static/images/interface/radio.gif" border="0"/>{% trans "SPAWNS_TYPES_CHARACTERS"%}<br/>
-			<img name="spawnstypes" id="spawnstypes_2" src="/static/images/interface/radio.gif" border="0"/>{% trans "SPAWNS_TYPES_OBJECTS"%}<br/>
-			<img name="spawnstypes" id="spawnstypes_3" src="/static/images/interface/radio.gif" border="0"/>{% trans "SPAWNS_TYPES_ROOMS"%}<br/>
-			<br/>
-			<strong>{% trans "SPAWNS_RACES"%}</strong><br/>
-			<inp
-	</td>
-	<td>
-	</td>
+{% for c in objects %}
+<input type="hidden" name="objectdef" id="c.id" value="{{c.id}}|{{c.name}}|{% trans c.name %}|{{c.extensions}}|{{c.filters}}"/>
+{% endfor %}
+{% for c in rooms %}
+<input type="hidden" name="roomdef" id="c.id" value="{{c.id}}|{{c.name}}|{{c.name}}|{{c.extensions}}|{{c.filters}}"/>
+{% endfor %}
+<table border="0" class="form" width="100%">
+	<tr>
+		<td><center><img class="pointer" title="{% trans "SHOW_TEAM" %}" alt="{% trans "SHOW_TEAM" %}" onclick="showTeam()" src="/static/images/interface/team-icon.png" width="50" height="50"/></center></td>
+		<td>
+{% for c in extensions %}
+			<div class="extensionlogo"><img id="extlogo_{{ c.id }}" class="extensionlogo-notselected" src="/static/images/interface/logo{{ c.id }}.jpg" border="0" title="{% trans c.transname %}" onclick="selectExtension({{ c.id }});runcreateteamfilter()"/></div>
+{% endfor %}
+			<div class="extensionlogo"><img  class="extensionlogo-notselectable" src="/static/images/interface/logoall.jpg" title="{% trans "EXTENSION_ALL" %}" onclick="selectExtensionAll();runcreateteamfilter()" border="0"/></div>			
+			<div class="extensionlogo"><img  class="extensionlogo-notselectable" src="/static/images/interface/logonone.jpg" title="{% trans "EXTENSION_NONE" %}" onclick="selectExtensionNone();runcreateteamfilter()" border="0"/></div>
+		</td>
+	<tr>
+		<td style="min-width:160px;">
+				<br/>
+				<strong>{% trans "SPAWNS_TYPES"%}</strong><br/>
+				<img name="spawnstypes" id="spawnstypes_1" src="/static/images/interface/radio.gif" border="0" onclick="runcreateteamfilter()"/>{% trans "SPAWNS_TYPES_CHARACTERS"%}<br/>
+				<img name="spawnstypes" id="spawnstypes_2" src="/static/images/interface/radio.gif" border="0" onclick="runcreateteamfilter()"/>{% trans "SPAWNS_TYPES_OBJECTS"%}<br/>
+				<img name="spawnstypes" id="spawnstypes_3" src="/static/images/interface/radio.gif" border="0" onclick="runcreateteamfilter()"/>{% trans "SPAWNS_TYPES_ROOMS"%}<br/>
+				<br/>
+				<strong>{% trans "SPAWNS_FILTERS"%}</strong><br/>
+				<div class="filter_character"><a id="filter_spellcaster" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_SPELLCASTER" %}</div>
+				<div class="filter_character"><a id="filter_flyer" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_FLYER" %}</div>
+				<div class="filter_character"><a id="filter_regenerator" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_REGENERATOR" %}</div>
+				<div class="filter_character"><a id="filter_prestigious" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_PRESIGIOUS" %}</div>
+				<div class="filter_character"><a id="filter_undead" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_UNDEAD" %}</div>
+				<div class="filter_character"><a id="filter_imaterial" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_IMATERIAL" %}</div>
+				<div class="filter_character filter_room"><a id="filter_shadowwalker" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_SHADOWWALKER" %}</div>
+				<div class="filter_character"><a id="filter_elf" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_ELF" %}</div>
+				<div class="filter_character"><a id="filter_dwarf" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_DWARF" %}</div>
+				<div class="filter_character"><a id="filter_beast" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_BEAST" %}</div>
+				<div class="filter_object"><a id="filter_current" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_CURRENT" %}</div>
+				<div class="filter_object"><a id="filter_magical" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_MAGICAL" %}</div>
+				<div class="filter_object"><a id="filter_perchemin" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_PERCHEMIN" %}</div>
+				<div class="filter_object"><a id="filter_weapon" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_WEAPON" %}</div>
+				<div class="filter_object"><a id="filter_shield" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_SHIELD" %}</div>
+				<div class="filter_object"><a id="filter_powerful" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_POWERFUL" %}</div>
+				<div class="filter_object"><a id="filter_cursed" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_CURSED" %}</div>
+				<div class="filter_character filter_object"><a id="filter_antifountain" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_ANTIFOUNTAIN" %}</div>
+				<div class="filter_room filter_character"><a id="filter_water" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_WATER" %}</div>
+				<div class="filter_room filter_character"><a id="filter_lava" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_LAVA" %}</div>
+				<div class="filter_room"><a id="filter_fountain" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_FOUNTAIN" %}</div>
+				<div class="filter_room"><a id="filter_slope" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_SLOPE" %}</div>
+				<div class="filter_room"><a id="filter_snow" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_SNOW" %}</div>
+				<div class="filter_room"><a id="filter_fog" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_FOG" %}</div>
+				<div class="filter_room"><a id="filter_tree" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_TREE" %}</div>
+				<div class="filter_room"><a id="filter_torch" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_TORCH" %}</div>
+				<br/>
+				<div class="filter_character">
+					<strong>{% trans "SPAWNS_STRENGTH"%}</strong><br/>
+					<input type="text" id="forcemin" size="3"/>&le;...&le;<input type="text" id="forcemax" size="3"/><br/>
+					<br/>
+					<strong>{% trans "SPAWNS_DEPLACEMENT"%}</strong><br/>
+					<input type="text" id="depmin" size="3"/>&le;...&le;<input type="text" id="depmax" size="3"/><br/>
+				</div>
+		</td>
+		<td>
+		</td>
+	</tr>
 </tr></table>

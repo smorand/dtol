@@ -18,6 +18,16 @@ var currentScrollLeft = 0;
 var dialogAnimation = 0;
 
 /**
+ * Os detection information
+ */
+var agent = navigator.userAgent.toLowerCase();
+var otherBrowser = (agent.indexOf("series60") != -1) || (agent.indexOf("symbian") != -1) || (agent.indexOf("windows ce") != -1) || (agent.indexOf("blackberry") != -1);
+var mobileOS = typeof orientation != 'undefined' ? true : false;
+var touchOS = ('ontouchstart' in document.documentElement) ? true : false;
+var iOS = (navigator.platform.indexOf("iPhone") != -1) || (navigator.platform.indexOf("iPad") != -1) ? true : false;
+var android = (agent.indexOf("android") != -1) || (!iOS && !otherBrowser && touchOS && mobileOS) ? true : false;
+var tablettepc = mobileOS || touchOS || iOS || android;
+/**
  * Temporary variables
  */
 var referenceSize = 80; // This should never change if the same when zoom == 1
@@ -709,13 +719,32 @@ function updateAction() {
 	})
 }
 
+
+var padlink = '';
+if (tablettepc) padlink = '&nbsp;<img style="vertical-align: middle" src="/static/images/interface/greenarrows.png" usemap="#mappad"/>';
+function movewindows(direction) {
+	var depval = 100;
+	var offset = $('#actionsdialog').closest('.ui-dialog').offset();
+	if (direction == 0) {
+		offset.top -= depval;
+	} else if (direction == 1) {
+		offset.left += depval;
+	} else if (direction == 2) {
+		offset.top += depval;
+	} else if (direction == 3) {
+		offset.left -= depval;
+	}
+	$('#actionsdialog').closest('.ui-dialog').offset(offset);
+}
+
+/** Fonction de mise à jour des actions disponibles */
 function updateAction_callback(actions) {
     if (locationSrc == 0) {
-    	$('#actionsdialog').dialog('option', 'title', translate('ACTION_GENERIC'));
+    	$('#actionsdialog').dialog('option', 'title', translate('ACTION_GENERIC') + padlink);
     } else if (locationDst == 0) {
-    	$('#actionsdialog').dialog('option', 'title', translate('ACTION_ON_CASE').replace('{1}', locationToString(locationSrc)));
+    	$('#actionsdialog').dialog('option', 'title', translate('ACTION_ON_CASE').replace('{1}', locationToString(locationSrc)) + padlink);
     } else {
-    	$('#actionsdialog').dialog('option', 'title', translate('ACTION_FROM_CASE_TO_CASE').replace('{1}', locationToString(locationSrc)).replace('{2}', locationToString(locationDst)));
+    	$('#actionsdialog').dialog('option', 'title', translate('ACTION_FROM_CASE_TO_CASE').replace('{1}', locationToString(locationSrc)).replace('{2}', locationToString(locationDst)) + padlink);
     }
     $('#actionsdialog').html('');
     for (var i in actions) { var action = actions[i];

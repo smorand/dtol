@@ -614,7 +614,7 @@ msgstr "Eau"
 
 #: templates/team/edit.html
 msgid "SPAWN_FILTER_CURSED"
-msgstr "Maudit"
+msgstr "Maudits"
 
 #: templates/team/edit.html
 msgid "SPAWN_FILTER_LAVA"
@@ -733,16 +733,60 @@ msgid "SPAWN_FILTER_CURRENT"
 msgstr "Courants"
 
 #: templates/team/edit.html
-msgid "SPAWN_FILTER_CURSED"
-msgstr "Maudits"
-
-#: templates/team/edit.html
 msgid "SPAWNS_STRENGTH"
 msgstr "Combat"
 
 #: templates/team/edit.html
 msgid "SPAWNS_DEPLACEMENT"
 msgstr "Déplacement"
+
+#: templates/team/edit.html
+msgid "LOADING_SPAWN"
+msgstr "Rafraîchissement des pions en cours..."
+
+#: templates/team/edit.html
+msgid "NO_SPAWN_SELECTED"
+msgstr "Aucun pion disponible"
+
+#: templates/team/edit.html
+msgid "TOGGLE_HELP"
+msgstr "Activer/Désactiver l'aide"
+
+#: templates/team/edit.html
+msgid "HELP_TITLE"
+msgstr "Aide"
+
+#: templates/team/edit.html
+msgid "SPAWN_CAPACITIES"
+msgstr "Capacités&nbsp;"
+
+#: templates/team/edit.html
+msgid "SPAWN_DEPLACEMENT"
+msgstr "Déplacement&nbsp;"
+
+#: templates/team/edit.html
+msgid "SPAWN_FORCE"
+msgstr "Force&nbsp;"
+
+#: templates/team/edit.html
+msgid "CURRENT_TEAM"
+msgstr "Equipe sélectionnée"
+
+#: templates/team/edit.html
+msgid "TEAM_CHARACTERS_COUNT"
+msgstr "Personnages&nbsp;"
+
+#: templates/team/edit.html
+msgid "TEAM_OBJECTS_COUNT"
+msgstr "Objets&nbsp;"
+
+#: templates/team/edit.html
+msgid "TEAM_ROOMS_COUNT"
+msgstr "Pièces&nbsp;"
+
+#: templates/team/edit.html
+msgid "TEAM_SAVE"
+msgstr "Enregistrer"
 
 #: generique
 msgid "French"
@@ -1984,6 +2028,1457 @@ msgstr "Zéphyr"
 msgid "zombie"
 msgstr "Zombie"
 
+#: capacities
+msgid "2objects"
+msgstr "Peut porter 2 objets contredisant la règle d'or. S'il est tué, les 2 objets restent sur la case. Personne ne peut s'y arrêter mais les personnages peuvent passer prendre les objets."
+
+#: capacities
+msgid "acrobatie"
+msgstr "Peut sauter 1 ou 2 cases obstacles consécutives sans dépenser de carte sauf."
+
+#: capacities
+msgid "agility"
+msgstr "Peut franchir une pente ou une fosse durant son mouvement ou monter sur un toit mais si le pouvoir est activé le déplacement coût 2PA."
+
+#: capacities
+msgid "alwayscomingback"
+msgstr "Quand le personnage est tué, il revient automatiquement sur la réglette au choix du joueur. Il ramène 1PV à chaque fois qu'il est tué, et est obligé de revenir."
+
+#: capacities
+msgid "antifire"
+msgstr "Insensible au feu (boule de feu du dragon rouge ou du baton de boule de feu ou apparenté)"
+
+#: capacities
+msgid "antifountain"
+msgstr "Peut de contrer les fontaines"
+
+#: capacities
+msgid "antifreeze"
+msgstr "Insensible au gel (dragon de glace ou parchemin de glace)."
+
+#: capacities
+msgid "antimagic"
+msgstr "Insensible à toute forme de magie."
+
+#: capacities
+msgid "antimagical"
+msgstr "Ne peut utiliser les objets magiques."
+
+#: capacities
+msgid "antiundead"
+msgstr "Tue automatiquement les morts-vivants présents sur la case. Un mort vivant entrant délibérémment sur la case est tué immédiatement."
+
+#: capacities
+msgid "antivermine"
+msgstr "Ne peut être pris pour cible ni attaquer par une vermine."
+
+#: capacities
+msgid "attackaway_1"
+msgstr "Donne une attaque à une case de distance."
+
+#: capacities
+msgid "attackboomerang"
+msgstr "Donne une attaque à distance de 8 cases de force 2. Pas nécessairement en ligne droite. Le boomerang se déplace de 8 cases, la dernière case doit être celle du personnage attaqué"
+
+#: capacities
+msgid "attackbunraku"
+msgstr "Donne une attaque à distance de 7 cases de force 2. Pas nécessairement en ligne droite. Le Bonraku se déplace de 7 cases, la dernière case doit être celle du personnage attaqué"
+
+#: capacities
+msgid "attackcrosseverything"
+msgstr "Peut attaquer sans tenir compte du type de mur, autrement dit toutes les cases sont adjacentes."
+
+#: capacities
+msgid "attackebeast"
+msgstr "Donne une attaque automatique quand une bête entre en ligne de vue. La bete passe à l'état blessé et le piège est défaussé."
+
+#: capacities
+msgid "attackfrommeurtriere"
+msgstr "Peut attaquer comme une attaque corps à corps à travers une meurtrière"
+
+#: capacities
+msgid "attaquepsy"
+msgstr "Peut effectuer une attaque magique de force 1 au corps à corps à un personnage ciblable dans la même salle. En cas de défaite l'attaquant subit la blessure comme un combat corps à corps normal."
+
+#: capacities
+msgid "attraction"
+msgstr "Peut attirer en LDV un personnage de force inférieure ou égale et de le positionner sur la case adjacente à lui dans la même ligne de vue. Si un objet est porté et que le personnage est tué, l'objet doit être laissé sur la dernière case valide."
+
+#: capacities
+msgid "autcancelmagophage"
+msgstr "Annule l'anti-magie d'un personnage adjacent (anneau ou personnage, mais pas d'une salle)"
+
+#: capacities
+msgid "cangomagic"
+msgstr "Ne peut rentrer dans une salle anti-magie."
+
+#: capacities
+msgid "autoheal"
+msgstr "Pour 0PA, permet de se soigner."
+
+#: capacities
+msgid "beast"
+msgstr "Race bête : Craint le maître des bêtes et les pièges à bêtes."
+
+#: capacities
+msgid "become_mutante"
+msgstr "Devient automatiquement une mutante lors d'un recyclage."
+
+#: capacities
+msgid "become_mutantefemme"
+msgstr "Devient automatiquement une femme-mutante lors d'un recyclage."
+
+#: capacities
+msgid "biandans_arbre_"
+msgstr "Apprécie les salles d'arbre pour être peformant."
+
+#: capacities
+msgid "biandans_fontaine_"
+msgstr "Apprécie les salles de fontaine pour être peformant."
+
+#: capacities
+msgid "biendans__eau"
+msgstr "N'apprécie pas les salles d'eau pour être performant."
+
+#: capacities
+msgid "biendans_eau_"
+msgstr "Apprécie les salles d'eau pour être performant."
+
+#: capacities
+msgid "biendans_eau-neige_"
+msgstr "Apprécie les sallse d'eau et de neige pour être performant."
+
+#: capacities
+msgid "biendans_lave_eau"
+msgstr "Apprécie les salles de lave mais n'apprécie pas les salles d'eau pour être performant."
+
+#: capacities
+msgid "biendans_meurtriere_"
+msgstr "Apprécie les salles avec meurtrières pour être performant."
+
+#: capacities
+msgid "biendans_neige-arbre_"
+msgstr "Apprécie les salles de neige ou d'abre pour être performant."
+
+#: capacities
+msgid "biendans_pente-eau_"
+msgstr "Apprécie les salles de pentes ou d'eau pour être performant."
+
+#: capacities
+msgid "biendans_rocher_"
+msgstr "Apprécie les salles avec rocher pour être performant."
+
+#: capacities
+msgid "biendans_tenebres_"
+msgstr "Apprécie les salles des ténèbres pour être performant."
+
+#: capacities
+msgid "biendans_vermine_"
+msgstr "Apprécie les salles vermines pour être performant."
+
+#: capacities
+msgid "big_4"
+msgstr "Occupe 4 cases sans tenir compte des murs et fosses."
+
+#: capacities
+msgid "biter"
+msgstr "Peut faire une morsure transformant la victime en le même personnage."
+
+#: capacities
+msgid "blockcharacter"
+msgstr "Empêche le personnage de bouger et d'agir lui imposant un malus de 1 au combat. Pour 1PA un personnage munis d'une arme tranchante peut couper le filet."
+
+#: capacities
+msgid "blockfightcard"
+msgstr "Empêche les adversaires de jouer leur carte la plus forte en combat."
+
+#: capacities
+msgid "blockhole"
+msgstr "Bouche le trou et protège du roulement des rochers."
+
+#: capacities
+msgid "blocktwist"
+msgstr "Empêche les twists depuis la salle jumelle sauf par un Sabotork ou un Méchanork."
+
+#: capacities
+msgid "blockundead"
+msgstr "Les morts-vivants ne peuvent entrer sur la case ou une case adjacente. En cas de présence du personnage sur la case, il est bloqué. S'il est sur une case adjacente il doit fuir sinon il reste bloquer."
+
+#: capacities
+msgid "blooddrinker"
+msgstr "Gagne 1PV en défense et en attaque quand il participe à la mort d'un personnage adverse en combat."
+
+#: capacities
+msgid "bonusaction_4"
+msgstr "Donne 4 PA complémentaires."
+
+#: capacities
+msgid "bonuscombat_1_alien"
+msgstr "Gagne un bonus de 1 en combat quand un alien participe."
+
+#: capacities
+msgid "bonusattaque_1_1_"
+msgstr "Gagne +1 en attaque."
+
+#: capacities
+msgid "bonusattaque_1_1_arme"
+msgstr "Gagne +1 en attaque quand il attaque avec une arme (en plus des éventuels bonus de l'arme)."
+
+#: capacities
+msgid "bonusattaque_1_1_bushido"
+msgstr "Gagne +1 en attaque quand le porteur est un bushido."
+
+#: capacities
+msgid "bonusattaque_1_2_eau"
+msgstr "Gagne +2 en attaque quand situé dans l'eau."
+
+#: capacities
+msgid "bonusattaque_1_1_rocher"
+msgstr "Gagne +1 en attaque quand porte un rocher."
+
+#: capacities
+msgid "bonusattaque_1_2_nain"
+msgstr "Gagne +2 en attaque quand utilisé par un nain"
+
+#: capacities
+msgid "bonusattaque_2_1_"
+msgstr "Gagne +1 en combat quand l'attaque utilise 1 PA supplémentaire."
+
+#: capacities
+msgid "bonusattaque_2_2_"
+msgstr "Gagne +2 en combat quand l'attaque utilise 1 PA supplémentaire."
+
+#: capacities
+msgid "bonuscombat_-1_"
+msgstr "Pert -1 en combat quand porté."
+
+#: capacities
+msgid "bonuscombat_1_eau"
+msgstr "Gagne +1 en combat quand situé dans l'eau."
+
+#: capacities
+msgid "bonuscombat_1_lave"
+msgstr "Gagne +1 en combat quand situé dans la lave."
+
+#: capacities
+msgid "bonuscombat_1_snow"
+msgstr "Gagne +1 en combat quand situé dans la neige."
+
+#: capacities
+msgid "bonusdefense_1"
+msgstr "Gagne +1 en défense"
+
+#: capacities
+msgid "bonusdefense_1_bushido"
+msgstr "Gagne +1 en défense quand le porteur est un bushido."
+
+#: capacities
+msgid "bonusdefense_3"
+msgstr "Gagne +3 en défense"
+
+#: capacities
+msgid "bonusdeplacement"
+msgstr "Tous les personnages démarrant leur déplacement dans la salle gagne 1 en déplacement."
+
+#: capacities
+msgid "bonusdeplacement_1"
+msgstr "Gagne +1 en déplacement."
+
+#: capacities
+msgid "bonuself"
+msgstr "A un bonus +2 en combat contre un elfe."
+
+#: capacities
+msgid "bonusfight"
+msgstr "Fait gagner +1 en combat à tous les personnages dans la salle."
+
+#: capacities
+msgid "bonuscombat_1_brume"
+msgstr "Gagne +1 en combat quand situé dans la brume"
+
+#: capacities
+msgid "bonusgroup_2"
+msgstr "Gagne +2 en combat quand participe à un combat groupé en attaque."
+
+#: capacities
+msgid "bonushurt_2"
+msgstr "Gagne +2 en combat quand un blessé adverse est impliqué dans un combat (les blessés adverses portés par un adversaire donne droit au bonus)."
+
+#: capacities
+msgid "bonusout_1"
+msgstr "Gagne +1 PV quand sort du labyrinthe."
+
+#: capacities
+msgid "bonuspacombatwhenfight"
+msgstr "Gagne 1PA après chaque combat. Utilisable tout de suite, même pendant le tour adverse (le tour adverse est alors interrompu)."
+
+#: capacities
+msgid "bonuscombat_1_shadow"
+msgstr "Gagne +1 en combat dans l'ombre"
+
+#: capacities
+msgid "bonusspellcaster"
+msgstr "Gagne +1 en combat quand un jeteur de sort participe au combat."
+
+#: capacities
+msgid "bonuscombat_1_undead"
+msgstr "Gagne +1 en combat quand un mort vivant participe au combat."
+
+#: capacities
+msgid "bushido"
+msgstr "Suit la voix du bushido"
+
+#: capacities
+msgid "noldv_1"
+msgstr "Peut obtenir la capacité camouflage"
+
+#: capacities
+msgid "cancelfight"
+msgstr "Peut annuler un combat et interdire tout combat jusqu'à la fin du tour de jeu."
+
+#: capacities
+msgid "cantbecarried"
+msgstr "Ne peut pas être porté."
+
+#: capacities
+msgid "carrynohurt"
+msgstr "Ne peut pas porter de blessé."
+
+#: capacities
+msgid "carrynoobject"
+msgstr "Ne peut pas porter d'objet."
+
+#: capacities
+msgid "carrypeople"
+msgstr "Peut porter un personnage de force 2 ou inférieure."
+
+#: capacities
+msgid "carry_rocher"
+msgstr "Peut porter un rocher."
+
+#: capacities
+msgid "categorie_arme"
+msgstr "Catégorie : arme."
+
+#: capacities
+msgid "categorie_current"
+msgstr "Catégorie  : courrant. Dans une partie classique, l'objet peut être présent plusieurs fois."
+
+#: capacities
+msgid "categorie_cursed"
+msgstr "Catégorie : maudit. L'objet est maudit. un personnage le portant ne peut s'en débarasser et est obligé de le prendre s'il passe dessus. L'objet est magique."
+
+#: capacities
+msgid "categorie_puissant"
+msgstr "Catégorie : puissant."
+
+#: capacities
+msgid "categorie_utile"
+msgstr "Catégorie : utile."
+
+#: capacities
+msgid "chaos"
+msgstr "Peut mettre en place des twists différents sur les salles."
+
+#: capacities
+msgid "charming__3"
+msgstr "Peut charmer le personnage ciblé dans la même salle et d'agir avec lui pour 3 actions."
+
+#: capacities
+msgid "charming_bete_2"
+msgstr "Peut charmer le personnage ciblé de race bête dans la ligne de vue et d'agir avec lui pour 3 actions."
+
+#: capacities
+msgid "charming_man_1"
+msgstr "Peut charmer un personnage masculin adjacent et d'agir avec lui pour 3 actions."
+
+#: capacities
+msgid "charming_undead_1"
+msgstr "Peut charger un personnage mort-vivant adjacent et d'agir avec lui pour 3 actions."
+
+#: capacities
+msgid "charming_vermine-2"
+msgstr "Peut charger un personnage vermine en ligne de vue et d'agir avec lui pour 3 actions."
+
+#: capacities
+msgid "chooselighter"
+msgstr "Peut éclairer 1 case ténèbres en choisissant les dalles."
+
+#: capacities
+msgid "climber"
+msgstr "Sait grimper les pentes."
+
+#: capacities
+msgid "confusion"
+msgstr "Peut lancer un sort de confusion durant un combat. L'adversaire doit alors choisir une carte de combat aléatoire."
+
+#: capacities
+msgid "converter"
+msgstr "Si le personnage est tué. Les personnages responsables de sa mort (en combat ou par n'importe quelle autre action) deviennent automatiquement de la couleur du personnage."
+
+#: capacities
+msgid "copypower"
+msgstr "Peut acquérir la force et le déplacement d'un personnage en ligne de vue."
+
+#: capacities
+msgid "crazyattack"
+msgstr "A l'issu de son déplacement peut effectuer une attaque de la force du nombre de case distincte parcourue. Le combat coute 0AP."
+
+#: capacities
+msgid "creator_blesse_zombie_1_3_0"
+msgstr "Peut créer des zombies jusqu'à 3 par partie à partir d'un blessé."
+
+#: capacities
+msgid "creator_empty_rampeur_1_3_0"
+msgstr "Peut créer 3 rampeurs dans la partie sur une case de sol vide."
+
+#: capacities
+msgid "creator_empty_squelette_1_3_0"
+msgstr "Peut créer 3 squelettes dans la partie sur une case de sol vide."
+
+#: capacities
+msgid "creator_empty_totemterre_1_-1_1"
+msgstr "Peut créer un totem de terre autant de fois que souhaité. Pour 1PA le totem déjà créé peut être défausé ou utilisé pour effectuer un twist sur la salle sans avoir besoin de se trouver sur le twist. Il ne peut pas twister la salle jumelle."
+
+#: capacities
+msgid "crosser_herse"
+msgstr "Peut traverser et attaquer les herses comme si elle n'existait pas."
+
+#: capacities
+msgid "crosser_meurtriere"
+msgstr "Peut traverser les meurtrières comme si elle n'existait pas."
+
+#: capacities
+msgid "crosser_passagesecret"
+msgstr "Peut traverser les passages secrets comme s'ils n'existaient pas."
+
+#: capacities
+msgid "curseobject"
+msgstr "Peut maudait 1 fois par partie un objet en LDV."
+
+#: capacities
+msgid "darker"
+msgstr "Peut supprimer une tuile d'éclairement pour 1PA."
+
+#: capacities
+msgid "darknightshooter"
+msgstr "Peut attaquer en ligne de vue et s'en tenir compte des ténèbres pour une force 2 une seule fois."
+
+#: capacities
+msgid "defenser"
+msgstr "Participe à un combat même quand il est adjacent à un personnage de sa couleur."
+
+#: capacities
+msgid "defenseshoot"
+msgstr "Protège de toute forme d'attaque à distance (même les boomerangs ou bunraku)."
+
+#: capacities
+msgid "delightful"
+msgstr "Ne peut être attaqué ou pris pour cible en ligne de vue."
+
+#: capacities
+msgid "deplacement_-1"
+msgstr "Fait perdre 1 en déplacement."
+
+#: capacities
+msgid "deplacementrail"
+msgstr "Donne 7 points de déplacements sur les rails. Le déplacement doit se faire en entier sur les rails."
+
+#: capacities
+msgid "deplacementsmall"
+msgstr "Peut traverser le autres personnages et les herses."
+
+#: capacities
+msgid "destroychutespierre"
+msgstr "Détruit les chuttes de pierre s'il stationne dessus."
+
+#: capacities
+msgid "destroydecord"
+msgstr "Peut détruire un élément de décord comme un objet 3D, un obstacle brisable (petit pont, tuyaterie). pour 1PA"
+
+#: capacities
+msgid "destroyobject_2_1"
+msgstr "Peut détruire un objet en ligne de vue à 2 cases de distance. Fonctionne sur les objets portés, le porteur ne subit aucune blessure."
+
+#: capacities
+msgid "destroyobject_1_1"
+msgstr "Peut détruire un objet adjacent ou porté. Fonctionne sur les objets portés, le porteur ne subit aucune blessure."
+
+#: capacities
+msgid "die_light"
+msgstr "Meurt si traverse une torche."
+
+#: capacities
+msgid "die_eau"
+msgstr "Meurt si se trouve sur une case d'eau."
+
+#: capacities
+msgid "digger"
+msgstr "Peut creuser un tunnel magique (2 au max dans le donjon). Le tunnel permet de traverser pour les personnages de force 3 ou inférieur. Il ne donne pas de ligne de vue mais les deux extrémités du tunnel sont considérés comme adjacente. Le pavois ou un personnage bouche le tunnel (on ne peut pas voler à travers le trou)."
+
+#: capacities
+msgid "dissipate"
+msgstr "Donne la possibilité de disparaître lorsqu'on est attaqué sur une case vide d'une salle adjacente."
+
+#: capacities
+msgid "dreamlink"
+msgstr "Crée un lien magique avec la victime jusqu'à la fin de la partie. Ce qui arrive à l'un arrive à l'autre (mort, blessure, gel, etc.). Le lien est brisé si l'un des deux sorts du labyrinthe."
+
+#: capacities
+msgid "dwarf"
+msgstr "Race : Le personnage est un nain. Il gagne un bonus de +2 avec le marteau magique."
+
+#: capacities
+msgid "eathurt_bonus"
+msgstr "Gagne un bonus de 1 en combat pour chaque blessé mangé. Un blessé peut être mangé en étant sur sa case pour 1PA."
+
+#: capacities
+msgid "eathurt_earnpv"
+msgstr "Gagne un bonus de 1 PV pour chaque blessé mangé. Un blessé peut être mangé en étant sur sa case pour 1PA."
+
+#: capacities
+msgid "elf"
+msgstr "Race : Le personnage est un efle."
+
+#: capacities
+msgid "erudite"
+msgstr "Le personnage peut utiliser le baton de boule de feu."
+
+#: capacities
+msgid "essaimonhurt"
+msgstr "Si le personnage passe à l'état blessé, un essaim en sort. Ne peut être utilisé que par un personnage adverse."
+
+#: capacities
+msgid "exchangeactioncard"
+msgstr "Peut échanger 1 carte action défaussée par une carte action non défaussée."
+
+#: capacities
+msgid "exchangedead"
+msgstr "Echange le personnage avec un personnage mort."
+
+#: capacities
+msgid "expertzat"
+msgstr "Peut utiliser le personnage pour tuer un personnage en ligne de vue."
+
+#: capacities
+msgid "extraterestrial"
+msgstr "Race : Le personnage est un extraterrestre."
+
+#: capacities
+msgid "fastfight"
+msgstr "Peut faire un combat une fois par tour pour 0PA."
+
+#: capacities
+msgid "fastrevelation"
+msgstr "Peut réveler une salle une fois par tour pour 0PA."
+
+#: capacities
+msgid "fightberserk"
+msgstr "Peut déclencher un combat berserk, c'est à dire un combat permettant d'attaquer avec 2 cartes combat. Ne fonctionne pas en combat groupé."
+
+#: capacities
+msgid "fightdiag"
+msgstr "Peut déclencher un combat en diagonale. Il suffit que l'un des deux murs de la diagonale soit vite pour que le déclenchement soit valide."
+
+#: capacities
+msgid "fighthurt"
+msgstr "Peut attaquer un blessé dont la blessure a été faite durant le même tour."
+
+#: capacities
+msgid "fireball"
+msgstr "Peut lancer une boule de feu en ligne de vue détruisant le personnage ciblé."
+
+#: capacities
+msgid "floormarker_0_ice__-1_eau__pendantdeplacement"
+msgstr "Marque avec du gel toutes les cases d'eau parcourue."
+
+#: capacities
+msgid "floormarker_0_tenebresmagiques__10_sol__pendantdeplacement"
+msgstr "Peut marquer jusqu'à 10 cases ténèbres dans la partie dans la partie. Les cases marquées doivent l'être à l'issu d'un déplacement."
+
+#: capacities
+msgid "floormarker_1_arbrecoupe_0_-1_arbre__bucheron"
+msgstr "Peut couper un arbre gratuitement quand utilisé par un bûcheron."
+
+#: capacities
+msgid "floormarker_1_arbrecoupe_1_-1_arbre__"
+msgstr "Peut couper un arbre."
+
+#: capacities
+msgid "floormarker_1_arbrecoupe_0_-1_arbre__apresdeplacement"
+msgstr "Peut couper un arbre gratuitement à l'issu d'un déplacement."
+
+#: capacities
+msgid "floormarker_1_empoisonne_1_1_fontaine__"
+msgstr "Peut marquer une fontaine empoisonnée (1 marqueur). Le marqueur est générique tant qu'on ne sait pas si c'est un leurre ou un véritable empoisonnement."
+
+#: capacities
+msgid "floormarker_1_ice_1_10_eau-sol-brume__allinsame"
+msgstr "Permet de geler 10 cases adjacentes d'eau , de sol brumeuse ou non."
+
+#: capacities
+msgid "floormarker_1_leurre_1_2_fontaine__"
+msgstr "Peut marquer une fontaine adjacente comme faussement empoisonnée (2 marqueurs). Le marqueur est générique tant qu'on ne sait pas si c'est un leurre ou un véritable empoisonnement."
+
+#: capacities
+msgid "floormarker_2_arbre_1_3_sol__"
+msgstr "Peur faire pousser un arbre sur une case de sol normal en ligne de vue. 3 fois maximum dans la partie."
+
+#: capacities
+msgid "floormarker_2_fletrissure/1_1_1_3d__"
+msgstr "Peut mettre un marqueur flétrissure sur un objet 3D le rendant inutilisable. Le marqueur disparait si le personnage est blessé."
+
+#: capacities
+msgid "floormarker_2_fletrissure/1_1_1_sol__"
+msgstr "Peut mettre un marqueur flétrissure sur une case de sol donnant 1 en combat aux morts-vivants et permettant leur régénération. Le marqueur disparait si le personnage est blessé."
+
+#: capacities
+msgid "floormarker_2_illusioneboulis/1_1_1_sol_empty_"
+msgstr "Peut placer un marqueur illusion éboulis sur une case de sol normal."
+
+#: capacities
+msgid "floormarker_2_illusionfosse/1_1_1_sol_empty_"
+msgstr "Peut placer un marqueur illusion fosse sur une case de sol normal."
+
+#: capacities
+msgid "floormarker_2_liane_1_3_obstacle__"
+msgstr "Peut placer 3 marqueurs lianes sur des obstacles. Plusieurs marqueurs peuvent être placés en une seule action à condition que les cases obstacles soient adjacentes."
+
+#: capacities
+msgid "floormarker_2_livingtree/1_0_1_arbre__"
+msgstr "Peut placer pour 0PA un arbre vivant sur un arbre en ligne de vue."
+
+#: capacities
+msgid "floormarker_2_tenebresmagiques/2_1_2-sol__"
+msgstr "Peut placer 2 marqueurs de ténèbres magiques. Il peut aussi les déplacer à volonté. Les ténèbres magiques ont les mêmes propriétés que les ténèbres (donc supprimables par un éclairement) mais sont magiques."
+
+#: capacities
+msgid "floormarker_3_ronces_1_1_sol_empty_"
+msgstr "Peut placer un marqueur de ronces dans la même salle."
+
+#: capacities
+msgid "flyer_"
+msgstr "Le personnage peut voler."
+
+#: capacities
+msgid "flyer_magical"
+msgstr "Le personnage peut voler. Le vol est magique."
+
+#: capacities
+msgid "fog"
+msgstr "Génère automatiquement des cases de brume sur les 4 cases adjacentes."
+
+#: capacities
+msgid "force_0"
+msgstr "Le personnage a une force et un poids de 0"
+
+#: capacities
+msgid "forcecard"
+msgstr "Force la carte de combat adverse lors d'un combat. Si le combat se joue à jeu masqué, la carte est choisie, si elle n'est pas disponible, l'action échoue, mais le jeu est montré à l'adversaire."
+
+#: capacities
+msgid "forgeable"
+msgstr "L'arme peut être forgé dans une forge et gagner un bonus de +1 en attaque quand elle est utilisée."
+
+#: capacities
+msgid "forgetroom"
+msgstr "Permet de retourner la pièce comme si elle n'avait pas été révélé. Les blessés restent blessés, mais les autres marqueurs sont supprimés (même les marqueurs personnages)."
+
+#: capacities
+msgid "freeaction"
+msgstr "L'action coute 0PA."
+
+#: capacities
+msgid "freedeplacement"
+msgstr "Peut effectuer un déplacement d'une case pendant le tour des joueurs adverses. (1 case par tour adverse)."
+
+#: capacities
+msgid "freedeplacement_opponent"
+msgstr "Chaque joueur adverse du porteur peut effectier un déplacement d'une case pendant son tour."
+
+#: capacities
+msgid "freemenottes"
+msgstr "Peut briser l'objet maudit menottes"
+
+#: capacities
+msgid "freezer_-1"
+msgstr "Peut geler un personnage en ligne de vue une fois par tour."
+
+#: capacities
+msgid "freezer_1"
+msgstr "Peut geler un personnage en ligne de vue une fois."
+
+#: capacities
+msgid "gainbonus_attaque"
+msgstr "Permet de gagner un bonus en attaque de +2"
+
+#: capacities
+msgid "gainbonus_defense"
+msgstr "Permet de gagner un bonus en defense de +2"
+
+#: capacities
+msgid "getusedcard"
+msgstr "Peut récupérer une fois par tour une carte défaussée pour son propre usage mais durant le tour."
+
+#: capacities
+msgid "givebonusout_1"
+msgstr "Gagne +1 PV en cas de sortie avec un personnage"
+
+#: capacities
+msgid "giveobject"
+msgstr "Peut donner un objet porté à un adversaire"
+
+#: capacities
+msgid "healer_0_1_1_exhausted"
+msgstr "Peut soigner pour 0PA un personnage adjacent mais passe alors à l'état épuisé. Le personnage peut agir immédiatemment."
+
+#: capacities
+msgid "healer_1_1_0_"
+msgstr "Peut soigner pour 1PA un personnage adjcent. Le personnage ne peut pas agir immédiatemment."
+
+#: capacities
+msgid "healer_1_1_1_eau"
+msgstr "Peut soigner un personnage dans l'eau pour 1PA. Le personnage peut agir immédiatemment."
+
+#: capacities
+msgid "healer_1_2_0_exhausted"
+msgstr "Peut soigner pour personnage en ligne de vue mais passe alors à l'état épuisé. Le personnage ne peut pas agir immédiatemment."
+
+#: capacities
+msgid "heavycarrier"
+msgstr "Le porteur est considéré comme de poids infini pour les calculs de poids. Il ne peut plus sauter."
+
+#: capacities
+msgid "holyground"
+msgstr "La case est considérée comme sacré."
+
+#: capacities
+msgid "hotte"
+msgstr "Contient 3 objets dans sa hotte magique qu'il peut sortir pour 1PA. Les objets doivent être choisis en début de partie."
+
+#: capacities
+msgid "hurtcarrier"
+msgstr "Peut porter les blessés adverses."
+
+#: capacities
+msgid "hurtisire"
+msgstr "Lors que le personnage est blessé, il se met en colère. Il peut alors continuer d'agir normalement en gagnant 3 en force."
+
+#: capacities
+msgid "immaterial_cursedobject"
+msgstr "Le personnage est un immatériel qui peut porter les objets maudits. Il est alors en mode matériel."
+
+#: capacities
+msgid "immaterial_noobject"
+msgstr "Le personnage est un immatériel et ne peut pas porter d'objet."
+
+#: capacities
+msgid "immaterial_object"
+msgstr "Le personnage est un immatériel qui peut porter n'importe quel objet. Il est alors en mode matériel."
+
+#: capacities
+msgid "invalidobject"
+msgstr "L'objet ciblé en LDV (ou porté) perd toute ses capacités. Cela défait aussi les objets maudis."
+
+#: capacities
+msgid "inversion"
+msgstr "Peut intervetir deux salles y compris les marqueurs et les objets portés."
+
+#: capacities
+msgid "noldv_-1_1_"
+msgstr "Rend invisible sauf à une case de distance. Quand invisible, on ne peut être pris pour cible."
+
+#: capacities
+msgid "noldv_-1_2_eau"
+msgstr "Rend invisible dans l'eau. Impossible de prendre pour cible"
+
+#: capacities
+msgid "kill_"
+msgstr "En cas de victoire en combat, tous les adversaires adjacent sont tués immédiatemment."
+
+#: capacities
+msgid "kill_alien"
+msgstr "En cas de victoire en combat, tous les adversaires aliens adjacent sont tués immédiatemment."
+
+#: capacities
+msgid "kill_dragon"
+msgstr "En cas de victoire en combat, tous les adversaires adjacent prestigieux sont tués immédiatemment."
+
+#: capacities
+msgid "givekill"
+msgstr "Donne la propriété de tuer directement n'importe quel adversaire en cas de victoire en combat."
+
+#: capacities
+msgid "killhurt"
+msgstr "Tue tous les personnages blessés dans la salle sauf ceux protégés par l'anti-magie."
+
+#: capacities
+msgid "killregard"
+msgstr "Tout personnage se déplaçant en ligne de vue et dans la direction est tué pour le prix d'une action au prochain tour du joueur."
+
+#: capacities
+msgid "killundeadhurt"
+msgstr "Peut tuer un mort vivant blessé pour 1PA. Fonctionne le tour ou le mort vivant a été blessé."
+
+#: capacities
+msgid "state_knocked_1_1"
+msgstr "Peut mettre à l'état assomé un personnage adjacent."
+
+#: capacities
+msgid "state_knocked_1_2"
+msgstr "Peut mettre à l'état assomé un personnage en ligne de vue."
+
+#: capacities
+msgid "fireweak"
+msgstr "Doit mettre sa carte combat +0 contre un élémentaire de feu ou une torche."
+
+#: capacities
+msgid "layalien"
+msgstr "Peut pondre des aliens"
+
+#: capacities
+msgid "letgosmall"
+msgstr "Les personnages de force 0 ou 1 peuvent traverser."
+
+#: capacities
+msgid "levitation"
+msgstr "Donne la capacité vol magique à la cible en ligne de vue."
+
+#: capacities
+msgid "lighter"
+msgstr "Peut éclairer une case ténèbres"
+
+#: capacities
+msgid "lightertmp"
+msgstr "Peut éclairer une case ténèbres jusqu'à la fin du tour."
+
+#: capacities
+msgid "lightring"
+msgstr "Permet d'éclairer magiquement 5 cases ténèbres adjacentes."
+
+#: capacities
+msgid "magicabsorber"
+msgstr "Les cases adajcentes sont privées de magie. Toute action magique sur ces cases est perdue et annulée."
+
+#: capacities
+msgid "magical"
+msgstr "Magique : ne peut être actif sur les cases anti-magie et perd son pouvoir à côté d'un absorbeur de magie."
+
+#: capacities
+msgid "magicalattaque"
+msgstr "Permet pour 0PA de gagner 3 points d'attaque pour le prochain combat (uniquement le jeteur de sort)."
+
+#: capacities
+msgid "magicaldefense"
+msgstr "Permet pour 0PA de gagner 3 points de défense pour le prochain combat (uniquement le jeteur de sort). Utilisable pendant le tour adverse."
+
+#: capacities
+msgid "magicalfly_combatcard"
+msgstr "Peut voler magiquement au prix d'une carte combat défaussé."
+
+#: capacities
+msgid "magicallink"
+msgstr "Peut créer un lien magique jusqu'à la fin de la partie avec un personnage adverse. Tout ce qui arrive au jeteur de sort arrive à la cible."
+
+#: capacities
+msgid "makepeaceful"
+msgstr "Peut interdire la cible d'attaquer un adversaire (même caractéristique que l'élémentaire de pierre)."
+
+#: capacities
+msgid "makespellcaster"
+msgstr "Tous personnages sur une case adjacente acquiert la propriété de jeteur de sort."
+
+#: capacities
+msgid "malusfight"
+msgstr "Tous les personnages adjacent en combat ont un malus de 1 en combat (attaque ou défense)."
+
+#: capacities
+msgid "mirror"
+msgstr "Tout capacité faisant intervenir la ligne de vue ou la notion de même salle est renvoyé au personnage source."
+
+#: capacities
+msgid "musthave_force_3"
+msgstr "L'utilisation requiert un personnage de force 3 ou plus."
+
+#: capacities
+msgid "nobonusattaque"
+msgstr "Tous les bonus procurer par des armes provenant des adversaires sont annulés."
+
+#: capacities
+msgid "nodeplacement"
+msgstr "Ne peut se déplacer ni même par un saut. Le seul déplacement possible est d'utiliser un objet magique types bottes de 7 lieues."
+
+#: capacities
+msgid "noheal"
+msgstr "Le personnage ne peut pas être soigné de quelque façon que ce soit."
+
+#: capacities
+msgid "noherse"
+msgstr "Ne considère pas les herses dans les calculs d'adjacence ou de déplacement."
+
+#: capacities
+msgid "nohurt"
+msgstr "A l'état blessé reste identique à l'état non blessé. Après avoir été blessé deux fois disparaît. Le personnage peut être soigné normalement, mais n'a pas les autres restrictions des blessés (il peut donc être attaqué deux fois dans le même tour)."
+
+#: capacities
+msgid "onlyonce"
+msgstr "L'objet est défaussé après usage."
+
+#: capacities
+msgid "opencloseherse"
+msgstr "Peut fermer ouvrir toutes les herses présentes dans la salle n'étant pas sous anti-magie."
+
+#: capacities
+msgid "ork"
+msgstr "Race ork."
+
+#: capacities
+msgid "outonlycursedobject"
+msgstr "Ne peut sortir qu'avec un objet maudit."
+
+#: capacities
+msgid "ownplacement"
+msgstr "Le propriétaire du pion le place."
+
+#: capacities
+msgid "paralyse"
+msgstr "Peut paralyser un adversaire qui rentre en ligne de vue au prix d'une carte combat."
+
+#: capacities
+msgid "parchemin"
+msgstr "Ne peut être utilisé que par un jeteur de sort."
+
+#: capacities
+msgid "peaceful"
+msgstr "Ne peut attaquer ni participer à un combat en attaque sous quelque force que ce soit."
+
+#: capacities
+msgid "portails"
+msgstr "Permet de créer un portail à partir d'un mur sur une case de sol normal vide dans une salle ne portant pas encore de portail et dirigé vers l'intérieur de la salle. Le joueur adverse doit placer un portail lui aussi en suivant et selon les mêmes règles."
+
+#: capacities
+msgid "potionfight"
+msgstr "Permet de gagner 3 points en attaque ou en défense"
+
+#: capacities
+msgid "prestigious"
+msgstr "Le personnage est prestigieux. Il ramène 2PV en cas de mort et "
+
+#: capacities
+msgid "prophetie"
+msgstr "Peut visualiser une salle non révélée et la repositionner dans le sens souhaitée."
+
+#: capacities
+msgid "protectedaswoman"
+msgstr "Ne peut être attaqué par un personnage masculin non mort-vivant."
+
+#: capacities
+msgid "protectedcursed"
+msgstr "Ne subit pas les objets maudits."
+
+#: capacities
+msgid "protectfromhurt"
+msgstr "En cas d'utilisation, l'objet est défaussé à la place de subit une blessure si le combat est perdu."
+
+#: capacities
+msgid "protectzat"
+msgstr "Protège des rayons du zat."
+
+#: capacities
+msgid "pvadverse"
+msgstr "Donne un point de vie à l'adversaire."
+
+#: capacities
+msgid "pvwhenhit"
+msgstr "Gagne 1PV quand il blesse un personnage. Le personnage ne ramènera aucun point de victoire quand il est tué. Un personnage soigné peut être à nouveau blessé et ramènera à nouveau 1PV."
+
+#: capacities
+msgid "reconstruction"
+msgstr "Permet de reconstruire un objet défaussé durant la partie."
+
+#: capacities
+msgid "regenerater_"
+msgstr "Peut se régénèrer. Ne peut plus agir durant le tour de la régénération"
+
+#: capacities
+msgid "regenerater_5action"
+msgstr "Se régénère automatiquement lorsqu'un carte 4 actions est joué. Le personnage regénéré ne peut agir du rang le tour."
+
+#: capacities
+msgid "regenerater_lave"
+msgstr "Peut se régénèrer s'il est situé sur une case de lave. Ne peut plus agir durant le tour de la régénération"
+
+#: capacities
+msgid "reincarner"
+msgstr "Peut se réincarner sur un personnage blessé adverse. Le personnage est alors remis à l'état valide mais devient de la couleur du spectre. Ne fonctionne que sur les adversaires."
+
+#: capacities
+msgid "removefight"
+msgstr "Peut annuler un combattant adjacent du combat en cours."
+
+#: capacities
+msgid "removepower"
+msgstr "Permet d'annuler tous les pouvoirs d'un personnage. Ce dernier n'a plus aucune caractéristique particulière."
+
+#: capacities
+msgid "repulsion_1_1"
+msgstr "Permet d'effectuer une répulsion magique sur un personnage adjacent."
+
+#: capacities
+msgid "repulsion_2_2"
+msgstr "Permet d'effectuer une répulsion en ligne de vue pour 2PA."
+
+#: capacities
+msgid "resistgrenade"
+msgstr "Protège de la grenade."
+
+#: capacities
+msgid "robery"
+msgstr "Peut voler un objet à un personnage adverse adjacente."
+
+#: capacities
+msgid "sangsuemode"
+msgstr "Peut terminer son déplacement sur un adversaire. A chaque tour passé sur l'adversaire elle peut provoquer un personnage de force 0 contre 0 (la force du personnage n'entre pas en ligne de compte). Si la sangsue gagne ou perd, elle doit se placer sur une case valide adjacente et le personnage est blessé dans le cas d'une victoire."
+
+#: capacities
+msgid "seecombatcard"
+msgstr "Lors d'un combat peut voir la carte combat choisi par l'adversaire."
+
+#: capacities
+msgid "seeelf"
+msgstr "Peut voir les elfes cachées (dans les arbres)."
+
+#: capacities
+msgid "semibeast"
+msgstr "Est une bête lors qu'une carte 5 actions est jouée."
+
+#: capacities
+msgid "septlieues"
+msgstr "Peut effectuer un dépalcement de 10 cases par vol magique."
+
+#: capacities
+msgid "shaper_araignee__1_0"
+msgstr "Peut se transformer en araignée."
+
+#: capacities
+msgid "shaper_boucliercontrefeu__1_0"
+msgstr "Peut se transformer en bouclier contre-feu."
+
+#: capacities
+msgid "shaper_boucliermirroir__1_0"
+msgstr "Peut se transformer en bouclier mirroir."
+
+#: capacities
+msgid "shaper_boucliersylvanite__1_0"
+msgstr "Peut se transformer en bouclier de sylvanite."
+
+#: capacities
+msgid "shaper_chauvesouris__1_0"
+msgstr "Peut se transformer en chauve-souris."
+
+#: capacities
+msgid "shaper_corbeau__1_0"
+msgstr "Peut se transformer en corbeau."
+
+#: capacities
+msgid "shaper_dragonorient__1_0"
+msgstr "Peut se transformer en dragon d'orient. Ne peut plus agir jusqu'à la fin du tour."
+
+#: capacities
+msgid "shaper_gardienneforet__1_0"
+msgstr "Peut se transformer en gardienne de la forêt."
+
+#: capacities
+msgid "shaper_gargouille__0_0"
+msgstr "Peut se transformer en gargouille pour 0PA."
+
+#: capacities
+msgid "shaper_grandbouclier__1_0"
+msgstr "Peut se transformer en grand bouclier."
+
+#: capacities
+msgid "shaper_kirin__1_0"
+msgstr "Peut se transformer en Kirin. Ne peut plus agir jusqu'à la fin du tour."
+
+#: capacities
+msgid "shaper_loup__1_0"
+msgstr "Peut se transformer en loup."
+
+#: capacities
+msgid "shaper_objectcurrent_object-blesse_1_2"
+msgstr "Peut transformer un objet ou un blessé en ligne de vue en objet courant."
+
+#: capacities
+msgid "shaper_ours__1_0"
+msgstr "Peut se transformer en ours."
+
+#: capacities
+msgid "shaper_outrepleine_fountain_1_0"
+msgstr "Peut se remplir lorsqu'adjacent à une fontaine."
+
+#: capacities
+msgid "shaper_outrevide_blesse_1_0"
+msgstr "Peut être utilisé par un blessé pour se soigner."
+
+#: capacities
+msgid "shaper_pavois__1_0"
+msgstr "Peut se transformer en pavois."
+
+#: capacities
+msgid "shaper_piege_empty_1_0"
+msgstr "Peut se transformer en piège-vivant."
+
+#: capacities
+msgid "shaper_reinearachnide__1_0"
+msgstr "Peut se transformer en reine arachnide."
+
+#: capacities
+msgid "shaper_statue__1_0"
+msgstr "Peut se transformer en statue."
+
+#: capacities
+msgid "shaper_vampire__1_0"
+msgstr "Peut se transformer en statue."
+
+#: capacities
+msgid "shield"
+msgstr "Bouclier : Peut être utilisé pour passer sous les chuttes de pierre et immunise au pouvoir du basilic."
+
+#: capacities
+msgid "shooter_1_1_0_"
+msgstr "Peut effectuer un tir de force 1 autant de fois par tour qu'il le souhaite."
+
+#: capacities
+msgid "shooter_1_2_0_eau"
+msgstr "Peut effectuer un tir de force 2 autant de fois par tour qu'il le souhaite."
+
+#: capacities
+msgid "shooter_1_2_0_"
+msgstr "Peut effectuer un tir de force 2 autant de fois qu'il le souhaite dans le tour."
+
+#: capacities
+msgid "shooter_1_2_1_"
+msgstr "Peut effectuer un tir de force 2 une fois par tour."
+
+#: capacities
+msgid "shooter_1_2_1_longview2"
+msgstr "Peut effectuer une attaque de force 2 une fois par tour comme s'il était situé dans un arbre."
+
+#: capacities
+msgid "shooter_1_3_1_"
+msgstr "Peut effectuer un tir de force 3 une fois par tour."
+
+#: capacities
+msgid "shooter_1_4_1_vermine-undead-beast"
+msgstr "Peut effectuer un tir de force 4 contre la vermine, les mort-vivants et les bêtes une fois par tour."
+
+#: capacities
+msgid "singintherain"
+msgstr "Permet de chanter singing in the rain qui brise toutes les herses de la salle."
+
+#: capacities
+msgid "slowattacker"
+msgstr "Oblige un attaquant à dépenser 1PA de plus pour l'attaquer."
+
+#: capacities
+msgid "soinszombie"
+msgstr "Peut soigner un zombie. Le zombie peut agir normalement immédiatemment."
+
+#: capacities
+msgid "spellcaster"
+msgstr "Jeteur de sort. Peut utiliser les parchemins."
+
+#: capacities
+msgid "stayinside"
+msgstr "Ne peut sortir du donjon sur une réglette adverse."
+
+#: capacities
+msgid "stayonfosse"
+msgstr "Peut stationner sur les fosses. Peut aider les personnages à traverser les fosses."
+
+#: capacities
+msgid "stopout"
+msgstr "Empêche tous les personnages de sortir du labyrinthe jusqu'à la fin du tour."
+
+#: capacities
+msgid "stoprocher"
+msgstr "Bloque le roulement des rochers."
+
+#: capacities
+msgid "storeactions"
+msgstr "Stocke les actions en vue d'une utilisation future. Ne peut pas être cumulé sur plusieurs tours."
+
+#: capacities
+msgid "tail"
+msgstr "Peut faire apparaître sa queue sur une case adjacente pour l'utiliser pour les combats. Peut ensuite la faire disparaître pour 0PA ou encore effectuer un fouissage (c'est à dire la tête prend la place de la queue et la queue est disparaît)."
+
+#: capacities
+msgid "techniqueninjutsu"
+msgstr "Peut être utilisé pour se déplacer sur une case adjacente à l'issu d'un combat où aucune carte +0 n'a été joué. Si le joueur dépense 1PA. Il peut se déplacer aussi derrière une grille. Si utilisé pendant le tour adverse, le PA sera retiré du prochain tour."
+
+#: capacities
+msgid "telekinesy"
+msgstr "Peut déplacer un objet à distance de 5 cases à l'aide d'un vol magique"
+
+#: capacities
+msgid "teleportation"
+msgstr "Peut se téléporter magiquement sur une case valide vide d'une salle adjacente."
+
+#: capacities
+msgid "transfert"
+msgstr "Peut échanger sa position avec une position en ligne de vue. Les objets sont aussi transférées."
+
+#: capacities
+msgid "trollkiller"
+msgstr "Empêche la régénération des trolls après une victoire en combat."
+
+#: capacities
+msgid "tuevermine"
+msgstr "Tue immédiatemment une vermine ciblée."
+
+#: capacities
+msgid "twist"
+msgstr "Peut effectuer un twist sur la salle en cours sans être nécessairement sur le twist."
+
+#: capacities
+msgid "twister"
+msgstr "Peut twister la salle et sa jumelle dans les deux sens."
+
+#: capacities
+msgid "twistfree"
+msgstr "Peut effectuer autant de twist que souhaité sur la salle sans être sur le twist."
+
+#: capacities
+msgid "twistwhatever"
+msgstr "Pour 1PA et une carte combat permet de twister n'importe quelle salle du donjon."
+
+#: capacities
+msgid "ultragravite"
+msgstr "Empêche tout vol dans la salle."
+
+#: capacities
+msgid "undead"
+msgstr "Race mort-vivant : subit la croix sainte, ne peut entrer dans les salles sacrées volontairement (et y meurt s'il s'y retrouve)."
+
+#: capacities
+msgid "useincombat"
+msgstr "Peut être utilisé durant un combat"
+
+#: capacities
+msgid "valueless"
+msgstr "Ne rapporte pas de PV quand il est tué."
+
+#: capacities
+msgid "vermine"
+msgstr "Race vermine : subit les verminophages et peut se cacher dans les trous à vermine."
+
+#: capacities
+msgid "visible"
+msgstr "Lors de la phase de placement, le pion est visible."
+
+#: capacities
+msgid "walker_arbre_object_1"
+msgstr "Peut traverser les arbres sans avoir à s'y arrêter."
+
+#: capacities
+msgid "walker_chutespierre_object_1"
+msgstr "Peut traverser les chuttes de pierre sans encombre."
+
+#: capacities
+msgid "walker_eau_object_1"
+msgstr "Peut traverser les cases d'eau en portant des objets et sans avoir à s'y arrêter, mais ne peut stationner dans l'eau avec des objets."
+
+#: capacities
+msgid "walker_fosse_object_1"
+msgstr "Peut traverser les fosses."
+
+#: capacities
+msgid "walker_lave_noobject_1"
+msgstr "Peut traverser la lave mais sans porter d'objet."
+
+#: capacities
+msgid "walker_tenebres-tenebresmagiques_object_0"
+msgstr "Peut se déplacer d'une case ténèbres à une case ténèbres sans consommer de point de déplacement."
+
+#: capacities
+msgid "walker_tenebres-tenebresmagiques_object_1"
+msgstr "Peut se déplacer vers une case ténèbres."
+
+#: capacities
+msgid "walker_tenebres-tenebresmagiques_object_2"
+msgstr "Peut se déplacer vers une case ténèbres au coût de 2 points de déplacement."
+
+#: capacities
+msgid "walker_eau_noobject_1"
+msgstr "Peut traverser les cases d'eau sans porter des objets."
+
+#: capacities
+msgid "wallmarker_1_vide-murbrise_toile_1_3"
+msgstr "Peut placer un marqueur toile sur un mur brisé ou une zone sans mur dans une limite de 3 par parties."
+
+#: capacities
+msgid "wallmarker_1_herse_hersebrisee_1_-1"
+msgstr "Peut briser une herse."
+
+#: capacities
+msgid "wallmarker_1_herse_herseouverte_1_-1"
+msgstr "Peut ouvrir une herse."
+
+#: capacities
+msgid "wallmarker_1_herseouverte_herse_1_-1"
+msgstr "Peut fermer une herse."
+
+#: capacities
+msgid "wallmarker_1_mur-meurtriere-cle-torche-passagesecret_murbrise_1_3"
+msgstr "Peut briser un mur dans une limite de 3 par parties."
+
+#: capacities
+msgid "wallmarker_1_mur-meurtriere-cle-torche-passagesecret_murbrise_2_2"
+msgstr "Peut briser un mur dans une limite de 2 par parties et pour 2PA."
+
+#: capacities
+msgid "wallmarker_2_herse_hersebrisee_1_-1"
+msgstr "Peut briser une herse pour 2PA."
+
+#: capacities
+msgid "wallwalker"
+msgstr "Peut traverser un mur. Il s'agit d'une action à part complète."
+
+#: capacities
+msgid "wandering"
+msgstr "Ne peut faire qu'un seul déplacement par tour."
+
+#: capacities
+msgid "weak_"
+msgstr "Meurt immédiatemment en cas de défaite en combat."
+
+#: capacities
+msgid "werewolf"
+msgstr "Se transforme en loup-garoou lors que la carte 4 actions est joué. La force est alors augmentée de 2."
+
+#: capacities
+msgid "withdrawpvwhenkill"
+msgstr "Retire des PV à l'adversaire quand tue un personnage adverse en combat au lieu de ramener un PV."
+
+#: capacities
+msgid "with_menottes_own"
+msgstr "Démarre la partie avec des menottes de sa couleur"
+
+#: capacities
+msgid "with_tresor_neutral"
+msgstr "Démarre la partie avec un trésor neutre."
+
+#: capacities
+msgid "woman"
+msgstr "Le personnage est une femme."
+
+#: capacities
+msgid "yang"
+msgstr "Suit la voix du yang."
+
+#: capacities
+msgid "yin"
+msgstr "Suit la voix du yin."
+
+#: capacities
+msgid "zathurt"
+msgstr "Effectue un tir à pleine puissance avec le Zat. Si le tireur est tilk, alors il s'agit d'un kill direct, sinon il s'agit d'une blessure."
+
+#: capacities
+msgid "room_categorie_eau"
+msgstr "Cette salle contient de l'eau."
+
+#: capacities
+msgid "room_categorie_lave"
+msgstr "Cette salle contient de la lave."
+
+#: capacities
+msgid "room_categorie_tenebres"
+msgstr "Cette salle contient des ténèbres."
+
+#: capacities
+msgid "room_categorie_arbre"
+msgstr "Cette salle contient des arbres."
+
+#: capacities
+msgid "room_categorie_fontaine"
+msgstr "Cette salle contient une fontaine."
+
+#: capacities
+msgid "room_categorie_neige"
+msgstr "Cette salle contient de la neige."
+
+#: capacities
+msgid "room_categorie_pente"
+msgstr "Cette salle contient des pentes."
+
+#: capacities
+msgid "room_categorie_rocher"
+msgstr "Cette salle contient un rocher."
+
+#: capacities
+msgid "room_categorie_sacre"
+msgstr "Cette salle contient des cases sacrés."
+
+#: capacities
+msgid "room_categorie_torche"
+msgstr "Cette salle contient une(des) torche(s)."
+
+#: capacities
+msgid "room_categorie_tombe"
+msgstr "Cette salle contient des tombes."
+
+#: capacities
+msgid "room_categorie_bibliotheque"
+msgstr "Cette salle contient une bibliothèque."
+
+#: capacities
+msgid "room_categorie_antimagie"
+msgstr "Cette salle est anti-magie."
+
+#: capacities
+msgid "room_categorie_brume"
+msgstr "Cette salle contient de la brume."
+
+#: capacities
+msgid "room_categorie_forge"
+msgstr "Celle salle contient une(des) forge(s)."
+
+#: capacities
+msgid "room_categorie_ultragravite"
+msgstr "Cette salle est sous ultra-gravité."
+
+#: capacities
+msgid "room_categorie_pentacle"
+msgstr "Cette salle contient un pentacle."
+
+#: capacities
+msgid "room_categorie_armurerie"
+msgstr "Celle salle contient une(des) armurerie(s)."
+
+#: capacities
+msgid "room_categorie_passagesecret"
+msgstr "Celle salle contient des passages secrets elfiques."
+
+#: capacities
+msgid "room_categorie_meurtriere"
+msgstr "Celle salle contient des meurtrières."
+
+#: capacities
+msgid "room_categorie_corde"
+msgstr "Celle salle contient des lianes-cordes."
+
+#: capacities
+msgid "room_categorie_cle"
+msgstr "Celle salle contient une(des) clé(s)."
+
+#: capacities
+msgid "room_categorie_rail"
+msgstr "Celle salle contient des rails."
+
+#: capacities
+msgid "room_categorie_vermine"
+msgstr "Celle salle est faites pour les vermines."
 
 #~ msgid "USER_PRIMARY_COLOR"
 #~ msgstr "Couleur 1"

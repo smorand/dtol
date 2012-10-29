@@ -22,6 +22,7 @@ class TeamController(CommonController):
 			{ 'pattern': r'^teams/constraints/save$', 'method': 'saveteamsconstraint' },
 			{ 'pattern': r'^teams/create$', 'method': 'create' },
 			{ 'pattern': r'^teams/edit/([0-9]+)$', 'method': 'edit' },
+			{ 'pattern': r'^spawn/help/(character|object|room)/([0-9]+)$', 'method': 'help' },
 		]
 
 	def list(self, request):
@@ -234,6 +235,8 @@ class TeamController(CommonController):
 				capinfo = cap.name.split('_')
 				if capinfo[0] == 'walker' or capinfo[0] == 'biendans':
 					capacities.append('%s_%s' % (capinfo[0], capinfo[1]))
+				elif cap.name.find('regenerater') > 0:
+					capacities.append(capinfo[0])
 				else:
 					capacities.append(capinfo[0])
 			if 'spellcaster' in capacities: sp['filters'].append('spellcaster')
@@ -258,15 +261,13 @@ class TeamController(CommonController):
 				'extensions': '-'.join([ str(e.id) for e in c.extensions.all() ]),
 				'filters': []
 			}
-			capacities = list()
-			for cap in c.capacities():
-				capacities.append(capinfo[0])
+			capacities = [ cap.name for cap in c.capacities() ]
 			if 'current' in capacities: sp['filters'].append('current')
 			if 'magical' in capacities: sp['filters'].append('magical')
 			if 'parchemin' in capacities: sp['filters'].append('parchemin')
-			if 'categorie_arme' in capacities: sp['filters'].append('categorie_armeprestigious')
+			if 'categorie_arme' in capacities: sp['filters'].append('categorie_arme')
 			if 'shield' in capacities: sp['filters'].append('shield')
-			if 'categorie_powerful' in capacities: sp['filters'].append('categorie_powerful')
+			if 'categorie_puissant' in capacities: sp['filters'].append('categorie_puissant')
 			if 'antifountain' in capacities: sp['filters'].append('antifountain')
 			if 'cursed' in capacities: sp['filters'].append('cursed')
 			sp['filters'] = '-'.join(sp['filters'])
@@ -282,19 +283,40 @@ class TeamController(CommonController):
 			if 'tenebres' in capacities: sp['filters'].append('tenebres')				
 			if 'eau' in capacities: sp['filters'].append('eau')
 			if 'lave' in capacities: sp['filters'].append('lave')
-			if 'fountain' in capacities: sp['filters'].append('fountain')
+			if 'fontaine' in capacities: sp['filters'].append('fontaine')
 			if 'pente' in capacities: sp['filters'].append('pente')
 			if 'neige' in capacities: sp['filters'].append('neige')
 			if 'brume' in capacities: sp['filters'].append('brume')
 			if 'arbre' in capacities: sp['filters'].append('arbre')
+			if 'torche' in capacities: sp['filters'].append('torche')
 			sp['filters'] = '-'.join(sp['filters'])
 			rooms.append(sp)
 		return self.templates.response('team.edit', context={
 			'extensions': extensions, 
 			'characters': characters,
 			'objects': objects,
-			'rooms': rooms
+			'rooms': rooms,
+			'spawncolor': request.session['user'].primarycolor
 		})
+	
+	def help(self, request, stype, sid):
+		c = {}
+		if stype == 'character':
+			spawn = self.spawnManager.getCharacter(sid)
+			c['name'] = spawn.name
+			c['force'] = spawn.force
+			c['deplacement'] = spawn.deplacement
+			c['capacities'] = [ cap.name for cap in spawn.capacities() ]
+		elif stype == 'object':
+			spawn = self.spawnManager.getObject(sid)
+			c['name'] = spawn.name
+			c['capacities'] = [ cap.name for cap in spawn.capacities() ]
+		elif stype == 'room':
+			spawn = self.spawnManager.getRoom(sid)
+			c['name'] = str(spawn.number) + ' sens ' + ('horaire' if spawn.rotation == 1 else 'anti-horaire')
+			c['capacities'] =  [ 'room_categorie_%s' % (cap.name) for cap in spawn.categories.all() ]
+		return self.templates.response('spawnhelp', c) 
+		
 	
 	def update(self, request):
 		return self.templates.underConstruction()

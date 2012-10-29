@@ -27,6 +27,7 @@ var touchOS = ('ontouchstart' in document.documentElement) ? true : false;
 var iOS = (navigator.platform.indexOf("iPhone") != -1) || (navigator.platform.indexOf("iPad") != -1) ? true : false;
 var android = (agent.indexOf("android") != -1) || (!iOS && !otherBrowser && touchOS && mobileOS) ? true : false;
 var tablettepc = mobileOS || touchOS || iOS || android;
+
 /**
  * Temporary variables
  */
@@ -225,6 +226,8 @@ $.imagePreload = function(url, fnc) {
             progressbarDialog.create({ title: 'Chargement en cours ...', content: '<div id="progressbar" class="progressbar"></div>', width: '350px' });
             $('#progressbar').progressbar({ value: val });
             if (imageToPreload == 0) {
+            	$('[name=menubutton]').attr('class', 'dtmenu');
+            	$('#menu_' + currentMenu).addClass('dtmenuselected');
                 fnc();
             }
         });
@@ -248,8 +251,11 @@ $.runPreloading = function(fnc) {
         imgLoader = new Array();
         imgSrc = new Array();
     } else {
+    	$('[name=menubutton]').attr('class', 'dtmenu');
+    	$('#menu_teams').addClass('dtmenuselected');
         fnc();
     }
+
 }
 /**
  * Display the dungeon in the current element. If the element is not a canvas, nothing is done

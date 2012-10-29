@@ -128,4 +128,5 @@ insert into dt_floors (id, name, walkable, ftype, lineofsight, marker) values (1
 insert into dt_floors (id, name, walkable, ftype, lineofsight, marker) values (116, 'rail', 1, 1, 1, 0);
 insert into dt_floors (id, name, walkable, ftype, lineofsight, marker) values (117, 'cellulemutant', 1, 0, 1, 0);
 insert into dt_floors (id, name, walkable, ftype, lineofsight, marker) values (118, 'croixsainte', 0, 3, 2, 0);
+insert into dt_floors (id, name, walkable, ftype, lineofsight, marker) values (119, 'piegeouvert', 0, 3, 2, 0);
 

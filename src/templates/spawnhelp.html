@@ -1,0 +1,18 @@
+<!-- This file is covered by the GNU Public Licence v3 licence. See http://www.gnu.org/licenses/gpl.txt -->
+{% load i18n %}
+<input type="hidden" value="{% trans name %}" id="spawnhelpname"/>
+<ul>
+{% if force %}
+	<li>{% trans "SPAWN_FORCE" %}: {{force}}</li>
+{% endif %} 
+{% if deplacement %}
+	<li>{% trans "SPAWN_DEPLACEMENT" %}: {{deplacement}}</li>
+	<br/>
+{% endif %}
+ </ul>
+{% trans "SPAWN_CAPACITIES" %}:
+ <ul>
+{% for capacity in capacities %}
+	<li>{% trans capacity %}</li>
+{% endfor %}
+</ul>

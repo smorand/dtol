@@ -35,14 +35,14 @@
 			</div>
 		</div>
 		<div id="menubutton" class="menu">
-			<button type="button" class="dtmenu" id="menu_challenges" onclick="load_automenu(this)">{% trans "CHALLENGES" %}</button>
-			<button type="button" class="dtmenu" id="menu_tournaments" onclick="load_automenu(this)">{% trans "TOURNAMENTS" %}</button>
-			<button type="button" class="dtmenu" id="menu_teams" onclick="load_automenu(this)">{% trans "TEAMS" %}</button>
-			<button type="button" class="dtmenu" id="menu_statistics" onclick="load_automenu(this)">{% trans "STATISTICS" %}</button>
-			<button type="button" class="dtmenu" id="menu_profile" onclick="load_automenu(this)">{% trans "PROFILE" %}</button>
-			<button type="button" class="dtmenu" id="menu_admin" onclick="load_automenu(this)">{% trans "ADMIN" %}</button>
-			<button type="button" class="dtmenu" id="menu_admin" onclick="togglechat()">{% trans "CHAT" %}</button>
-			<button type="button" class="dtmenu" id="menu_logout" onclick="load_automenu(this)">{% trans "LOGOUT" %}</button>
+			<button name="menubutton" type="button" class="dtmenu" id="menu_challenges" onclick="load_automenu(this)">{% trans "CHALLENGES" %}</button>
+			<button name="menubutton" type="button" class="dtmenu" id="menu_tournaments" onclick="load_automenu(this)">{% trans "TOURNAMENTS" %}</button>
+			<button name="menubutton" type="button" class="dtmenu" id="menu_teams" onclick="load_automenu(this)">{% trans "TEAMS" %}</button>
+			<button name="menubutton" type="button" class="dtmenu" id="menu_statistics" onclick="load_automenu(this)">{% trans "STATISTICS" %}</button>
+			<button name="menubutton" type="button" class="dtmenu" id="menu_profile" onclick="load_automenu(this)">{% trans "PROFILE" %}</button>
+			<button name="menubutton" type="button" class="dtmenu" id="menu_admin" onclick="load_automenu(this)">{% trans "ADMIN" %}</button>
+			<button name="menubutton" type="button" class="dtmenu" id="menu_admin" onclick="togglechat()">{% trans "CHAT" %}</button>
+			<button name="menubutton" type="button" class="dtmenu" id="menu_logout" onclick="load_automenu(this)">{% trans "LOGOUT" %}</button>
 		</div>
 		<div id="content" class="content"></div>
 
@@ -52,10 +52,18 @@
 		<div class="translation" id="translation-ACTION_IN_PROGRESS">{% trans "ACTION_IN_PROGRESS" %}</div>
 		<div class="translation" id="translation-LOAD_USER">{% trans "LOAD_USER" %}</div>
 		<div class="translation" id="translation-LOADING">{% trans "LOADING" %}</div>
+		<div class="translation" id="translation-LOADING_SPAWN">{% trans "LOADING_SPAWN" %}</div>
+		<div class="translation" id="translation-NO_SPAWN_SELECTED">{% trans "NO_SPAWN_SELECTED" %}</div>
+		<div class="translation" id="translation-HELP_TITLE">{% trans "HELP_TITLE" %}</div>
+		<div class="translation" id="translation-CURRENT_TEAM">{% trans "CURRENT_TEAM" %}</div>
+		<div class="translation" id="translation-TEAM_SAVE">{% trans "TEAM_SAVE" %}</div>
 		<div id="dialog_sponsor">
 			{% trans "EMAIL_TO_SPONSOR" %} <input type="text" id="sponsor_email" size="20"/>
 		</div>
-
+		<div style="display:none;">
+			<div id="actionsdialog" title=""></div>
+			<div id="teamsdialog" title=""></div>
+		</div>
 	</body>
 
 </html>

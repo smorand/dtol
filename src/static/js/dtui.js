@@ -1,6 +1,12 @@
 /**
  * This file is covered by the GNU Public Licence v3 licence. See http://www.gnu.org/licenses/gpl.txt
  */
+
+/**
+ * Variables
+ */
+var currentMenu = '';
+
 /**
  * Log function
  * @param msg Message to log
@@ -108,6 +114,7 @@ function load_menu(menuInfo) {
 	method = menuName
 	$('.dtmenu').removeClass('dtmenuselected');
 	$('#menu_' + menuName).addClass('dtmenuselected');
+	currentMenu = method;
 	var toLoad = "load_" + method + "('" + args + "')";
 	eval(toLoad);
 }
@@ -551,7 +558,9 @@ function recvChat() {
 			}
 			var autoscroll = firstScroll || chat.scrollTop+chat.offsetHeight >= chat.scrollHeight-5;
 			firstScroll = false;
-			chat.innerHTML += messages[2].trim();
+			if (messages[2]) {
+				chat.innerHTML += messages[2].trim();
+			}
 			if (autoscroll == true) {
 				chat.scrollTop = chat.scrollHeight + chat.offsetHeight;
 			}
@@ -605,34 +614,199 @@ function saveconstraintdata() {
 /**
  * Runfilter for team creation
  */
-function runcreateteamfilter() {
+var spawnSelected = new Array();
+function runcreateteamfilter(typin) {
+	var directory = 'spawns';
+	var fileext = '.png';
 	var typ = $('#radio-spawnstypes').val();
+	if (typin) typ = typin;
 	if (typ == 1) {
 		typ = 'character';
 	} else if (typ == 2) {
 		typ = 'object';
 	} else if (typ == 3) {
 		typ = 'room';
+		directory = 'rooms';
+		fileext = '.jpg';
 	}
 	
 	var exts = new Array();
 	$('.extensionlogo-selected').each(function(i,e) {
-		alert($(e).attr('id').split('_')[1]);
 		exts[exts.length] = $(e).attr('id').split('_')[1];
 	});
-	
-	for (i = 0; i < createTeamElements[typ+'s'].length; i++) { var spawn = createTeamElements[typ+'s'][i];
-		var found = 0;
-		for (e = 0; e < spawn.extensions.length; e++) {
-			alert(spawn.extensions[e]);
-			if ($.inArray(spawn.extensions[e], exts)) {
-				found = 1;
-				break;
+
+	spawnSelected = new Array();
+	if (exts.length > 0) {
+		$('#teamspawndisplay').html('<center><img src="/static/images/interface/loading.gif"/><br/>' + translate("LOADING_SPAWN") + '</center>');
+		// check filter selected none => all, one or several => only these one
+		var filters = $('div.filter_'+typ+ ' > a');
+		var filterslist = new Array();
+		for (var i in filters) {
+			a = filters[i];
+			if (a.href) {
+				if ($(a).find('img').attr('src').indexOf('checkbox-checked') > 0) {
+					filterslist[filterslist.length] = a.id.replace('filter_', '');
+				}
 			}
 		}
-		if (found) {
-			alert(spawn['name']);
+		// check spawn to select
+		for (i = 0; i < createTeamElements[typ+'s'].length; i++) { var spawn = createTeamElements[typ+'s'][i];
+			var found = 0;
+			var e = 0;
+			var f = 0;
+			for (e = 0; e < spawn.extensions.length; e++) {
+				for (f = 0; f < exts.length; f++) {
+					if (spawn.extensions[e] == exts[f]) {
+						found = 1;
+						break;
+					}
+				}
+				if (found) break;
+			}
+			if (found) {
+				var checkfilter = 0;
+				// Check deplacement and force for characters
+				if (typ == 'character') {
+					var val = parseInt($('#depmin').val())
+					if (val != Number.NaN && spawn['deplacement'] < val) continue;
+					var val = parseInt($('#depmax').val())
+					if (val != Number.NaN && spawn['deplacement'] > val) continue;
+					var val = parseInt($('#forcemin').val())
+					if (val != Number.NaN && spawn['force'] < val) continue;
+					var val = parseInt($('#forcemax').val())
+					if (val != Number.NaN && spawn['force'] > val) continue;
+				}
+				if (filterslist.length > 0) {
+					for (var f in filterslist) {
+						for (var c in spawn['filters']) {
+							if (spawn['filters'][c] == filterslist[f]) {
+								checkfilter = 1;
+								break;
+							}
+						}
+						if (checkfilter == 1) break;
+					}
+				} else {
+					checkfilter = 1;
+				}
+				if (checkfilter == 1) {
+					spawnSelected[spawnSelected.length] = { url: graphicsPack + '/static/images/' + directory + '/' + spawn['name'] + fileext, spawn: spawn };
+					$.imagePreload(spawnSelected[spawnSelected.length-1]['url'], function() {createTeamDisplaySpawn(typ, spawnSelected);});
+				}
+			}
 		}
 	}
 	
+	if (spawnSelected.length > 0) {
+		progressbarDialog = new Dialog('dialog_progressbar');
+		$.runPreloading(function() {createTeamDisplaySpawn(typ, spawnSelected);});
+	} else {
+		$('#teamspawndisplay').html('<center><img src="/static/images/interface/forbidden.gif"/><br/>' + translate("NO_SPAWN_SELECTED") + '</center>');
+	}
+}
+
+/** Appelée quand la sélection des pions est effectuée et que les pions sont chargés pour l'affichage. Utilise spawnSelected */
+function createTeamDisplaySpawn(typ, spawnSelected) {
+	var i = 0;
+	var content = '';
+	for (i = 0; i < spawnSelected.length; i++) {
+		if (typ == 'room') {
+			content += '<div class="iconcontainer"><img height="200" width="200" src="' + spawnSelected[i]['url'] + '" border="0" class="pointer" onclick="selectionTeamSpawn(\'' + typ + '\', \'' + spawnSelected[i]['spawn']['name'] + '\', ' + spawnSelected[i]['spawn']['id'] + ')"/></div>';
+		} else {
+			content += '<div class="iconcontainer"><img height="80" width="80" src="' + spawnSelected[i]['url'] + '" border="0" class="pointer zindex2" style="position: absolute;" onclick="selectionTeamSpawn(\'' + typ + '\', \'' + spawnSelected[i]['spawn']['name'] + '\', ' + spawnSelected[i]['spawn']['id'] + ')"/><img height="80" width="80" class="zindex1" src="/static/images/spawns/fond-' + $('#spawncolor').val() + '.png" border="0" class="pointer"/></div>';
+		}
+	}
+	$('#teamspawndisplay').html(content);
+	progressbarDialog.destroy();
+}
+
+/** Bascule le mode aide */
+var displayHelp = 0;
+function toggleHelp() {
+	if (displayHelp == 0) {
+		$('#togglehelp').attr('src', '/static/images/interface/help.png');
+		displayHelp = 1;
+	} else {
+		$('#togglehelp').attr('src', '/static/images/interface/helpno.png');
+		displayHelp = 0;
+	}
+}
+
+/** Sélection d'un pion d'équipe */
+function selectionTeamSpawn(typ, name, id) {
+	if (typ == 'room') name = name.split('-')[0];
+	if (displayHelp == 1) {
+		$('#actionsdialog').html('');
+		$.get('/spawn/help/' + typ + '/' + id, function(content) {
+			$('#actionsdialog').html(content);
+			$('#actionsdialog').dialog({
+				autoOpen: true,
+				width: 300,
+				title: translate('HELP_TITLE') + "&nbsp;-&nbsp;" + $('#spawnhelpname').val()  
+			});
+		});
+	} else {
+		$('#panier_'+typ+'s').val($('#panier_'+typ+'s').val() +id+'_'+name+',');
+	}
+	teamContent();
+}
+
+/** Mets à jour le contenu de l'équipe */
+function unselectionTeamSpawn(typ, name) {
+	var spawns_str = $('#panier_'+typ+'s').val();
+	var newval = '';
+	var spawncount = 0;
+	if (spawns_str.length > 0) {
+		var spawns = spawns_str.split(',');
+		for (var c in spawns) { var spawn = spawns[c];
+			if (spawn.length > 0 && spawn != name) {
+				newval += spawn + ',';
+			}
+		}
+		$('#team_'+typ+'scount').html(spawncount)
+	}
+	$('#panier_'+typ+'s').val(newval);
+	teamContent();
+}
+
+/** Mets à jour le contenu de l'équipe */
+function teamContent() {
+	var types = new Array();
+	types[types.length] = 'character';
+	types[types.length] = 'object';
+	types[types.length] = 'room';
+	var content = '';
+	var atleastonespawn = 0;
+	for (var t in types) { var typ = types[t];
+		var spawns_str = $('#panier_'+typ+'s').val();
+		var spawncount = 0;
+		if (spawns_str.length > 0) {
+			var spawns = spawns_str.split(',');
+			for (var c in spawns) { var spawn = spawns[c];
+				if (spawn.length > 0) {
+					atleastonespawn = 1;
+					spawncount++;
+					var info = spawn.split('_');
+					if (typ == 'room') {
+						content += '<div class="iconcontainer"><img height="150" width="150" src="/static/images/rooms/' + info[1] + '-1.jpg" border="0" class="pointer" onclick="unselectionTeamSpawn(\'' + typ + '\', \'' + spawn + '\')"/></div><div class="iconcontainer"><img height="150" width="150" src="/static/images/rooms/' + info[1] + '-2.jpg" border="0" class="pointer" onclick="unselectionTeamSpawn(\'' + typ + '\', \'' + spawn + '\')"/></div>';
+					} else {
+						content += '<div class="iconcontainer"><img height="80" width="80" src="/static/images/spawns/' + info[1] + '.png" border="0" class="pointer zindex2" style="position: absolute;" onclick="unselectionTeamSpawn(\'' + typ + '\', \'' + spawn + '\')"/><img height="80" width="80" class="zindex1" src="/static/images/spawns/fond-' + $('#spawncolor').val() + '.png" border="0" class="pointer"/></div>';
+					}
+				}
+			}
+		}
+		$('#team_'+typ+'scount').html(spawncount)
+		content += '<hr/>';
+	}
+	if (atleastonespawn == 1) content += '<button class="dtbutton" onclick="saveTeam()">' + translate('TEAM_SAVE') + '</button>';
+	$('#teamsdialog').html(content);
+}
+
+/** Monter l'équipe sélectionné */
+function showTeam() {
+	$('#teamsdialog').dialog({
+		autoOpen: true,
+		width: 830,
+		title: translate('CURRENT_TEAM')  
+	});	
 }

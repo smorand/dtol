@@ -12,7 +12,7 @@ class TournamentController(CommonController):
 	
 	def _geturls(self):
 		return [
-			{ 'pattern': r'^tournaments$', 'method': 'list' },
+			{ 'pattern': r'^tournaments$', 'method': 'list', 'right': 'connected' },
 		]
 
 	def list(self, request):

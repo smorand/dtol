@@ -5,8 +5,26 @@
 <button class="dtbutton" onClick="load_teamcreate()">{% trans "CREATE_TEAM" %}</button>&nbsp;<button class="dtbutton" onClick="load_teamsconstraints()">{% trans "LIST_CONSTRAINT_TEAM" %}</button>
 <br/><br/>
 
-<ul>
-{% for team in teams %}
-	<a href="javascript:loadTeam({{ team.id }}); void(0);" class="teamlist"><img id="teamimg_{{ team.id }}" border="0" src="/images/interface/treeplus.gif"/>&nbsp;{{ team.name }}&nbsp;- {{ team.modification }}</a>&nbsp;<a href="javascript:delTeam({{ team.id }}); void(0);" class="teamlist"><img border="0" src="/images/interface/ko.gif"/></a>	
-{% endfor %}
-</ul>
+<center>
+	<table class="data">
+		<tr>
+			<th>{% trans "TEAMS_NAME" %}</th>
+			<th>{% trans "TEAMS_CHARACTERS_COUNT" %}</th>
+			<th>{% trans "TEAMS_OBJECTS_COUNT" %}</th>
+			<th>{% trans "TEAMS_ROOMS_COUNT" %}</th>
+			<th>&nbsp;</th>
+		</tr>
+	{% for team in teams %}
+		<tr>
+			<td class="data{% cycle 1 2 %}">{{ team.name }}</td>
+			<td class="data{% cycle 1 2 %}">{{ team.characters.all.count }}</td>
+			<td class="data{% cycle 1 2 %}">{{ team.objs.all.count }}</td>
+			<td class="data{% cycle 1 2 %}">{% widthratio team.rooms.all.count 2 1 %}</td>
+			<td class="data{% cycle 1 2 %}">
+				<img border="0" src="/static/images/interface/edit.gif" class="pointer" onclick="load_teamedit({{ team.id }})"/>	
+				<img border="0" src="/static/images/interface/ko.gif" class="pointer" onclick='delTeam("{{ team.name }}", {{ team.id }})'/>
+			</td>
+		</tr>
+	{% endfor %}
+	</table>
+</center>

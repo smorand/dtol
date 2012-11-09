@@ -12,7 +12,7 @@ class ChallengeController(CommonController):
 	
 	def _geturls(self):
 		return [
-			{ 'pattern': r'^challenges$', 'method': 'list' },
+			{ 'pattern': r'^challenges$', 'method': 'list', 'right': 'connected' },
 		]
 
 	def list(self, request):

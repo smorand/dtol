@@ -145,15 +145,15 @@ def run_controller(request, *kargs, **kwargs):
 			right = kwargs['right']
 		else:
 			kwargsremain[key] = val
-	if not controller in controllersmap.keys():
+	if controller not in controllersmap.keys():
 		controllersmap[controller] = ApplicationContext.get_object(controller)
 	controllerObj = controllersmap[controller]
 	try:
-		if right != None and request.session.get(right, default=None) == None:
+		if right is not None and request.session.get(right, default=None) is None:
 			tpl = templates.forbidden()
 		else:
 			tpl = controllerObj.prehandle(request)
-			if tpl == None:
+			if tpl is None:
 				tpl = getattr(controllerObj, method)(request, *kargs, **kwargsremain)
 				controllerObj.posthandle(request, tpl)
 	except Exception as exc:

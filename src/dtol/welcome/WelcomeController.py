@@ -22,18 +22,18 @@ class WelcomeController(CommonController):
 		return [
 			{ 'pattern': '^/?$', 'method': 'index' },
 			{ 'pattern': '^welcome$', 'method': 'index' },
-			{ 'pattern': '^user/connected$', 'method': 'connected' },
-			{ 'pattern': '^recvchat/([0-9]+)$$', 'method': 'recvchat' },
+			{ 'pattern': '^user/connected$', 'method': 'connected', 'right': 'connected' },
+			{ 'pattern': '^recvchat/([0-9]+)$$', 'method': 'recvchat', 'right': 'connected' },
 			{ 'pattern': '^authenticate$', 'method': 'authenticate' },
-			{ 'pattern': '^logout$', 'method': 'logout' },
-			{ 'pattern': '^sendchat$', 'method': 'sendchat' },
-			{ 'pattern': '^profile$', 'method': 'getprofile' },
-			{ 'pattern': '^profile/update$', 'method': 'updateprofile' },
-			{ 'pattern': '^lang$', 'method': 'setlang' },
-			{ 'pattern': '^sponsor/([a-zA-Z0-9-_@.]+)$', 'method': 'sponsor' },
-			{ 'pattern': '^register/([A-Z0-9]+)$', 'method': 'registerform' },
-			{ 'pattern': '^register$', 'method': 'register' },
-			{ 'pattern': '^confirmemail/([A-Z0-9]+)$', 'method': 'confirmemail' },
+			{ 'pattern': '^logout$', 'method': 'logout', 'right': 'connected' },
+			{ 'pattern': '^sendchat$', 'method': 'sendchat', 'right': 'connected' },
+			{ 'pattern': '^profile$', 'method': 'getprofile', 'right': 'connected' },
+			{ 'pattern': '^profile/update$', 'method': 'updateprofile', 'right': 'connected' },
+			{ 'pattern': '^lang$', 'method': 'setlang', 'right': 'connected' },
+			{ 'pattern': '^sponsor/([a-zA-Z0-9-_@.]+)$', 'method': 'sponsor', 'right': 'connected' },
+			{ 'pattern': '^register/([A-Z0-9]+)$', 'method': 'registerform', 'right': 'connected' },
+			{ 'pattern': '^register$', 'method': 'register', 'right': 'connected' },
+			{ 'pattern': '^confirmemail/([A-Z0-9]+)$', 'method': 'confirmemail', 'right': 'connected' },
 			{ 'pattern': '^spawn/([a-z0-9]+)/([a-z0-9]+)$', 'method': 'drawspawn' },
 			{ 'pattern': '^spawn/([a-z0-9]+)/([a-z0-9]+)/([a-z0-9]+)$', 'method': 'drawspawn' }
 		]
@@ -188,9 +188,8 @@ class WelcomeController(CommonController):
 			errors.append(_("COUNTRY_DOES_NOT_EXIST"))
 		primarycolor = request.POST['primarycolor']
 		secondarycolor = request.POST['secondarycolor']
-		menujeu = int(request.POST['menujeu'])
 		if len(errors) == 0:
-			request.session['user'] = self.userManager.updateProfile(request.session['user'].login, password, email, country, primarycolor, secondarycolor, menujeu)
+			request.session['user'] = self.userManager.updateProfile(request.session['user'].login, password, email, country, primarycolor, secondarycolor)
 			c = { 'notice': _("UPDATE_PROFILE_OK") }
 		else:
 			c = { 'errors': errors }

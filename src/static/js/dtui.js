@@ -184,47 +184,52 @@ function load_teamcreate() {
 	$.get('/teams/create', function(content) {
 		window.location.hash = '#teams/create';
 		display_content(content);
-		$('[name=spawnstypes]').radio(1, displaySpawnTypes);
-		$('.checkbox').checkbox();
-		$('.filter_object').hide();
-		$('.filter_room').hide();
-		$('.filter_character').show();
-		createTeamElements = new Array();
-		createTeamElements['characters'] = new Array();
-		createTeamElements['objects'] = new Array();
-		createTeamElements['rooms'] = new Array();
-		var chars = $('[name=characterdef]').each(function(i,e) {
-			var def = $(e).val().split('|');
-			createTeamElements['characters'][i] = {
-				id: def[0],
-				name: def[1],
-				label: def[2],
-				extensions: def[3].split('-'),
-				filters: def[4].split('-'),
-				force: def[5],
-				deplacement: def[6]
-			}
-		});
-		var objects = $('[name=objectdef]').each(function(i,e) {
-			var def = $(e).val().split('|');
-			createTeamElements['objects'][i] = {
-				id: def[0],
-				name: def[1],
-				label: def[2],
-				extensions: def[3].split('-'),
-				filters: def[4].split('-')
-			}
-		});
-		var rooms = $('[name=roomdef]').each(function(i,e) {
-			var def = $(e).val().split('|');
-			createTeamElements['rooms'][i] = {
-				id: def[0],
-				name: def[1],
-				label: def[2],
-				extensions: def[3].split('-'),
-				filters: def[4].split('-')
-			}
-		});
+		load_teamcreateedit_callback();
+	});
+}
+
+/** callback to create or edit team */
+function load_teamcreateedit_callback() {
+	$('[name=spawnstypes]').radio(1, displaySpawnTypes);
+	$('.checkbox').checkbox();
+	$('.filter_object').hide();
+	$('.filter_room').hide();
+	$('.filter_character').show();
+	createTeamElements = new Array();
+	createTeamElements['characters'] = new Array();
+	createTeamElements['objects'] = new Array();
+	createTeamElements['rooms'] = new Array();
+	var chars = $('[name=characterdef]').each(function(i,e) {
+		var def = $(e).val().split('|');
+		createTeamElements['characters'][i] = {
+			id: def[0],
+			name: def[1],
+			label: def[2],
+			extensions: def[3].split('-'),
+			filters: def[4].split('-'),
+			force: def[5],
+			deplacement: def[6]
+		}
+	});
+	var objects = $('[name=objectdef]').each(function(i,e) {
+		var def = $(e).val().split('|');
+		createTeamElements['objects'][i] = {
+			id: def[0],
+			name: def[1],
+			label: def[2],
+			extensions: def[3].split('-'),
+			filters: def[4].split('-')
+		}
+	});
+	var rooms = $('[name=roomdef]').each(function(i,e) {
+		var def = $(e).val().split('|');
+		createTeamElements['rooms'][i] = {
+			id: def[0],
+			name: def[1],
+			label: def[2],
+			extensions: def[3].split('-'),
+			filters: def[4].split('-')
+		}
 	});
 }
 
@@ -272,7 +277,9 @@ function load_teams(args) {
 	if (args && args == 'constraints') {
 		load_teamsconstraints();
 	} else if (args && args == 'create') {
-			load_teamcreate();
+		load_teamcreate();
+	} else if (args && args.match('^edit/[1-9][0-9]*$')) {
+		load_teamedit(args.replace('edit/', ''));
 	} else {
 		display_wait();
 		$.get('/teams', function(content) {
@@ -733,20 +740,23 @@ function toggleHelp() {
 }
 
 /** Sélection d'un pion d'équipe */
-function selectionTeamSpawn(typ, name, id) {
+function selectionTeamSpawn(typ, name, id, force) {
 	if (typ == 'room') name = name.split('-')[0];
-	if (displayHelp == 1) {
+	if (displayHelp == 1 && !force) {
 		$('#actionsdialog').html('');
 		$.get('/spawn/help/' + typ + '/' + id, function(content) {
 			$('#actionsdialog').html(content);
 			$('#actionsdialog').dialog({
 				autoOpen: true,
 				width: 300,
-				title: translate('HELP_TITLE') + "&nbsp;-&nbsp;" + $('#spawnhelpname').val()  
+				title: translate('HELP_TITLE') + "&nbsp;-&nbsp;" + $('#spawnhelpname').val()  + '&nbsp;' + '<img class="pointer" width="20" height="20" border="0" style="vertical-align:middle" src="/static/images/interface/plus.png" onclick="selectionTeamSpawn(\'' + typ + '\', \'' + name + '\', \'' + id + '\', 1)"/>'
 			});
 		});
 	} else {
 		$('#panier_'+typ+'s').val($('#panier_'+typ+'s').val() +id+'_'+name+',');
+		try {
+			$('#actionsdialog').dialog('destroy');
+		} catch(ex) { /**/ }
 	}
 	teamContent();
 }
@@ -754,13 +764,16 @@ function selectionTeamSpawn(typ, name, id) {
 /** Mets à jour le contenu de l'équipe */
 function unselectionTeamSpawn(typ, name) {
 	var spawns_str = $('#panier_'+typ+'s').val();
+	var spawnalreadyremoved = false;
 	var newval = '';
 	var spawncount = 0;
 	if (spawns_str.length > 0) {
 		var spawns = spawns_str.split(',');
 		for (var c in spawns) { var spawn = spawns[c];
-			if (spawn.length > 0 && spawn != name) {
+			if ((spawn.length > 0 && spawn != name) || spawnalreadyremoved) {
 				newval += spawn + ',';
+			} else {
+				spawnalreadyremoved = true;
 			}
 		}
 		$('#team_'+typ+'scount').html(spawncount)
@@ -802,6 +815,19 @@ function teamContent() {
 	$('#teamsdialog').html(content);
 }
 
+/** constraint help display */
+function helpConstraint() {
+	$('#actionsdialog').html('');
+	$.get('/teams/constraints/help/' + $('#createteam_loadconstraint').val(), function(content) {
+		$('#actionsdialog').html(content);
+		$('#actionsdialog').dialog({
+			autoOpen: true,
+			width: 500,
+			title: translate('HELP_TITLE') + "&nbsp;-&nbsp;" + $('#createteam_loadconstraint >option:selected').html()
+		});
+	});
+}
+
 /** Monter l'équipe sélectionné */
 function showTeam() {
 	$('#teamsdialog').dialog({
@@ -809,4 +835,36 @@ function showTeam() {
 		width: 830,
 		title: translate('CURRENT_TEAM')  
 	});	
+}
+
+/** Enregistrer l'équipe */
+function saveTeam() {
+	var form = $('#teamCreateForm');
+	$.post(form.attr('action'), form.serialize(), function(content) {
+		if (content.trim() != '') {
+			$('#teamCreateError').html(content);
+		} else {
+			load_teams();
+		}
+	});
+}
+
+/** Del team */
+function delTeam(name, id) {
+	if (confirm(translate('TEAM_CONFIRM_DELETE') + ' ' + name)) {
+		$.get('/teams/remove/' + id, function(content) {
+			load_teams();
+		});
+	}
+}
+
+/** Edit team */
+function load_teamedit(id) {
+	display_wait();
+	$.get('/teams/edit/' + id, function(content) {
+		window.location.hash = '#teams/edit/'+id;
+		display_content(content);
+		load_teamcreateedit_callback();
+		teamContent();
+	});
 }

@@ -584,7 +584,7 @@ insert into dt_characters_capacities (character_id, name) values (63, 'crosser_m
 insert into dt_characters_capacities (character_id, name) values (63, 'beast');
 insert into dt_characters_capacities (character_id, name) values (63, 'biendans_meurtriere_');
 insert into dt_characters_extensions (dtcharacter_id, dtextension_id) values (63, 10);
-insert into dt_characters (id, name, deplacement, `force`) values (64, 'hurleur', 4, 2);
+insert into dt_characters (id, name, deplacement, `force`) values (64, 'hurleur', 4, 1);
 insert into dt_characters_capacities (character_id, name) values (64, 'repulsion_2_2');
 insert into dt_characters_extensions (dtcharacter_id, dtextension_id) values (64, 10);
 
@@ -1115,7 +1115,6 @@ insert into dt_characters_capacities (character_id, name) values (132, 'beast');
 insert into dt_characters_capacities (character_id, name) values (132, 'spellcaster');
 insert into dt_characters_extensions (dtcharacter_id, dtextension_id) values (132, 40);
 insert into dt_characters (id, name, deplacement, `force`) values (135, 'basilic', 2, 4);
-insert into dt_characters_capacities (character_id, name) values (135, 'prestigious');
 insert into dt_characters_capacities (character_id, name) values (135, 'malusfight');
 insert into dt_characters_capacities (character_id, name) values (135, 'killregard');
 insert into dt_characters_extensions (dtcharacter_id, dtextension_id) values (135, 40);
@@ -1160,7 +1159,7 @@ insert into dt_characters (id, name, deplacement, `force`) values (157, 'totemte
 insert into dt_characters_capacities (character_id, name) values (157, 'twist');
 insert into dt_characters_capacities (character_id, name) values (157, 'peaceful');
 insert into dt_characters_capacities (character_id, name) values (157, 'weak');
-insert into dt_characters (id, name, deplacement, `force`) values (143, 'magicientroll', 3, 2);
+insert into dt_characters (id, name, deplacement, `force`) values (143, 'magicientroll', 3, 1);
 insert into dt_characters_capacities (character_id, name) values (143, 'spellcaster');
 insert into dt_characters_capacities (character_id, name) values (143, 'regenerater_');
 insert into dt_characters_extensions (dtcharacter_id, dtextension_id) values (143, 40);

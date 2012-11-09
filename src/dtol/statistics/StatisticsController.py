@@ -12,7 +12,7 @@ class StatisticsController(CommonController):
 	
 	def _geturls(self):
 		return [
-			{ 'pattern': r'^statistics$', 'method': 'classment' },
+			{ 'pattern': r'^statistics$', 'method': 'classment', 'right': 'connected' },
 		]
 	
 	def classment(self, request):

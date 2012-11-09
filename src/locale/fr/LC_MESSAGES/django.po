@@ -429,6 +429,198 @@ msgid "NEW_CONSTRAINT"
 msgstr "Nouvelle Contrainte d'Equipe"
 
 #: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MINCHARACTERS"
+msgstr "La valeur min du nombre de personnages n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MAXCHARACTERS"
+msgstr "La valeur max du nombre de personnages n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MINOBJECTS"
+msgstr "La valeur min du nombre d'objets n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MAXOBJECTS"
+msgstr "La valeur max du nombre d'objets n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MINROOMS"
+msgstr "La valeur min du nombre de pièces n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MAXROOMS"
+msgstr "La valeur max du nombre de pièces n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MINDEPLACEMENT"
+msgstr "La valeur min du déplacement n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MAXDEPLACEMENT"
+msgstr "La valeur max du déplacement n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MINTOTALDEPLACEMENT"
+msgstr "La valeur min du total déplacement n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MAXTOTALDEPLACEMENT"
+msgstr "La valeur max du total déplacement n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MINADVDEPLACEMENT"
+msgstr "La valeur min du déplacement avancé n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MAXADVDEPLACEMENT"
+msgstr "La valeur max du déplacement avancé n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MINTOTALADVDEPLACEMENT"
+msgstr "La valeur min du total déplacement avancé n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MAXTOTALADVDEPLACEMENT"
+msgstr "La valeur max du total déplacement avancé n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MINFORCE"
+msgstr "La valeur min de la force n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MAXFORCE"
+msgstr "La valeur max de la force n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MINTOTALFORCE"
+msgstr "La valeur min du total de la force n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MAXTOTALFORCE"
+msgstr "La valeur max du total de la force n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MINADVFORCE"
+msgstr "La valeur min de la force avancée n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MAXADVFORCE"
+msgstr "La valeur max de la force avancée n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MINTOTALADVFORCE"
+msgstr "La valeur min du total de la force avancée n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MAXTOTALADVFORCE"
+msgstr "La valeur max du total de la force avancée n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MINPRESTIGIOUS"
+msgstr "La valeur min du nombre de prestigieux n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MAXPRESTIGIOUS"
+msgstr "La valeur max du nombre de prestigieux n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MINSPELLCASTER"
+msgstr "La valeur min du nombre de jeteurs de sort n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MAXSPELLCASTER"
+msgstr "La valeur max du nombre de jeteurs de sort n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MINFLYING"
+msgstr "La valeur min du nombre de volants n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MAXFLYING"
+msgstr "La valeur max du nombre de volants n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MININTANGIBLE"
+msgstr "La valeur min du nombre d'intangibles n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MAXINTANGIBLE"
+msgstr "La valeur max du nombre d'intangibles n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MINCURSED"
+msgstr "La valeur min du nombre d'objets maudits n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MAXCURSED"
+msgstr "La valeur max du nombre d'objets maudits n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MINSHADOWWALKER"
+msgstr "La valeur min du nombre de marcheur des ténèbres n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MAXSHADOWWALKER"
+msgstr "La valeur max du nombre de marcheur des ténèbres n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MINSHADOWROOM"
+msgstr "La valeur min du nombre de pièces ténèbres n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MAXSHADOWROOM"
+msgstr "La valeur max du nombre de pièces ténèbres n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MINANTIMAGICROOM"
+msgstr "La valeur min du nombre de pièces anti-magie n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MAXANTIMAGICROOM"
+msgstr "La valeur max du nombre de pièces anti-magie n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MINFOUNTAIN"
+msgstr "La valeur min du nombre de pièces avec fontaine n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MAXFOUNTAIN"
+msgstr "La valeur max du nombre de pièces avec fontaine n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MINCOUNTERFOUNTAIN"
+msgstr "La valeur min du nombre de contreur de fontaine n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MAXCOUNTERFOUNTAIN"
+msgstr "La valeur max du nombre de contreur de fontaine n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MINEXTENSIONS"
+msgstr "La valeur min du nombre d'extensions n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MAXEXTENSIONS"
+msgstr "La valeur max du nombre d'extensions n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MAXSAMECHARACTER"
+msgstr "La valeur max du nombre de personnages identiques n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MAXSAMEOBJECT"
+msgstr "La valeur max du nombre d'objets identiques n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MAXCOMMONOBJECT"
+msgstr "La valeur max du nombre d'objets courants identiques n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MAXSAMEROOM"
+msgstr "La valeur max du nombre de pièces identiques n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
 msgid "EDIT_CONSTRAINT"
 msgstr "Modifier contrainte"
 
@@ -476,6 +668,10 @@ msgstr "Déplacement amélioré des personnages&nbsp;:"
 msgid "CHARACTER_FORCE"
 msgstr "Force des personnages&nbsp;:"
 
+#: templates/team/createconstraint.html:30
+msgid "CHARACTER_ADVANCED_FORCE"
+msgstr "Force améliorée des personnages&nbsp;:"
+
 #: templates/team/createconstraint.html:33
 msgid "TEAMS_VALUE"
 msgstr "Valeur de  l'équipe"
@@ -491,6 +687,10 @@ msgstr "Total des déplacements améliorés&nbsp;:"
 #: templates/team/createconstraint.html:37
 msgid "TEAM_FORCE"
 msgstr "Total de force&nbsp;:"
+
+#: templates/team/createconstraint.html:36
+msgid "TEAM_ADVANCED_FORCE"
+msgstr "Total des forces améliorées&nbsp;:"
 
 #: templates/team/createconstraint.html:39
 msgid "CHARACTERS_TYPES"
@@ -534,7 +734,7 @@ msgstr "Maudits&nbsp;:"
 
 #: templates/team/createconstraint.html:52
 msgid "OBJECT_SAME"
-msgstr "Identiques&nbsp;:"
+msgstr "Objets identiques&nbsp;:"
 
 #: templates/team/createconstraint.html:53
 msgid "OBJECT_COMMON"
@@ -558,7 +758,7 @@ msgstr "Avec Fontaine&nbsp;:"
 
 #: templates/team/createconstraint.html:60
 msgid "ROOM_SAME"
-msgstr "Paires identiques&nbsp;:"
+msgstr "Paires de salle identiques&nbsp;:"
 
 #: templates/team/createconstraint.html:62
 msgid "EXTENSIONS_LIMIT"
@@ -787,6 +987,30 @@ msgstr "Pièces&nbsp;"
 #: templates/team/edit.html
 msgid "TEAM_SAVE"
 msgstr "Enregistrer"
+
+#: /teams/save
+msgid "TEAM_EMPTY_NAME"
+msgstr "Le nom d'équipe ne peut être vide"
+
+#: templates/team/list.html
+msgid "TEAMS_NAME"
+msgstr "Nom"
+
+#: templates/team/list.html
+msgid "TEAM_CONFIRM_DELETE"
+msgstr "Confirmez la suppression de l'équipe"
+
+#: templates/team/list.html
+msgid "TEAMS_CHARACTERS_COUNT"
+msgstr "Personnages"
+
+#: templates/team/list.html
+msgid "TEAMS_OBJECTS_COUNT"
+msgstr "Objets"
+
+#: templates/team/list.html
+msgid "TEAMS_ROOMS_COUNT"
+msgstr "Salles"
 
 #: generique
 msgid "French"

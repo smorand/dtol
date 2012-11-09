@@ -26,6 +26,14 @@ i.small {
 	margin-bottom: 10px;
 }
 
+.extensionlogodisplay {
+	display: inline;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
 .pointer {
 	cursor: pointer;
 }

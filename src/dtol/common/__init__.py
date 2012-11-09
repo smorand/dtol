@@ -21,3 +21,4 @@ class PreHandlerConnect(PreHandler):
 			cid = request.session['user'].id
 		if cid != None:
 			DtUser.objects.filter(id=cid).update(lastconnection=datetime.datetime.now())
+

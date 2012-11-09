@@ -12,9 +12,9 @@ class GameController(CommonController):
 
 	def _geturls(self):
 		return [
-			{ 'pattern': r'^game/?$', 'method': 'view' },
-			{ 'pattern': r'^game/dungeon/([1-9][0-9]*)$', 'method': 'dungeon' },
-			{ 'pattern': r'^game/actions/([0-9]+,[0-9]+|r[0-9]+|0)/([0-9]+,[0-9]+|0)/([0-9]+)$', 'method': 'getactions' }
+			{ 'pattern': r'^game/?$', 'method': 'view', 'right': 'connected' },
+			{ 'pattern': r'^game/dungeon/([1-9][0-9]*)$', 'method': 'dungeon', 'right': 'connected' },
+			{ 'pattern': r'^game/actions/([0-9]+,[0-9]+|r[0-9]+|0)/([0-9]+,[0-9]+|0)/([0-9]+)$', 'method': 'getactions', 'right': 'connected' }
 		]
 	
 	def view(self, request):

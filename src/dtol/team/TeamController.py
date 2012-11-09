@@ -4,7 +4,7 @@
 #
 
 from core.controllers import CommonController
-from dtol.models import DtTeamConstraint, DtExtension
+from dtol.models import DtTeamConstraint, DtExtension, DtCharacter, DtObject, DtRoom, DtTeam, DtUser, DtTeamCharacter, DtTeamObject, DtTeamRoom
 from django.utils.translation import ugettext as _
 
 class TeamController(CommonController):
@@ -14,15 +14,19 @@ class TeamController(CommonController):
 	
 	def _geturls(self):
 		return [
-			{ 'pattern': r'^teams$', 'method': 'list' },
-			{ 'pattern': r'^teams/constraints$', 'method': 'listconstraints' },
-			{ 'pattern': r'^teams/constraints/edit/([0-9]+)$', 'method': 'createconstraints' },
-			{ 'pattern': r'^teams/constraints/remove/([1-9][0-9]*)$', 'method': 'delteamsconstraints' },
-			{ 'pattern': r'^teams/constraints/load/([1-9][0-9]*)$', 'method': 'loadteamsconstraint' },
-			{ 'pattern': r'^teams/constraints/save$', 'method': 'saveteamsconstraint' },
-			{ 'pattern': r'^teams/create$', 'method': 'create' },
-			{ 'pattern': r'^teams/edit/([0-9]+)$', 'method': 'edit' },
-			{ 'pattern': r'^spawn/help/(character|object|room)/([0-9]+)$', 'method': 'help' },
+			{ 'pattern': r'^teams$', 'method': 'list', 'right': 'connected' },
+			{ 'pattern': r'^teams/constraints$', 'method': 'listconstraints', 'right': 'admin' },
+			{ 'pattern': r'^teams/constraints/edit/([0-9]+)$', 'method': 'createconstraints', 'right': 'connected' },
+			{ 'pattern': r'^teams/constraints/remove/([1-9][0-9]*)$', 'method': 'delteamsconstraints', 'right': 'admin' },
+			{ 'pattern': r'^teams/constraints/load/([1-9][0-9]*)$', 'method': 'loadteamsconstraint', 'right': 'connected' },
+			{ 'pattern': r'^teams/constraints/help/([1-9][0-9]*)$', 'method': 'helpteamsconstraint', 'right': 'connected' },
+			{ 'pattern': r'^teams/constraints/save$', 'method': 'saveteamsconstraint', 'right': 'connected' },
+			{ 'pattern': r'^teams/create$', 'method': 'create', 'parameters': {'gameid':''}, 'right': 'connected' },
+			{ 'pattern': r'^teams/create/([1-9][0-9]*)$', 'method': 'create', 'right': 'connected' },
+			{ 'pattern': r'^teams/edit/([1-9][0-9]*)$', 'method': 'edit', 'right': 'connected' },
+			{ 'pattern': r'^teams/remove/([1-9][0-9]*)$', 'method': 'remove', 'right': 'connected' },
+			{ 'pattern': r'^teams/save$', 'method': 'save', 'right': 'connected' },
+			{ 'pattern': r'^spawn/help/(character|object|room)/([0-9]+)$', 'method': 'help', 'right': 'connected' },
 		]
 
 	def list(self, request):
@@ -63,6 +67,13 @@ class TeamController(CommonController):
 			'constraint': self.teamManager.getTeamConstraint(uid),
 		}
 		return self.templates.response('team.loadteamconstraint', context=c)
+
+	def helpteamsconstraint(self, request, uid):
+		''' display help a team constraint to reload document '''
+		c = {
+			'constraint': self.teamManager.getTeamConstraint(uid),
+		}
+		return self.templates.response('team.helpteamconstraint', context=c)
 
 	def saveteamsconstraint(self, request):
 		''' Save teams constraints '''
@@ -110,6 +121,14 @@ class TeamController(CommonController):
 			except: raise Exception('INCORRECT_VALUE_MINTOTALFORCE')
 			try: tc.maxtotalforce = int(request.POST['maxtotalforce'])
 			except: raise Exception('INCORRECT_VALUE_MAXTOTALFORCE')
+			try: tc.minadvforce = int(request.POST['minadvforce'])
+			except: raise Exception('INCORRECT_VALUE_MINADVFORCE')
+			try: tc.maxadvforce = int(request.POST['maxadvforce'])
+			except: raise Exception('INCORRECT_VALUE_MAXADVFORCE')
+			try: tc.mintotaladvforce = int(request.POST['mintotaladvforce'])
+			except: raise Exception('INCORRECT_VALUE_MINTOTALADVFORCE')
+			try: tc.maxtotaladvforce = int(request.POST['maxtotaladvforce'])
+			except: raise Exception('INCORRECT_VALUE_MAXTOTALADVFORCE')
 			try: tc.minprestigious = int(request.POST['minprestigious'])
 			except: raise Exception('INCORRECT_VALUE_MINPRESTIGIOUS')
 			try: tc.maxprestigious = int(request.POST['maxprestigious'])
@@ -180,6 +199,10 @@ class TeamController(CommonController):
 			tc.maxforce = tc.maxforce if tc.maxforce >= 0 else -1
 			tc.mintotalforce = tc.mintotalforce if tc.mintotalforce >= 0 else -1
 			tc.maxtotalforce = tc.maxtotalforce if tc.maxtotalforce >= 0 else -1
+			tc.minadvforce = tc.minadvforce if tc.minadvforce >= 0 else -1
+			tc.maxadvforce = tc.maxadvforce if tc.maxadvforce >= 0 else -1
+			tc.mintotaladvforce = tc.mintotaladvforce if tc.mintotaladvforce >= 0 else -1
+			tc.maxtotaladvforce = tc.maxtotaladvforce if tc.maxtotaladvforce >= 0 else -1
 			tc.minprestigious = tc.minprestigious if tc.minprestigious >= 0 else -1
 			tc.maxprestigious = tc.maxprestigious if tc.maxprestigious >= 0 else -1
 			tc.minspellcaster = tc.minspellcaster if tc.minspellcaster >= 0 else -1
@@ -207,95 +230,49 @@ class TeamController(CommonController):
 			tc.maxcommonobject = tc.maxcommonobject if tc.maxcommonobject >= 0 else -1
 			tc.maxsameroom = tc.maxsameroom if tc.maxsameroom >= 0 else -1
 			tc.save()
-			tc.extensions = []
 			if 'extensions' in request.POST and request.POST['extensions'] != '':
+				tc.extensions = []
 				for ext in request.POST['extensions'].strip().split(','):
-					tc.extensions.append(DtExtension(id=int(ext)))
-			tc.save()
+					tc.extensions.add(DtExtension.objects.get(id=int(ext)))
+				tc.save()
 		except Exception as err:
-			return self.templates.response('message_return', context={ 'error': str(err)})
+			return self.templates.response('message_return', context={ 'error': err})
 		return self.templates.empty()
 
-	def create(self, request):
+	def create(self, request, gameid):
 		extensions = self.userManager.getUser(request.session['user'].id).extensions.all()
-		characters = []
-		objects = []
-		rooms = []
-		for c in self.spawnManager.getCharacters(extensions):
-			sp = {
-				'id': c.id,
-				'name': c.name,
-				'force': c.force,
-				'deplacement': c.deplacement,
-				'extensions': '-'.join([ str(e.id) for e in c.extensions.all() ]),
-				'filters': []
-			}
-			capacities = list()
-			for cap in c.capacities():
-				capinfo = cap.name.split('_')
-				if capinfo[0] == 'walker' or capinfo[0] == 'biendans':
-					capacities.append('%s_%s' % (capinfo[0], capinfo[1]))
-				elif cap.name.find('regenerater') > 0:
-					capacities.append(capinfo[0])
-				else:
-					capacities.append(capinfo[0])
-			if 'spellcaster' in capacities: sp['filters'].append('spellcaster')
-			if 'flyer' in capacities: sp['filters'].append('flyer')
-			if 'regenerater' in capacities: sp['filters'].append('regenerater')
-			if 'prestigious' in capacities: sp['filters'].append('prestigious')
-			if 'undead' in capacities: sp['filters'].append('undead')
-			if 'immaterial' in capacities: sp['filters'].append('immaterial')
-			if 'walker_shadow' in capacities: sp['filters'].append('walker_shadow')
-			if 'elf' in capacities: sp['filters'].append('elf')
-			if 'dwarf' in capacities: sp['filters'].append('dwarf')
-			if 'beast' in capacities: sp['filters'].append('beast')
-			if 'antifountain' in capacities: sp['filters'].append('antifountain')
-			if 'biendans_eau' in capacities: sp['filters'].append('biendans_eau')
-			if 'biendans_lave' in capacities: sp['filters'].append('biendans_lave')
-			sp['filters'] = '-'.join(sp['filters']) 
-			characters.append(sp)
-		for c in self.spawnManager.getObjects(extensions):
-			sp = {
-				'id': c.id,
-				'name': c.name,
-				'extensions': '-'.join([ str(e.id) for e in c.extensions.all() ]),
-				'filters': []
-			}
-			capacities = [ cap.name for cap in c.capacities() ]
-			if 'current' in capacities: sp['filters'].append('current')
-			if 'magical' in capacities: sp['filters'].append('magical')
-			if 'parchemin' in capacities: sp['filters'].append('parchemin')
-			if 'categorie_arme' in capacities: sp['filters'].append('categorie_arme')
-			if 'shield' in capacities: sp['filters'].append('shield')
-			if 'categorie_puissant' in capacities: sp['filters'].append('categorie_puissant')
-			if 'antifountain' in capacities: sp['filters'].append('antifountain')
-			if 'cursed' in capacities: sp['filters'].append('cursed')
-			sp['filters'] = '-'.join(sp['filters'])
-			objects.append(sp)
-		for c in self.spawnManager.getRooms(extensions):
-			sp = {
-				'id': c.id,
-				'name': '%s-%d' % (c.number, c.rotation),
-				'extensions': '-'.join([ str(e.id) for e in c.extensions.all() ]),
-				'filters': []
-			}
-			capacities = [ cap.name for cap in c.categories.all() ]
-			if 'tenebres' in capacities: sp['filters'].append('tenebres')				
-			if 'eau' in capacities: sp['filters'].append('eau')
-			if 'lave' in capacities: sp['filters'].append('lave')
-			if 'fontaine' in capacities: sp['filters'].append('fontaine')
-			if 'pente' in capacities: sp['filters'].append('pente')
-			if 'neige' in capacities: sp['filters'].append('neige')
-			if 'brume' in capacities: sp['filters'].append('brume')
-			if 'arbre' in capacities: sp['filters'].append('arbre')
-			if 'torche' in capacities: sp['filters'].append('torche')
-			sp['filters'] = '-'.join(sp['filters'])
-			rooms.append(sp)
+		characters, objects, rooms = self.teamManager.getTeamFilter(extensions)
 		return self.templates.response('team.edit', context={
 			'extensions': extensions, 
 			'characters': characters,
 			'objects': objects,
 			'rooms': rooms,
+			'gameid': gameid,
+			'teamid': '',
+			'teamname': '',
+			'characterslist': '',
+			'objectslist': '',
+			'roomslist': '',
+			'constraints': self.teamManager.getTeamConstraints(),
+			'spawncolor': request.session['user'].primarycolor
+		})
+	
+	def edit(self, request, teamid):
+		extensions = self.userManager.getUser(request.session['user'].id).extensions.all()
+		characters, objects, rooms = self.teamManager.getTeamFilter(extensions)
+		team = self.teamManager.getTeam(int(teamid))
+		return self.templates.response('team.edit', context={
+			'extensions': extensions, 
+			'characters': characters,
+			'objects': objects,
+			'rooms': rooms,
+			'gameid': '',
+			'teamid': team.id,
+			'teamname': team.name,
+			'constraints': self.teamManager.getTeamConstraints(),
+			'characterslist': ','.join([ '%d_%s'  % (c.id, c.name) for c in team.characters.all() ])+',',
+			'objectslist': ','.join([ '%d_%s'  % (c.id, c.name) for c in team.objs.all() ])+',',
+			'roomslist': ','.join([ '%d_%s'  % (c.id, c.number) for c in team.rooms.all() if c.rotation == 1 ])+',',
 			'spawncolor': request.session['user'].primarycolor
 		})
 	
@@ -316,10 +293,61 @@ class TeamController(CommonController):
 			c['name'] = str(spawn.number) + ' sens ' + ('horaire' if spawn.rotation == 1 else 'anti-horaire')
 			c['capacities'] =  [ 'room_categorie_%s' % (cap.name) for cap in spawn.categories.all() ]
 		return self.templates.response('spawnhelp', c) 
-		
+
+	def remove(self, request, teamid):
+		self.teamManager.delTeam(teamid)
+		return self.templates.empty()
 	
-	def update(self, request):
-		return self.templates.underConstruction()
+	def save(self, request):
+		try:
+			if 'teamname' not in request.POST or request.POST['teamname'] == '':
+				raise Exception(_('TEAM_EMPTY_NAME'))
+			team = DtTeam(name=request.POST['teamname'])
+			if 'teamid' in request.POST and request.POST['teamid'] != '' and request.POST['teamid'] != '0':
+				team.id = int(request.POST['teamid']) 
+			team.user = DtUser(id=request.session['user'].id)
+			characters = [ DtCharacter.objects.get(id=int(c.split('_')[0])) for c in request.POST['characters'].split(',') if c != '' ]
+			print characters
+			objs = [ DtObject.objects.get(id=int(c.split('_')[0])) for c in request.POST['objects'].split(',') if c != '' ]
+			rooms = list()
+			for c in request.POST['rooms'].split(','):
+				if c != '':
+					rooms.append(DtRoom.objects.get(number=c.split('_')[1], rotation=1))
+					rooms.append(DtRoom.objects.get(number=c.split('_')[1], rotation=2))
+			# TODO: Check constraint
+			constraintid = None
+			if 'gameid' in request.POST and request.POST['gameid'] != '' and request.POST['gameid'] != 0:
+				constraint = self.gameManager.getGame(request.POST['gameid']).constraint()
+			elif 'constraintid' in request.POST and request.POST['constraintid'] != '' and request.POST['constraintid'] != 0:
+				constraint = request.POST['constraintid']
+			errors = self.teamManager.checkTeamConstraint(constraint, characters, objs, rooms)
+			if len(errors) > 0:
+				return self.templates.response('message_return', context={ 'errors': errors })
+			team.save()
+			DtTeamCharacter.objects.filter(team=team).delete()
+			for c in characters:
+				o = DtTeamCharacter()
+				o.generateUid()
+				o.team = team
+				o.character = c
+				o.save()
+			DtTeamObject.objects.filter(team=team).delete()
+			for c in objs:
+				o = DtTeamObject()
+				o.generateUid()
+				o.team = team
+				o.object = c
+				o.save()
+			DtTeamRoom.objects.filter(team=team).delete()
+			for c in rooms:
+				o = DtTeamRoom()
+				o.generateUid()
+				o.team = team
+				o.room = c
+				o.save()
+		except Exception as err:
+			return self.templates.response('message_return', context={ 'error': err})
+		return self.templates.empty()
 	
 	def delete(self, request):
 		return self.templates.underConstruction()

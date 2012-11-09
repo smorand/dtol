@@ -15,12 +15,12 @@ class UserController(CommonController):
 	
 	def _geturls(self):
 		return [
-			{ 'pattern': r'^admin$', 'method': 'list' },
-			{ 'pattern': r'^user/unblock/([0-9]+)$', 'method': 'unblock' },
-			{ 'pattern': r'^user/block/([0-9]+)$', 'method': 'block' },
-			{ 'pattern': r'^user/view/([0-9]+)$', 'method': 'view' },
-			{ 'pattern': r'^user/update$', 'method': 'update' },
-			{ 'pattern': r'^user/become/([0-9]+)$', 'method': 'become' },
+			{ 'pattern': r'^admin$', 'method': 'list', 'right': 'admin' },
+			{ 'pattern': r'^user/unblock/([0-9]+)$', 'method': 'unblock', 'right': 'admin' },
+			{ 'pattern': r'^user/block/([0-9]+)$', 'method': 'block', 'right': 'admin' },
+			{ 'pattern': r'^user/view/([0-9]+)$', 'method': 'view', 'right': 'admin' },
+			{ 'pattern': r'^user/update$', 'method': 'update', 'right': 'admin' },
+			{ 'pattern': r'^user/become/([0-9]+)$', 'method': 'become', 'right': 'admin' },
 			{ 'pattern': r'^generatepassword$', 'method': 'generatepassword' },
 		]
 

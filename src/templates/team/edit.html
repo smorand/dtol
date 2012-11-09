@@ -1,7 +1,9 @@
 <!-- This file is covered by the GNU Public Licence v3 licence. See http://www.gnu.org/licenses/gpl.txt -->
 {% load i18n %}
 <h1>{% trans "TEAM_CREATE" %}</h1>
+<button class="dtbutton" onClick="load_page('teams')">{% trans "TEAMS_LIST" %}</button><br/>
 <input type="hidden" id="spawncolor" value="{{spawncolor}}"/>
+<div id="teamCreateError"></div>
 <!-- Type (1 for chararcters, 2 for objects, 3 for rooms | name | Localized name | capacitylist (separated by dash) | extensionslist (separated by dash) -->
 {% for c in characters %}
 <input type="hidden" name="characterdef" id="c.id" value="{{c.id}}|{{c.name}}|{% trans c.name %}|{{c.extensions}}|{{c.filters}}|{{c.force}}|{{c.deplacement}}"/>
@@ -12,13 +14,27 @@
 {% for c in rooms %}
 <input type="hidden" name="roomdef" id="c.id" value="{{c.id}}|{{c.name}}|{{c.name}}|{{c.extensions}}|{{c.filters}}"/>
 {% endfor %}
-<input type="hidden" id="panier_characters" value=""/>
-<input type="hidden" id="panier_objects" value=""/>
-<input type="hidden" id="panier_rooms" value=""/>
+<form class="hidden" method="post" action="/teams/save" id="teamCreateForm">
+<input type="hidden" id="panier_teamname" name="teamname" value="{{teamname}}"/>
+<input type="hidden" id="panier_teamid" name="teamid" value="{{teamid}}"/>
+<input type="hidden" id="panier_gameid" name="gameid" value="{{gameid}}"/>
+<input type="hidden" id="panier_constraintid" name="constraintid" value="{{constraints.0.id}}"/>
+<input type="hidden" id="panier_characters" name="characters" value="{{characterslist}}"/>
+<input type="hidden" id="panier_objects" name="objects" value="{{objectslist}}"/>
+<input type="hidden" id="panier_rooms" name="rooms" value="{{roomslist}}"/>
+</form>
 <table border="0" class="form" width="100%">
 	<tr>
 		<td>
 			<center>
+				<input type="text" value="{{teamname}}" onchange="$('#panier_teamname').val($(this).val())"/><br/>
+				{% if gameid == '' %}
+				<select id="createteam_loadconstraint" onchange="$('#panier_constraintid').val($(this).val())">
+					{% for constraint in constraints %}
+						<option value="{{ constraint.id }}">{{ constraint.name }}</option>
+					{% endfor %}
+				</select><img style="vertical-align:middle" class="pointer" src="/static/images/interface/helpsmall.png" onclick="helpConstraint()"/><br/>
+				{% endif %}
 				<img class="pointer" title="{% trans "TOGGLE_HELP" %}" alt="{% trans "TOGGLE_HELP" %}" onclick="toggleHelp()" src="/static/images/interface/helpno.png" width="50" height="50" id="togglehelp"/><img class="pointer" title="{% trans "SHOW_TEAM" %}" alt="{% trans "SHOW_TEAM" %}" onclick="showTeam()" src="/static/images/interface/team-icon.png" width="50" height="50"/>
 				<table>
 					<tr>
@@ -29,6 +45,7 @@
 						<td>{% trans "TEAM_ROOMS_COUNT" %}:</td><td id="team_roomscount">0</td>
 					</tr>
 				</table>
+				<button class="dtbutton" onclick="saveTeam()">{% trans "TEAM_SAVE" %}</button>
 			</center>
 		</td>
 		<td>
@@ -53,7 +70,7 @@
 				<div class="filter_character"><a id="filter_prestigious" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_PRESIGIOUS" %}</div>
 				<div class="filter_character"><a id="filter_undead" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_UNDEAD" %}</div>
 				<div class="filter_character"><a id="filter_immaterial" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_IMATERIAL" %}</div>
-				<div class="filter_character"><a id="filter_walker_shadow" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_SHADOWWALKER" %}</div>
+				<div class="filter_character"><a id="filter_walker_tenebres" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_SHADOWWALKER" %}</div>
 				<div class="filter_room"><a id="filter_tenebres" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_SHADOWWALKER" %}</div>
 				<div class="filter_character"><a id="filter_elf" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_ELF" %}</div>
 				<div class="filter_character"><a id="filter_dwarf" class="checkbox" href="javascript:runcreateteamfilter();void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a>&nbsp;{% trans "SPAWN_FILTER_DWARF" %}</div>

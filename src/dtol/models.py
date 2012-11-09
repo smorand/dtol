@@ -12,6 +12,7 @@
 # into your database.
 
 from django.db import models
+from commons import randomstring
 
 class DtExtension(models.Model):
 	id = models.AutoField(primary_key=True)
@@ -96,6 +97,50 @@ class DtCharacter(models.Model):
 	extensions = models.ManyToManyField(DtExtension)
 	def capacities(self):
 		return DtCharacterCapacity.objects.filter(character=self.id)
+	def advdeplacement(self):
+		dep = self.deplacement
+		caps = self.capacities()
+		for c in caps:
+			if len(c.name) >= 12 and c.name[:12] == 'walker_fosse':
+				dep += 1
+			if c.name == 'stayonfosse':
+				dep += 1
+			if len(c.name) >= 5 and c.name[:5] == 'flyer':
+				dep += 2
+			if len(c.name) >= 10 and c.name[:10] == 'immaterial':
+				dep += 2
+			if c.name == 'tail':
+				dep += 1
+		return dep
+	def advforce(self):
+		f = self.force
+		caps = self.capacities()
+		for c in caps:
+			if c.name == 'kill':
+				f += 1
+			if c.name == 'seecombatcard':
+				f += 1
+			if c.name == 'bonusgroup_2':
+				f += 1
+			if c.name == 'forcecard':
+				f += 1
+			if c.name == 'fastfight':
+				f += 1
+			if c.name == 'malusfight':
+				f += 1
+			if c.name == 'removefight':
+				f += 1
+			if c.name == 'defenser':
+				f += 1
+			if len(c.name) >= 12 and c.name[:12] == 'bonusattaque':
+				f += 1
+			if len(c.name) >= 12 and c.name[:12] == 'bonusdefense':
+				f += 1
+			if len(c.name) >= 11 and c.name[:11] == 'bonuscombat':
+				f += 1
+			if len(c.name) >= 12 and c.name[:12] == 'bonusfight':
+				f += 2
+		return f
 	class Meta:
 		db_table = u'dt_characters'
 
@@ -163,15 +208,43 @@ class DtTeam(models.Model):
 	name = models.CharField(max_length=150)
 	user = models.ForeignKey(DtUser)
 	modification = models.DateTimeField(auto_now=True, auto_now_add=True)
-	characters = models.ManyToManyField(DtCharacter)
-	objs = models.ManyToManyField(DtObject)
-	rooms = models.ManyToManyField(DtRoom)
+	characters = models.ManyToManyField(DtCharacter, through='DtTeamCharacter')
+	objs = models.ManyToManyField(DtObject, through='DtTeamObject')
+	rooms = models.ManyToManyField(DtRoom, through='DtTeamRoom')
 	sack = models.ManyToManyField(DtObject, related_name='sack')
 	played = models.IntegerField(default=0)
 	wins = models.IntegerField(default=0)
 	lost = models.IntegerField(default=0)
 	class Meta:
 		db_table = u'dt_teams'
+
+class DtTeamCharacter(models.Model):
+	team = models.ForeignKey(DtTeam)
+	character = models.ForeignKey(DtCharacter)
+	uid = models.IntegerField()
+	def generateUid(self):
+		self.uid = int(randomstring(9,  '0123456789'))
+	class Meta:
+		db_table = u'dt_teams_characters'
+
+class DtTeamObject(models.Model):
+	team = models.ForeignKey(DtTeam)
+	object = models.ForeignKey(DtObject)
+	uid = models.IntegerField()
+	def generateUid(self):
+		self.uid = int(randomstring(9,  '0123456789'))
+	class Meta:
+		db_table = u'dt_teams_objects'
+
+class DtTeamRoom(models.Model):
+	team = models.ForeignKey(DtTeam)
+	room = models.ForeignKey(DtRoom)
+	uid = models.IntegerField()
+	def generateUid(self):
+		self.uid = int(randomstring(9,  '0123456789'))
+	class Meta:
+		db_table = u'dt_teams_rooms'
+
 
 class DtRoomCase(models.Model):
 	id = models.AutoField(primary_key=True)
@@ -218,6 +291,8 @@ class DtSpawnState(models.Model):
 class DtGame(models.Model):
 	id = models.AutoField(primary_key=True)
 	parameters = models.ManyToManyField(DtParameter)
+	def constraint(self):
+		return DtTeamConstraint.objects.get(game=self.id)
 	def players(self):
 		return DtPlayer.objects.filter(game=self.id)
 	def characters(self, player=None):
@@ -343,6 +418,10 @@ class DtTeamConstraint(models.Model):
 	maxforce = models.IntegerField(default=-1)
 	mintotalforce = models.IntegerField(default=-1)
 	maxtotalforce = models.IntegerField(default=-1)
+	minadvforce = models.IntegerField(default=-1)
+	maxadvforce = models.IntegerField(default=-1)
+	mintotaladvforce = models.IntegerField(default=-1)
+	maxtotaladvforce = models.IntegerField(default=-1)
 	minprestigious = models.IntegerField(default=-1)
 	maxprestigious = models.IntegerField(default=-1)
 	minspellcaster = models.IntegerField(default=-1)

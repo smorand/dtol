@@ -1,0 +1,89 @@
+<!-- This file is covered by the GNU Public Licence v3 licence. See http://www.gnu.org/licenses/gpl.txt -->
+{% load i18n %}
+<table class="form">
+	{% if constraint.mincharacters != -1 or constraint.maxcharacters != -1 %} 
+	<tr><th>{% trans "CHARACTERS" %}</th><td>{{ constraint.mincharacters }}&nbsp;&ge;...&ge;&nbsp;{{ constraint.maxcharacters }}</td></tr>
+	{%endif %}
+	{% if constraint.minobjects != -1 or constraint.maxobjects != -1 %} 
+	<tr><th>{% trans "OBJECTS" %}</th><td>&nbsp;{{ constraint.minobjects}}&nbsp;&ge;...&ge;&nbsp;{{ constraint.maxobjects}}</td></tr>
+	{% endif %}
+	{% if constraint.minrooms != -1 or constraint.maxrooms != -1 %} 
+	<tr><th>{% trans "ROOMS" %}</th><td>&nbsp;{{ constraint.minrooms}}&nbsp;&ge;...&ge;&nbsp;{{ constraint.maxrooms}}</td></tr>
+	{% endif %}
+	{% if constraint.mindeplacement != -1 or constraint.maxdeplacement != -1 %} 
+	<tr><th>{% trans "CHARACTER_DEPLACEMENT" %}</th><td>&nbsp;{{ constraint.mindeplacement}}&nbsp;&ge;...&ge;&nbsp;{{ constraint.maxdeplacement}}</td></tr>
+	{%endif %}
+	{% if constraint.minadvdeplacement != -1 or constraint.maxadvdeplacement != -1 %} 
+	<tr><th>{% trans "CHARACTER_ADVANCED_DEPLACEMENT" %}</th><td>&nbsp;{{ constraint.minadvdeplacement}}&nbsp;&ge;...&ge;&nbsp;{{ constraint.maxadvdeplacement}}</td></tr>
+	{%endif %}
+	{% if constraint.minforce != -1 or constraint.maxforce != -1 %} 
+	<tr><th>{% trans "CHARACTER_FORCE" %}</th><td>&nbsp;{{ constraint.minforce}}&nbsp;&ge;...&ge;&nbsp;{{ constraint.maxforce}}</td></tr>
+	{%endif %}
+	{% if constraint.minadvforce != -1 or constraint.maxadvforce != -1 %} 
+	<tr><th>{% trans "CHARACTER_ADVANCED_FORCE" %}</th><td>&nbsp;{{ constraint.minadvforce}}&nbsp;&ge;...&ge;&nbsp;{{ constraint.maxadvforce}}</td></tr>
+	{%endif %}
+	{% if constraint.mintotaldeplacement != -1 or constraint.maxtotaldeplacement != -1 %} 
+	<tr><th>{% trans "TEAM_DEPLACEMENT" %}</th><td>&nbsp;{{ constraint.mintotaldeplacement}}&nbsp;&ge;...&ge;&nbsp;{{ constraint.maxtotaldeplacement}}</td></tr>
+	{%endif %}
+	{% if constraint.mintotaladvdeplacement != -1 or constraint.maxtotaladvdeplacement != -1 %} 
+	<tr><th>{% trans "TEAM_ADVANCED_DEPLACEMENT" %}</th><td>&nbsp;{{ constraint.mintotaladvdeplacement}}&nbsp;&ge;...&ge;&nbsp;{{ constraint.maxtotaladvdeplacement}}</td></tr>
+	{%endif %}
+	{% if constraint.mintotalforce != -1 or constraint.maxtotalforce != -1 %} 
+	<tr><th>{% trans "TEAM_FORCE" %}</th><td>&nbsp;{{ constraint.mintotalforce}}&nbsp;&ge;...&ge;&nbsp;{{ constraint.maxtotalforce}}</td></tr>
+	{%endif %}
+	{% if constraint.mintotaladvforce != -1 or constraint.maxtotaladvforce != -1 %} 
+	<tr><th>{% trans "TEAM_ADVANCED_FORCE" %}</th><td>&nbsp;{{ constraint.mintotaladvforce}}&nbsp;&ge;...&ge;&nbsp;{{ constraint.maxtotaladvforce}}</td></tr>
+	{%endif %}
+	{% if constraint.minprestigious != -1 or constraint.maxprestigious != -1 %} 
+	<tr><th>{% trans "CHARACTER_PRESTIGIOUS" %}</th><td>&nbsp;{{ constraint.minprestigious}}&nbsp;&ge;...&ge;&nbsp;{{ constraint.maxprestigious}}</td></tr>
+	{%endif %}
+	{% if constraint.minspellcaster != -1 or constraint.maxspellcaster != -1 %} 
+	<tr><th>{% trans "CHARACTER_SPELLCASTERS" %}</th><td>&nbsp;{{ constraint.minspellcaster}}&nbsp;&ge;...&ge;&nbsp;{{ constraint.maxspellcaster}}</td></tr>
+	{%endif %}
+	{% if constraint.minflying != -1 or constraint.maxflying != -1 %} 
+	<tr><th>{% trans "CHARACTER_FLYING" %}</th><td>&nbsp;{{ constraint.minflying}}&nbsp;&ge;...&ge;&nbsp;{{ constraint.maxflying}}</td></tr>
+	{%endif %}
+	{% if constraint.minintangible != -1 or constraint.maxintangible != -1 %} 
+	<tr><th>{% trans "CHARACTER_INTANGIBLE" %}</th><td>&nbsp;{{ constraint.minintangible}}&nbsp;&ge;...&ge;&nbsp;{{ constraint.maxintangible}}</td></tr>
+	{%endif %}
+	{% if constraint.minshadowwalker != -1 or constraint.maxshadowwalker != -1 %} 
+	<tr><th>{% trans "CHARACTER_SHADOWWALKER" %}</th><td>&nbsp;{{ constraint.minshadowwalker}}&nbsp;&ge;...&ge;&nbsp;{{ constraint.maxshadowwalker}}</td></tr>
+	{%endif %}
+	{% if constraint.mincounterfountain != -1 or constraint.maxcounterfountain != -1 %} 
+	<tr><th>{% trans "CHARACTER_COUNTERFOUNTAIN" %}</th><td>&nbsp;{{ constraint.mincounterfountain}}&nbsp;&ge;...&ge;&nbsp;{{ constraint.maxcounterfountain}}</td></tr>
+	{%endif %}
+	{% if constraint.maxsamecharacter != -1 %} 
+	<tr><th>{% trans "CHARACTER_SAME" %}</th><td>&nbsp;{{ constraint.maxsamecharacter}}</td></tr>
+	{%endif %}
+	{% if constraint.mincursed != -1 or constraint.maxcursed != -1 %} 
+	<tr><th>{% trans "OBJECT_CURSED" %}</th><td>&nbsp;{{ constraint.mincursed}}&nbsp;&ge;...&ge;&nbsp;{{ constraint.maxcursed}}</td></tr>
+	{%endif %}
+	{% if constraint.maxsameobject != -1 %} 
+	<tr><th>{% trans "OBJECT_SAME" %}</th><td>&nbsp;{{ constraint.maxsameobject}}</td></tr>
+	{%endif %}
+	{% if constraint.maxcommonobject != -1 %} 
+	<tr><th>{% trans "OBJECT_COMMON" %}</th><td>&nbsp;{{ constraint.maxcommonobject}}</td></tr>
+	{%endif %}
+	{% if constraint.minshadowroom != -1 or constraint.maxshadowroom != -1 %} 
+	<tr><th>{% trans "ROOM_SHADOW" %}</th><td>&nbsp;{{ constraint.minshadowroom}}&nbsp;&ge;...&ge;&nbsp;{{ constraint.maxshadowroom}}</td></tr>
+	{%endif %}
+	{% if constraint.minantimagicroom != -1 or constraint.maxantimagicroom != -1 %} 
+	<tr><th>{% trans "ROOM_ANTIMAGIC" %}</th><td>&nbsp;{{ constraint.minantimagicroom}}&nbsp;&ge;...&ge;&nbsp;{{ constraint.maxantimagicroom}}</td></tr>
+	{%endif %}
+	{% if constraint.minfountain != -1 or constraint.maxfountain != -1 %} 
+	<tr><th>{% trans "ROOM_FOUNTAIN" %}</th><td>&nbsp;{{ constraint.minfountain}}&nbsp;&ge;...&ge;&nbsp;{{ constraint.maxfountain}}</td></tr>
+	{%endif %}
+	{% if constraint.maxsameroom != -1 %} 
+	<tr><th>{% trans "ROOM_SAME" %}</th><td>&nbsp;{{ constraint.maxsameroom}}</td></tr>
+	{%endif %}
+	{% if constraint.minextensions != -1 or constraint.maxextensions != -1 %} 
+	<tr><th>{% trans "TEAM_EXTENSIONS" %}</th><td>&nbsp;{{ constraint.minextensions}}&nbsp;&ge;...&ge;&nbsp;{{ constraint.maxextensions}}</td></tr>
+	{%endif %}
+	{% if constraint.extensions.all %}
+	<tr><th>{% trans "EXTENSIONS" %}</th><td>
+		{% for c in constraint.extensions.all %}
+		<div class="extensionlogodisplay"><img class="extensionlogo-notselected" src="/static/images/interface/logo{{ c.id }}.jpg" border="0" title="{% trans c.name %}"/></div>
+		{% endfor %}
+	</td></tr>
+	{% endif %}
+</table>

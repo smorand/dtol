@@ -82,7 +82,7 @@ $(document).ready(function() {
 		    {
 		    	text: translate("SAVE"), 
 			click: function() {
-				$('#profile_updateanswer').html('<img src="/static/images/interface/loading.gif"/>&nbsp;' + translate("SPONSORING") + '<br/>');
+				$('#profile_updateanswer').html('<img style="vertical-align: middle" src="/static/images/interface/loading.gif"/>&nbsp;' + translate("SPONSORING") + '<br/>');
 				$.get('/sponsor/' + $('#sponsor_email').val(), function(content) {
 					$('#profile_updateanswer').html(content);
 					$('#sponsor_email').val('');
@@ -188,6 +188,16 @@ function load_teamcreate() {
 	});
 }
 
+function load_teamrandom() {
+	display_wait();
+	$.get('/teams/random', function(content) {
+		window.location.hash = '#teams/random';
+		display_content(content);
+		$('a.checkbox').checkbox(1);
+	});
+}
+
+
 /** callback to create or edit team */
 function load_teamcreateedit_callback() {
 	$('[name=spawnstypes]').radio(1, displaySpawnTypes);
@@ -278,6 +288,8 @@ function load_teams(args) {
 		load_teamsconstraints();
 	} else if (args && args == 'create') {
 		load_teamcreate();
+	} else if (args && args == 'random') {
+		load_teamrandom();
 	} else if (args && args.match('^edit/[1-9][0-9]*$')) {
 		load_teamedit(args.replace('edit/', ''));
 	} else {
@@ -414,7 +426,7 @@ function checkProfileForm() {
  */
 function updateProfile() {
 	$('body').scrollTop(0);
-	$('#profile_updateanswer').html('<img src="/static/images/interface/loading.gif"/>&nbsp;' + translate("SAVING") + '<br/>');
+	$('#profile_updateanswer').html('<img style="vertical-align: middle" src="/static/images/interface/loading.gif"/>&nbsp;' + translate("SAVING") + '<br/>');
 	var form = $('#profile_form');
 	var exts = $('.extensionlogo-selected')
 	var extsString = '';
@@ -433,7 +445,7 @@ function updateProfile() {
  * Update profile 
  */
 function registerProfile() {
-	$('#profile_updateanswer').html('<img src="/static/images/interface/loading.gif"/>&nbsp;' + translate("SAVING") + '<br/>');
+	$('#profile_updateanswer').html('<img style="vertical-align: middle" src="/static/images/interface/loading.gif"/>&nbsp;' + translate("SAVING") + '<br/>');
 	var form = $('#profile_form');
 	var exts = $('.extensionlogo-selected')
 	var extsString = '';
@@ -493,7 +505,7 @@ function toggleBlockUser(img, userId) {
 		var newSrc = img.src.replace('ok', 'ko');
 		var method = 'block'
 	}
-	$('#userlist').html('<img src="/static/images/interface/loading.gif"/>&nbsp;' + translate("ACTION_IN_PROGRESS") + '<br/>')
+	$('#userlist').html('<img style="vertical-align: middle" src="/static/images/interface/loading.gif"/>&nbsp;' + translate("ACTION_IN_PROGRESS") + '<br/>')
 	$.get('/user/' + method + '/' + userId, function(content) {
 		$('#userlist').html(content);
 		img.src = newSrc;
@@ -876,4 +888,31 @@ function load_teamedit(id) {
 		load_teamcreateedit_callback();
 		teamContent();
 	});
+}
+
+/** Run generation of random team */
+function generateRandomTeam() {
+	$('#randomteam_result').html('<img src="/static/images/interface/loading.gif"/><br/>' + translate("GENERATE_RANDOM_TEAM"));
+	var form = $('#randomteam_form');
+	var exts = $('.extensionlogo-selected')
+	var extsString = '';
+	var joiner = ''
+	for (var i = 0; i < exts.length; i++) {
+		extsString += joiner + exts.get(i).id.replace('extlogo_', ''); 
+		joiner = ',';
+	}
+	$('#randomteam_extensions').val(extsString);
+	$.post(form.attr('action'), form.serialize(), function(content) {
+		$('#randomteam_result').html(content);
+	});
+	return false;
+}
+
+/** save a previously generated random teams(s) */
+function saveRandomTeam() {
+	$('#randomteamerr_result').html('<img style="vertical-align: middle" src="/static/images/interface/loading.gif"/>&nbsp;' + translate("SAVE_RANDOM_TEAM"));
+	$.get('/teams/random/save', function(content) {
+		$('#randomteamerr_result').html(content); 
+	});
+	return false;
 }

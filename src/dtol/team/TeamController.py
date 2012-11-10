@@ -22,6 +22,9 @@ class TeamController(CommonController):
 			{ 'pattern': r'^teams/constraints/help/([1-9][0-9]*)$', 'method': 'helpteamsconstraint', 'right': 'connected' },
 			{ 'pattern': r'^teams/constraints/save$', 'method': 'saveteamsconstraint', 'right': 'connected' },
 			{ 'pattern': r'^teams/create$', 'method': 'create', 'parameters': {'gameid':''}, 'right': 'connected' },
+			{ 'pattern': r'^teams/random$', 'method': 'random', 'right': 'connected' },
+			{ 'pattern': r'^teams/random/generate$', 'method': 'randomgenerate', 'right': 'connected' },
+			{ 'pattern': r'^teams/random/save$', 'method': 'randomsave', 'right': 'connected' },
 			{ 'pattern': r'^teams/create/([1-9][0-9]*)$', 'method': 'create', 'right': 'connected' },
 			{ 'pattern': r'^teams/edit/([1-9][0-9]*)$', 'method': 'edit', 'right': 'connected' },
 			{ 'pattern': r'^teams/display/([1-9][0-9]*)$', 'method': 'display', 'right': 'connected' },
@@ -361,11 +364,78 @@ class TeamController(CommonController):
 		except Exception as err:
 			return self.templates.response('message_return', context={ 'error': err})
 		return self.templates.empty()
+
 	
-	def delete(self, request):
-		return self.templates.underConstruction()
+	def random(self, request):
+		extensions = self.userManager.getUser(request.session['user'].id).extensions.all()
+		user = request.session['user']
+		user.cache = None
+		request.session['user'] = user
+		return self.templates.response('team.randomgeneration', context={
+			'extensions': extensions
+		})
 	
-	def randomCreate(self, request):
-		return self.templates.underConstruction()
+	def randomgenerate(self, request):
+		teamname = request.POST['teamname']
+		if len(teamname) == 0: return self.templates.response('message_return', context={ 'error': _('RANDOM_NO_TEAM_NAME')})
+		method = request.POST['randommethod']
+		extensions = request.POST['extensions'].split(',') if request.POST['extensions'] != '' else [] 
+		if len(extensions) == 0: return self.templates.response('message_return', context={ 'error': _('RANDOM_NO_EXTENSION')})
+		teamscount = int(request.POST['teamscount'])
+		characterscount = int(request.POST['characterscount'])
+		objectscount = int(request.POST['objectscount'])
+		roomscount = int(request.POST['roomscount'])
+		repeat = request.POST['randomteam_repeat'] == '1'
+		try:
+			teams = self.teamManager.generateRandomTeam(method, teamscount, extensions, characterscount, objectscount, roomscount, repeat)
+		except Exception as err:
+			return self.templates.response('message_return', context={ 'error': err})
+		user = request.session['user']
+		user.cache = (teamname, teams)
+		request.session['user'] = user
+		return self.templates.response('team.randomgenerationresult', context={
+			'spawncolor': request.session['user'].primarycolor,
+			'teamname': teamname,
+			'teams': teams
+		})
 	
-	
+	def randomsave(self, request):
+		try:
+			teamname, teams = request.session['user'].cache
+		except:
+			return self.templates.response('message_return', context={ 'error': _('RANDOM_NO_TEAM_GENERATE')})
+		
+		count = 1
+		for characters, objects, rooms in teams:
+			team = DtTeam()
+			team.name = '%s_%d' % (teamname, count)
+			team.user = DtUser(id=request.session['user'].id)
+			team.save()
+			for c in characters:
+				o = DtTeamCharacter()
+				o.generateUid()
+				o.team = team
+				o.character = c
+				o.save()
+			for c in objects:
+				o = DtTeamObject()
+				o.generateUid()
+				o.team = team
+				o.object = c
+				o.save()
+			for c in rooms:
+				o = DtTeamRoom()
+				o.generateUid()
+				o.team = team
+				o.room = c[0]
+				o.save()
+				o = DtTeamRoom()
+				o.generateUid()
+				o.team = team
+				o.room = c[1]
+				o.save()
+			count += 1
+		user = request.session['user']
+		user.cache = None
+		request.session['user'] = user
+		return self.templates.response('message_return', context={ 'message': _('RANDOM_SAVE_DONE')})

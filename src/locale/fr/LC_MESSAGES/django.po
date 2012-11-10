@@ -25,6 +25,10 @@ msgstr "Anglais"
 msgid "TEAM_CONSTRAINT_EMPTY_NAME"
 msgstr "Nom de la constraint équipe vide"
 
+# core
+msgid "NOT_IMPLEMENTED"
+msgstr "Pas encore implémenté"
+
 #: dtol/user/UserController.py:43 dtol/welcome/WelcomeController.py:242
 msgid "LOGIN_ALREADY_TAKEN"
 msgstr "Ce login est déjà utilisé"
@@ -779,6 +783,10 @@ msgstr "Liste des Equipes"
 #: templates/team/list.html:5
 msgid "CREATE_TEAM"
 msgstr "Créer Nouvelle Equipe"
+
+#: templates/team/list.html:5
+msgid "CREATE_RANDOM_TEAM"
+msgstr "Créer Equipe Aléatoire"
 
 #: templates/team/list.html:5
 msgid "LIST_CONSTRAINT_TEAM"
@@ -3900,6 +3908,89 @@ msgstr "Trop de fois une même paire de salles"
 msgid "CONSTRAINT_FORBIDEN_EXTENSION_%s"
 msgstr "Extensions autorisées : %s"
 
+#: generaterandomteam
+msgid "GENERATE_RANDOM_TEAM"
+msgstr "Génération des équipes aléatoires"
+
+#: generaterandomstream
+msgid "RANDOM_METHOD"
+msgstr "Méthode&nbsp;"
+
+#: generaterandomstream
+msgid "RANDOMMETHOD_TOTALRANDOM"
+msgstr "Full hazard"
+
+#: generaterandomstream
+msgid "RANDOMMETHOD_CLEVER"
+msgstr "Intelligent"
+
+#: generaterandomstream
+msgid "RANDOMMETHOD_3221"
+msgstr "3-2-2-1"
+
+#: generaterandomstream
+msgid "RANDOMMETHOD_CLERVERMORPH"
+msgstr "Morph-Intel"
+
+#: generaterandomstream
+msgid "RANDOM_TEAMSCOUNT"
+msgstr "Nombre d'équipes&nbsp;"
+
+#: generaterandomstream
+msgid "RANDOM_CHARACTERS"
+msgstr "Nombre de personnages&nbsp;"
+
+#: generaterandomstream
+msgid "RANDOM_OBJECTS"
+msgstr "Nombre d'objets&nbsp;"
+
+#: generaterandomstream
+msgid "RANDOM_ROOMS"
+msgstr "Nombre de pièces&nbsp;"
+
+#: generaterandomstream
+msgid "RANDOM_REPEAT"
+msgstr "Répétition autorisée&nbsp;"
+
+#: generaterandomstream
+msgid "RANDOM_GENERATE"
+msgstr "Génération des équipes"
+
+#: generaterandomstream
+msgid "RANDOM_TEAMNAME"
+msgstr "Génération des équipes"
+
+#: generaterandomstream
+msgid "RANDOM_NO_TEAM_GENERATE"
+msgstr "Aucune équipe générée"
+
+#: generaterandomstream
+msgid "RANDOM_SAVE_DONE"
+msgstr "Enregistrement effectué."
+
+#: generaterandomstream
+msgid "SAVE_RANDOM_TEAM"
+msgstr "Enregistrement des équipes"
+
+#: generaterandomstream
+msgid "RANDOMTEAM_NOT_ENOUGH_CHARACTERS"
+msgstr "Pas assez de personnages pour générer les équipes"
+
+#: generaterandomstream
+msgid "RANDOMTEAM_NOT_ENOUGH_OBJECTS"
+msgstr "Pas assez d'objets pour générer les équipes"
+
+#: generaterandomstream
+msgid "RANDOMTEAM_NOT_ENOUGH_ROOMS"
+msgstr "Pas assez de pièces pour générer les équipes"
+
+#: generaterandomstream
+msgid "RANDOM_NO_TEAM_NAME"
+msgstr "Le nom de l'équipe est obligatoire"
+
+#: generaterandomstream
+msgid "RANDOM_NO_EXTENSION"
+msgstr "Aucune extension choisie pour la génération de l'équipe"
 
 #~ msgid "USER_PRIMARY_COLOR"
 #~ msgstr "Couleur 1"

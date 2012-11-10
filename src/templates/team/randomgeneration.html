@@ -1,0 +1,43 @@
+<!-- This file is covered by the GNU Public Licence v3 licence. See http://www.gnu.org/licenses/gpl.txt -->
+{% load i18n %}
+<button class="dtbutton" onClick="load_page('teams')">{% trans "TEAMS_LIST" %}</button>
+<div align="center">
+	<form method="post" action="/teams/random/generate" id="randomteam_form" onsubmit="return generateRandomTeam();">
+		<input type="hidden" name="extensions" id="randomteam_extensions" value="{{ userExtensions }}"/>
+		<table class="form">
+			<tr>
+				<th colspan="4" style="text-align: center;">{% trans "RANDOM_TEAMNAME" %}: <input type="text" size="10" name="teamname"/></th>
+			</tr>
+			<tr>
+				<th>{% trans "RANDOM_METHOD" %}:</th>
+				<td>
+					<select name="randommethod">
+						<option value="random">{% trans "RANDOMMETHOD_TOTALRANDOM" %}</option>
+						<option value="clever">{% trans "RANDOMMETHOD_CLEVER" %}</option>
+						<option value="3221">{% trans "RANDOMMETHOD_3221" %}</option>
+						<!--<option value="clevermorph">{% trans "RANDOMMETHOD_CLERVERMORPH" %}</option>-->
+					</select>
+				</td>
+				<th>{% trans "RANDOM_CHARACTERS" %}:</th>
+				<td><input type="text" name="characterscount" id="randomteam_characterscount" size="3" value="8"/></td>
+			</tr><tr>	
+				<th>{% trans "RANDOM_TEAMSCOUNT" %}:</th>
+				<td><input type="text" name="teamscount" id="randomteam_teamscount" size="3" value="1"/></td>
+				<th>{% trans "RANDOM_OBJECTS" %}:</th>
+				<td><input type="text" name="objectscount" id="randomteam_objectscount" size="3" value="6"/></td>
+			</tr><tr>
+				<th>{% trans "RANDOM_REPEAT" %}:</th>
+				<td><a id="randomteam_repeat" class="checkbox" href="javascript:void(0)"><img src="/static/images/interface/checkbox.gif" border="0"/></a></td>
+				<th>{% trans "RANDOM_ROOMS" %}:</th>
+				<td><input type="text" name="roomscount" id="randomteam_roomscount" size="3" value="2"/></td>
+			</tr>
+		</table>
+		{% for c in extensions %}
+		<div class="extensionlogo"><img id="extlogo_{{ c.id }}" class="extensionlogo-notselected" src="/static/images/interface/logo{{ c.id }}.jpg" border="0" title="{% trans c.transname %}" onclick="selectExtension({{ c.id }});"/></div>
+		{% endfor %}
+		<div class="extensionlogo"><img  class="extensionlogo-notselectable" src="/static/images/interface/logoall.jpg" title="{% trans "EXTENSION_ALL" %}" onclick="selectExtensionAll();runcreateteamfilter()" border="0"/></div>			
+		<div class="extensionlogo"><img  class="extensionlogo-notselectable" src="/static/images/interface/logonone.jpg" title="{% trans "EXTENSION_NONE" %}" onclick="selectExtensionNone();runcreateteamfilter()" border="0"/></div>
+		<br/><br/><button class="dtbutton" type="submit">{% trans "RANDOM_GENERATE" %}</button>
+	</form>
+	<div id="randomteam_result"></div>
+</div>

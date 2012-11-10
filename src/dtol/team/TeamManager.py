@@ -5,6 +5,7 @@
 
 from dtol.models import DtTeam, DtTeamConstraint
 from django.utils.translation import ugettext as _
+import random, math
 
 class TeamManager(object):
 	'''
@@ -262,3 +263,94 @@ class TeamManager(object):
 					break
 			if not found: errors.append(_('CONSTRAINT_FORBIDEN_EXTENSION_%s') % ', '.join([ _('EXTENSION_%s' % (n)) for n in extensions ]))
 		return errors
+
+	def generateRandomTeam(self, method, teamscount, extensions, characterscount, objectscount, roomscount, repeat):
+		teams = list()
+		characterslist = self.spawnManager.getCharacters(extensions)
+		objectslist = self.spawnManager.getObjects(extensions)
+		objscount = len(objectslist)
+		extsid = [ int(e) for e in extensions ]
+		objscurrent = set()
+		for o in objectslist:
+			toadd = 0
+			for cap in o.capacities():
+				if cap.name == u'categorie_current':
+					objscurrent.add(o.name)
+					for ext in o.extensions.all():
+						if ext.id in extsid:
+							objscount += toadd
+							toadd = 1
+					break
+		roomslistraw = self.spawnManager.getRooms(extensions)
+		roomsmap = dict()
+		for r in roomslistraw:
+			if r.number not in roomsmap:
+				roomsmap[r.number] = ()
+			roomsmap[r.number] += (r,)
+		roomslist = roomsmap.values()
+		if len(characterslist) < characterscount*(1 if repeat else teamscount):
+			raise Exception(_('RANDOMTEAM_NOT_ENOUGH_CHARACTERS'))
+		if objscount < objectscount*(1 if repeat else teamscount):
+			raise Exception(_('RANDOMTEAM_NOT_ENOUGH_OBJECTS'))
+		if len(roomslist) < roomscount*(1 if repeat else teamscount):
+			raise Exception(_('RANDOMTEAM_NOT_ENOUGH_ROOMS'))
+		charactersfilters = set()
+		objectsfilters = set()
+		roomsfilters = set()
+		for i in range(0, teamscount):
+			if method == 'random':
+				characters = self._generateRandom(characterslist, lambda x: x.name, charactersfilters, set(), characterscount)
+				objects = self._generateRandom(objectslist, lambda x: x.name, objectsfilters, objscurrent, objectscount)
+				rooms = self._generateRandom(roomslist, lambda x: x[0].number, roomsfilters, set(), roomscount)
+			elif method == '3221':
+				characters = self._generate3221(characterslist, charactersfilters, characterscount)
+				objects = self._generateRandom(objectslist, lambda x: x.name, objectsfilters, objscurrent, objectscount)
+				rooms = self._generateRandom(roomslist, lambda x: x[0].number, roomsfilters, set(), roomscount)
+			elif method == 'clever':
+				rooms = self._generateRandom(roomslist, lambda x: x[0].number, roomsfilters, set(), roomscount)
+				characters = self._generateCleverCharacters(characterslist, charactersfilters, characterscount, rooms)
+				objects = self._generateCleverObjects(objectslist, objectsfilters, objscurrent, objectscount, rooms, characters)
+				raise Exception(_('NOT_IMPLEMENTED'))
+			teams.append((characters, objects, rooms))
+			if repeat:
+				charactersfilters = set()
+				objectsfilters = set()
+				roomsfilters = set()
+		return teams
+	
+	def _generateRandom(self, arraysrc, key, filters, exceptfilter, count):
+		''' generate from src using key (to get unique) and not in filters (filters is a set) '''
+		array = list()
+		while len(array) < count:
+			c = random.choice(arraysrc)
+			k = key(c)
+			if k not in filters:
+				array.append(c)
+				if k not in exceptfilter:
+					filters.add(k)
+		return array
+	
+	def _generate3221(self, arraysrc, filters, count):
+		''' generate from src using key (to get unique) and not in filters (filters is a set) '''
+		array = list()
+		categslimit = [ int(math.ceil(3*8.0/count)), int(math.ceil(2*8.0/count)), int(math.ceil(2*8.0/count)), int(math.ceil(1*8.0/count)) ]
+		categs = [ [], [], [], [] ]
+		for c in arraysrc:
+			if c.name not in filters:
+				if c.force <= 1: categs[0].append(c)
+				elif c.force == 2: categs[1].append(c)
+				elif c.force == 3: categs[2].append(c)
+				else: categs[3].append(c)
+		for i in range(0, len(categs)):
+			if len(categs[i]) < categslimit[i]:
+				raise Exception(_('RANDOMTEAM_NOT_ENOUGH_CHARACTERS'))
+			array.extend(self._generateRandom(categs[i], lambda x: x.name, filters, set(), categslimit[i]))
+		return array
+	
+	def _generateCleverCharacters(self, characterslist, charactersfilters, characterscount, rooms):
+		pass
+
+	def _generateCleverObjects(self, objectslist, objectsfilters, objscurrent, objectscount, rooms, characters):
+		pass
+
+	

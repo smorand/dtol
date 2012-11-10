@@ -266,7 +266,6 @@ img.icon:hover {
 	right: 5px;
 	top: 5px;
 	height: 180px;
-	//border: 1px solid white;
 }
 
 .header-chat div.chat {
@@ -367,3 +366,28 @@ table.form td {
     font-weight: normal;
 }
 
+.hrsection1 {
+	border-bottom: 3px solid red;
+}
+
+.hrsection2 {
+	border-bottom: 1px solid grey;	
+}
+
+.teamname {
+	cursor: pointer; 
+    text-decoration: none; 
+    display: inline-block; 
+    font-weight: bold; 
+    color: #ffffff; 
+    background-color: #009311; 
+    padding: 4px 14px 6px;
+    border: 2px solid #FFFFFF;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    text-shadow: 0 0 8px #FFFFFF;
+    -moz-box-shadow: inset 0 0 12px #000000;
+    -webkit-box-shadow: inset 0 0 12px #000000;
+    box-shadow: inset 0 0 12px #000000;
+}

@@ -31,8 +31,8 @@ class WelcomeController(CommonController):
 			{ 'pattern': '^profile/update$', 'method': 'updateprofile', 'right': 'connected' },
 			{ 'pattern': '^lang$', 'method': 'setlang', 'right': 'connected' },
 			{ 'pattern': '^sponsor/([a-zA-Z0-9-_@.]+)$', 'method': 'sponsor', 'right': 'connected' },
-			{ 'pattern': '^register/([A-Z0-9]+)$', 'method': 'registerform', 'right': 'connected' },
-			{ 'pattern': '^register$', 'method': 'register', 'right': 'connected' },
+			{ 'pattern': '^register/([A-Z0-9]+)$', 'method': 'registerform' },
+			{ 'pattern': '^register$', 'method': 'register' },
 			{ 'pattern': '^confirmemail/([A-Z0-9]+)$', 'method': 'confirmemail', 'right': 'connected' },
 			{ 'pattern': '^spawn/([a-z0-9]+)/([a-z0-9]+)$', 'method': 'drawspawn' },
 			{ 'pattern': '^spawn/([a-z0-9]+)/([a-z0-9]+)/([a-z0-9]+)$', 'method': 'drawspawn' }

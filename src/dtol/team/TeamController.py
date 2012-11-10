@@ -24,6 +24,7 @@ class TeamController(CommonController):
 			{ 'pattern': r'^teams/create$', 'method': 'create', 'parameters': {'gameid':''}, 'right': 'connected' },
 			{ 'pattern': r'^teams/create/([1-9][0-9]*)$', 'method': 'create', 'right': 'connected' },
 			{ 'pattern': r'^teams/edit/([1-9][0-9]*)$', 'method': 'edit', 'right': 'connected' },
+			{ 'pattern': r'^teams/display/([1-9][0-9]*)$', 'method': 'display', 'right': 'connected' },
 			{ 'pattern': r'^teams/remove/([1-9][0-9]*)$', 'method': 'remove', 'right': 'connected' },
 			{ 'pattern': r'^teams/save$', 'method': 'save', 'right': 'connected' },
 			{ 'pattern': r'^spawn/help/(character|object|room)/([0-9]+)$', 'method': 'help', 'right': 'connected' },
@@ -275,6 +276,17 @@ class TeamController(CommonController):
 			'roomslist': ','.join([ '%d_%s'  % (c.id, c.number) for c in team.rooms.all() if c.rotation == 1 ])+',',
 			'spawncolor': request.session['user'].primarycolor
 		})
+
+	def display(self, request, teamid):
+		team = self.teamManager.getTeam(int(teamid))
+		return self.templates.response('team.display', context={
+			'teamname': team.name,
+			'characters': team.characters.all(),
+			'objects': team.objs.all(),
+			'rooms': team.rooms.all(),
+			'spawncolor': request.session['user'].primarycolor
+		})
+
 	
 	def help(self, request, stype, sid):
 		c = {}

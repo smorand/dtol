@@ -832,9 +832,18 @@ function helpConstraint() {
 function showTeam() {
 	$('#teamsdialog').dialog({
 		autoOpen: true,
-		width: 830,
+		width: 860,
 		title: translate('CURRENT_TEAM')  
 	});	
+}
+
+/** Affichier l'équipe */
+function displayTeam(id) {
+	$.get('/teams/display/' + id, function(content) {
+		$('#teamsdialog').html(content);
+		showTeam();
+		$('#teamsdialog').dialog('option', 'title', $('#displayteam_name').val())
+	});
 }
 
 /** Enregistrer l'équipe */

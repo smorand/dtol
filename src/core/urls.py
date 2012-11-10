@@ -17,7 +17,6 @@ LOGGER  = logging.getLogger('app')
 urlpatterns = patterns('',)
 
 for obj_name, obj in core.controllers.ApplicationContext.objects.iteritems():
-	print obj
 	if isinstance(obj, core.controllers.CommonController):
 		LOGGER.debug('Load URLs for %s' % (str(obj_name)))
 		for url in obj._geturls():

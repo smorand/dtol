@@ -33,7 +33,7 @@
 					{% for constraint in constraints %}
 						<option value="{{ constraint.id }}">{{ constraint.name }}</option>
 					{% endfor %}
-				</select><img style="vertical-align:middle" class="pointer" src="/static/images/interface/helpsmall.png" onclick="helpConstraint()"/><br/>
+				</select><img style="vertical-align:middle" class="pointer" src="/static/images/interface/helpsmall.png" onclick="helpConstraint($('#createteam_loadconstraint').val(), $('#createteam_loadconstraint >option:selected').html())"/><br/>
 				{% endif %}
 				<img class="pointer" title="{% trans "TOGGLE_HELP" %}" alt="{% trans "TOGGLE_HELP" %}" onclick="toggleHelp()" src="/static/images/interface/helpno.png" width="50" height="50" id="togglehelp"/><img class="pointer" title="{% trans "SHOW_TEAM" %}" alt="{% trans "SHOW_TEAM" %}" onclick="showTeam()" src="/static/images/interface/team-icon.png" width="50" height="50"/>
 				<table>

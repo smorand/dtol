@@ -41,6 +41,7 @@ class TeamController(CommonController):
 	def listconstraints(self, request):
 		''' List teams constraints. Only available for some users '''
 		c = {
+			'canedit': request.session['user'].isadmin,
 			'constraints': self.teamManager.getTeamConstraints()
 		}
 		return self.templates.response('team.listconstraints', context=c)

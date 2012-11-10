@@ -816,14 +816,14 @@ function teamContent() {
 }
 
 /** constraint help display */
-function helpConstraint() {
+function helpConstraint(id, name) {
 	$('#actionsdialog').html('');
-	$.get('/teams/constraints/help/' + $('#createteam_loadconstraint').val(), function(content) {
+	$.get('/teams/constraints/help/' + id, function(content) {
 		$('#actionsdialog').html(content);
 		$('#actionsdialog').dialog({
 			autoOpen: true,
 			width: 500,
-			title: translate('HELP_TITLE') + "&nbsp;-&nbsp;" + $('#createteam_loadconstraint >option:selected').html()
+			title: translate('HELP_TITLE') + "&nbsp;-&nbsp;" + name
 		});
 	});
 }

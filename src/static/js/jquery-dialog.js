@@ -6,9 +6,13 @@ $.fn.checkbox = function(checked) {
     for (var i = 0; i < $(this).length; i++) {
         var id = $(this).get(i).id;
         $('#' + id).after('<input type="hidden" id="checkbox-' + id + '" name="' + id + '" value="' + (checked ? 1 : 0) + '"/>');
+	    if (checked) {
+	    	var img = $('#' + id + ' > img').get(0);
+	    	img.src = img.src.replace('checkbox.gif', 'checkbox-checked.gif');
+	    }
     }
     var ev = function() {
-	var img = $('#' + this.id + ' > img').get(0)
+		var img = $('#' + this.id + ' > img').get(0);
         if (img.src.indexOf('checkbox.gif') != -1) {
             img.src = img.src.replace('checkbox.gif', 'checkbox-checked.gif');
             $('#checkbox-' + this.id).val(1);

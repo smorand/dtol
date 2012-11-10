@@ -88,7 +88,7 @@ SMTP_AUTH = {
 	'port': int(config['smtp_auth_port']) if 'smtp_auth_port' in config else 25,
 	'username': config['smtp_auth_username'] if 'smtp_auth_username' in config else '',
 	'password': config['smtp_auth_password'] if 'smtp_auth_password' in config else '',
-	'subjectheader': config['smtp_auth_server'] if 'smtp_auth_subjectheader' in config else '',
+	'subjectheader': config['smtp_auth_subjectheader'] if 'smtp_auth_subjectheader' in config else '',
 	'from': config['smtp_auth_from'] if 'smtp_auth_from' in config else '',
 }
 

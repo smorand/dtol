@@ -29,7 +29,7 @@ class WelcomeController(CommonController):
 			{ 'pattern': '^sendchat$', 'method': 'sendchat', 'right': 'connected' },
 			{ 'pattern': '^profile$', 'method': 'getprofile', 'right': 'connected' },
 			{ 'pattern': '^profile/update$', 'method': 'updateprofile', 'right': 'connected' },
-			{ 'pattern': '^lang$', 'method': 'setlang', 'right': 'connected' },
+			{ 'pattern': '^lang$', 'method': 'setlanguage', 'right': 'connected' },
 			{ 'pattern': '^sponsor/([a-zA-Z0-9-_@.]+)$', 'method': 'sponsor', 'right': 'connected' },
 			{ 'pattern': '^register/([A-Z0-9]+)$', 'method': 'registerform' },
 			{ 'pattern': '^register$', 'method': 'register' },

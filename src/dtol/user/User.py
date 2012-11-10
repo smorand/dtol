@@ -19,4 +19,5 @@ class User(object):
 		self.country = user.country
 		self.email = user.email
 		self.zoom = user.zoom
+		self.cache = None
 		

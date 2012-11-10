@@ -101,13 +101,13 @@ class DtCharacter(models.Model):
 		dep = self.deplacement
 		caps = self.capacities()
 		for c in caps:
-			if len(c.name) >= 12 and c.name[:12] == 'walker_fosse':
+			if c.name[:12] == 'walker_fosse':
 				dep += 1
 			if c.name == 'stayonfosse':
 				dep += 1
-			if len(c.name) >= 5 and c.name[:5] == 'flyer':
+			if c.name[:5] == 'flyer':
 				dep += 2
-			if len(c.name) >= 10 and c.name[:10] == 'immaterial':
+			if c.name[:10] == 'immaterial':
 				dep += 2
 			if c.name == 'tail':
 				dep += 1
@@ -132,13 +132,13 @@ class DtCharacter(models.Model):
 				f += 1
 			if c.name == 'defenser':
 				f += 1
-			if len(c.name) >= 12 and c.name[:12] == 'bonusattaque':
+			if c.name[:12] == 'bonusattaque':
 				f += 1
-			if len(c.name) >= 12 and c.name[:12] == 'bonusdefense':
+			if c.name[:12] == 'bonusdefense':
 				f += 1
-			if len(c.name) >= 11 and c.name[:11] == 'bonuscombat':
+			if c.name[:11] == 'bonuscombat':
 				f += 1
-			if len(c.name) >= 12 and c.name[:12] == 'bonusfight':
+			if c.name[:12] == 'bonusfight':
 				f += 2
 		return f
 	class Meta:

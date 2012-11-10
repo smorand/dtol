@@ -3,7 +3,7 @@
 # This file is covered by the GNU Public Licence v3 licence. See http://www.gnu.org/licenses/gpl.txt
 #
 
-from dtol.models import DtTeam, DtTeamConstraint, DtCharacter
+from dtol.models import DtTeam, DtTeamConstraint
 from django.utils.translation import ugettext as _
 
 class TeamManager(object):
@@ -126,54 +126,139 @@ class TeamManager(object):
 		deplacements = [ c.deplacement for c in characters ]
 		if constraint.mindeplacement != -1 and (len(deplacements) == 0 or constraint.mindeplacement > min(deplacements)): errors.append(_('CONSTRAINT_CHARACTER_TOO_SLOW'))
 		if constraint.maxdeplacement != -1 and (len(deplacements) == 0 or constraint.maxdeplacement < max(deplacements)): errors.append(_('CONSTRAINT_CHARACTER_TOO_FAST'))
-		if constraint.mintotaldeplacement != -1 and (len(deplacements) == 0 or constraint.mintotaldeplacement > reduce(lambda x,y: x+y, deplacements)):  errors.append(_('CONSTRAINT_CHECK_NOT_ENOUGH_DEPLACEMENT'))
-		if constraint.maxtotaldeplacement != -1 and (len(deplacements) == 0 or constraint.maxtotaldeplacement < reduce(lambda x,y: x+y, deplacements)): errors.append(_('CONSTRAINT_CHECK_TOO_MUCH_DEPLACEMENT'))
+		if constraint.mintotaldeplacement != -1 and (len(deplacements) == 0 or constraint.mintotaldeplacement > reduce(lambda x,y: x+y, deplacements, 0)):  errors.append(_('CONSTRAINT_CHECK_NOT_ENOUGH_DEPLACEMENT'))
+		if constraint.maxtotaldeplacement != -1 and (len(deplacements) == 0 or constraint.maxtotaldeplacement < reduce(lambda x,y: x+y, deplacements, 0)): errors.append(_('CONSTRAINT_CHECK_TOO_MUCH_DEPLACEMENT'))
 		advdeplacements = [ c.advdeplacement() for c in characters ]
-		if constraint.minadvdeplacement != -1 and (len(advdeplacements) == 0 or constraint.minadvdeplacement > min(advdeplacements)): errors.append(_('CONSTRAINT_CHARACTER_TOO_SLOW'))
-		if constraint.maxadvdeplacement != -1 and (len(advdeplacements) == 0 or constraint.maxadvdeplacement < max(advdeplacements)): errors.append(_('CONSTRAINT_CHARACTER_TOO_FAST'))
-		if constraint.mintotaladvdeplacement != -1 and (len(advdeplacements) == 0 or constraint.mintotaladvdeplacement > reduce(lambda x,y: x+y, advdeplacements)):  errors.append(_('CONSTRAINT_CHECK_NOT_ENOUGH_DEPLACEMENT'))
-		if constraint.maxtotaladvdeplacement != -1 and (len(advdeplacements) == 0 or constraint.maxtotaladvdeplacement < reduce(lambda x,y: x+y, advdeplacements)): errors.append(_('CONSTRAINT_CHECK_TOO_MUCH_DEPLACEMENT'))
+		if constraint.minadvdeplacement != -1 and (len(advdeplacements) == 0 or constraint.minadvdeplacement > min(advdeplacements)): errors.append(_('CONSTRAINT_CHARACTER_TOO_SLOWADV'))
+		if constraint.maxadvdeplacement != -1 and (len(advdeplacements) == 0 or constraint.maxadvdeplacement < max(advdeplacements)): errors.append(_('CONSTRAINT_CHARACTER_TOO_FASTADV'))
+		if constraint.mintotaladvdeplacement != -1 and (len(advdeplacements) == 0 or constraint.mintotaladvdeplacement > reduce(lambda x,y: x+y, advdeplacements, 0)):  errors.append(_('CONSTRAINT_CHECK_NOT_ENOUGH_DEPLACEMENTADV'))
+		if constraint.maxtotaladvdeplacement != -1 and (len(advdeplacements) == 0 or constraint.maxtotaladvdeplacement < reduce(lambda x,y: x+y, advdeplacements, 0)): errors.append(_('CONSTRAINT_CHECK_TOO_MUCH_DEPLACEMENTADV'))
 		forces = [ c.force for c in characters ]
 		if constraint.minforce != -1 and (len(forces) == 0 or constraint.minforce > min(forces)): errors.append(_('CONSTRAINT_CHARACTER_TOO_WEAK'))
 		if constraint.maxforce != -1 and (len(forces) == 0 or constraint.maxforce < max(forces)): errors.append(_('CONSTRAINT_CHARACTER_TOO_STRONG'))
-		if constraint.mintotalforce != -1 and (len(forces) == 0 or constraint.mintotalforce > reduce(lambda x,y: x+y, forces)):  errors.append(_('CONSTRAINT_CHECK_NOT_ENOUGH_STRENGTH'))
-		if constraint.maxtotalforce != -1 and (len(forces) == 0 or constraint.maxtotalforce < reduce(lambda x,y: x+y, forces)): errors.append(_('CONSTRAINT_CHECK_TOO_MUCH_STRENGH'))
+		if constraint.mintotalforce != -1 and (len(forces) == 0 or constraint.mintotalforce > reduce(lambda x,y: x+y, forces, 0)):  errors.append(_('CONSTRAINT_CHECK_NOT_ENOUGH_STRENGTH'))
+		if constraint.maxtotalforce != -1 and (len(forces) == 0 or constraint.maxtotalforce < reduce(lambda x,y: x+y, forces, 0)): errors.append(_('CONSTRAINT_CHECK_TOO_MUCH_STRENGH'))
 		advforces = [ c.advforce () for c in characters ]
-		if constraint.minadvforce != -1 and (len(advforces) == 0 or constraint.minadvforce > min(advforces)): errors.append(_('CONSTRAINT_CHARACTER_TOO_WEAK'))
-		if constraint.maxadvforce != -1 and (len(advforces) == 0 or constraint.maxadvforce < max(advforces)): errors.append(_('CONSTRAINT_CHARACTER_TOO_STRONG'))
-		if constraint.mintotaladvforce != -1 and (len(advforces) == 0 or constraint.mintotaladvforce > reduce(lambda x,y: x+y, advforces)):  errors.append(_('CONSTRAINT_CHECK_NOT_ENOUGH_STRENGTH'))
-		if constraint.maxtotaladvforce != -1 and (len(advforces) == 0 or constraint.maxtotaladvforce < reduce(lambda x,y: x+y, advforces)): errors.append(_('CONSTRAINT_CHECK_TOO_MUCH_STRENGH'))
-		capcount = reduce(lambda x,y: x+y, [ (1 if 'prestigious' in [ b.name for b in c.capacities() ] else 0) for c in characters ])
+		if constraint.minadvforce != -1 and (len(advforces) == 0 or constraint.minadvforce > min(advforces)): errors.append(_('CONSTRAINT_CHARACTER_TOO_WEAKADV'))
+		if constraint.maxadvforce != -1 and (len(advforces) == 0 or constraint.maxadvforce < max(advforces)): errors.append(_('CONSTRAINT_CHARACTER_TOO_STRONGADV'))
+		if constraint.mintotaladvforce != -1 and (len(advforces) == 0 or constraint.mintotaladvforce > reduce(lambda x,y: x+y, advforces, 0)):  errors.append(_('CONSTRAINT_CHECK_NOT_ENOUGH_STRENGTHADV'))
+		if constraint.maxtotaladvforce != -1 and (len(advforces) == 0 or constraint.maxtotaladvforce < reduce(lambda x,y: x+y, advforces, 0)): errors.append(_('CONSTRAINT_CHECK_TOO_MUCH_STRENGHADV'))
+		capcount = reduce(lambda x,y: x+y, [ (1 if 'prestigious' in [ b.name for b in c.capacities() ] else 0) for c in characters ], 0)
 		if constraint.minprestigious != -1 and constraint.minprestigious > capcount: errors.append(_('CONSTRAINT_NOT_ENOUGH_PRESTIGIOUS'))
 		if constraint.maxprestigious != -1 and constraint.maxprestigious < capcount: errors.append(_('CONSTRAINT_CHECK_TOO_MANY_PRESTIGIOUS'))
-		capcount = reduce(lambda x,y: x+y, [ (1 if 'prestigious' in [ b.name for b in c.capacities() ] else 0) for c in characters ])
-		if constraint.minspellcaster != -1 and constraint.minspellcaster : errors.append(_('CONSTRAINT_CHECK_TOO_MANY_CHARACTERS'))
-		if constraint.maxspellcaster != -1 and constraint.maxspellcaster : errors.append(_('CONSTRAINT_CHECK_TOO_MANY_CHARACTERS'))
-		capcount = reduce(lambda x,y: x+y, [ (1 if 'prestigious' in [ b.name for b in c.capacities() ] else 0) for c in characters ])
-		if constraint.minflying != -1 and constraint.minflying : errors.append(_('CONSTRAINT_CHECK_TOO_MANY_CHARACTERS'))
-		if constraint.maxflying != -1 and constraint.maxflying : errors.append(_('CONSTRAINT_CHECK_TOO_MANY_CHARACTERS'))
-		capcount = reduce(lambda x,y: x+y, [ (1 if 'prestigious' in [ b.name for b in c.capacities() ] else 0) for c in characters ])
-		if constraint.minintangible != -1 and constraint.minintangible : errors.append(_('CONSTRAINT_CHECK_TOO_MANY_CHARACTERS'))
-		if constraint.maxintangible != -1 and constraint.maxintangible : errors.append(_('CONSTRAINT_CHECK_TOO_MANY_CHARACTERS'))
-		capcount = reduce(lambda x,y: x+y, [ (1 if 'prestigious' in [ b.name for b in c.capacities() ] else 0) for c in characters ])
-		if constraint.mincursed != -1 and constraint.mincursed : errors.append(_('CONSTRAINT_CHECK_TOO_MANY_CHARACTERS'))
-		if constraint.maxcursed != -1 and constraint.maxcursed : errors.append(_('CONSTRAINT_CHECK_TOO_MANY_CHARACTERS'))
-		if constraint.minshadowwalker != -1 and constraint.minshadowwalker : errors.append(_('CONSTRAINT_CHECK_TOO_MANY_CHARACTERS'))
-		if constraint.maxshadowwalker != -1 and constraint.maxshadowwalker : errors.append(_('CONSTRAINT_CHECK_TOO_MANY_CHARACTERS'))
-		if constraint.minshadowroom != -1 and constraint.minshadowroom : errors.append(_('CONSTRAINT_CHECK_TOO_MANY_CHARACTERS'))
-		if constraint.maxshadowroom	 != -1 and constraint.maxshadowroom	 : errors.append(_('CONSTRAINT_CHECK_TOO_MANY_CHARACTERS'))
-		if constraint.minantimagicroom != -1 and constraint.minantimagicroom : errors.append(_('CONSTRAINT_CHECK_TOO_MANY_CHARACTERS'))
-		if constraint.maxantimagicroom	 != -1 and constraint.maxantimagicroom	 : errors.append(_('CONSTRAINT_CHECK_TOO_MANY_CHARACTERS'))
-		if constraint.minfountain != -1 and constraint.minfountain : errors.append(_('CONSTRAINT_CHECK_TOO_MANY_CHARACTERS'))
-		if constraint.maxfountain	 != -1 and constraint.maxfountain	 : errors.append(_('CONSTRAINT_CHECK_TOO_MANY_CHARACTERS'))
-		if constraint.mincounterfountain != -1 and constraint.mincounterfountain : errors.append(_('CONSTRAINT_CHECK_TOO_MANY_CHARACTERS'))
-		if constraint.maxcounterfountain	 != -1 and constraint.maxcounterfountain	 : errors.append(_('CONSTRAINT_CHECK_TOO_MANY_CHARACTERS'))
-		if constraint.minextensions != -1 and constraint.minextensions : errors.append(_('CONSTRAINT_CHECK_TOO_MANY_CHARACTERS'))
-		if constraint.maxextensions != -1 and constraint.maxextensions : errors.append(_('CONSTRAINT_CHECK_TOO_MANY_CHARACTERS'))
-		if constraint.maxsamecharacter != -1 and constraint.maxsamecharacter : errors.append(_('CONSTRAINT_CHECK_TOO_MANY_CHARACTERS'))
-		if constraint.maxsameobject != -1 and constraint.maxsameobject : errors.append(_('CONSTRAINT_CHECK_TOO_MANY_CHARACTERS'))
-		if constraint.maxcommonobject != -1 and constraint.maxcommonobject : errors.append(_('CONSTRAINT_CHECK_TOO_MANY_CHARACTERS'))
-		if constraint.maxsameroom != -1 and constraint.maxsameroom : errors.append(_('CONSTRAINT_CHECK_TOO_MANY_CHARACTERS'))
-		#extensions = models.ManyToManyField(DtExtension)
-		'''
+		capcount = reduce(lambda x,y: x+y, [ (1 if 'spellcaster' in [ b.name for b in c.capacities() ] else 0) for c in characters ], 0)
+		if constraint.minspellcaster != -1 and constraint.minspellcaster > capcount: errors.append(_('CONSTRAINT_NOT_ENOUGH_SPELLCASTER'))
+		if constraint.maxspellcaster != -1 and constraint.maxspellcaster < capcount: errors.append(_('CONSTRAINT_CHECK_TOO_SPELLCASTERS'))
+		capcount = reduce(lambda x,y: x+y, [ (1 if 'flying' in [ b.name[:6] for b in c.capacities() ] else 0) for c in characters ], 0)
+		if constraint.minflying != -1 and constraint.minflying > capcount: errors.append(_('CONSTRAINT_NOT_ENOUGH_FLYING'))
+		if constraint.maxflying != -1 and constraint.maxflying < capcount: errors.append(_('CONSTRAINT_CHECK_TOO_MANY_FLYING'))
+		capcount = reduce(lambda x,y: x+y, [ (1 if 'immaterial' in [ b.name for b in c.capacities() ] else 0) for c in characters ], 0)
+		if constraint.minintangible != -1 and constraint.minintangible > capcount: errors.append(_('CONSTRAINT_NOT_ENOUGH_IMMATERIAL'))
+		if constraint.maxintangible != -1 and constraint.maxintangible < capcount: errors.append(_('CONSTRAINT_CHECK_TOO_IMMATERIAL'))
+		capcount = reduce(lambda x,y: x+y, [ (1 if 'cursed' in [ b.name for b in c.capacities() ] else 0) for c in objects ], 0)
+		if constraint.mincursed != -1 and constraint.mincursed > capcount: errors.append(_('CONSTRAINT_NOT_ENOUGH_CURSED'))
+		if constraint.maxcursed != -1 and constraint.maxcursed < capcount: errors.append(_('CONSTRAINT_CHECK_TOO_MANY_CURSED'))
+		capcount = 0
+		for c in objects:
+			for b in c.capacities():
+				info = b.name.split('_')
+				if len(info) >= 2 and info[0] == 'walker':
+					floors = info[1].split('-')
+					if 'tenebres' in floors or 'tenebresmagiques' in floors:
+						capcount += 0 
+		if constraint.minshadowwalker != -1 and constraint.minshadowwalker > capcount: errors.append(_('CONSTRAINT_NOT_ENOUGH_SHADOW_WALKER'))
+		if constraint.maxshadowwalker != -1 and constraint.maxshadowwalker < capcount: errors.append(_('CONSTRAINT_CHECK_TOO_MANY_SHADOW_WALKER'))
+		capcount = reduce(lambda x,y: x+y, [ (1 if 'tenebres' in [ b.name for b in c.categories.all() ] else 0) for c in rooms ], 0)
+		if constraint.minshadowroom != -1 and constraint.minshadowroom > capcount: errors.append(_('CONSTRAINT_NOT_ENOUGH_SHADOW_ROOMS'))
+		if constraint.maxshadowroom	 != -1 and constraint.maxshadowroom	< capcount: errors.append(_('CONSTRAINT_CHECK_TOO_MANY_SHADOW_ROOMS'))
+		capcount = reduce(lambda x,y: x+y, [ (1 if 'antimagie' in [ b.name for b in c.categories.all() ] else 0) for c in rooms ], 0)
+		if constraint.minantimagicroom != -1 and constraint.minantimagicroom > capcount: errors.append(_('CONSTRAINT_NOT_ENOUGH_ANTIMAGIC_ROOMS'))
+		if constraint.maxantimagicroom	 != -1 and constraint.maxantimagicroom < capcount: errors.append(_('CONSTRAINT_CHECK_TOO_ANTIMAGIC_ROOMS'))
+		capcount = reduce(lambda x,y: x+y, [ (1 if 'fontaine' in [ b.name for b in c.categories.all() ] else 0) for c in rooms ], 0)
+		if constraint.minfountain != -1 and constraint.minfountain > capcount: errors.append(_('CONSTRAINT_NOT_ENOUGH_FOUNTAINS'))
+		if constraint.maxfountain	 != -1 and constraint.maxfountain < capcount: errors.append(_('CONSTRAINT_CHECK_TOO_MANY_FOUNTAINS'))
+		capcount = reduce(lambda x,y: x+y, [ (1 if 'antifountain' in [ b.name for b in c.capacities() ] else 0) for c in characters ], 0)
+		if constraint.mincounterfountain != -1 and constraint.mincounterfountain > capcount: errors.append(_('CONSTRAINT_NOT_ENOUGH_COUNTERFOUNTAIN'))
+		if constraint.maxcounterfountain	 != -1 and constraint.maxcounterfountain < capcount: errors.append(_('CONSTRAINT_CHECK_TOO_MANY_COUNTERFOUNTAIN'))
+		extensionslistlist = [ [] ]
+		for c in characters:
+			nl = list()
+			found = False
+			for e in c.extensions.all():
+				for extensionslist in extensionslistlist:
+					if e.name not in extensionslist:
+						nl.append(extensionslist+[e.name])
+					else:
+						found = True
+			if not found:
+				extensionslistlist = nl
+		for c in objects:
+			nl = list()
+			found = False
+			for e in c.extensions.all():
+				for extensionslist in extensionslistlist:
+					if e.name not in extensionslist:
+						nl.append(extensionslist+[e.name])
+					else:
+						found = True
+			if not found:
+				extensionslistlist = nl
+		for c in rooms:
+			nl = list()
+			found = False
+			for e in c.extensions.all():
+				for extensionslist in extensionslistlist:
+					if e.name not in extensionslist:
+						nl.append(extensionslist+[e.name])
+					else:
+						found = True
+			if not found:
+				extensionslistlist = nl
+		extensionslistlist = [ set(e) for e in extensionslistlist ]
+		capcount = reduce(lambda x,y: x if x < y else y, [ len(ell) for ell in extensionslistlist])
+		if constraint.minextensions != -1 and constraint.minextensions > capcount: errors.append(_('CONSTRAINT_NOT_ENOUGH_EXTENSIONS'))
+		if constraint.maxextensions != -1 and constraint.maxextensions < capcount: errors.append(_('CONSTRAINT_CHECK_TOO_MANY_EXTENSIONS'))
+		mapcount = {}
+		for c in characters:
+			if c.name in mapcount:
+				mapcount[c.name] += 1
+			else:
+				mapcount[c.name] = 1
+		capcount = reduce(lambda x,y: x if x > y else y, mapcount.values(), 0)
+		if constraint.maxsamecharacter != -1 and constraint.maxsamecharacter < capcount: errors.append(_('CONSTRAINT_TOO_MANY_IDENTICAL_CHARACTERS'))
+		mapcount = {}
+		for c in objects:
+			if 'categorie_current' not in [ cap.name for cap in c.capacities() ]:
+				if c.name in mapcount:
+					mapcount[c.name] += 1
+				else:
+					mapcount[c.name] = 1
+		capcount = reduce(lambda x,y: x if x > y else y, mapcount.values(), 0)
+		if constraint.maxsameobject != -1 and constraint.maxsameobject < capcount: errors.append(_('CONSTRAINT_TOO_MANY_SAME_OBJECTS'))
+		mapcount = {}
+		for c in objects:
+			if 'categorie_current' in [ cap.name for cap in c.capacities() ]:
+				if c.name in mapcount:
+					mapcount[c.name] += 1
+				else:
+					mapcount[c.name] = 1
+		capcount = reduce(lambda x,y: x if x > y else y, mapcount.values(), 0)
+		if constraint.maxcommonobject != -1 and constraint.maxcommonobject < capcount: errors.append(_('CONSTRAINT_TOO_MANY_COMMON_OBJETS'))
+		mapcount = {}
+		for c in rooms:
+			if c.rotation == 1:
+				if c.number in mapcount:
+					mapcount[c.number] += 1
+				else:
+					mapcount[c.number] = 1
+		capcount = reduce(lambda x,y: x if x > y else y, mapcount.values(), 0)
+		if constraint.maxsameroom != -1 and constraint.maxsameroom < capcount: errors.append(_('CONSTRAINT_TOO_MANY_IDENTICAL_ROOMS'))
+		extensions = set([ e.name for e in constraint.extensions.all() ])
+		if len(extensions) > 0:
+			found = False
+			for extensionslist in extensionslistlist:
+				if len(extensions.intersection(extensionslist)) == len(extensionslist):
+					found = True
+					break
+			if not found: errors.append(_('CONSTRAINT_FORBIDEN_EXTENSION_%s') % ', '.join([ _('EXTENSION_%s' % (n)) for n in extensions ]))
 		return errors

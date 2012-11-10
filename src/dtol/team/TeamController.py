@@ -314,13 +314,13 @@ class TeamController(CommonController):
 				if c != '':
 					rooms.append(DtRoom.objects.get(number=c.split('_')[1], rotation=1))
 					rooms.append(DtRoom.objects.get(number=c.split('_')[1], rotation=2))
-			# TODO: Check constraint
-			constraintid = None
+			constraint = None
 			if 'gameid' in request.POST and request.POST['gameid'] != '' and request.POST['gameid'] != 0:
 				constraint = self.gameManager.getGame(request.POST['gameid']).constraint()
 			elif 'constraintid' in request.POST and request.POST['constraintid'] != '' and request.POST['constraintid'] != 0:
 				constraint = request.POST['constraintid']
-			errors = self.teamManager.checkTeamConstraint(constraint, characters, objs, rooms)
+			if constraint is not None:
+				errors = self.teamManager.checkTeamConstraint(constraint, characters, objs, rooms)
 			if len(errors) > 0:
 				return self.templates.response('message_return', context={ 'errors': errors })
 			team.save()

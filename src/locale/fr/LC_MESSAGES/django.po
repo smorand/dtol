@@ -3704,6 +3704,203 @@ msgstr "Celle salle contient des rails."
 msgid "room_categorie_vermine"
 msgstr "Celle salle est faites pour les vermines."
 
+#: constraintcheck
+msgid "CONSTRAINT_CHECK_NOT_ENOUGH_CHARACTER"
+msgstr "Pas assez de personnage"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHECK_TOO_MANY_CHARACTERS"
+msgstr "Trop de personnages"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHECK_NOT_ENOUGH_OBJECT"
+msgstr "Pas assez d'objet"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHECK_TOO_MANY_OBJECTS"
+msgstr "Trop d'objets"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHECK_NOT_ENOUGH_ROOM"
+msgstr "Pas assez de pièce"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHECK_TOO_MANY_ROOMS"
+msgstr "Trop de pièces"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHARACTER_TOO_SLOW"
+msgstr "Des personnages sont trop lents"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHARACTER_TOO_FAST"
+msgstr "Des personnages sont trop rapides"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHECK_NOT_ENOUGH_DEPLACEMENT"
+msgstr "L'équipe est trop lente"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHECK_TOO_MUCH_DEPLACEMENT"
+msgstr "L'équipe est trop rapide"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHARACTER_TOO_SLOWADV"
+msgstr "Des personnages sont trop lents (avancé)"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHARACTER_TOO_FASTADV"
+msgstr "Des personnages sont trop rapides (avancés)"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHECK_NOT_ENOUGH_DEPLACEMENTADV"
+msgstr "L'équipe est trop lente (avancé)"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHECK_TOO_MUCH_DEPLACEMENTADV"
+msgstr "L'équipe est trop rapide (avancé)"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHARACTER_TOO_WEAK"
+msgstr "Des personnages sont trop faibles"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHARACTER_TOO_STRONG"
+msgstr "Des personnages sont trop forts"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHECK_NOT_ENOUGH_STRENGTH"
+msgstr "L'équipe est trop faible"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHECK_TOO_MUCH_STRENGH"
+msgstr "L'équipe est trop forte"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHARACTER_TOO_WEAKADV"
+msgstr "Des personnages sont trop faibles (avancé)"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHARACTER_TOO_STRONGADV"
+msgstr "Des personnages sont trop forts (avancé)"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHECK_NOT_ENOUGH_STRENGTHADV"
+msgstr "L'équipe est trop faible (avancé)"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHECK_TOO_MUCH_STRENGHADV"
+msgstr "L'équipe est trop forte (avancé)"
+
+#: constraintcheck
+msgid "CONSTRAINT_NOT_ENOUGH_PRESTIGIOUS"
+msgstr "Pas assez de prestigieux"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHECK_TOO_MANY_PRESTIGIOUS"
+msgstr "Trop de prestigieux"
+
+#: constraintcheck
+msgid "CONSTRAINT_NOT_ENOUGH_SPELLCASTER"
+msgstr "Pas assez de jeuteurs de sort"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHECK_TOO_SPELLCASTERS"
+msgstr "Trop de jeteurs de sort"
+
+#: constraintcheck
+msgid "CONSTRAINT_NOT_ENOUGH_FLYING"
+msgstr "Pas assez de volant"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHECK_TOO_MANY_FLYING"
+msgstr "Trop de volant"
+
+#: constraintcheck
+msgid "CONSTRAINT_NOT_ENOUGH_IMMATERIAL"
+msgstr "Pas assez d'immatériel"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHECK_TOO_IMMATERIAL"
+msgstr "Trop d'immatériel"
+
+#: constraintcheck
+msgid "CONSTRAINT_NOT_ENOUGH_CURSED"
+msgstr "Pas assez de maudit"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHECK_TOO_MANY_CURSED"
+msgstr "Trop de maudit"
+
+#: constraintcheck
+msgid "CONSTRAINT_NOT_ENOUGH_SHADOW_WALKER"
+msgstr "Pas assez de marcheur dans les ténèbres"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHECK_TOO_MANY_SHADOW_WALKER"
+msgstr "Trop de marcheur dans les ténèbres"
+
+#: constraintcheck
+msgid "CONSTRAINT_NOT_ENOUGH_SHADOW_ROOMS"
+msgstr "Pas assez de pièces avec ténèbres"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHECK_TOO_MANY_SHADOW_ROOMS"
+msgstr "Trop de pièces avec ténèbres"
+
+#: constraintcheck
+msgid "CONSTRAINT_NOT_ENOUGH_ANTIMAGIC_ROOMS"
+msgstr "Pas assez de pièces anti-magie"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHECK_TOO_ANTIMAGIC_ROOMS"
+msgstr "Trop de pièces anti-magie"
+
+#: constraintcheck
+msgid "CONSTRAINT_NOT_ENOUGH_FOUNTAINS"
+msgstr "Pas assez de fontaine"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHECK_TOO_MANY_FOUNTAINS"
+msgstr "Trop de fontaines"
+
+#: constraintcheck
+msgid "CONSTRAINT_NOT_ENOUGH_COUNTERFOUNTAIN"
+msgstr "Pas assez de contreur de fontaine"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHECK_TOO_MANY_COUNTERFOUNTAIN"
+msgstr "Trop de contreur de fontaine"
+
+#: constraintcheck
+msgid "CONSTRAINT_NOT_ENOUGH_EXTENSIONS"
+msgstr "Pas assez d'extension"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHECK_TOO_MANY_EXTENSIONS"
+msgstr "Trop d'extensions"
+
+#: constraintcheck
+msgid "CONSTRAINT_TOO_MANY_IDENTICAL_CHARACTERS"
+msgstr "Trop de fois un même personnages"
+
+#: constraintcheck
+msgid "CONSTRAINT_TOO_MANY_SAME_OBJECTS"
+msgstr "Trop de fois un même objet non courant"
+
+#: constraintcheck
+msgid "CONSTRAINT_TOO_MANY_COMMON_OBJETS"
+msgstr "Trop de fois un même objet courant"
+
+#: constraintcheck
+msgid "CONSTRAINT_TOO_MANY_IDENTICAL_ROOMS"
+msgstr "Trop de fois une même paire de salles"
+
+#: constraintcheck
+msgid "CONSTRAINT_FORBIDEN_EXTENSION_%s"
+msgstr "Extensions autorisées : %s"
+
+
 #~ msgid "USER_PRIMARY_COLOR"
 #~ msgstr "Couleur 1"
 

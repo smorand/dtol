@@ -1,0 +1,52 @@
+<!-- This file is covered by the GNU Public Licence v3 licence. See http://www.gnu.org/licenses/gpl.txt -->
+{% load i18n %}
+<h1>{% trans "CHALLENGE_CREATION" %}</h1>
+<button class="dtbutton" onClick="load_page('challenges')">{% trans "CHALLENGES_LIST" %}</button><br/>
+
+<form method="post" action="/challenges/save" id="teamCreateForm">
+	<input type="hidden" id="createchallenge_extensions" name="extensions" value=""/>
+	<table class="form">
+		<tr>
+			<th>{% trans "TEAM_CONSTRAINTS" %}</th>
+			<td>
+				<select name="mode">
+					<option value="ff">{% trans "CHALLENGE_MODE_FF" %}</option>
+					<option value="fe">{% trans "CHALLENGE_MODE_FE" %}</option>
+					<option value="fh">{% trans "CHALLENGE_MODE_FH" %}</option>
+					<option value="fhi">{% trans "CHALLENGE_MODE_FHI" %}</option>
+					<option value="fhe">{% trans "CHALLENGE_MODE_FHE" %}</option>
+					<option value="draft">{% trans "CHALLENGE_MODE_DRAFT" %}</option>
+					<option value="sa">{% trans "CHALLENGE_MODE_SA" %}</option>
+				</select>
+			</td>
+		<tr>
+			<th>{% trans "TEAM_CONSTRAINTS" %}</th>
+			<td id="constraint_list">
+				<select name="constraint">
+					{% for constraint in constraints %}
+						<option value="{{ constraint.id }}">{{ constraint.name }}</option>
+					{% endfor %}
+				</select>
+				<img class="pointer" width="20" height="20" border="0" style="vertical-align:middle" src="/static/images/interface/plus.png" onclick="createteamconstraint(1)"/>
+			</td>
+		</tr>
+		<!-- Opponnent : Anyone -->
+		<!-- Anonymous challenge : Yes, No -->
+		<!-- Show hiddent spawns : None, Mine, Both -->
+		<!-- Dungeon style : Player, Random  -->
+		<!-- Dungeon knowledge : Unknown, known -->
+		<!-- Dungeon placement : Random, Clever -->
+		<!-- ELO : Yes, No --> 
+		<!-- Show opponent cards --> 
+		<tr>
+			<th>{% trans "EXTENSIONS" %}</th>
+			<td>
+{% for c in extensions %}
+				<div class="extensionlogo"><img id="extlogo_{{ c.id }}" class="extensionlogo-notselected" src="/static/images/interface/logo{{ c.id }}.jpg" border="0" title="{% trans c.transname %}" onclick="selectExtension({{ c.id }});updatechallengecreation()"/></div>
+{% endfor %}
+				<div class="extensionlogo"><img  class="extensionlogo-notselectable" src="/static/images/interface/logoall.jpg" title="{% trans "EXTENSION_ALL" %}" onclick="selectExtensionAll();updatechallengecreation()" border="0"/></div>			
+				<div class="extensionlogo"><img  class="extensionlogo-notselectable" src="/static/images/interface/logonone.jpg" title="{% trans "EXTENSION_NONE" %}" onclick="selectExtensionNone();updatechallengecreation()" border="0"/></div>
+			</td>
+		<tr>
+	</table>
+</form>

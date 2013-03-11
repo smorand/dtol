@@ -1,0 +1,6 @@
+<select name="constraint">
+	{% for constraint in constraints %}
+		<option value="{{ constraint.id }}" {% if constraint.name == name %}selected="selected"{% endif %}>{{ constraint.name }}</option>
+	{% endfor %}
+</select>
+<img class="pointer" width="20" height="20" border="0" style="vertical-align:middle" src="/static/images/interface/plus.png" onclick="createteamconstraint(1)"/>

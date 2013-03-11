@@ -107,6 +107,8 @@ class WelcomeController(CommonController):
 			del request.session['realuser']
 		if 'connected' in request.session:
 			del request.session['connected']
+		if 'admin' in request.session:
+			del request.session['admin']
 		response = HttpResponse(status=301)
 		response['Location'] = '/'
 		response.delete_cookie('login')

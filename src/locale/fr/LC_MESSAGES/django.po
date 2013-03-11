@@ -640,6 +640,10 @@ msgstr "Charger"
 msgid "CONSTRAINT_NAME"
 msgstr "Nom de la contrainte&nbsp;:"
 
+#: templates/team/createconstraint.html:18
+msgid "CONSTRAINT_PUBLIC"
+msgstr "Contrainte publique&nbsp;:"
+
 #: templates/team/createconstraint.html:21
 msgid "TEAM_STRUCTURE"
 msgstr "Structure de l'équipe"
@@ -795,6 +799,10 @@ msgstr "Contraintes d'Equipes"
 #: templates/team/listconstraints.html:3
 msgid "TEAMS_CONSTRAINTS_LIST"
 msgstr "Liste des Contraintes d'Equipes"
+
+#: templates/team/listconstraints.html:3
+msgid "CHALLENGES_LIST"
+msgstr "Liste des Défis"
 
 #: templates/team/listconstraints.html:5
 msgid "CREATE_CONSTRAINT"
@@ -3991,6 +3999,47 @@ msgstr "Le nom de l'équipe est obligatoire"
 #: generaterandomstream
 msgid "RANDOM_NO_EXTENSION"
 msgstr "Aucune extension choisie pour la génération de l'équipe"
+
+#: challenge/list.html
+msgid "CREATE_CHALLENGE"
+msgstr "Créer un défi"
+
+#: challenge/edit.html
+msgid "CHALLENGE_CREATION"
+msgstr "Nouveau défi"
+
+#: challenge/edit.html
+msgid "CHALLENGE_MODE_FF"
+msgstr "Full Frontal"
+
+#: challenge/edit.html
+msgid "CHALLENGE_MODE_FE"
+msgstr "Full Hazard"
+
+#: challenge/edit.html
+msgid "CHALLENGE_MODE_FH"
+msgstr "Force Equilibrée"
+
+#: challenge/edit.html
+msgid "CHALLENGE_MODE_FHI"
+msgstr "Full Hazard Intelligent"
+
+#: challenge/edit.html
+msgid "CHALLENGE_MODE_FHE"
+msgstr "Full Hazard Equilibré"
+
+#: challenge/edit.html
+msgid "CHALLENGE_MODE_DRAFT"
+msgstr "Mode Draft"
+
+#: challenge/edit.html
+msgid "CHALLENGE_MODE_SA"
+msgstr "Stand Alone"
+
+#: templates/team/listconstraints.html:11
+msgid "TEAM_CONSTRAINTS"
+msgstr "Contraintes&nbsp;d'équipes&nbsp;:"
+
 
 #~ msgid "USER_PRIMARY_COLOR"
 #~ msgstr "Couleur 1"

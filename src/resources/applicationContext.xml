@@ -38,6 +38,8 @@
     
     <object id="challengeController" class="dtol.challenge.ChallengeController.ChallengeController" scope="singleton">
     	<property name="templates" ref="templatesContainer"/>
+    	<property name="teamManager" ref="teamManager"/>
+    	<property name="userManager" ref="userManager"/>
     	<property name="prehandler">
     		<list>
     			<ref object="stayConnected"/>

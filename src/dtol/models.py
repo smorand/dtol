@@ -50,6 +50,8 @@ class DtUser(models.Model):
 	primarycolor = models.CharField(max_length=20)
 	secondarycolor = models.CharField(max_length=20)
 	extensions = models.ManyToManyField(DtExtension)
+	def constraint(self):
+		return DtTeamConstraint.objects.get(user=self.id)
 	class Meta:
 		db_table = u'dt_users'
 
@@ -291,8 +293,6 @@ class DtSpawnState(models.Model):
 class DtGame(models.Model):
 	id = models.AutoField(primary_key=True)
 	parameters = models.ManyToManyField(DtParameter)
-	def constraint(self):
-		return DtTeamConstraint.objects.get(game=self.id)
 	def players(self):
 		return DtPlayer.objects.filter(game=self.id)
 	def characters(self, player=None):
@@ -398,7 +398,8 @@ class DtTeamConstraint(models.Model):
 	id = models.AutoField(primary_key=True)
 	name = models.CharField(max_length=150)
 	deleted = models.BooleanField(default=False)
-	game = models.ForeignKey(DtGame, null=True, on_delete=models.deletion.CASCADE)
+	user = models.ForeignKey(DtUser, null=True, on_delete=models.deletion.CASCADE)
+	gamelink = models.IntegerField(default=0)
 	protected = models.IntegerField(default=0)
 	mincharacters = models.IntegerField(default=8)
 	maxcharacters = models.IntegerField(default=8)

@@ -15,12 +15,15 @@ class TeamManager(object):
 	def getTeams(self, user):
 		return DtTeam.objects.filter(user=user.id)
 
-	def getTeamConstraints(self, protected=None, game=None):
+	def getTeamConstraints(self, protected=None, user=None):
 		kwargs = { 'deleted': 0 }
 		if protected is not None:
 			kwargs['protected'] = protected
-		kwargs['game'] = game
-		return DtTeamConstraint.objects.filter(**kwargs)
+		if user is None:
+			where = [ 'user_id is null' ]
+		else:
+			where = [ 'user_id is null or user_id = %d' % (user) ]
+		return DtTeamConstraint.objects.extra(where=where).filter(**kwargs)
 
 	def delTeamConstraint(self, uid):
 		DtTeamConstraint.objects.filter(id=uid).update(deleted=1)

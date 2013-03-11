@@ -69,8 +69,15 @@ function toggleheader() {
 $(document).ready(function() {
 	onResize();
 	$(window).resize(onResize);
-	$.History.bind(function(menuInfo) { load_menu(menuInfo); });
 	load_menu(window.location.hash.substring(1));
+	setInterval(function checknav() {
+		var newhash = window.location.hash.substring(1);
+		if (currentmenu != newhash) {
+			load_menu(newhash);
+			currentmenu = newhash;
+		}
+	}, 100);
+
 	
 	//setTimeout('getUsersConnected()', 5000);
 	setTimeout('recvChat()', 1000);
@@ -105,6 +112,7 @@ function getUsersConnected() {
  * Load one of the menu
  * @param menuName: Name of the menu to load
  */
+var currentmenu = window.location.hash.substring(1);
 function load_menu(menuInfo) {
 	var menuName = menuInfo.replace(/\/.*/, '');
 	if (menuName != "tournaments" && menuName != "admin" && menuName != "teams" && menuName != "statistics" && menuName != "profile" && menuName != "game" && menuName != "logout" && menuName != "sponsor") {
@@ -157,11 +165,15 @@ function display_content(content) {
 /**
  * Load challenge page
  */
-function load_challenges() {
-	display_wait();
-	$.get('/challenges', function(content) {
-		display_content(content);
-	});
+function load_challenges(args) {
+	if (args && args == 'create') {
+		load_challengecreate();
+	} else {
+		display_wait();
+		$.get('/challenges', function(content) {
+			display_content(content);
+		});
+	}
 }
 
 /**
@@ -169,8 +181,8 @@ function load_challenges() {
  */
 function load_teamsconstraints() {
 	display_wait();
+	currentmenu = window.location.hash = '#teams/constraints';
 	$.get('/teams/constraints', function(content) {
-		window.location.hash = '#teams/constraints';
 		display_content(content);
 	});
 }
@@ -181,8 +193,8 @@ function load_teamsconstraints() {
 var createTeamElements = new Array();
 function load_teamcreate() {
 	display_wait();
+	currentmenu = window.location.hash = '#teams/create';
 	$.get('/teams/create', function(content) {
-		window.location.hash = '#teams/create';
 		display_content(content);
 		load_teamcreateedit_callback();
 	});
@@ -190,8 +202,8 @@ function load_teamcreate() {
 
 function load_teamrandom() {
 	display_wait();
+	currentmenu = window.location.hash = '#teams/random';
 	$.get('/teams/random', function(content) {
-		window.location.hash = '#teams/random';
 		display_content(content);
 		$('a.checkbox').checkbox(1);
 	});
@@ -265,7 +277,7 @@ function load_admin(userId) {
 		$.get('/user/view/' + userId, editUser_callback);
 	} else {
 		display_wait();
-		window.location.hash = '#admin';
+		currentmenu = window.location.hash = '#admin';
 		$.get('/admin', display_content);
 	}
 }
@@ -306,8 +318,19 @@ function delteamconstraint(id) {
 	});
 }
 
-function createteamconstraint() { editteamconstraint(0); }
-function editteamconstraint(id) {
+var createdeficontent = ''; 
+function createteamconstraint(keepcontent) {
+	var createdeficontenttmp = '';
+	if (keepcontent) {
+		createdeficontenttmp = $('#content').html();	
+	}
+	editteamconstraint(0, keepcontent);
+	if (keepcontent) {
+		createdeficontent = createdeficontenttmp;
+	}	
+}
+function editteamconstraint(id, keepcontent) {
+	createdeficontent = '';
 	display_wait();
 	$.get('/teams/constraints/edit/' + id, function(content) {
 		display_content(content);
@@ -316,9 +339,12 @@ function editteamconstraint(id) {
 			active: 0,
 			autoHeight: false
 		});
-		var extensions = $('#tc_extensions').val().trim().split(',');
+		var extensions = $.trim($('#tc_extensions').val()).split(',');
 		for (var i = 0; i < extensions.length; i++) {
-			selectExtension(extensions[i].trim());
+			selectExtension($.trim(extensions[i]));
+		}
+		if (keepcontent) {
+			$('#tc_gamelink').val(1);
 		}
 	});
 }
@@ -525,14 +551,14 @@ function editUser_callback(content) {
 	$('[name=primarycolor]').radio(primarycolor, function() { checkProfileForm(); });
 	$('[name=secondarycolor]').radio(secondarycolor, function() { checkProfileForm(); });
 	updateSecondaryColor(primarycolor);
-	var extensions = $('#profile_extensions').val().trim().split(',');
+	var extensions = $.trim($('#profile_extensions').val()).split(',');
 	for (var i = 0; i < extensions.length; i++) {
-		selectExtension(extensions[i].trim());
+		selectExtension($.trim(extensions[i]));
 	}
 }
 
 function editUser(userId) {
-	window.location.hash = '#admin/' + userId;
+	currentmenu = window.location.hash = '#admin/' + userId;
 	display_content('<center><img src="/static/images/interface/loading.gif"/><br/>' + translate("LOAD_USER") + '</center>');
 	$.get('/user/view/' + userId, editUser_callback);
 }
@@ -567,8 +593,8 @@ var lastChatId = 0;
 var firstScroll = true;
 function recvChat() {
 	$.get('/recvchat/' + lastChatId, function(content) {
-		var messages = content.trim().split('|$|');
-		lastChatId = messages[0].trim() > lastChatId ? messages[0].trim() : lastChatId; 
+		var messages = $.trim(content).split('[|][$][|]');
+		lastChatId = $.trim(messages[0]) > lastChatId ? $.trim(messages[0]) : lastChatId; 
 		var chat = document.getElementById('chat');
 		if (chat) {
 			if (messages[1] == '1' && firstScroll == false) {
@@ -578,7 +604,7 @@ function recvChat() {
 			var autoscroll = firstScroll || chat.scrollTop+chat.offsetHeight >= chat.scrollHeight-5;
 			firstScroll = false;
 			if (messages[2]) {
-				chat.innerHTML += messages[2].trim();
+				chat.innerHTML += $.trim(messages[2]);
 			}
 			if (autoscroll == true) {
 				chat.scrollTop = chat.scrollHeight + chat.offsetHeight;
@@ -597,9 +623,9 @@ function loadconstraintdata() {
 
 /** Load data from a form to prefill another one */
 function loadformdata(rawdata) {
-	var fields = rawdata.trim().split('|')
+	var fields = $.trim(rawdata).split('|')
 	for (i = 0; i < fields.length; i++) {
-		var info = fields[i].trim().split('=');
+		var info = $.trim(fields[i]).split('=');
 		// TODO: Better support for checkbox/radio
 		if (info.length == 2) {
 			$('#'+info[0]).val(info[1]);
@@ -616,11 +642,18 @@ function saveconstraintdata() {
 		extsString += joiner + exts.get(i).id.replace('extlogo_', ''); 
 		joiner = ',';
 	}
+	var tcname = $('#tc_name').val();
 	$('#tc_extensions').val(extsString);
 	var form = $('#tc_form');
 	$.post(form.attr('action'), form.serialize(), function(content) {
 		if (content.length == 0) {
-			load_teamsconstraints();
+			if (createdeficontent != '') {
+				display_content(createdeficontent);
+				updatecreatedeficonstraint(tcname);
+				createdeficontent = '';
+			} else {
+				load_teamsconstraints();
+			}
 		} else {
 			$('#tc_error').html(content);
 		}
@@ -628,7 +661,12 @@ function saveconstraintdata() {
 	return false;
 }
 
-
+/** Update the constraint for challenge creation */
+function updatecreatedeficonstraint(tcname) {
+	$.get('/teams/constraints/loadbyname/'+tcname, function(content) {
+		$('#constraint_list').html(content);
+	});
+}
 
 /**
  * Runfilter for team creation
@@ -862,7 +900,7 @@ function displayTeam(id) {
 function saveTeam() {
 	var form = $('#teamCreateForm');
 	$.post(form.attr('action'), form.serialize(), function(content) {
-		if (content.trim() != '') {
+		if ($.trim(content) != '') {
 			$('#teamCreateError').html(content);
 		} else {
 			load_teams();
@@ -882,8 +920,8 @@ function delTeam(name, id) {
 /** Edit team */
 function load_teamedit(id) {
 	display_wait();
+	currentmenu = window.location.hash = '#teams/edit/'+id;
 	$.get('/teams/edit/' + id, function(content) {
-		window.location.hash = '#teams/edit/'+id;
 		display_content(content);
 		load_teamcreateedit_callback();
 		teamContent();
@@ -915,4 +953,25 @@ function saveRandomTeam() {
 		$('#randomteamerr_result').html(content); 
 	});
 	return false;
+}
+
+/** Create a challenge */
+function load_challengecreate() {
+	display_wait();
+	currentmenu = window.location.hash = '#challenges/create';
+	$.get('/challenges/create', function(content) {
+		display_content(content);
+	});
+}
+
+/** Mise à jour des extensions lors de la création d'un challenge */
+function updatechallengecreation() {
+	var extsString = '';
+	var joiner = '';
+	var exts = $('.extensionlogo-selected');
+	for (var i = 0; i < exts.length; i++) {
+		extsString += joiner + exts.get(i).id.replace('extlogo_', ''); 
+		joiner = ',';
+	}
+	$('#createchallenge_extensions').val(extsString);
 }

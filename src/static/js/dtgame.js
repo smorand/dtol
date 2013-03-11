@@ -120,7 +120,7 @@ function slide_callback(e, ui) {
  * Set zoom
  * @param newZoom New zoom
  */
-$.setZoom = function(newZoom) {
+$.prototype.setZoom = function(newZoom) {
 	var s = $('#zoom_slider').slider()
 	s.slider('values', 1, newZoom*10);
 }
@@ -129,7 +129,7 @@ $.setZoom = function(newZoom) {
  * Effectue une rotation du dongeon
  * @param value valeur de la rotation (90°)
  */
-$.dungonRotate = function(value) {
+$.prototype.dungonRotate = function(value) {
 	displayRotation += value;
 	displayRotation %= 4;
 	// rotate current selection

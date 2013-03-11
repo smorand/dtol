@@ -13,14 +13,27 @@ class ChallengeController(CommonController):
 	def _geturls(self):
 		return [
 			{ 'pattern': r'^challenges$', 'method': 'list', 'right': 'connected' },
+			{ 'pattern': r'^challenges/create$', 'method': 'create', 'right': 'connected' },
+			{ 'pattern': r'^challenges/save$', 'method': 'create', 'right': 'connected' },
 		]
 
 	def list(self, request):
-		return self.templates.underConstruction()
+		c = {
+			
+		}
+		return self.templates.response('challenge.list', context=c)
 		
 	def create(self, request):
-		return self.templates.underConstruction()
-		
+		extensions = self.userManager.getUser(request.session['user'].id).extensions.all()
+		c = {
+			'extensions': extensions,
+			'constraints': self.teamManager.getTeamConstraints(user=request.session['user'].id),
+		}
+		return self.templates.response('challenge.edit', context=c)
+	
+	def save(self, request):
+		return self.templates.empty()
+	
 	def cancel(self, request):
 		return self.templates.underConstruction()
 		

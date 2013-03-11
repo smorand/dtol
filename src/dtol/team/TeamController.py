@@ -15,10 +15,11 @@ class TeamController(CommonController):
 	def _geturls(self):
 		return [
 			{ 'pattern': r'^teams$', 'method': 'list', 'right': 'connected' },
-			{ 'pattern': r'^teams/constraints$', 'method': 'listconstraints', 'right': 'admin' },
+			{ 'pattern': r'^teams/constraints$', 'method': 'listconstraints', 'right': 'connected' },
 			{ 'pattern': r'^teams/constraints/edit/([0-9]+)$', 'method': 'createconstraints', 'right': 'connected' },
-			{ 'pattern': r'^teams/constraints/remove/([1-9][0-9]*)$', 'method': 'delteamsconstraints', 'right': 'admin' },
+			{ 'pattern': r'^teams/constraints/remove/([1-9][0-9]*)$', 'method': 'delteamsconstraints', 'right': 'connected' },
 			{ 'pattern': r'^teams/constraints/load/([1-9][0-9]*)$', 'method': 'loadteamsconstraint', 'right': 'connected' },
+			{ 'pattern': r'^teams/constraints/loadbyname/(.*)$', 'method': 'loadteamsconstraints', 'right': 'connected' },
 			{ 'pattern': r'^teams/constraints/help/([1-9][0-9]*)$', 'method': 'helpteamsconstraint', 'right': 'connected' },
 			{ 'pattern': r'^teams/constraints/save$', 'method': 'saveteamsconstraint', 'right': 'connected' },
 			{ 'pattern': r'^teams/create$', 'method': 'create', 'parameters': {'gameid':''}, 'right': 'connected' },
@@ -37,15 +38,15 @@ class TeamController(CommonController):
 		''' List teams: teams used for a game are excluded '''
 		c = {
 			'teams': self.teamManager.getTeams(user=request.session['user']),
-			'constraints': self.teamManager.getTeamConstraints()
+			'constraints': self.teamManager.getTeamConstraints(user=request.session['user'].id)
 		}
 		return self.templates.response('team.list', context=c)
 	
 	def listconstraints(self, request):
 		''' List teams constraints. Only available for some users '''
 		c = {
-			'canedit': request.session['user'].isadmin,
-			'constraints': self.teamManager.getTeamConstraints()
+			'canedit': True,
+			'constraints': self.teamManager.getTeamConstraints(user=request.session['user'].id)
 		}
 		return self.templates.response('team.listconstraints', context=c)
 
@@ -56,11 +57,12 @@ class TeamController(CommonController):
 	
 	def createconstraints(self, request, uid):
 		''' Load page for edit/create constraint '''
-		tc = DtTeamConstraint(id=0, name='', game=None) if uid == '0' else self.teamManager.getTeamConstraint(uid)
+		tc = DtTeamConstraint(id=0, name='') if uid == '0' else self.teamManager.getTeamConstraint(uid)
 		c = {
-			'constraints': self.teamManager.getTeamConstraints(),
+			'constraints': self.teamManager.getTeamConstraints(user=request.session['user'].id),
 			'constraint': tc,
 			'extensionslist': self.extensionManager.getExtensions(),
+			'isadmin': request.session['user'].isadmin,
 			'new': uid == 0
 		}
 		c['extensions'] = ",".join([ str(ext.id) for ext in tc.extensions.all() ])
@@ -72,6 +74,15 @@ class TeamController(CommonController):
 			'constraint': self.teamManager.getTeamConstraint(uid),
 		}
 		return self.templates.response('team.loadteamconstraint', context=c)
+
+	def loadteamsconstraints(self, request, name):
+		''' Load a team constraint to reload document '''
+		c = {
+			'constraints': self.teamManager.getTeamConstraints(user=request.session['user'].id),
+			'name': name,
+		}
+		return self.templates.response('team.loadteamconstraints', context=c)
+
 
 	def helpteamsconstraint(self, request, uid):
 		''' display help a team constraint to reload document '''
@@ -90,6 +101,9 @@ class TeamController(CommonController):
 				tc.name = request.POST['name']
 			else:
 				tc = DtTeamConstraint(name=request.POST['name'])
+			if 'public' not in request.POST:
+				tc.user = DtUser(id=request.session['user'].id)
+			tc.gamelink = request.POST['gamelink']
 			try: tc.mincharacters = int(request.POST['mincharacters'])
 			except: raise Exception('INCORRECT_VALUE_MINCHARACTERS')
 			try: tc.maxcharacters = int(request.POST['maxcharacters'])
@@ -258,7 +272,7 @@ class TeamController(CommonController):
 			'characterslist': '',
 			'objectslist': '',
 			'roomslist': '',
-			'constraints': self.teamManager.getTeamConstraints(),
+			'constraints': self.teamManager.getTeamConstraints(user=request.session['user'].id),
 			'spawncolor': request.session['user'].primarycolor
 		})
 	
@@ -267,14 +281,14 @@ class TeamController(CommonController):
 		characters, objects, rooms = self.teamManager.getTeamFilter(extensions)
 		team = self.teamManager.getTeam(int(teamid))
 		return self.templates.response('team.edit', context={
-			'extensions': extensions, 
+			'extensions': extensions,
 			'characters': characters,
 			'objects': objects,
 			'rooms': rooms,
 			'gameid': '',
 			'teamid': team.id,
 			'teamname': team.name,
-			'constraints': self.teamManager.getTeamConstraints(),
+			'constraints': self.teamManager.getTeamConstraints(user=request.session['user'].id),
 			'characterslist': ','.join([ '%d_%s'  % (c.id, c.name) for c in team.characters.all() ])+',',
 			'objectslist': ','.join([ '%d_%s'  % (c.id, c.name) for c in team.objs.all() ])+',',
 			'roomslist': ','.join([ '%d_%s'  % (c.id, c.number) for c in team.rooms.all() if c.rotation == 1 ])+',',
@@ -323,7 +337,6 @@ class TeamController(CommonController):
 				team.id = int(request.POST['teamid']) 
 			team.user = DtUser(id=request.session['user'].id)
 			characters = [ DtCharacter.objects.get(id=int(c.split('_')[0])) for c in request.POST['characters'].split(',') if c != '' ]
-			print characters
 			objs = [ DtObject.objects.get(id=int(c.split('_')[0])) for c in request.POST['objects'].split(',') if c != '' ]
 			rooms = list()
 			for c in request.POST['rooms'].split(','):

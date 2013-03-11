@@ -310,7 +310,6 @@ class TeamManager(object):
 				rooms = self._generateRandom(roomslist, lambda x: x[0].number, roomsfilters, set(), roomscount)
 				characters = self._generateCleverCharacters(characterslist, charactersfilters, characterscount, rooms)
 				objects = self._generateCleverObjects(objectslist, objectsfilters, objscurrent, objectscount, rooms, characters)
-				raise Exception(_('NOT_IMPLEMENTED'))
 			teams.append((characters, objects, rooms))
 			if repeat:
 				charactersfilters = set()
@@ -348,6 +347,19 @@ class TeamManager(object):
 		return array
 	
 	def _generateCleverCharacters(self, characterslist, charactersfilters, characterscount, rooms):
+		# si ténèbres => biendans_tenebres requis sinon interdit
+		# si lave => biendans_feu requis sinon interdit
+		# si arbre => biendans_arbre sinon interdit
+		# si eau => biendans_eau et supprime craint_eau sinon interdit biendans_eau
+		# si neige => biendans_neige
+		# si meurtriere => biendans_meurtriere sinon interdit
+		# si pentes => biendans_pente sinon interdit
+		# si rocher => biendans_rocher sinon interdit
+		# si fontaine => biendans_fontaine sinon interdit
+		# si torche => pas de dissout dans la lumière (sauf si torche+ténèbres)
+		# si vermine => biendans_vermine sinon interdit
+		# Voir quelles sont les capacitées requises et interdites
+		# sélectionner les personnages aléatoirement en ayant pré filtré
 		pass
 
 	def _generateCleverObjects(self, objectslist, objectsfilters, objscurrent, objectscount, rooms, characters):

@@ -82,7 +82,7 @@ msgid "EMAIL_NEW_PASSWORD_BODY_%s"
 msgstr ""
 "Bonjour,\n"
 "\n"
-"Votre mot de passe a été regénéré aléatoirement.\n"
+"Votre mot de passe a été régénéré aléatoirement.\n"
 "Voici votre nouveau mot de passe : %s.\n"
 "\n"
 "Bon Twist,\n"
@@ -90,7 +90,7 @@ msgstr ""
 
 #: dtol/user/UserManager.py:81
 msgid "EMAIL_NEW_PASSWORD_SUBJECT"
-msgstr "Password regénéré"
+msgstr "Password régénéré"
 
 #: dtol/user/UserManager.py:106
 #, python-format
@@ -99,7 +99,7 @@ msgstr ""
 "Bonjour,\n"
 "\n"
 "Un nouveau joueur %s a été créé. Merci de vous rendre sur l'interface "
-"d'adminsitration pour valider son inscription.\n"
+"d'administration pour valider son inscription.\n"
 "\n"
 "Bon Twist,\n"
 "DTOnline"
@@ -138,7 +138,7 @@ msgstr ""
 
 #: dtol/user/UserManager.py:137
 msgid "EMAIL_ACCOUNT_UNLOCKED_SUBJECT"
-msgstr "Compte debloque"
+msgstr "Compte débloque"
 
 #: dtol/user/UserManager.py:153
 #, python-format
@@ -180,7 +180,7 @@ msgstr "Erreur d'authentification"
 #: dtol/welcome/WelcomeController.py:179 dtol/welcome/WelcomeController.py:248
 #: templates/register.html:67 templates/view_profile.html:25
 msgid "PASSWORD_DIFFERS"
-msgstr "Mots de passe et mot de passe de confirmation différent"
+msgstr "Mot de passe et mot de passe de confirmation différent"
 
 #: dtol/welcome/WelcomeController.py:185 dtol/welcome/WelcomeController.py:201
 msgid "EMAIL_EXISTS"
@@ -188,7 +188,7 @@ msgstr "Le nouvel email fourni existe déjà"
 
 #: dtol/welcome/WelcomeController.py:194
 msgid "UPDATE_PROFILE_OK"
-msgstr "Mise à jour du profile effectué"
+msgstr "Mise à jour du profil effectué"
 
 #: dtol/welcome/WelcomeController.py:204
 msgid "SPONSORING_OK"
@@ -280,7 +280,7 @@ msgstr "Stats"
 
 #: templates/index.html:42
 msgid "PROFILE"
-msgstr "Profile"
+msgstr "Profil"
 
 #: templates/index.html:43
 msgid "ADMIN"
@@ -324,7 +324,7 @@ msgstr "Avertissement&nbsp;:"
 
 #: templates/register.html:41
 msgid "REGISTER_YOUR_PROFILE"
-msgstr "Créer votre profile"
+msgstr "Créer votre profil"
 
 #: templates/register.html:60 templates/view_profile.html:18
 msgid "CONFIRM_PASSWORD"
@@ -396,7 +396,7 @@ msgstr "Couleurs"
 
 #: templates/view_profile.html:3
 msgid "UPDATE_YOUR_PROFILE"
-msgstr "Mise à jour du profile"
+msgstr "Mise à jour du profil"
 
 #: templates/view_profile.html:9
 msgid "SPONSOR_SOMEONE"
@@ -404,13 +404,13 @@ msgstr "Parrainer quelqu'un"
 
 #: templates/view_profile.html:32
 msgid "NEW_EMAIL"
-msgstr "Nouveau Email&nbsp;"
+msgstr "Nouvel Email&nbsp;"
 
 #: templates/view_profile.html:33
 msgid "EMAIL_CHANGE_REQUIRE_VALIDATION"
 msgstr ""
 "Le changement de mail nécessite une validation. Un mail vous sera envoyé "
-"avec un lien surlequel il suffit de cliquer"
+"avec un lien sur lequel il suffit de cliquer"
 
 #: templates/view_profile.html:47 templates/view_user.html:36
 msgid "GAME_ACTION_MENU_MODE"
@@ -450,11 +450,11 @@ msgstr "La valeur max du nombre d'objets n'est pas un entier"
 
 #: templates/team/createconstraint.html:3
 msgid "INCORRECT_VALUE_MINROOMS"
-msgstr "La valeur min du nombre de pièces n'est pas un entier"
+msgstr "La valeur min du nombre de salles n'est pas un entier"
 
 #: templates/team/createconstraint.html:3
 msgid "INCORRECT_VALUE_MAXROOMS"
-msgstr "La valeur max du nombre de pièces n'est pas un entier"
+msgstr "La valeur max du nombre de salles n'est pas un entier"
 
 #: templates/team/createconstraint.html:3
 msgid "INCORRECT_VALUE_MINDEPLACEMENT"
@@ -530,11 +530,11 @@ msgstr "La valeur max du nombre de prestigieux n'est pas un entier"
 
 #: templates/team/createconstraint.html:3
 msgid "INCORRECT_VALUE_MINSPELLCASTER"
-msgstr "La valeur min du nombre de jeteurs de sort n'est pas un entier"
+msgstr "La valeur min du nombre de jeteurs de sorts n'est pas un entier"
 
 #: templates/team/createconstraint.html:3
 msgid "INCORRECT_VALUE_MAXSPELLCASTER"
-msgstr "La valeur max du nombre de jeteurs de sort n'est pas un entier"
+msgstr "La valeur max du nombre de jeteurs de sorts n'est pas un entier"
 
 #: templates/team/createconstraint.html:3
 msgid "INCORRECT_VALUE_MINFLYING"
@@ -570,35 +570,35 @@ msgstr "La valeur max du nombre de marcheur des ténèbres n'est pas un entier"
 
 #: templates/team/createconstraint.html:3
 msgid "INCORRECT_VALUE_MINSHADOWROOM"
-msgstr "La valeur min du nombre de pièces ténèbres n'est pas un entier"
+msgstr "La valeur min du nombre de salles ténèbres n'est pas un entier"
 
 #: templates/team/createconstraint.html:3
 msgid "INCORRECT_VALUE_MAXSHADOWROOM"
-msgstr "La valeur max du nombre de pièces ténèbres n'est pas un entier"
+msgstr "La valeur max du nombre de salles ténèbres n'est pas un entier"
 
 #: templates/team/createconstraint.html:3
 msgid "INCORRECT_VALUE_MINANTIMAGICROOM"
-msgstr "La valeur min du nombre de pièces anti-magie n'est pas un entier"
+msgstr "La valeur min du nombre de salles anti-magie n'est pas un entier"
 
 #: templates/team/createconstraint.html:3
 msgid "INCORRECT_VALUE_MAXANTIMAGICROOM"
-msgstr "La valeur max du nombre de pièces anti-magie n'est pas un entier"
+msgstr "La valeur max du nombre de salles anti-magie n'est pas un entier"
 
 #: templates/team/createconstraint.html:3
 msgid "INCORRECT_VALUE_MINFOUNTAIN"
-msgstr "La valeur min du nombre de pièces avec fontaine n'est pas un entier"
+msgstr "La valeur min du nombre de salles avec fontaine n'est pas un entier"
 
 #: templates/team/createconstraint.html:3
 msgid "INCORRECT_VALUE_MAXFOUNTAIN"
-msgstr "La valeur max du nombre de pièces avec fontaine n'est pas un entier"
+msgstr "La valeur max du nombre de salles avec fontaine n'est pas un entier"
 
 #: templates/team/createconstraint.html:3
 msgid "INCORRECT_VALUE_MINCOUNTERFOUNTAIN"
-msgstr "La valeur min du nombre de contreur de fontaine n'est pas un entier"
+msgstr "La valeur min du nombre d'anti-fontaine contreurs de fontaine n'est pas un entier"
 
 #: templates/team/createconstraint.html:3
 msgid "INCORRECT_VALUE_MAXCOUNTERFOUNTAIN"
-msgstr "La valeur max du nombre de contreur de fontaine n'est pas un entier"
+msgstr "La valeur max du nombre d'anti-fontaine n'est pas un entier"
 
 #: templates/team/createconstraint.html:3
 msgid "INCORRECT_VALUE_MINEXTENSIONS"
@@ -622,7 +622,7 @@ msgstr "La valeur max du nombre d'objets courants identiques n'est pas un entier
 
 #: templates/team/createconstraint.html:3
 msgid "INCORRECT_VALUE_MAXSAMEROOM"
-msgstr "La valeur max du nombre de pièces identiques n'est pas un entier"
+msgstr "La valeur max du nombre de salles identiques n'est pas un entier"
 
 #: templates/team/createconstraint.html:3
 msgid "EDIT_CONSTRAINT"
@@ -650,11 +650,11 @@ msgstr "Nombre de Personnages&nbsp;:"
 
 #: templates/team/createconstraint.html:24
 msgid "OBJECTS"
-msgstr "Nombre d'Objects&nbsp;:"
+msgstr "Nombre d'Objets&nbsp;:"
 
 #: templates/team/createconstraint.html:25
 msgid "ROOMS"
-msgstr "Nombre de Pièces&nbsp;:"
+msgstr "Nombre de Salles&nbsp;:"
 
 #: templates/team/createconstraint.html:27
 msgid "CHARACTERS_VALUE"
@@ -678,7 +678,7 @@ msgstr "Force améliorée des personnages&nbsp;:"
 
 #: templates/team/createconstraint.html:33
 msgid "TEAMS_VALUE"
-msgstr "Valeur de  l'équipe"
+msgstr "Valeur de l'équipe"
 
 #: templates/team/createconstraint.html:35
 msgid "TEAM_DEPLACEMENT"
@@ -706,7 +706,7 @@ msgstr "Prestigieux&nbsp;:"
 
 #: templates/team/createconstraint.html:42
 msgid "CHARACTER_SPELLCASTERS"
-msgstr "Jeuteurs de sort&nbsp;:"
+msgstr "Jeteurs de sort&nbsp;:"
 
 #: templates/team/createconstraint.html:43
 msgid "CHARACTER_FLYING"
@@ -746,7 +746,7 @@ msgstr "Identiques objets courants&nbsp;:"
 
 #: templates/team/createconstraint.html:55
 msgid "ROOMS_CONSTRAINTS"
-msgstr "Limites des pièces"
+msgstr "Limites des salles"
 
 #: templates/team/createconstraint.html:57
 msgid "ROOM_SHADOW"
@@ -874,7 +874,7 @@ msgstr "Fitres"
 
 #: templates/team/edit.html
 msgid "SPAWN_FILTER_ELF"
-msgstr "Elf"
+msgstr "Elfe"
 
 #: templates/team/edit.html
 msgid "SPAWN_FILTER_DWARF"
@@ -894,7 +894,7 @@ msgstr "Prestigieux"
 
 #: templates/team/edit.html
 msgid "SPAWN_FILTER_REGENERATOR"
-msgstr "Regénérant"
+msgstr "Régénérant"
 
 #: templates/team/edit.html
 msgid "SPAWN_FILTER_BEAST"
@@ -990,7 +990,7 @@ msgstr "Objets&nbsp;"
 
 #: templates/team/edit.html
 msgid "TEAM_ROOMS_COUNT"
-msgstr "Pièces&nbsp;"
+msgstr "Salles&nbsp;"
 
 #: templates/team/edit.html
 msgid "TEAM_SAVE"
@@ -1034,7 +1034,7 @@ msgstr "Jeu de Base 3/4 Joueurs"
 
 #: generique
 msgid "EXTENSION_p&d"
-msgstr "Paladin & Dragon"
+msgstr "Paladins & Dragons"
 
 #: generique
 msgid "EXTENSION_e&f"
@@ -1066,7 +1066,7 @@ msgstr "Prison"
 
 #: generique
 msgid "EXTENSION_goodies1"
-msgstr "Goodies Officiel"
+msgstr "Goodies Officiels"
 
 #: generique
 msgid "EXTENSION_goodies2"
@@ -1086,11 +1086,11 @@ msgstr "Goodies Online Puissants"
 
 #: generique
 msgid "EXTENSION_fo"
-msgstr "Force Obscures"
+msgstr "Forces Obscures"
 
 #: generique
 msgid "EXTENSION_mo"
-msgstr "Mystère d'Orient"
+msgstr "Mystères d'Orient"
 
 #: generique
 msgid "EXTENSION_verm"
@@ -1098,7 +1098,7 @@ msgstr "Vermines"
 
 #: generique
 msgid "EXTENSION_tc"
-msgstr "Trône & Cachôt"
+msgstr "Trônes & Cachots"
 
 #: generique
 msgid "EXTENSION_cm"
@@ -1234,7 +1234,7 @@ msgstr "Armure"
 
 #: spawn
 msgid "armurechitine"
-msgstr "Armue de chitine"
+msgstr "Armure de chitine"
 
 #: spawn
 msgid "assassin"
@@ -1254,7 +1254,7 @@ msgstr "Basilic"
 
 #: spawn
 msgid "batonbouledefeu"
-msgstr "Baton de boule de feu"
+msgstr "Bâton de boule de feu"
 
 #: spawn
 msgid "belier"
@@ -1274,7 +1274,7 @@ msgstr "Boomerang"
 
 #: spawn
 msgid "bottespegase"
-msgstr ""
+msgstr "Bottes de Pégase"
 
 #: spawn
 msgid "bottesplomb"
@@ -1294,11 +1294,11 @@ msgstr "Bouclier contre-feu"
 
 #: spawn
 msgid "boucliermirroir"
-msgstr "Bouclier mirroir"
+msgstr "Bouclier miroir"
 
 #: spawn
 msgid "boucliersylvanite"
-msgstr "Bouclier sylvanite"
+msgstr "Bouclier de Sylvanite"
 
 #: spawn
 msgid "boucliertenebres"
@@ -1342,7 +1342,7 @@ msgstr "Cavalier fantôme"
 
 #: spawn
 msgid "chamanork"
-msgstr "Chaman ork"
+msgstr "Chaman orc"
 
 #: spawn
 msgid "chasseurdesprodondeurs"
@@ -1350,7 +1350,7 @@ msgstr "Chasseur des profondeurs"
 
 #: spawn
 msgid "chauvesouris"
-msgstr "chanve-souris"
+msgstr "chauve-souris"
 
 #: spawn
 msgid "cle"
@@ -1430,7 +1430,7 @@ msgstr "Dragon mort-vivant"
 
 #: spawn
 msgid "dragonorient"
-msgstr "Dragon d'orient"
+msgstr "Dragon d'Orient"
 
 #: spawn
 msgid "dragonplatine"
@@ -1526,7 +1526,7 @@ msgstr "Ermite"
 
 #: spawn
 msgid "exorciste"
-msgstr "Excorciste"
+msgstr "Exorciste"
 
 #: spawn
 msgid "fantome"
@@ -1538,7 +1538,7 @@ msgstr "Faucheuse"
 
 #: spawn
 msgid "filet"
-msgstr "Filter"
+msgstr "Filet"
 
 #: spawn
 msgid "fou"
@@ -1706,7 +1706,7 @@ msgstr "Lance-fusée"
 
 #: spawn
 msgid "lancetelescopique"
-msgstr "Lance-téléscopique"
+msgstr "Lance téléscopique"
 
 #: spawn
 msgid "liche"
@@ -1754,7 +1754,7 @@ msgstr "Magophile"
 
 #: spawn
 msgid "maitrebetes"
-msgstr "Maître bêtes"
+msgstr "Maître des bêtes"
 
 #: spawn
 msgid "maitredarmes"
@@ -1786,7 +1786,7 @@ msgstr "Marteau runique"
 
 #: spawn
 msgid "masquefer"
-msgstr "Maque de fer"
+msgstr "Masque de fer"
 
 #: spawn
 msgid "massetonnerre"
@@ -1870,11 +1870,11 @@ msgstr "Ours"
 
 #: spawn
 msgid "outrepleine"
-msgstr "Outre-pleine"
+msgstr "Outre pleine"
 
 #: spawn
 msgid "outrevide"
-msgstr "Outre-vide"
+msgstr "Outre vide"
 
 #: spawn
 msgid "paladin"
@@ -1974,7 +1974,7 @@ msgstr "Pavois"
 
 #: spawn
 msgid "perenoel"
-msgstr "Père-noël"
+msgstr "Père Noël"
 
 #: spawn
 msgid "perlenoire"
@@ -1982,7 +1982,7 @@ msgstr "Perle noire"
 
 #: spawn
 msgid "phoenix"
-msgstr "Phoenix"
+msgstr "Phénix"
 
 #: spawn
 msgid "pickpocket"
@@ -1994,7 +1994,7 @@ msgstr "Piège à bêtes"
 
 #: spawn
 msgid "piegevivant"
-msgstr "Piège-vivant"
+msgstr "Piège vivant"
 
 #: spawn
 msgid "piolet"
@@ -2146,7 +2146,7 @@ msgstr "Squelette"
 
 #: spawn
 msgid "tapisvolant"
-msgstr "Tapis-volant"
+msgstr "Tapis volant"
 
 #: spawn
 msgid "telekinesiste"
@@ -2162,7 +2162,7 @@ msgstr "Tilk"
 
 #: spawn
 msgid "torche"
-msgstr "Toche"
+msgstr "Torche"
 
 #: spawn
 msgid "totemork"
@@ -2194,7 +2194,7 @@ msgstr "Trousse à outils"
 
 #: spawn
 msgid "tueusedragon"
-msgstr "tueuse de dragon"
+msgstr "Tueuse de dragon"
 
 #: spawn
 msgid "tunnelier"
@@ -2262,11 +2262,11 @@ msgstr "Zombie"
 
 #: capacities
 msgid "2objects"
-msgstr "Peut porter 2 objets contredisant la règle d'or. S'il est tué, les 2 objets restent sur la case. Personne ne peut s'y arrêter mais les personnages peuvent passer prendre les objets."
+msgstr "Peut porter 2 objets, contredisant la règle d'or. S'il est tué, les 2 objets restent sur la case. Personne ne peut s'y arrêter mais les personnages peuvent passer prendre les objets."
 
 #: capacities
 msgid "acrobatie"
-msgstr "Peut sauter 1 ou 2 cases obstacles consécutives sans dépenser de carte sauf."
+msgstr "Peut sauter 1 ou 2 cases obstacles consécutives sans dépenser de carte saut."
 
 #: capacities
 msgid "agility"
@@ -2278,11 +2278,11 @@ msgstr "Quand le personnage est tué, il revient automatiquement sur la réglett
 
 #: capacities
 msgid "antifire"
-msgstr "Insensible au feu (boule de feu du dragon rouge ou du baton de boule de feu ou apparenté)"
+msgstr "Insensible au feu (boule de feu du dragon rouge ou du bâton de boule de feu ou apparenté)"
 
 #: capacities
 msgid "antifountain"
-msgstr "Peut de contrer les fontaines"
+msgstr "Peut contrer les fontaines"
 
 #: capacities
 msgid "antifreeze"
@@ -2298,11 +2298,11 @@ msgstr "Ne peut utiliser les objets magiques."
 
 #: capacities
 msgid "antiundead"
-msgstr "Tue automatiquement les morts-vivants présents sur la case. Un mort vivant entrant délibérémment sur la case est tué immédiatement."
+msgstr "Tue automatiquement les morts-vivants présents sur la case. Un mort-vivant entrant délibérément sur la case est tué immédiatement."
 
 #: capacities
 msgid "antivermine"
-msgstr "Ne peut être pris pour cible ni attaquer par une vermine."
+msgstr "Ne peut être pris pour cible ni attaqué par une vermine."
 
 #: capacities
 msgid "attackaway_1"
@@ -2322,7 +2322,7 @@ msgstr "Peut attaquer sans tenir compte du type de mur, autrement dit toutes les
 
 #: capacities
 msgid "attackebeast"
-msgstr "Donne une attaque automatique quand une bête entre en ligne de vue. La bete passe à l'état blessé et le piège est défaussé."
+msgstr "Donne une attaque automatique quand une bête entre en ligne de vue. La bête passe à l'état blessé et le piège est défaussé."
 
 #: capacities
 msgid "attackfrommeurtriere"
@@ -2330,11 +2330,11 @@ msgstr "Peut attaquer comme une attaque corps à corps à travers une meurtrièr
 
 #: capacities
 msgid "attaquepsy"
-msgstr "Peut effectuer une attaque magique de force 1 au corps à corps à un personnage ciblable dans la même salle. En cas de défaite l'attaquant subit la blessure comme un combat corps à corps normal."
+msgstr "Peut effectuer une attaque magique de force 1 au corps à corps à un personnage ciblable dans la même salle. En cas de défaite, l'attaquant subit la blessure comme un combat corps à corps normal."
 
 #: capacities
 msgid "attraction"
-msgstr "Peut attirer en LDV un personnage de force inférieure ou égale et de le positionner sur la case adjacente à lui dans la même ligne de vue. Si un objet est porté et que le personnage est tué, l'objet doit être laissé sur la dernière case valide."
+msgstr "Peut attirer en LDV un personnage de force inférieure ou égale et le positionner sur la case adjacente à lui dans la même ligne de vue. Si un objet est porté et que le personnage est tué, l'objet doit être laissé sur la dernière case valide."
 
 #: capacities
 msgid "autcancelmagophage"
@@ -2362,11 +2362,11 @@ msgstr "Devient automatiquement une femme-mutante lors d'un recyclage."
 
 #: capacities
 msgid "biandans_arbre_"
-msgstr "Apprécie les salles d'arbre pour être peformant."
+msgstr "Apprécie les salles d'arbre pour être performant."
 
 #: capacities
 msgid "biandans_fontaine_"
-msgstr "Apprécie les salles de fontaine pour être peformant."
+msgstr "Apprécie les salles de fontaine pour être performant."
 
 #: capacities
 msgid "biendans__eau"
@@ -2378,7 +2378,7 @@ msgstr "Apprécie les salles d'eau pour être performant."
 
 #: capacities
 msgid "biendans_eau-neige_"
-msgstr "Apprécie les sallse d'eau et de neige pour être performant."
+msgstr "Apprécie les salles d'eau et de neige pour être performant."
 
 #: capacities
 msgid "biendans_lave_eau"
@@ -2390,7 +2390,7 @@ msgstr "Apprécie les salles avec meurtrières pour être performant."
 
 #: capacities
 msgid "biendans_neige-arbre_"
-msgstr "Apprécie les salles de neige ou d'abre pour être performant."
+msgstr "Apprécie les salles de neige ou d'arbre pour être performant."
 
 #: capacities
 msgid "biendans_pente-eau_"
@@ -2414,11 +2414,11 @@ msgstr "Occupe 4 cases sans tenir compte des murs et fosses."
 
 #: capacities
 msgid "biter"
-msgstr "Peut faire une morsure transformant la victime en le même personnage."
+msgstr "Peut effectuer une morsure transformant la victime en le même personnage."
 
 #: capacities
 msgid "blockcharacter"
-msgstr "Empêche le personnage de bouger et d'agir lui imposant un malus de 1 au combat. Pour 1PA un personnage munis d'une arme tranchante peut couper le filet."
+msgstr "Empêche le personnage de bouger et d'agir lui imposant un malus de 1 au combat. Pour 1PA un personnage muni d'une arme tranchante peut couper le filet."
 
 #: capacities
 msgid "blockfightcard"
@@ -2434,7 +2434,7 @@ msgstr "Empêche les twists depuis la salle jumelle sauf par un Sabotork ou un M
 
 #: capacities
 msgid "blockundead"
-msgstr "Les morts-vivants ne peuvent entrer sur la case ou une case adjacente. En cas de présence du personnage sur la case, il est bloqué. S'il est sur une case adjacente il doit fuir sinon il reste bloquer."
+msgstr "Les morts-vivants ne peuvent entrer sur la case ou une case adjacente. En cas de présence du personnage sur la case, il est bloqué. S'il est sur une case adjacente il doit fuir sinon il reste bloqué."
 
 #: capacities
 msgid "blooddrinker"
@@ -2482,7 +2482,7 @@ msgstr "Gagne +2 en combat quand l'attaque utilise 1 PA supplémentaire."
 
 #: capacities
 msgid "bonuscombat_-1_"
-msgstr "Pert -1 en combat quand porté."
+msgstr "Perd -1 en combat quand porté."
 
 #: capacities
 msgid "bonuscombat_1_eau"
@@ -2510,7 +2510,7 @@ msgstr "Gagne +3 en défense"
 
 #: capacities
 msgid "bonusdeplacement"
-msgstr "Tous les personnages démarrant leur déplacement dans la salle gagne 1 en déplacement."
+msgstr "Tous les personnages démarrant leur déplacement dans la salle gagnent 1 en déplacement."
 
 #: capacities
 msgid "bonusdeplacement_1"
@@ -2534,7 +2534,7 @@ msgstr "Gagne +2 en combat quand participe à un combat groupé en attaque."
 
 #: capacities
 msgid "bonushurt_2"
-msgstr "Gagne +2 en combat quand un blessé adverse est impliqué dans un combat (les blessés adverses portés par un adversaire donne droit au bonus)."
+msgstr "Gagne +2 en combat quand un blessé adverse est impliqué dans un combat (les blessés adverses portés par un adversaire donnent droit au bonus)."
 
 #: capacities
 msgid "bonusout_1"
@@ -2554,11 +2554,11 @@ msgstr "Gagne +1 en combat quand un jeteur de sort participe au combat."
 
 #: capacities
 msgid "bonuscombat_1_undead"
-msgstr "Gagne +1 en combat quand un mort vivant participe au combat."
+msgstr "Gagne +1 en combat quand un mort-vivant participe au combat."
 
 #: capacities
 msgid "bushido"
-msgstr "Suit la voix du bushido"
+msgstr "Suit la voie du bushido"
 
 #: capacities
 msgid "noldv_1"
@@ -2594,7 +2594,7 @@ msgstr "Catégorie : arme."
 
 #: capacities
 msgid "categorie_current"
-msgstr "Catégorie  : courrant. Dans une partie classique, l'objet peut être présent plusieurs fois."
+msgstr "Catégorie  : courant. Dans une partie classique, l'objet peut être présent plusieurs fois."
 
 #: capacities
 msgid "categorie_cursed"
@@ -2638,7 +2638,7 @@ msgstr "Peut éclairer 1 case ténèbres en choisissant les dalles."
 
 #: capacities
 msgid "climber"
-msgstr "Sait grimper les pentes."
+msgstr "Peut grimper les pentes."
 
 #: capacities
 msgid "confusion"
@@ -2654,7 +2654,7 @@ msgstr "Peut acquérir la force et le déplacement d'un personnage en ligne de v
 
 #: capacities
 msgid "crazyattack"
-msgstr "A l'issu de son déplacement peut effectuer une attaque de la force du nombre de case distincte parcourue. Le combat coute 0AP."
+msgstr "A l'issue de son déplacement peut effectuer une attaque de la force du nombre de cases distinctes parcourues. Le combat coûte 0 PA."
 
 #: capacities
 msgid "creator_blesse_zombie_1_3_0"
@@ -2670,15 +2670,15 @@ msgstr "Peut créer 3 squelettes dans la partie sur une case de sol vide."
 
 #: capacities
 msgid "creator_empty_totemterre_1_-1_1"
-msgstr "Peut créer un totem de terre autant de fois que souhaité. Pour 1PA le totem déjà créé peut être défausé ou utilisé pour effectuer un twist sur la salle sans avoir besoin de se trouver sur le twist. Il ne peut pas twister la salle jumelle."
+msgstr "Peut créer un totem de terre autant de fois que souhaité. Pour 1PA le totem déjà créé peut être défaussé ou utilisé pour effectuer un twist sur la salle sans avoir besoin de se trouver sur le twist. Il ne peut pas twister la salle jumelle."
 
 #: capacities
 msgid "crosser_herse"
-msgstr "Peut traverser et attaquer les herses comme si elle n'existait pas."
+msgstr "Peut traverser et attaquer les herses comme si elles n'existaient pas."
 
 #: capacities
 msgid "crosser_meurtriere"
-msgstr "Peut traverser les meurtrières comme si elle n'existait pas."
+msgstr "Peut traverser les meurtrières comme si elles n'existaient pas."
 
 #: capacities
 msgid "crosser_passagesecret"
@@ -2686,7 +2686,7 @@ msgstr "Peut traverser les passages secrets comme s'ils n'existaient pas."
 
 #: capacities
 msgid "curseobject"
-msgstr "Peut maudait 1 fois par partie un objet en LDV."
+msgstr "Peut maudire 1 fois par partie un objet en LDV."
 
 #: capacities
 msgid "darker"
@@ -2694,7 +2694,7 @@ msgstr "Peut supprimer une tuile d'éclairement pour 1PA."
 
 #: capacities
 msgid "darknightshooter"
-msgstr "Peut attaquer en ligne de vue et s'en tenir compte des ténèbres pour une force 2 une seule fois."
+msgstr "Peut attaquer en ligne de vue et sans tenir compte des ténèbres pour une force 2 une seule fois."
 
 #: capacities
 msgid "defenser"
@@ -2714,19 +2714,19 @@ msgstr "Fait perdre 1 en déplacement."
 
 #: capacities
 msgid "deplacementrail"
-msgstr "Donne 7 points de déplacements sur les rails. Le déplacement doit se faire en entier sur les rails."
+msgstr "Donne 7 points de déplacement sur les rails. Le déplacement doit se faire en entier sur les rails."
 
 #: capacities
 msgid "deplacementsmall"
-msgstr "Peut traverser le autres personnages et les herses."
+msgstr "Peut traverser les autres personnages et les herses."
 
 #: capacities
 msgid "destroychutespierre"
-msgstr "Détruit les chuttes de pierre s'il stationne dessus."
+msgstr "Détruit les chutes de pierre s'il stationne dessus."
 
 #: capacities
 msgid "destroydecord"
-msgstr "Peut détruire un élément de décord comme un objet 3D, un obstacle brisable (petit pont, tuyaterie). pour 1PA"
+msgstr "Peut détruire un élément de décor comme un objet 3D, un obstacle brisable (petit pont, tuyauterie). pour 1PA"
 
 #: capacities
 msgid "destroyobject_2_1"
@@ -2746,7 +2746,7 @@ msgstr "Meurt si se trouve sur une case d'eau."
 
 #: capacities
 msgid "digger"
-msgstr "Peut creuser un tunnel magique (2 au max dans le donjon). Le tunnel permet de traverser pour les personnages de force 3 ou inférieur. Il ne donne pas de ligne de vue mais les deux extrémités du tunnel sont considérés comme adjacente. Le pavois ou un personnage bouche le tunnel (on ne peut pas voler à travers le trou)."
+msgstr "Peut creuser un tunnel magique (2 au max dans le donjon). Le tunnel permet de traverser pour les personnages de force 3 ou inférieure. Il ne donne pas de ligne de vue mais les deux extrêmités du tunnel sont considérées comme adjacentes. Le pavois ou un personnage bouche le tunnel (on ne peut pas voler à travers le trou)."
 
 #: capacities
 msgid "dissipate"
@@ -2754,7 +2754,7 @@ msgstr "Donne la possibilité de disparaître lorsqu'on est attaqué sur une cas
 
 #: capacities
 msgid "dreamlink"
-msgstr "Crée un lien magique avec la victime jusqu'à la fin de la partie. Ce qui arrive à l'un arrive à l'autre (mort, blessure, gel, etc.). Le lien est brisé si l'un des deux sorts du labyrinthe."
+msgstr "Crée un lien magique avec la victime jusqu'à la fin de la partie. Ce qui arrive à l'un arrive à l'autre (mort, blessure, gel, etc.). Le lien est brisé si l'un des deux sort du labyrinthe."
 
 #: capacities
 msgid "dwarf"
@@ -2770,11 +2770,11 @@ msgstr "Gagne un bonus de 1 PV pour chaque blessé mangé. Un blessé peut être
 
 #: capacities
 msgid "elf"
-msgstr "Race : Le personnage est un efle."
+msgstr "Race : Le personnage est un elfe."
 
 #: capacities
 msgid "erudite"
-msgstr "Le personnage peut utiliser le baton de boule de feu."
+msgstr "Le personnage peut utiliser le bâton de boule de feu."
 
 #: capacities
 msgid "essaimonhurt"
@@ -2782,7 +2782,7 @@ msgstr "Si le personnage passe à l'état blessé, un essaim en sort. Ne peut ê
 
 #: capacities
 msgid "exchangeactioncard"
-msgstr "Peut échanger 1 carte action défaussée par une carte action non défaussée."
+msgstr "Peut échanger 1 carte action défaussée avec une carte action non défaussée."
 
 #: capacities
 msgid "exchangedead"
@@ -2794,7 +2794,7 @@ msgstr "Peut utiliser le personnage pour tuer un personnage en ligne de vue."
 
 #: capacities
 msgid "extraterestrial"
-msgstr "Race : Le personnage est un extraterrestre."
+msgstr "Race : Le personnage est un extra-terrestre."
 
 #: capacities
 msgid "fastfight"
@@ -2802,7 +2802,7 @@ msgstr "Peut faire un combat une fois par tour pour 0PA."
 
 #: capacities
 msgid "fastrevelation"
-msgstr "Peut réveler une salle une fois par tour pour 0PA."
+msgstr "Peut révéler une salle une fois par tour pour 0PA."
 
 #: capacities
 msgid "fightberserk"
@@ -2810,11 +2810,11 @@ msgstr "Peut déclencher un combat berserk, c'est à dire un combat permettant d
 
 #: capacities
 msgid "fightdiag"
-msgstr "Peut déclencher un combat en diagonale. Il suffit que l'un des deux murs de la diagonale soit vite pour que le déclenchement soit valide."
+msgstr "Peut déclencher un combat en diagonale. Il suffit que l'un des deux murs de la diagonale soit vide pour que le déclenchement soit valide."
 
 #: capacities
 msgid "fighthurt"
-msgstr "Peut attaquer un blessé dont la blessure a été faite durant le même tour."
+msgstr "Peut attaquer un blessé dont la blessure a été infligée durant le même tour."
 
 #: capacities
 msgid "fireball"
@@ -2822,11 +2822,11 @@ msgstr "Peut lancer une boule de feu en ligne de vue détruisant le personnage c
 
 #: capacities
 msgid "floormarker_0_ice__-1_eau__pendantdeplacement"
-msgstr "Marque avec du gel toutes les cases d'eau parcourue."
+msgstr "Marque avec du gel toutes les cases d'eau parcourues."
 
 #: capacities
 msgid "floormarker_0_tenebresmagiques__10_sol__pendantdeplacement"
-msgstr "Peut marquer jusqu'à 10 cases ténèbres dans la partie dans la partie. Les cases marquées doivent l'être à l'issu d'un déplacement."
+msgstr "Peut marquer jusqu'à 10 cases ténèbres dans la partie . Les cases marquées doivent l'être à l'issue d'un déplacement."
 
 #: capacities
 msgid "floormarker_1_arbrecoupe_0_-1_arbre__bucheron"
@@ -2838,7 +2838,7 @@ msgstr "Peut couper un arbre."
 
 #: capacities
 msgid "floormarker_1_arbrecoupe_0_-1_arbre__apresdeplacement"
-msgstr "Peut couper un arbre gratuitement à l'issu d'un déplacement."
+msgstr "Peut couper un arbre gratuitement à l'issue d'un déplacement."
 
 #: capacities
 msgid "floormarker_1_empoisonne_1_1_fontaine__"
@@ -2846,7 +2846,7 @@ msgstr "Peut marquer une fontaine empoisonnée (1 marqueur). Le marqueur est gé
 
 #: capacities
 msgid "floormarker_1_ice_1_10_eau-sol-brume__allinsame"
-msgstr "Permet de geler 10 cases adjacentes d'eau , de sol brumeuse ou non."
+msgstr "Permet de geler 10 cases adjacentes d'eau , de sol, brumeuses ou non."
 
 #: capacities
 msgid "floormarker_1_leurre_1_2_fontaine__"
@@ -2858,11 +2858,11 @@ msgstr "Peur faire pousser un arbre sur une case de sol normal en ligne de vue. 
 
 #: capacities
 msgid "floormarker_2_fletrissure/1_1_1_3d__"
-msgstr "Peut mettre un marqueur flétrissure sur un objet 3D le rendant inutilisable. Le marqueur disparait si le personnage est blessé."
+msgstr "Peut mettre un marqueur flétrissure sur un objet 3D le rendant inutilisable. Le marqueur disparaît si le personnage est blessé."
 
 #: capacities
 msgid "floormarker_2_fletrissure/1_1_1_sol__"
-msgstr "Peut mettre un marqueur flétrissure sur une case de sol donnant 1 en combat aux morts-vivants et permettant leur régénération. Le marqueur disparait si le personnage est blessé."
+msgstr "Peut mettre un marqueur flétrissure sur une case de sol donnant +1 en combat aux morts-vivants et permettant leur régénération. Le marqueur disparaît si le personnage est blessé."
 
 #: capacities
 msgid "floormarker_2_illusioneboulis/1_1_1_sol_empty_"
@@ -2910,11 +2910,11 @@ msgstr "Force la carte de combat adverse lors d'un combat. Si le combat se joue 
 
 #: capacities
 msgid "forgeable"
-msgstr "L'arme peut être forgé dans une forge et gagner un bonus de +1 en attaque quand elle est utilisée."
+msgstr "L'arme peut être forgée dans une forge et gagner un bonus de +1 en attaque quand elle est utilisée."
 
 #: capacities
 msgid "forgetroom"
-msgstr "Permet de retourner la pièce comme si elle n'avait pas été révélé. Les blessés restent blessés, mais les autres marqueurs sont supprimés (même les marqueurs personnages)."
+msgstr "Permet de retourner la salle comme si elle n'avait pas été révélée. Les blessés restent blessés, mais les autres marqueurs sont supprimés (même les marqueurs personnages)."
 
 #: capacities
 msgid "freeaction"
@@ -2966,7 +2966,7 @@ msgstr "Peut soigner pour 0PA un personnage adjacent mais passe alors à l'état
 
 #: capacities
 msgid "healer_1_1_0_"
-msgstr "Peut soigner pour 1PA un personnage adjcent. Le personnage ne peut pas agir immédiatemment."
+msgstr "Peut soigner pour 1PA un personnage adjacent. Le personnage ne peut pas agir immédiatemment."
 
 #: capacities
 msgid "healer_1_1_1_eau"
@@ -2974,7 +2974,7 @@ msgstr "Peut soigner un personnage dans l'eau pour 1PA. Le personnage peut agir 
 
 #: capacities
 msgid "healer_1_2_0_exhausted"
-msgstr "Peut soigner pour personnage en ligne de vue mais passe alors à l'état épuisé. Le personnage ne peut pas agir immédiatemment."
+msgstr "Peut soigner pour 1PA un personnage en ligne de vue mais passe alors à l'état épuisé. Le personnage ne peut pas agir immédiatemment."
 
 #: capacities
 msgid "heavycarrier"
@@ -2982,7 +2982,7 @@ msgstr "Le porteur est considéré comme de poids infini pour les calculs de poi
 
 #: capacities
 msgid "holyground"
-msgstr "La case est considérée comme sacré."
+msgstr "La case est considérée comme sacrée."
 
 #: capacities
 msgid "hotte"
@@ -3014,7 +3014,7 @@ msgstr "L'objet ciblé en LDV (ou porté) perd toute ses capacités. Cela défai
 
 #: capacities
 msgid "inversion"
-msgstr "Peut intervetir deux salles y compris les marqueurs et les objets portés."
+msgstr "Peut intervertir deux salles y compris les marqueurs et les objets portés."
 
 #: capacities
 msgid "noldv_-1_1_"
@@ -3026,15 +3026,15 @@ msgstr "Rend invisible dans l'eau. Impossible de prendre pour cible"
 
 #: capacities
 msgid "kill_"
-msgstr "En cas de victoire en combat, tous les adversaires adjacent sont tués immédiatemment."
+msgstr "En cas de victoire en combat, tous les adversaires adjacents sont tués immédiatemment."
 
 #: capacities
 msgid "kill_alien"
-msgstr "En cas de victoire en combat, tous les adversaires aliens adjacent sont tués immédiatemment."
+msgstr "En cas de victoire en combat, tous les adversaires aliens adjacents sont tués immédiatemment."
 
 #: capacities
 msgid "kill_dragon"
-msgstr "En cas de victoire en combat, tous les adversaires adjacent prestigieux sont tués immédiatemment."
+msgstr "En cas de victoire en combat, tous les adversaires prestigieux adjacents sont tués immédiatemment."
 
 #: capacities
 msgid "givekill"
@@ -3050,15 +3050,15 @@ msgstr "Tout personnage se déplaçant en ligne de vue et dans la direction est 
 
 #: capacities
 msgid "killundeadhurt"
-msgstr "Peut tuer un mort vivant blessé pour 1PA. Fonctionne le tour ou le mort vivant a été blessé."
+msgstr "Peut tuer un mort-vivant blessé pour 1PA. Fonctionne le tour ou le mort-vivant a été blessé."
 
 #: capacities
 msgid "state_knocked_1_1"
-msgstr "Peut mettre à l'état assomé un personnage adjacent."
+msgstr "Peut mettre à l'état assommé un personnage adjacent."
 
 #: capacities
 msgid "state_knocked_1_2"
-msgstr "Peut mettre à l'état assomé un personnage en ligne de vue."
+msgstr "Peut mettre à l'état assommé un personnage en ligne de vue."
 
 #: capacities
 msgid "fireweak"
@@ -3090,7 +3090,7 @@ msgstr "Permet d'éclairer magiquement 5 cases ténèbres adjacentes."
 
 #: capacities
 msgid "magicabsorber"
-msgstr "Les cases adajcentes sont privées de magie. Toute action magique sur ces cases est perdue et annulée."
+msgstr "Les cases adjacentes sont privées de magie. Toute action magique sur ces cases est perdue et annulée."
 
 #: capacities
 msgid "magical"
@@ -3098,15 +3098,15 @@ msgstr "Magique : ne peut être actif sur les cases anti-magie et perd son pouvo
 
 #: capacities
 msgid "magicalattaque"
-msgstr "Permet pour 0PA de gagner 3 points d'attaque pour le prochain combat (uniquement le jeteur de sort)."
+msgstr "Permet pour 0PA de gagner 3 points d'attaque pour le prochain combat (uniquement le jeteur de sorts)."
 
 #: capacities
 msgid "magicaldefense"
-msgstr "Permet pour 0PA de gagner 3 points de défense pour le prochain combat (uniquement le jeteur de sort). Utilisable pendant le tour adverse."
+msgstr "Permet pour 0PA de gagner 3 points de défense pour le prochain combat (uniquement le jeteur de sorts). Utilisable pendant le tour adverse."
 
 #: capacities
 msgid "magicalfly_combatcard"
-msgstr "Peut voler magiquement au prix d'une carte combat défaussé."
+msgstr "Peut voler magiquement au prix d'une carte combat défaussée."
 
 #: capacities
 msgid "magicallink"
@@ -3118,15 +3118,15 @@ msgstr "Peut interdire la cible d'attaquer un adversaire (même caractéristique
 
 #: capacities
 msgid "makespellcaster"
-msgstr "Tous personnages sur une case adjacente acquiert la propriété de jeteur de sort."
+msgstr "Tout personnage sur une case adjacente acquiert la propriété de jeteur de sort."
 
 #: capacities
 msgid "malusfight"
-msgstr "Tous les personnages adjacent en combat ont un malus de 1 en combat (attaque ou défense)."
+msgstr "Tous les personnages adjacents en combat ont un malus de 1 en combat (attaque ou défense)."
 
 #: capacities
 msgid "mirror"
-msgstr "Tout capacité faisant intervenir la ligne de vue ou la notion de même salle est renvoyé au personnage source."
+msgstr "Tout capacité faisant intervenir la ligne de vue ou la notion de même salle est renvoyée au personnage source."
 
 #: capacities
 msgid "musthave_force_3"
@@ -3134,11 +3134,11 @@ msgstr "L'utilisation requiert un personnage de force 3 ou plus."
 
 #: capacities
 msgid "nobonusattaque"
-msgstr "Tous les bonus procurer par des armes provenant des adversaires sont annulés."
+msgstr "Tous les bonus procurés par des armes provenant des adversaires sont annulés."
 
 #: capacities
 msgid "nodeplacement"
-msgstr "Ne peut se déplacer ni même par un saut. Le seul déplacement possible est d'utiliser un objet magique types bottes de 7 lieues."
+msgstr "Ne peut se déplacer ni même par un saut. Le seul déplacement possible est d'utiliser un objet magique type bottes de 7 lieues."
 
 #: capacities
 msgid "noheal"
@@ -3162,7 +3162,7 @@ msgstr "Peut fermer ouvrir toutes les herses présentes dans la salle n'étant p
 
 #: capacities
 msgid "ork"
-msgstr "Race ork."
+msgstr "Race orc."
 
 #: capacities
 msgid "outonlycursedobject"
@@ -3198,7 +3198,7 @@ msgstr "Le personnage est prestigieux. Il ramène 2PV en cas de mort et "
 
 #: capacities
 msgid "prophetie"
-msgstr "Peut visualiser une salle non révélée et la repositionner dans le sens souhaitée."
+msgstr "Peut visualiser une salle non révélée et la repositionner dans le sens souhaité."
 
 #: capacities
 msgid "protectedaswoman"
@@ -3210,7 +3210,7 @@ msgstr "Ne subit pas les objets maudits."
 
 #: capacities
 msgid "protectfromhurt"
-msgstr "En cas d'utilisation, l'objet est défaussé à la place de subit une blessure si le combat est perdu."
+msgstr "En cas d'utilisation, l'objet est défaussé à la place de subir une blessure si le combat est perdu."
 
 #: capacities
 msgid "protectzat"
@@ -3234,7 +3234,7 @@ msgstr "Peut se régénèrer. Ne peut plus agir durant le tour de la régénéra
 
 #: capacities
 msgid "regenerater_5action"
-msgstr "Se régénère automatiquement lorsqu'un carte 4 actions est joué. Le personnage regénéré ne peut agir du rang le tour."
+msgstr "Se régénère automatiquement lorsqu'un carte 5 actions est joué. Le personnage regénéré ne peut agir durant le tour."
 
 #: capacities
 msgid "regenerater_lave"
@@ -3266,7 +3266,7 @@ msgstr "Protège de la grenade."
 
 #: capacities
 msgid "robery"
-msgstr "Peut voler un objet à un personnage adverse adjacente."
+msgstr "Peut voler un objet à un personnage adverse adjacent."
 
 #: capacities
 msgid "sangsuemode"
@@ -3274,19 +3274,19 @@ msgstr "Peut terminer son déplacement sur un adversaire. A chaque tour passé s
 
 #: capacities
 msgid "seecombatcard"
-msgstr "Lors d'un combat peut voir la carte combat choisi par l'adversaire."
+msgstr "Lors d'un combat peut voir la carte combat choisie par l'adversaire."
 
 #: capacities
 msgid "seeelf"
-msgstr "Peut voir les elfes cachées (dans les arbres)."
+msgstr "Peut voir les elfes cachés (dans les arbres)."
 
 #: capacities
 msgid "semibeast"
-msgstr "Est une bête lors qu'une carte 5 actions est jouée."
+msgstr "Est une bête lorsqu'une carte 5 actions est jouée."
 
 #: capacities
 msgid "septlieues"
-msgstr "Peut effectuer un dépalcement de 10 cases par vol magique."
+msgstr "Peut effectuer un déplacement de 10 cases par vol magique."
 
 #: capacities
 msgid "shaper_araignee__1_0"
@@ -3298,7 +3298,7 @@ msgstr "Peut se transformer en bouclier contre-feu."
 
 #: capacities
 msgid "shaper_boucliermirroir__1_0"
-msgstr "Peut se transformer en bouclier mirroir."
+msgstr "Peut se transformer en bouclier miroir."
 
 #: capacities
 msgid "shaper_boucliersylvanite__1_0"
@@ -3314,7 +3314,7 @@ msgstr "Peut se transformer en corbeau."
 
 #: capacities
 msgid "shaper_dragonorient__1_0"
-msgstr "Peut se transformer en dragon d'orient. Ne peut plus agir jusqu'à la fin du tour."
+msgstr "Peut se transformer en dragon d'Orient. Ne peut plus agir jusqu'à la fin du tour."
 
 #: capacities
 msgid "shaper_gardienneforet__1_0"
@@ -3358,7 +3358,7 @@ msgstr "Peut se transformer en pavois."
 
 #: capacities
 msgid "shaper_piege_empty_1_0"
-msgstr "Peut se transformer en piège-vivant."
+msgstr "Peut se transformer en piège vivant."
 
 #: capacities
 msgid "shaper_reinearachnide__1_0"
@@ -3370,11 +3370,11 @@ msgstr "Peut se transformer en statue."
 
 #: capacities
 msgid "shaper_vampire__1_0"
-msgstr "Peut se transformer en statue."
+msgstr "Peut se transformer en vampire."
 
 #: capacities
 msgid "shield"
-msgstr "Bouclier : Peut être utilisé pour passer sous les chuttes de pierre et immunise au pouvoir du basilic."
+msgstr "Bouclier : Peut être utilisé pour passer sous les chutes de pierre et immunise au pouvoir du basilic."
 
 #: capacities
 msgid "shooter_1_1_0_"
@@ -3402,7 +3402,7 @@ msgstr "Peut effectuer un tir de force 3 une fois par tour."
 
 #: capacities
 msgid "shooter_1_4_1_vermine-undead-beast"
-msgstr "Peut effectuer un tir de force 4 contre la vermine, les mort-vivants et les bêtes une fois par tour."
+msgstr "Peut effectuer un tir de force 4 contre la vermine, les morts-vivants et les bêtes une fois par tour."
 
 #: capacities
 msgid "singintherain"
@@ -3418,7 +3418,7 @@ msgstr "Peut soigner un zombie. Le zombie peut agir normalement immédiatemment.
 
 #: capacities
 msgid "spellcaster"
-msgstr "Jeteur de sort. Peut utiliser les parchemins."
+msgstr "Jeteur de sorts. Peut utiliser les parchemins."
 
 #: capacities
 msgid "stayinside"
@@ -3442,11 +3442,11 @@ msgstr "Stocke les actions en vue d'une utilisation future. Ne peut pas être cu
 
 #: capacities
 msgid "tail"
-msgstr "Peut faire apparaître sa queue sur une case adjacente pour l'utiliser pour les combats. Peut ensuite la faire disparaître pour 0PA ou encore effectuer un fouissage (c'est à dire la tête prend la place de la queue et la queue est disparaît)."
+msgstr "Peut faire apparaître sa queue sur une case adjacente pour l'utiliser pour les combats. Peut ensuite la faire disparaître pour 0PA ou encore effectuer un fouissage (c'est à dire la tête prend la place de la queue et la queue disparaît)."
 
 #: capacities
 msgid "techniqueninjutsu"
-msgstr "Peut être utilisé pour se déplacer sur une case adjacente à l'issu d'un combat où aucune carte +0 n'a été joué. Si le joueur dépense 1PA. Il peut se déplacer aussi derrière une grille. Si utilisé pendant le tour adverse, le PA sera retiré du prochain tour."
+msgstr "Peut être utilisé pour se déplacer sur une case adjacente à l'issue d'un combat où aucune carte +0 n'a été joué. Si le joueur dépense 1PA. Il peut se déplacer aussi derrière une grille. Si utilisé pendant le tour adverse, le PA sera retiré du prochain tour."
 
 #: capacities
 msgid "telekinesy"
@@ -3458,7 +3458,7 @@ msgstr "Peut se téléporter magiquement sur une case valide vide d'une salle ad
 
 #: capacities
 msgid "transfert"
-msgstr "Peut échanger sa position avec une position en ligne de vue. Les objets sont aussi transférées."
+msgstr "Peut échanger sa position avec une position en ligne de vue. Les objets sont aussi transférés."
 
 #: capacities
 msgid "trollkiller"
@@ -3478,7 +3478,7 @@ msgstr "Peut twister la salle et sa jumelle dans les deux sens."
 
 #: capacities
 msgid "twistfree"
-msgstr "Peut effectuer autant de twist que souhaité sur la salle sans être sur le twist."
+msgstr "Peut effectuer autant de twists que souhaité sur la salle sans être sur le twist."
 
 #: capacities
 msgid "twistwhatever"
@@ -3514,7 +3514,7 @@ msgstr "Peut traverser les arbres sans avoir à s'y arrêter."
 
 #: capacities
 msgid "walker_chutespierre_object_1"
-msgstr "Peut traverser les chuttes de pierre sans encombre."
+msgstr "Peut traverser les chutes de pierre sans encombre."
 
 #: capacities
 msgid "walker_eau_object_1"
@@ -3586,7 +3586,7 @@ msgstr "Meurt immédiatemment en cas de défaite en combat."
 
 #: capacities
 msgid "werewolf"
-msgstr "Se transforme en loup-garoou lors que la carte 4 actions est joué. La force est alors augmentée de 2."
+msgstr "Se transforme en loup-garou lors que la carte 5 actions est joué. La force est alors augmentée de 2."
 
 #: capacities
 msgid "withdrawpvwhenkill"
@@ -3606,11 +3606,11 @@ msgstr "Le personnage est une femme."
 
 #: capacities
 msgid "yang"
-msgstr "Suit la voix du yang."
+msgstr "Suit la voie du yang."
 
 #: capacities
 msgid "yin"
-msgstr "Suit la voix du yin."
+msgstr "Suit la voie du yin."
 
 #: capacities
 msgid "zathurt"
@@ -3650,7 +3650,7 @@ msgstr "Cette salle contient un rocher."
 
 #: capacities
 msgid "room_categorie_sacre"
-msgstr "Cette salle contient des cases sacrés."
+msgstr "Cette salle contient des cases sacrées."
 
 #: capacities
 msgid "room_categorie_torche"
@@ -3714,7 +3714,7 @@ msgstr "Celle salle est faites pour les vermines."
 
 #: constraintcheck
 msgid "CONSTRAINT_CHECK_NOT_ENOUGH_CHARACTER"
-msgstr "Pas assez de personnage"
+msgstr "Pas assez de personnages"
 
 #: constraintcheck
 msgid "CONSTRAINT_CHECK_TOO_MANY_CHARACTERS"
@@ -3722,7 +3722,7 @@ msgstr "Trop de personnages"
 
 #: constraintcheck
 msgid "CONSTRAINT_CHECK_NOT_ENOUGH_OBJECT"
-msgstr "Pas assez d'objet"
+msgstr "Pas assez d'objets"
 
 #: constraintcheck
 msgid "CONSTRAINT_CHECK_TOO_MANY_OBJECTS"
@@ -3730,11 +3730,11 @@ msgstr "Trop d'objets"
 
 #: constraintcheck
 msgid "CONSTRAINT_CHECK_NOT_ENOUGH_ROOM"
-msgstr "Pas assez de pièce"
+msgstr "Pas assez de salles"
 
 #: constraintcheck
 msgid "CONSTRAINT_CHECK_TOO_MANY_ROOMS"
-msgstr "Trop de pièces"
+msgstr "Trop de salles"
 
 #: constraintcheck
 msgid "CONSTRAINT_CHARACTER_TOO_SLOW"
@@ -3810,43 +3810,43 @@ msgstr "Trop de prestigieux"
 
 #: constraintcheck
 msgid "CONSTRAINT_NOT_ENOUGH_SPELLCASTER"
-msgstr "Pas assez de jeuteurs de sort"
+msgstr "Pas assez de jeteurs de sorts"
 
 #: constraintcheck
 msgid "CONSTRAINT_CHECK_TOO_SPELLCASTERS"
-msgstr "Trop de jeteurs de sort"
+msgstr "Trop de jeteurs de sorts"
 
 #: constraintcheck
 msgid "CONSTRAINT_NOT_ENOUGH_FLYING"
-msgstr "Pas assez de volant"
+msgstr "Pas assez de volants"
 
 #: constraintcheck
 msgid "CONSTRAINT_CHECK_TOO_MANY_FLYING"
-msgstr "Trop de volant"
+msgstr "Trop de volants"
 
 #: constraintcheck
 msgid "CONSTRAINT_NOT_ENOUGH_IMMATERIAL"
-msgstr "Pas assez d'immatériel"
+msgstr "Pas assez d'immatériels"
 
 #: constraintcheck
 msgid "CONSTRAINT_CHECK_TOO_IMMATERIAL"
-msgstr "Trop d'immatériel"
+msgstr "Trop d'immatériels"
 
 #: constraintcheck
 msgid "CONSTRAINT_NOT_ENOUGH_CURSED"
-msgstr "Pas assez de maudit"
+msgstr "Pas assez de maudits"
 
 #: constraintcheck
 msgid "CONSTRAINT_CHECK_TOO_MANY_CURSED"
-msgstr "Trop de maudit"
+msgstr "Trop de maudits"
 
 #: constraintcheck
 msgid "CONSTRAINT_NOT_ENOUGH_SHADOW_WALKER"
-msgstr "Pas assez de marcheur dans les ténèbres"
+msgstr "Pas assez de marcheurs dans les ténèbres"
 
 #: constraintcheck
 msgid "CONSTRAINT_CHECK_TOO_MANY_SHADOW_WALKER"
-msgstr "Trop de marcheur dans les ténèbres"
+msgstr "Trop de marcheurs dans les ténèbres"
 
 #: constraintcheck
 msgid "CONSTRAINT_NOT_ENOUGH_SHADOW_ROOMS"
@@ -3866,7 +3866,7 @@ msgstr "Trop de pièces anti-magie"
 
 #: constraintcheck
 msgid "CONSTRAINT_NOT_ENOUGH_FOUNTAINS"
-msgstr "Pas assez de fontaine"
+msgstr "Pas assez de fontaines"
 
 #: constraintcheck
 msgid "CONSTRAINT_CHECK_TOO_MANY_FOUNTAINS"
@@ -3874,15 +3874,15 @@ msgstr "Trop de fontaines"
 
 #: constraintcheck
 msgid "CONSTRAINT_NOT_ENOUGH_COUNTERFOUNTAIN"
-msgstr "Pas assez de contreur de fontaine"
+msgstr "Pas assez d'anti-fontaines"
 
 #: constraintcheck
 msgid "CONSTRAINT_CHECK_TOO_MANY_COUNTERFOUNTAIN"
-msgstr "Trop de contreur de fontaine"
+msgstr "Trop d'anti-fontaines"
 
 #: constraintcheck
 msgid "CONSTRAINT_NOT_ENOUGH_EXTENSIONS"
-msgstr "Pas assez d'extension"
+msgstr "Pas assez d'extensions"
 
 #: constraintcheck
 msgid "CONSTRAINT_CHECK_TOO_MANY_EXTENSIONS"
@@ -3890,7 +3890,7 @@ msgstr "Trop d'extensions"
 
 #: constraintcheck
 msgid "CONSTRAINT_TOO_MANY_IDENTICAL_CHARACTERS"
-msgstr "Trop de fois un même personnages"
+msgstr "Trop de fois un même personnage"
 
 #: constraintcheck
 msgid "CONSTRAINT_TOO_MANY_SAME_OBJECTS"
@@ -3946,7 +3946,7 @@ msgstr "Nombre d'objets&nbsp;"
 
 #: generaterandomstream
 msgid "RANDOM_ROOMS"
-msgstr "Nombre de pièces&nbsp;"
+msgstr "Nombre de salles&nbsp;"
 
 #: generaterandomstream
 msgid "RANDOM_REPEAT"
@@ -3982,7 +3982,7 @@ msgstr "Pas assez d'objets pour générer les équipes"
 
 #: generaterandomstream
 msgid "RANDOMTEAM_NOT_ENOUGH_ROOMS"
-msgstr "Pas assez de pièces pour générer les équipes"
+msgstr "Pas assez de salles pour générer les équipes"
 
 #: generaterandomstream
 msgid "RANDOM_NO_TEAM_NAME"

@@ -79,6 +79,7 @@ insert into dt_objects_extensions (dtobject_id, dtextension_id) values (4, 2);
 insert into dt_objects (id, name) values (5, 'batonbouledefeu');
 insert into dt_objects_capacities (object_id, name) values (5, 'categorie_puissant');
 insert into dt_objects_capacities (object_id, name) values (5, 'fireball');
+insert into dt_objects_capacities (object_id, name) values (5, 'mustbeerudite');
 insert into dt_objects_capacities (object_id, name) values (5, 'magical');
 insert into dt_objects_capacities (object_id, name) values (5, 'onlyonce');
 insert into dt_objects_extensions (dtobject_id, dtextension_id) values (5, 1);
@@ -340,6 +341,7 @@ insert into dt_objects_extensions (dtobject_id, dtextension_id) values (20, 5);
 insert into dt_objects (id, name) values (21, 'torche');
 insert into dt_objects_capacities (object_id, name) values (21, 'categorie_current');
 insert into dt_objects_capacities (object_id, name) values (21, 'lighter');
+insert into dt_objects_capacities (object_id, name) values (21, 'shadowkiller');
 insert into dt_objects_extensions (dtobject_id, dtextension_id) values (21, 5);
 insert into dt_objects_extensions (dtobject_id, dtextension_id) values (21, 33);
 
@@ -436,7 +438,7 @@ insert into dt_characters_capacities (character_id, name) values (47, 'shooter_1
 insert into dt_characters_extensions (dtcharacter_id, dtextension_id) values (47, 8);
 insert into dt_characters (id, name, deplacement, `force`) values (48, 'bucheron', 3, 3);
 insert into dt_characters_capacities (character_id, name) values (48, 'floormarker_1_arbrecoupe_1_-1_arbre__');
-insert into dt_characters_capacities (character_id, name) values (48, 'biandans_arbre');
+insert into dt_characters_capacities (character_id, name) values (48, 'biandans_arbre_');
 insert into dt_characters_extensions (dtcharacter_id, dtextension_id) values (48, 8);
 insert into dt_characters (id, name, deplacement, `force`) values (49, 'piegevivant', 5, 2);
 insert into dt_characters_capacities (character_id, name) values (49, 'shaper_piege_empty_1_0');
@@ -519,7 +521,7 @@ insert into dt_characters (id, name, deplacement, `force`) values (57, 'yeti', 3
 insert into dt_characters_capacities (character_id, name) values (57, 'bonuscombat_1_snow');
 insert into dt_characters_capacities (character_id, name) values (57, 'climber');
 insert into dt_characters_capacities (character_id, name) values (57, 'beast');
-insert into dt_characters_capacities (character_id, name) values (57, 'biendans_pente-eau_');
+insert into dt_characters_capacities (character_id, name) values (57, 'biendans_pente-neige_');
 insert into dt_characters_extensions (dtcharacter_id, dtextension_id) values (57, 9);
 insert into dt_characters (id, name, deplacement, `force`) values (58, 'elementaireglace', 4, 1);
 insert into dt_characters_capacities (character_id, name) values (58, 'walker_eau_noobject_1');
@@ -546,8 +548,8 @@ insert into dt_objects (id, name) values (34, 'parcheminglace');
 insert into dt_objects_capacities (object_id, name) values (34, 'parchemin');
 insert into dt_objects_capacities (object_id, name) values (34, 'freezer_1');
 insert into dt_objects_capacities (object_id, name) values (34, 'magical');
-insert into dt_objects_capacities (object_id, name) values (33, 'categorie_utile');
-insert into dt_objects_capacities (object_id, name) values (33, 'antifountain');
+insert into dt_objects_capacities (object_id, name) values (34, 'categorie_utile');
+insert into dt_objects_capacities (object_id, name) values (34, 'antifountain');
 insert into dt_objects_capacities (object_id, name) values (34, 'floormarker_1_ice_1_10_eau-sol-brume__allinsame');
 insert into dt_objects_capacities (object_id, name) values (34, 'onlyonce');
 insert into dt_objects_extensions (dtobject_id, dtextension_id) values (34, 9);
@@ -586,6 +588,7 @@ insert into dt_characters_capacities (character_id, name) values (63, 'biendans_
 insert into dt_characters_extensions (dtcharacter_id, dtextension_id) values (63, 10);
 insert into dt_characters (id, name, deplacement, `force`) values (64, 'hurleur', 4, 1);
 insert into dt_characters_capacities (character_id, name) values (64, 'repulsion_2_2');
+insert into dt_characters_capacities (character_id, name) values (64, 'undead');
 insert into dt_characters_extensions (dtcharacter_id, dtextension_id) values (64, 10);
 
 -- Objects Prison
@@ -602,6 +605,7 @@ insert into dt_objects_extensions (dtobject_id, dtextension_id) values (38, 10);
 insert into dt_objects (id, name) values (39, 'grandbouclier');
 insert into dt_objects_capacities (object_id, name) values (39, 'shield');
 insert into dt_objects_capacities (object_id, name) values (39, 'defenseshoot');
+insert into dt_objects_capacities (object_id, name) values (39, 'categorie_arme');
 insert into dt_objects_extensions (dtobject_id, dtextension_id) values (39, 10);
 
 -- Characters MS
@@ -1172,6 +1176,7 @@ insert into dt_characters (id, name, deplacement, `force`) values (145, 'magophi
 insert into dt_characters_capacities (character_id, name) values (145, 'makespellcaster');
 insert into dt_characters_capacities (character_id, name) values (145, 'autcancelmagophage');
 insert into dt_characters_capacities (character_id, name) values (145, 'cangomagic');
+insert into dt_characters_capacities (character_id, name) values (145, 'biendans__antimagie');
 insert into dt_characters_extensions (dtcharacter_id, dtextension_id) values (145, 40);
 insert into dt_characters (id, name, deplacement, `force`) values (146, 'chamanork', 4, 2);
 insert into dt_characters_capacities (character_id, name) values (146, 'ork');

@@ -763,17 +763,30 @@ function runcreateteamfilter(typin) {
 }
 
 /** Appelée quand la sélection des pions est effectuée et que les pions sont chargés pour l'affichage. Utilise spawnSelected */
+var createteamid = 0;
 function createTeamDisplaySpawn(typ, spawnSelected) {
+	$('#teamspawndisplay').html('');
 	var i = 0;
-	var content = '';
 	for (i = 0; i < spawnSelected.length; i++) {
 		if (typ == 'room') {
-			content += '<div class="iconcontainer"><img height="200" width="200" src="' + spawnSelected[i]['url'] + '" border="0" class="pointer" onclick="selectionTeamSpawn(\'' + typ + '\', \'' + spawnSelected[i]['spawn']['name'] + '\', ' + spawnSelected[i]['spawn']['id'] + ')"/></div>';
+			content += '<div class="iconcontainer"><img height="200" width="200" src="' + spawnSelected[i]['url'] + '" border="0" class="pointer" onclick="selectionTeamSpawn(\'' + typ + '\', \'' + spawnSelected[i]['spawn']['name'] + '\', ' + spawnSelected[i]['spawn']['id'] + ')"/></div> ';
 		} else {
-			content += '<div class="iconcontainer"><img height="80" width="80" src="' + spawnSelected[i]['url'] + '" border="0" class="pointer zindex2" style="position: absolute;" onclick="selectionTeamSpawn(\'' + typ + '\', \'' + spawnSelected[i]['spawn']['name'] + '\', ' + spawnSelected[i]['spawn']['id'] + ')"/><img height="80" width="80" class="zindex1" src="/static/images/spawns/fond-' + $('#spawncolor').val() + '.png" border="0" class="pointer"/></div>';
+			createteamid++;
+			if (useExcanvas) {
+				$('#teamspawndisplay').append('<div class="iconcontainer"><img height="80" width="80" src="/spawn/' + $('#spawncolor').val() + '/' + spawnSelected[i]['spawn']['name'] + '" border="0" class="pointer" onclick="selectionTeamSpawn(\'' + typ + '\', \'' + spawnSelected[i]['spawn']['name'] + '\', ' + spawnSelected[i]['spawn']['id'] + ')"/></div>');
+			} else {
+				$('#teamspawndisplay').append('<div class="iconcontainer"><canvas id="createteamicon_' + createteamid + '" height="80" width="80" border="0" class="pointer" onclick="selectionTeamSpawn(\'' + typ + '\', \'' + spawnSelected[i]['spawn']['name'] + '\', ' + spawnSelected[i]['spawn']['id'] + ')"/></div>');
+				var canvas = $('#createteamicon_' + createteamid);
+				var ctx = canvas.get(0).getContext('2d');
+				var img1 = new Image();
+				img1.src = '/static/images/spawns/fond-' + $('#spawncolor').val() + '.png';
+				ctx.drawImage(img1, 0, 0, 80, 80);
+				var img2 = new Image();
+				img2.src = spawnSelected[i]['url']
+				ctx.drawImage(img2, 0, 0, 80, 80);
+			}
 		}
 	}
-	$('#teamspawndisplay').html(content);
 	progressbarDialog.destroy();
 }
 

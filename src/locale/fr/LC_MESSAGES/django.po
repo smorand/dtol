@@ -4040,6 +4040,57 @@ msgstr "Stand Alone"
 msgid "TEAM_CONSTRAINTS"
 msgstr "Contraintes&nbsp;d'équipes&nbsp;:"
 
+#: challenge/edit.html
+msgid "CHALLENGE_OPPONENT"
+msgstr "Adversaire&nbsp;:"
+
+#: challenge/edit.html
+msgid "CHALLENGE_OPPONENT_ANY"
+msgstr "Indifférent"
+
+#: challenge/edit.html
+msgid "CHALLENGE_ANONYMOUS"
+msgstr "Défi&nbsp;anonyme&nbsp;:"
+
+#: challenge/edit.html
+msgid "CHALLENGE_SPAWN_SHOW_MODE"
+msgstr "Visibilité des pions&nbsp;:"
+
+#: challenge/edit.html
+msgid "CHALLENGE_SPAWN_SHOW_NONE"
+msgstr "Aucun"
+
+#: challenge/edit.html
+msgid "CHALLENGE_SPAWN_SHOW_MINE"
+msgstr "Les miens"
+
+#: challenge/edit.html
+msgid "CHALLENGE_SPAWN_SHOW_TEAM"
+msgstr "Mon équipe"
+
+#: challenge/edit.html
+msgid "CHALLENGE_SPAWN_SHOW_BOTH"
+msgstr "Tous"
+
+#: challenge/edit.html
+msgid "CHALLENGE_DUNGEON_RANDOM"
+msgstr "Donjon aléatoire&nbsp;:"
+
+#: challenge/edit.html
+msgid "CHALLENGE_DUNGEON_KNOWLEDGE"
+msgstr "Donjon connu&nbsp;:"
+
+#: challenge/edit.html
+msgid "CHALLENGE_DUNGEON_CLEVER_PLACEMENT"
+msgstr "Placement&nbsp;équilibré&nbsp;des&nbsp;salles&nbsp;:"
+
+#: challenge/edit.html
+msgid "CHALLENGE_ELO"
+msgstr "ELO&nbsp;:"
+
+#: challenge/edit.html
+msgid "CHALLENGE_SHOW_OPPONENT_CARDS"
+msgstr "Voir&nbsp;les&nbsp;cartes&nbsp;adverses&nbsp;:"
 
 #~ msgid "USER_PRIMARY_COLOR"
 #~ msgstr "Couleur 1"

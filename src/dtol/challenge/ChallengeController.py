@@ -26,6 +26,7 @@ class ChallengeController(CommonController):
 	def create(self, request):
 		extensions = self.userManager.getUser(request.session['user'].id).extensions.all()
 		c = {
+			'users': self.userManager.getUsersExcept([request.session['user'].login]),
 			'extensions': extensions,
 			'constraints': self.teamManager.getTeamConstraints(user=request.session['user'].id),
 		}

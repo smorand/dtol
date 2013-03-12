@@ -45,6 +45,9 @@ class UserManager(object):
 	def getUsers(self):
 		return DtUser.objects.all()
 	
+	def getUsersExcept(self, logins):
+		return DtUser.objects.exclude(login__in=logins)
+	
 	def getUser(self, userId):
 		return DtUser.objects.get(id=userId)
 	

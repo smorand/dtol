@@ -23,21 +23,59 @@
 			<th>{% trans "TEAM_CONSTRAINTS" %}</th>
 			<td id="constraint_list">
 				<select name="constraint">
-					{% for constraint in constraints %}
-						<option value="{{ constraint.id }}">{{ constraint.name }}</option>
-					{% endfor %}
+{% for constraint in constraints %}
+					<option value="{{ constraint.id }}">{{ constraint.name }}</option>
+{% endfor %}
 				</select>
 				<img class="pointer" width="20" height="20" border="0" style="vertical-align:middle" src="/static/images/interface/plus.png" onclick="createteamconstraint(1)"/>
 			</td>
 		</tr>
-		<!-- Opponnent : Anyone -->
-		<!-- Anonymous challenge : Yes, No -->
-		<!-- Show hiddent spawns : None, Mine, Both -->
-		<!-- Dungeon style : Player, Random  -->
-		<!-- Dungeon knowledge : Unknown, known -->
-		<!-- Dungeon placement : Random, Clever -->
-		<!-- ELO : Yes, No --> 
-		<!-- Show opponent cards --> 
+		<tr>
+			<th>{% trans "CHALLENGE_OPPONENT" %}</th>
+			<td>
+				<select name="opponent">
+					<option value="0">-- {% trans "CHALLENGE_OPPONENT_ANY" %} --</option>
+{% for user in users %}
+					<option value="{{ user.id }}">{{ user.login }}</option>
+{% endfor %}
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<th>{% trans "CHALLENGE_ANONYMOUS" %}</th>
+			<td><input type="checkbox" value="1" name="anonymous"/></td>
+		</tr>
+		<tr>
+			<th>{% trans "CHALLENGE_SPAWN_SHOW_MODE" %}</th>
+			<td>
+				<select name="spawnvisibility">
+					<option value="0">{% trans "CHALLENGE_SPAWN_SHOW_NONE" %}</option>
+					<option value="1">{% trans "CHALLENGE_SPAWN_SHOW_MINE" %}</option>
+					<option value="2">{% trans "CHALLENGE_SPAWN_SHOW_TEAM" %}</option>
+					<option value="3">{% trans "CHALLENGE_SPAWN_SHOW_BOTH" %}</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<th>{% trans "CHALLENGE_DUNGEON_RANDOM" %}</th>
+			<td><input type="checkbox" value="1" name="randomdunjeon"/></td>
+		</tr>
+		<tr>
+			<th>{% trans "CHALLENGE_DUNGEON_KNOWLEDGE" %}</th>
+			<td><input type="checkbox" value="1" name="dungeonknowledge"/></td>
+		</tr>
+		<tr>
+			<th>{% trans "CHALLENGE_DUNGEON_CLEVER_PLACEMENT" %}</th>
+			<td><input type="checkbox" value="1" name="dungeoncleverplacement"/></td>
+		</tr>
+		<tr>
+			<th>{% trans "CHALLENGE_ELO" %}</th>
+			<td><input type="checkbox" value="1" name="useelo"/></td>
+		</tr>
+		<tr>
+			<th>{% trans "CHALLENGE_SHOW_OPPONENT_CARDS" %}</th>
+			<td><input type="checkbox" value="1" name="showopponentcards"/></td>
+		</tr>
 		<tr>
 			<th>{% trans "EXTENSIONS" %}</th>
 			<td>

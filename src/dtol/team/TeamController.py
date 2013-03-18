@@ -46,13 +46,14 @@ class TeamController(CommonController):
 		''' List teams constraints. Only available for some users '''
 		c = {
 			'canedit': True,
-			'constraints': self.teamManager.getTeamConstraints(user=request.session['user'].id)
+			'constraints': self.teamManager.getTeamConstraints(user=request.session['user'].id),
+			'user': request.session['user'].id
 		}
 		return self.templates.response('team.listconstraints', context=c)
 
 	def delteamsconstraints(self, request, uid):
 		''' Remove a team constraint Protected constraint can't be removed. This is a logical deletion '''
-		self.teamManager.delTeamConstraint(uid)
+		self.teamManager.delTeamConstraint(uid, user=request.session['user'].id)
 		return self.templates.empty()
 	
 	def createconstraints(self, request, uid):
@@ -101,8 +102,8 @@ class TeamController(CommonController):
 				tc.name = request.POST['name']
 			else:
 				tc = DtTeamConstraint(name=request.POST['name'])
-			if 'public' not in request.POST:
-				tc.user = DtUser(id=request.session['user'].id)
+			tc.public = 1 if 'public' in request.POST else 0
+			tc.user = DtUser(id=request.session['user'].id)
 			tc.gamelink = request.POST['gamelink']
 			try: tc.mincharacters = int(request.POST['mincharacters'])
 			except: raise Exception('INCORRECT_VALUE_MINCHARACTERS')
@@ -398,6 +399,7 @@ class TeamController(CommonController):
 		characterscount = int(request.POST['characterscount'])
 		objectscount = int(request.POST['objectscount'])
 		roomscount = int(request.POST['roomscount'])
+		constraint = int(request.POST['constraint'])
 		repeat = request.POST['randomteam_repeat'] == '1'
 		try:
 			teams = self.teamManager.generateRandomTeam(method, teamscount, extensions, characterscount, objectscount, roomscount, repeat)

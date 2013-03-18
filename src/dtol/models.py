@@ -399,6 +399,7 @@ class DtTeamConstraint(models.Model):
 	name = models.CharField(max_length=150)
 	deleted = models.BooleanField(default=False)
 	user = models.ForeignKey(DtUser, null=True, on_delete=models.deletion.CASCADE)
+	public = models.IntegerField(default=0)
 	gamelink = models.IntegerField(default=0)
 	protected = models.IntegerField(default=0)
 	mincharacters = models.IntegerField(default=8)

@@ -15,18 +15,15 @@ class TeamManager(object):
 	def getTeams(self, user):
 		return DtTeam.objects.filter(user=user.id)
 
-	def getTeamConstraints(self, protected=None, user=None):
-		kwargs = { 'deleted': 0 }
-		if protected is not None:
-			kwargs['protected'] = protected
+	def getTeamConstraints(self, user=None):
 		if user is None:
-			where = [ 'user_id is null' ]
+			where = [ 'deleted = 0 and public = 1' ]
 		else:
-			where = [ 'user_id is null or user_id = %d' % (user) ]
-		return DtTeamConstraint.objects.extra(where=where).filter(**kwargs)
+			where = [ 'deleted = 0 and (public = 1 or user_id = %d)' % (user) ]
+		return DtTeamConstraint.objects.extra(where=where)
 
-	def delTeamConstraint(self, uid):
-		DtTeamConstraint.objects.filter(id=uid).update(deleted=1)
+	def delTeamConstraint(self, uid, user):
+		DtTeamConstraint.objects.filter(id=uid, user=user).update(deleted=1)
 
 	def delTeam(self, uid):
 		DtTeam.objects.filter(id=uid).delete()
@@ -319,6 +316,11 @@ class TeamManager(object):
 				objectsfilters = set()
 				roomsfilters = set()
 		return teams
+
+	def filterConstraint(self, constraintin, characterslist, objectslist, roomslist, characters, objects, rooms):
+		''' Modify charcterslist, objectslist, roomslist according to characters, objets and rooms already taken '''
+		# TODO:
+		pass
 	
 	def _generateRandom(self, arraysrc, key, filters, exceptfilter, count):
 		''' generate from src using key (to get unique) and not in filters (filters is a set) '''

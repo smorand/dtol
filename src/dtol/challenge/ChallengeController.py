@@ -28,7 +28,7 @@ class ChallengeController(CommonController):
 		c = {
 			'users': self.userManager.getUsersExcept([request.session['user'].login]),
 			'extensions': extensions,
-			'constraints': self.teamManager.getTeamConstraints(user=request.session['user'].id),
+			'constraints': self.teamManager.getTeamConstraints(),
 		}
 		return self.templates.response('challenge.edit', context=c)
 	

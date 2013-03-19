@@ -23,7 +23,10 @@ class TeamManager(object):
 		return DtTeamConstraint.objects.extra(where=where)
 
 	def delTeamConstraint(self, uid, user):
-		DtTeamConstraint.objects.filter(id=uid, user=user).update(deleted=1)
+		if user is None:
+			DtTeamConstraint.objects.filter(id=uid).update(deleted=1)
+		else:
+			DtTeamConstraint.objects.filter(id=uid, user=user).update(deleted=1)
 
 	def delTeam(self, uid):
 		DtTeam.objects.filter(id=uid).delete()
@@ -78,14 +81,14 @@ class TeamManager(object):
 				'filters': []
 			}
 			capacities = [ cap.name for cap in c.capacities() ]
-			if 'current' in capacities: sp['filters'].append('current')
+			if 'categorie_current' in capacities: sp['filters'].append('current')
 			if 'magical' in capacities: sp['filters'].append('magical')
 			if 'parchemin' in capacities: sp['filters'].append('parchemin')
 			if 'categorie_arme' in capacities: sp['filters'].append('categorie_arme')
 			if 'shield' in capacities: sp['filters'].append('shield')
 			if 'categorie_puissant' in capacities: sp['filters'].append('categorie_puissant')
 			if 'antifountain' in capacities: sp['filters'].append('antifountain')
-			if 'cursed' in capacities: sp['filters'].append('cursed')
+			if 'categorie_cursed' in capacities: sp['filters'].append('cursed')
 			sp['filters'] = '-'.join(sp['filters'])
 			objects.append(sp)
 		for c in self.spawnManager.getRooms(extensions):

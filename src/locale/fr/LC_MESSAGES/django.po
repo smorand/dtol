@@ -878,7 +878,7 @@ msgstr "Types"
 
 #: templates/team/edit.html
 msgid "SPAWNS_FILTERS"
-msgstr "Fitres"
+msgstr "Filtres"
 
 #: templates/team/edit.html
 msgid "SPAWN_FILTER_ELF"
@@ -1302,7 +1302,7 @@ msgstr "Bouclier contre-feu"
 
 #: spawn
 msgid "boucliermirroir"
-msgstr "Bouclier miroir"
+msgstr "Bouclier mirroir"
 
 #: spawn
 msgid "boucliersylvanite"
@@ -3627,6 +3627,10 @@ msgstr "Effectue un tir à pleine puissance avec le Zat. Si le tireur est tilk, 
 #: capacities
 msgid "room_categorie_eau"
 msgstr "Cette salle contient de l'eau."
+
+#: capacities
+msgid "room_categorie_chutespierre"
+msgstr "Cette salle contient des chutes de pierre."
 
 #: capacities
 msgid "room_categorie_lave"

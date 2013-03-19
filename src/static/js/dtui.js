@@ -769,7 +769,7 @@ function createTeamDisplaySpawn(typ, spawnSelected) {
 	var i = 0;
 	for (i = 0; i < spawnSelected.length; i++) {
 		if (typ == 'room') {
-			content += '<div class="iconcontainer"><img height="200" width="200" src="' + spawnSelected[i]['url'] + '" border="0" class="pointer" onclick="selectionTeamSpawn(\'' + typ + '\', \'' + spawnSelected[i]['spawn']['name'] + '\', ' + spawnSelected[i]['spawn']['id'] + ')"/></div> ';
+			$('#teamspawndisplay').append('<div class="iconcontainer"><img height="200" width="200" src="' + spawnSelected[i]['url'] + '" border="0" class="pointer" onclick="selectionTeamSpawn(\'' + typ + '\', \'' + spawnSelected[i]['spawn']['name'] + '\', ' + spawnSelected[i]['spawn']['id'] + ')"/></div> ');
 		} else {
 			createteamid++;
 			if (useExcanvas) {
@@ -846,6 +846,7 @@ function unselectionTeamSpawn(typ, name) {
 }
 
 /** Mets à jour le contenu de l'équipe */
+var teampcontentid = 0;
 function teamContent() {
 	var types = new Array();
 	types[types.length] = 'character';
@@ -853,6 +854,7 @@ function teamContent() {
 	types[types.length] = 'room';
 	var content = '';
 	var atleastonespawn = 0;
+	$('#teamsdialog').html('');
 	for (var t in types) { var typ = types[t];
 		var spawns_str = $('#panier_'+typ+'s').val();
 		var spawncount = 0;
@@ -864,18 +866,30 @@ function teamContent() {
 					spawncount++;
 					var info = spawn.split('_');
 					if (typ == 'room') {
-						content += '<div class="iconcontainer"><img height="150" width="150" src="/static/images/rooms/' + info[1] + '-1.jpg" border="0" class="pointer" onclick="unselectionTeamSpawn(\'' + typ + '\', \'' + spawn + '\')"/></div><div class="iconcontainer"><img height="150" width="150" src="/static/images/rooms/' + info[1] + '-2.jpg" border="0" class="pointer" onclick="unselectionTeamSpawn(\'' + typ + '\', \'' + spawn + '\')"/></div>';
+						$('#teamsdialog').append('<div class="iconcontainer"><img height="150" width="150" src="/static/images/rooms/' + info[1] + '-1.jpg" border="0" class="pointer" onclick="unselectionTeamSpawn(\'' + typ + '\', \'' + spawn + '\')"/></div><div class="iconcontainer"><img height="150" width="150" src="/static/images/rooms/' + info[1] + '-2.jpg" border="0" class="pointer" onclick="unselectionTeamSpawn(\'' + typ + '\', \'' + spawn + '\')"/></div>');
 					} else {
-						content += '<div class="iconcontainer"><img height="80" width="80" src="/static/images/spawns/' + info[1] + '.png" border="0" class="pointer zindex2" style="position: absolute;" onclick="unselectionTeamSpawn(\'' + typ + '\', \'' + spawn + '\')"/><img height="80" width="80" class="zindex1" src="/static/images/spawns/fond-' + $('#spawncolor').val() + '.png" border="0" class="pointer"/></div>';
+						if (useExcanvas) {
+							$('#teamsdialog').append('<div class="iconcontainer"><img height="80" width="80" src="/spawn/' + $('#spawncolor').val() + '/' + info[1] + '" border="0" class="pointer" onclick="unselectionTeamSpawn(\'' + typ + '\', \'' + spawn + '\')"/></div>');
+						} else {
+							teampcontentid++;
+							$('#teamsdialog').append('<div class="iconcontainer"><canvas id="teamcontent_' + teampcontentid + '" height="80" width="80" border="0" class="pointer" onclick="unselectionTeamSpawn(\'' + typ + '\', \'' + spawn + '\')"/></div>');
+							var canvas = $('#teamcontent_' + teampcontentid);
+							var ctx = canvas.get(0).getContext('2d');
+							var img1 = new Image();
+							img1.src = '/static/images/spawns/fond-' + $('#spawncolor').val() + '.png';
+							ctx.drawImage(img1, 0, 0, 80, 80);
+							var img2 = new Image();
+							img2.src = '/static/images/spawns/' + info[1] + '.png';
+							ctx.drawImage(img2, 0, 0, 80, 80);
+						}
 					}
 				}
 			}
 		}
 		$('#team_'+typ+'scount').html(spawncount)
-		content += '<hr/>';
+		$('#teamsdialog').append('<hr/>');
 	}
-	if (atleastonespawn == 1) content += '<button class="dtbutton" onclick="saveTeam()">' + translate('TEAM_SAVE') + '</button>';
-	$('#teamsdialog').html(content);
+	if (atleastonespawn == 1) $('#teamsdialog').append('<button class="dtbutton" onclick="saveTeam()">' + translate('TEAM_SAVE') + '</button>');
 }
 
 /** constraint help display */

@@ -19,7 +19,6 @@
 					<option value="sa">{% trans "CHALLENGE_MODE_SA" %}</option>
 				</select>
 			</td>
-		<tr>
 			<th>{% trans "TEAM_CONSTRAINTS" %}</th>
 			<td id="constraint_list">
 				<select name="constraint">
@@ -40,8 +39,6 @@
 {% endfor %}
 				</select>
 			</td>
-		</tr>
-		<tr>
 			<th>{% trans "CHALLENGE_ANONYMOUS" %}</th>
 			<td><input type="checkbox" value="1" name="anonymous"/></td>
 		</tr>
@@ -55,36 +52,25 @@
 					<option value="3">{% trans "CHALLENGE_SPAWN_SHOW_BOTH" %}</option>
 				</select>
 			</td>
-		</tr>
-		<tr>
-			<th>{% trans "CHALLENGE_DUNGEON_RANDOM" %}</th>
-			<td><input type="checkbox" value="1" name="randomdunjeon"/></td>
-		</tr>
-		<tr>
-			<th>{% trans "CHALLENGE_DUNGEON_KNOWLEDGE" %}</th>
-			<td><input type="checkbox" value="1" name="dungeonknowledge"/></td>
-		</tr>
-		<tr>
 			<th>{% trans "CHALLENGE_DUNGEON_CLEVER_PLACEMENT" %}</th>
 			<td><input type="checkbox" value="1" name="dungeoncleverplacement"/></td>
 		</tr>
 		<tr>
-			<th>{% trans "CHALLENGE_ELO" %}</th>
-			<td><input type="checkbox" value="1" name="useelo"/></td>
-		</tr>
-		<tr>
 			<th>{% trans "CHALLENGE_SHOW_OPPONENT_CARDS" %}</th>
-			<td><input type="checkbox" value="1" name="showopponentcards"/></td>
-		</tr>
-		<tr>
-			<th>{% trans "EXTENSIONS" %}</th>
 			<td>
-{% for c in extensions %}
-				<div class="extensionlogo"><img id="extlogo_{{ c.id }}" class="extensionlogo-notselected" src="/static/images/interface/logo{{ c.id }}.jpg" border="0" title="{% trans c.transname %}" onclick="selectExtension({{ c.id }});updatechallengecreation()"/></div>
-{% endfor %}
-				<div class="extensionlogo"><img  class="extensionlogo-notselectable" src="/static/images/interface/logoall.jpg" title="{% trans "EXTENSION_ALL" %}" onclick="selectExtensionAll();updatechallengecreation()" border="0"/></div>			
-				<div class="extensionlogo"><img  class="extensionlogo-notselectable" src="/static/images/interface/logonone.jpg" title="{% trans "EXTENSION_NONE" %}" onclick="selectExtensionNone();updatechallengecreation()" border="0"/></div>
+				<select name="spawnvisibility">
+					<option value="1">{% trans "CHALLENGE_SHOW_CARDS_MINE" %}</option>
+					<option value="2">{% trans "CHALLENGE_SHOW_CARDS_TEAM" %}</option>
+					<option value="3">{% trans "CHALLENGE_SHOW_CARDS_BOTH" %}</option>
+				</select>
 			</td>
+			<th>{% trans "CHALLENGE_DUNGEON_RANDOM" %}</th>
+			<td><input type="checkbox" value="1" name="randomdunjeon"/></td>
+		</tr>
+			<th></th><td></td>
+			<th>{% trans "CHALLENGE_DUNGEON_KNOWLEDGE" %}</th>
+			<td><input type="checkbox" value="1" name="dungeonknowledge"/></td>
 		<tr>
+		</tr>
 	</table>
 </form>

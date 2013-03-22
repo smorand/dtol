@@ -17,9 +17,9 @@ class TeamManager(object):
 
 	def getTeamConstraints(self, user=None):
 		if user is None:
-			where = [ 'deleted = 0 and public = 1' ]
+			where = [ 'deleted = 0 and public = 1 and gamelink = 0' ]
 		else:
-			where = [ 'deleted = 0 and (public = 1 or user_id = %d)' % (user) ]
+			where = [ 'deleted = 0 and (public = 1 or user_id = %d) and gamelink = 0' % (user) ]
 		return DtTeamConstraint.objects.extra(where=where)
 
 	def delTeamConstraint(self, uid, user):

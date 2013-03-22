@@ -16,12 +16,12 @@ class TeamController(CommonController):
 		return [
 			{ 'pattern': r'^teams$', 'method': 'list', 'right': 'connected' },
 			{ 'pattern': r'^teams/constraints$', 'method': 'listconstraints', 'right': 'connected' },
-			{ 'pattern': r'^teams/constraints/edit/([0-9]+)$', 'method': 'createconstraints', 'right': 'admin' },
-			{ 'pattern': r'^teams/constraints/remove/([1-9][0-9]*)$', 'method': 'delteamsconstraints', 'right': 'admin' },
+			{ 'pattern': r'^teams/constraints/edit/([0-9]+)$', 'method': 'createconstraints', 'right': 'connected' },
+			{ 'pattern': r'^teams/constraints/remove/([1-9][0-9]*)$', 'method': 'delteamsconstraints', 'right': 'connected' },
 			{ 'pattern': r'^teams/constraints/load/([1-9][0-9]*)$', 'method': 'loadteamsconstraint', 'right': 'connected' },
 			{ 'pattern': r'^teams/constraints/loadbyname/(.*)$', 'method': 'loadteamsconstraints', 'right': 'connected' },
 			{ 'pattern': r'^teams/constraints/help/([1-9][0-9]*)$', 'method': 'helpteamsconstraint', 'right': 'connected' },
-			{ 'pattern': r'^teams/constraints/save$', 'method': 'saveteamsconstraint', 'right': 'admin' },
+			{ 'pattern': r'^teams/constraints/save$', 'method': 'saveteamsconstraint', 'right': 'connected' },
 			{ 'pattern': r'^teams/create$', 'method': 'create', 'parameters': {'gameid':''}, 'right': 'connected' },
 			{ 'pattern': r'^teams/random$', 'method': 'random', 'right': 'connected' },
 			{ 'pattern': r'^teams/random/generate$', 'method': 'randomgenerate', 'right': 'connected' },
@@ -106,7 +106,7 @@ class TeamController(CommonController):
 				tc.name = request.POST['name']
 			else:
 				tc = DtTeamConstraint(name=request.POST['name'])
-			tc.public = 1 if 'public' in request.POST else 0
+			tc.public = 1 if 'public' in request.POST and request.session['user'].isadmin else 0 
 			tc.user = DtUser(id=request.session['user'].id)
 			tc.gamelink = request.POST['gamelink']
 			try: tc.mincharacters = int(request.POST['mincharacters'])

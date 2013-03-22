@@ -4,5 +4,4 @@
 .pydevproject
 *.pyc
 project.log
-dtol.db
 *#

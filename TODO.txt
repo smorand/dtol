@@ -1,3 +1,8 @@
+GENERAL IDEAS TO GO FURTHER
+---------------------------
+* Ajouter la possibilité dans les challenges
+* Rajouter le paramètre du temps de rafraichissement des chats dans le profil
+
 2013
 ----
 Generate random using hot update of arrays (according to constraint which must be a start)
@@ -8,17 +13,6 @@ Generate random using hot update of arrays (according to constraint which must b
 
 BUG : A priori seb.morand@gmail.com ne recoit pas les mails
 
-* Rajouter le paramètre du temps de rafraichissement des chats
-
-* Faire un profil admin pouvant blocké debloké
-
-* Coder les contraintes et leur gestion (dans les équipes) uniquement pour le profil admin.
-Pour la création des équipes penser à mettre un mode contrainte pour pouvoir faire des équipes sous contrainte
-Les contraintes intéressantes => Prestigieux, jeteurs de sort, déplacement min/max, déplacement compensé min/max, combat min/max, volant ?
-
-* Création des équipes une barre à gauche permettant les filtres (traits [ jeteurs de sort, volant, prestigieux, mort-vivant, elfe, nain, sans, eau, feu, tenebres, intangible, archer ] ou [ utile, magique, parchemin, non-magique ], force, déplacement, extension, type (objet, salle personnage, par défaut personnage)
-* tout en haut à droite la liste des contraintes
-Ensuite l'écran du milieu est divisé en 2, les pions de l'équipe (de la catégorie sélectionnée mais sans appliquer les filtres), sinon les pions choisis
 
 * Penser à mettre un mode adversaire inconnu pour les parties
 

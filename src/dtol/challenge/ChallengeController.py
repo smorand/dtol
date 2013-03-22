@@ -24,6 +24,7 @@ class ChallengeController(CommonController):
 		return self.templates.response('challenge.list', context=c)
 		
 	def create(self, request):
+		if 'constraint' in request.session: del request.session['constraint']
 		extensions = self.userManager.getUser(request.session['user'].id).extensions.all()
 		c = {
 			'users': self.userManager.getUsersExcept([request.session['user'].login]),
@@ -33,6 +34,20 @@ class ChallengeController(CommonController):
 		return self.templates.response('challenge.edit', context=c)
 	
 	def save(self, request):
+		if request.POST['constraint'] == -1:
+			tc = request.session['constraint']
+			del request.session['constraint']
+			exts = tc.extensions
+			del tc.extensions
+			tc.save()
+			tc.extensions = exts
+			tc.save()
+		else:
+			tc = self.teamManager.getTeamConstraint(int(request.POST['constraint']))
+		# TODO : Save challenge
+		if request.POST['constraint'] == -1:
+			tc.gamelink = game.id
+			tc.save()
 		return self.templates.empty()
 	
 	def cancel(self, request):

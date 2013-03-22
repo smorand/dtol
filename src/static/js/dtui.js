@@ -332,7 +332,7 @@ function createteamconstraint(keepcontent) {
 function editteamconstraint(id, keepcontent) {
 	createdeficontent = '';
 	display_wait();
-	$.get('/teams/constraints/edit/' + id, function(content) {
+	$.get('/teams/constraints/edit/' + id + '/' + (keepcontent ? '1' : '0'), function(content) {
 		display_content(content);
 		$('.accordion').accordion({
 			collapsible: true,

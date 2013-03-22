@@ -16,7 +16,7 @@ class TeamController(CommonController):
 		return [
 			{ 'pattern': r'^teams$', 'method': 'list', 'right': 'connected' },
 			{ 'pattern': r'^teams/constraints$', 'method': 'listconstraints', 'right': 'connected' },
-			{ 'pattern': r'^teams/constraints/edit/([0-9]+)$', 'method': 'createconstraints', 'right': 'connected' },
+			{ 'pattern': r'^teams/constraints/edit/([0-9]+)/([01])$', 'method': 'createconstraints', 'right': 'connected' },
 			{ 'pattern': r'^teams/constraints/remove/([1-9][0-9]*)$', 'method': 'delteamsconstraints', 'right': 'connected' },
 			{ 'pattern': r'^teams/constraints/load/([1-9][0-9]*)$', 'method': 'loadteamsconstraint', 'right': 'connected' },
 			{ 'pattern': r'^teams/constraints/loadbyname/(.*)$', 'method': 'loadteamsconstraints', 'right': 'connected' },
@@ -60,7 +60,7 @@ class TeamController(CommonController):
 			self.teamManager.delTeamConstraint(uid, user=request.session['user'].id)
 		return self.templates.empty()
 	
-	def createconstraints(self, request, uid):
+	def createconstraints(self, request, uid, inmemory):
 		''' Load page for edit/create constraint '''
 		tc = DtTeamConstraint(id=0, name='') if uid == '0' else self.teamManager.getTeamConstraint(uid)
 		c = {
@@ -68,7 +68,8 @@ class TeamController(CommonController):
 			'constraint': tc,
 			'extensionslist': self.extensionManager.getExtensions(),
 			'isadmin': request.session['user'].isadmin,
-			'new': uid == 0
+			'new': uid == 0,
+			'inmemory': inmemory
 		}
 		c['extensions'] = ",".join([ str(ext.id) for ext in tc.extensions.all() ])
 		return self.templates.response('team.createconstraint', context=c)
@@ -82,8 +83,10 @@ class TeamController(CommonController):
 
 	def loadteamsconstraints(self, request, name):
 		''' Load a team constraint to reload document '''
+		constraints = [ tc for tc in self.teamManager.getTeamConstraints(user=request.session['user'].id) ]
+		if 'constraint' in request.session: constraints.append(request.session['constraint'])
 		c = {
-			'constraints': self.teamManager.getTeamConstraints(user=request.session['user'].id),
+			'constraints': constraints,
 			'name': name,
 		}
 		return self.templates.response('team.loadteamconstraints', context=c)
@@ -253,12 +256,17 @@ class TeamController(CommonController):
 			tc.maxsameobject = tc.maxsameobject if tc.maxsameobject >= 0 else -1
 			tc.maxcommonobject = tc.maxcommonobject if tc.maxcommonobject >= 0 else -1
 			tc.maxsameroom = tc.maxsameroom if tc.maxsameroom >= 0 else -1
-			tc.save()
+			if 'inmemory' not in request.POST or request.POST['inmemory'] != '1':
+				tc.save()
 			if 'extensions' in request.POST and request.POST['extensions'] != '':
 				tc.extensions = []
 				for ext in request.POST['extensions'].strip().split(','):
 					tc.extensions.add(DtExtension.objects.get(id=int(ext)))
-				tc.save()
+				if 'inmemory' not in request.POST or request.POST['inmemory'] != '1':
+					tc.save()
+			if 'inmemory' in request.POST and request.POST['inmemory'] == '1':
+				tc.id = -1
+				request.session['constraint'] = tc
 		except Exception as err:
 			return self.templates.response('message_return', context={ 'error': err})
 		return self.templates.empty()

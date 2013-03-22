@@ -15,6 +15,7 @@
 	<input type="hidden" value="{{ constraint.id }}" name="id" id="tc_id"/>
 	<input type="hidden" value="0" name="gamelink" id="tc_gamelink"/>
 	<input type="hidden" value="{{ extensions }}" name="extensions" id="tc_extensions"/>
+	<input type="hidden" value="{{ inmemory }}" name="inmemory"/>
 	<table class="form">
 		<tr><th>{% trans "CONSTRAINT_NAME" %}</th><td><input type="text" size="10" name="name" id="tc_name" value="{{ constraint.name }}"/></td></tr>
 		{%if isadmin %}<tr><th>{% trans "CONSTRAINT_PUBLIC" %}</th><td><input type="checkbox" name="public" id="tc_public" value="1"/></td></tr>{% endif %}

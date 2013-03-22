@@ -21,7 +21,7 @@ insert into dt_users_extensions (dtuser_id, dtextension_id) values(1, 36);
 insert into dt_users_extensions (dtuser_id, dtextension_id) values(1, 40);
 insert into dt_users_extensions (dtuser_id, dtextension_id) values(1, 41);
 
-insert into dt_users (id, login, password, email, country, lang, zoom, elo, creation, lastconnection, connected, active, publicchallenge, publicprofile, packgraphique, isadmin, primarycolor, secondarycolor) values (2, 'coren', 'ad6afdc01a47741a039b597c5e6bb2bab41dc814', 'sebastien@qualitycenter.fr', 'fr', 'fr', 10, 1500, datetime('now'), datetime('now'), 0, 1, 1, 1, '', 1, 'violet', 'vertflash');
+insert into dt_users (id, login, password, email, country, lang, zoom, elo, creation, lastconnection, connected, active, publicchallenge, publicprofile, packgraphique, isadmin, primarycolor, secondarycolor) values (2, 'coren', 'ad6afdc01a47741a039b597c5e6bb2bab41dc814', 'sebastien@qualitycenter.fr', 'fr', 'fr', 10, 1500, datetime('now'), datetime('now'), 0, 1, 1, 1, '', 0, 'violet', 'vertflash');
 insert into dt_users_extensions (dtuser_id, dtextension_id) values(2, 1);
 insert into dt_users_extensions (dtuser_id, dtextension_id) values(2, 2);
 insert into dt_users_extensions (dtuser_id, dtextension_id) values(2, 3);

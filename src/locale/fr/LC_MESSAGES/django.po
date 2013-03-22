@@ -2405,6 +2405,10 @@ msgid "biendans_pente-eau_"
 msgstr "Apprécie les salles de pentes ou d'eau pour être performant."
 
 #: capacities
+msgid "biendans_pente-neige_"
+msgstr "Apprécie les salles de pentes ou de neige pour être performant."
+
+#: capacities
 msgid "biendans_rocher_"
 msgstr "Apprécie les salles avec rocher pour être performant."
 
@@ -2626,7 +2630,11 @@ msgstr "Peut charmer le personnage ciblé dans la même salle et d'agir avec lui
 
 #: capacities
 msgid "charming_bete_2"
-msgstr "Peut charmer le personnage ciblé de race bête dans la ligne de vue et d'agir avec lui pour 3 actions."
+msgstr "Peut charmer le personnage ciblé de race bête dans la ligne de vue et agir avec lui pour 3 actions."
+
+#: capacities
+msgid "mustbeerudite"
+msgstr "La capacité érudit est requise."
 
 #: capacities
 msgid "charming_man_1"
@@ -2665,8 +2673,8 @@ msgid "crazyattack"
 msgstr "A l'issue de son déplacement peut effectuer une attaque de la force du nombre de cases distinctes parcourues. Le combat coûte 0 PA."
 
 #: capacities
-msgid "creator_blesse_zombie_1_3_0"
-msgstr "Peut créer des zombies jusqu'à 3 par partie à partir d'un blessé."
+msgid "creator_blesse-tombe_zombie_1_3_0"
+msgstr "Peut créer à partir d'une tombe ou transformer un blessé en zombie jusqu'à 3 fois par partie."
 
 #: capacities
 msgid "creator_empty_rampeur_1_3_0"
@@ -2677,7 +2685,7 @@ msgid "creator_empty_squelette_1_3_0"
 msgstr "Peut créer 3 squelettes dans la partie sur une case de sol vide."
 
 #: capacities
-msgid "creator_empty_totemterre_1_-1_1"
+msgid "creator_empty_totemterre_1_1_1"
 msgstr "Peut créer un totem de terre autant de fois que souhaité. Pour 1PA le totem déjà créé peut être défaussé ou utilisé pour effectuer un twist sur la salle sans avoir besoin de se trouver sur le twist. Il ne peut pas twister la salle jumelle."
 
 #: capacities
@@ -3186,11 +3194,15 @@ msgstr "Peut paralyser un adversaire qui rentre en ligne de vue au prix d'une ca
 
 #: capacities
 msgid "parchemin"
-msgstr "Ne peut être utilisé que par un jeteur de sort."
+msgstr "Ne peut être utilisé que par un jeteur de sorts."
+
+#: capacities
+msgid "shadowkiller"
+msgstr "Tue un marcheur des ténèbres qui se situerait sur la même case ou qui se déplacerait à travers cette case."
 
 #: capacities
 msgid "peaceful"
-msgstr "Ne peut attaquer ni participer à un combat en attaque sous quelque force que ce soit."
+msgstr "Ne peut attaquer ni participer à un combat en attaque sous quelque forme que ce soit."
 
 #: capacities
 msgid "portails"
@@ -3242,7 +3254,7 @@ msgstr "Peut se régénèrer. Ne peut plus agir durant le tour de la régénéra
 
 #: capacities
 msgid "regenerater_5action"
-msgstr "Se régénère automatiquement lorsqu'un carte 5 actions est joué. Le personnage regénéré ne peut agir durant le tour."
+msgstr "Se régénère automatiquement lorsque la carte 5 action est jouée. Le personnage régénéré ne peut agir durant le tour."
 
 #: capacities
 msgid "regenerater_lave"
@@ -3554,7 +3566,7 @@ msgstr "Peut traverser les cases d'eau sans porter des objets."
 
 #: capacities
 msgid "wallmarker_1_vide-murbrise_toile_1_3"
-msgstr "Peut placer un marqueur toile sur un mur brisé ou une zone sans mur dans une limite de 3 par parties."
+msgstr "Peut placer un marqueur toile sur un mur brisé ou une zone sans mur dans une limite de 3 par partie."
 
 #: capacities
 msgid "wallmarker_1_herse_hersebrisee_1_-1"
@@ -3570,7 +3582,7 @@ msgstr "Peut fermer une herse."
 
 #: capacities
 msgid "wallmarker_1_mur-meurtriere-cle-torche-passagesecret_murbrise_1_3"
-msgstr "Peut briser un mur dans une limite de 3 par parties."
+msgstr "Peut briser un mur dans une limite de 3 par partie."
 
 #: capacities
 msgid "wallmarker_1_mur-meurtriere-cle-torche-passagesecret_murbrise_2_2"
@@ -4094,7 +4106,19 @@ msgstr "ELO&nbsp;:"
 
 #: challenge/edit.html
 msgid "CHALLENGE_SHOW_OPPONENT_CARDS"
-msgstr "Voir&nbsp;les&nbsp;cartes&nbsp;adverses&nbsp;:"
+msgstr "Visibilité&nbsp;des&nbsp;cartes&nbsp;:"
+
+#: challenge/edit.html
+msgid "CHALLENGE_SHOW_CARDS_MINE"
+msgstr "Les miennes"
+
+#: challenge/edit.html
+msgid "CHALLENGE_SHOW_CARDS_TEAM"
+msgstr "Mon équipe"
+
+#: challenge/edit.html
+msgid "CHALLENGE_SHOW_CARDS_BOTH"
+msgstr "Toutes"
 
 #~ msgid "USER_PRIMARY_COLOR"
 #~ msgstr "Couleur 1"

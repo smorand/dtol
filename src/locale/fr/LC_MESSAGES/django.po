@@ -654,15 +654,15 @@ msgstr "Structure de l'équipe"
 
 #: templates/team/createconstraint.html:23
 msgid "CHARACTERS"
-msgstr "Nombre de Personnages&nbsp;:"
+msgstr "Nombre&nbsp;de&nbsp;Personnages&nbsp;:"
 
 #: templates/team/createconstraint.html:24
 msgid "OBJECTS"
-msgstr "Nombre d'Objets&nbsp;:"
+msgstr "Nombre&nbsp;d'Objets&nbsp;:"
 
 #: templates/team/createconstraint.html:25
 msgid "ROOMS"
-msgstr "Nombre de Salles&nbsp;:"
+msgstr "Nombre&nbsp;de&nbsp;Salles&nbsp;:"
 
 #: templates/team/createconstraint.html:27
 msgid "CHARACTERS_VALUE"

@@ -79,11 +79,15 @@
 	{% if constraint.minextensions != -1 or constraint.maxextensions != -1 %} 
 	<tr><th>{% trans "TEAM_EXTENSIONS" %}</th><td>&nbsp;{{ constraint.minextensions}}&nbsp;&le;...&le;&nbsp;{{ constraint.maxextensions}}</td></tr>
 	{%endif %}
-	{% if constraint.extensions.all %}
 	<tr><th>{% trans "EXTENSIONS" %}</th><td>
+	{% if constraint.extensions.all %}
 		{% for c in constraint.extensions.all %}
 		<div class="extensionlogodisplay"><img class="extensionlogo-notselected" src="/static/images/interface/logo{{ c.id }}.jpg" border="0" title="{% trans c.name %}"/></div>
 		{% endfor %}
-	</td></tr>
+	{% else %}
+		{% for c in extensions %}
+		<div class="extensionlogodisplay"><img class="extensionlogo-notselected" src="/static/images/interface/logo{{ c.id }}.jpg" border="0" title="{% trans c.name %}"/></div>
+		{% endfor %}
 	{% endif %}
+	</td></tr>
 </table>

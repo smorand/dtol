@@ -322,6 +322,10 @@ msgstr "Email à parrainer&nbsp;: "
 msgid "WARNING"
 msgstr "Avertissement&nbsp;:"
 
+#: templates/team/loadteamconstraints
+msgid "WARNING_TEAM_NOMAX"
+msgstr "Avertissement&nbsp;: L'équipe doit contenir un max supérieur à 0 pour les personnages, objets et salles"
+
 #: templates/register.html:41
 msgid "REGISTER_YOUR_PROFILE"
 msgstr "Créer votre profil"

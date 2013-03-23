@@ -16,10 +16,10 @@ class TeamController(CommonController):
 		return [
 			{ 'pattern': r'^teams$', 'method': 'list', 'right': 'connected' },
 			{ 'pattern': r'^teams/constraints$', 'method': 'listconstraints', 'right': 'connected' },
-			{ 'pattern': r'^teams/constraints/edit/([0-9]+)/([01])$', 'method': 'createconstraints', 'right': 'connected' },
+			{ 'pattern': r'^teams/constraints/edit/([0-9]+)/([012])$', 'method': 'createconstraints', 'right': 'connected' },
 			{ 'pattern': r'^teams/constraints/remove/([1-9][0-9]*)$', 'method': 'delteamsconstraints', 'right': 'connected' },
 			{ 'pattern': r'^teams/constraints/load/([1-9][0-9]*)$', 'method': 'loadteamsconstraint', 'right': 'connected' },
-			{ 'pattern': r'^teams/constraints/loadbyname/(.*)$', 'method': 'loadteamsconstraints', 'right': 'connected' },
+			{ 'pattern': r'^teams/constraints/loadbyname/([12])/(.*)$', 'method': 'loadteamsconstraints', 'right': 'connected' },
 			{ 'pattern': r'^teams/constraints/help/([1-9][0-9]*)$', 'method': 'helpteamsconstraint', 'right': 'connected' },
 			{ 'pattern': r'^teams/constraints/save$', 'method': 'saveteamsconstraint', 'right': 'connected' },
 			{ 'pattern': r'^teams/create$', 'method': 'create', 'parameters': {'gameid':''}, 'right': 'connected' },
@@ -62,7 +62,12 @@ class TeamController(CommonController):
 	
 	def createconstraints(self, request, uid, inmemory):
 		''' Load page for edit/create constraint '''
-		tc = DtTeamConstraint(id=0, name='') if uid == '0' else self.teamManager.getTeamConstraint(uid)
+		if inmemory != '0' and 'constraint' in request.session:
+			tc = request.session['constraint']
+		elif uid == '0':
+			tc = DtTeamConstraint(id=0, name='')
+		else:
+			self.teamManager.getTeamConstraint(uid)
 		c = {
 			'constraints': self.teamManager.getTeamConstraints(user=request.session['user'].id),
 			'constraint': tc,
@@ -81,13 +86,20 @@ class TeamController(CommonController):
 		}
 		return self.templates.response('team.loadteamconstraint', context=c)
 
-	def loadteamsconstraints(self, request, name):
+	def loadteamsconstraints(self, request, keepcontent, name):
 		''' Load a team constraint to reload document '''
-		constraints = [ tc for tc in self.teamManager.getTeamConstraints(user=request.session['user'].id) ]
-		if 'constraint' in request.session: constraints.append(request.session['constraint'])
+		constraints = [ tc for tc in self.teamManager.getTeamConstraints(user=request.session['user'].id) if keepcontent == '1' or tc.maxcharacters > 0 and tc.maxobjects > 0 and tc.maxrooms > 0 ]
+		keepcontenterror = False
+		if 'constraint' in request.session:
+			if keepcontent == '1' or request.session['constraint'].maxcharacters > 0 and request.session['constraint'].maxobjects > 0 and request.session['constraint'].maxrooms > 0:
+				constraints.append(request.session['constraint'])
+			else:
+				keepcontenterror = True
 		c = {
 			'constraints': constraints,
 			'name': name,
+			'keepcontent': keepcontent,
+			'keepcontenterror': keepcontenterror
 		}
 		return self.templates.response('team.loadteamconstraints', context=c)
 
@@ -104,7 +116,7 @@ class TeamController(CommonController):
 		try:
 			if 'name' not in request.POST or request.POST['name'] == '':
 				raise Exception(_('TEAM_CONSTRAINT_EMPTY_NAME'))
-			if 'id' in request.POST and request.POST['id'] != '0' and request.POST['id'] != '':
+			if 'id' in request.POST and request.POST['id'] not in [ '', '0', '-1' ]:
 				tc = self.teamManager.getTeamConstraint(request.POST['id'])
 				tc.name = request.POST['name']
 			else:
@@ -256,15 +268,15 @@ class TeamController(CommonController):
 			tc.maxsameobject = tc.maxsameobject if tc.maxsameobject >= 0 else -1
 			tc.maxcommonobject = tc.maxcommonobject if tc.maxcommonobject >= 0 else -1
 			tc.maxsameroom = tc.maxsameroom if tc.maxsameroom >= 0 else -1
-			if 'inmemory' not in request.POST or request.POST['inmemory'] != '1':
+			if 'inmemory' not in request.POST or request.POST['inmemory'] not in [ '1', '2' ]:
 				tc.save()
 			if 'extensions' in request.POST and request.POST['extensions'] != '':
 				tc.extensions = []
 				for ext in request.POST['extensions'].strip().split(','):
 					tc.extensions.add(DtExtension.objects.get(id=int(ext)))
-				if 'inmemory' not in request.POST or request.POST['inmemory'] != '1':
+				if 'inmemory' not in request.POST or request.POST['inmemory'] not in [ '1', '2' ]:
 					tc.save()
-			if 'inmemory' in request.POST and request.POST['inmemory'] == '1':
+			if 'inmemory' in request.POST and request.POST['inmemory'] in [ '1', '2' ]:
 				tc.id = -1
 				request.session['constraint'] = tc
 		except Exception as err:
@@ -393,28 +405,28 @@ class TeamController(CommonController):
 
 	
 	def random(self, request):
-		extensions = self.userManager.getUser(request.session['user'].id).extensions.all()
+		if 'constraint' in request.session: del request.session['constraint']
 		user = request.session['user']
 		user.cache = None
 		request.session['user'] = user
 		return self.templates.response('team.randomgeneration', context={
-			'extensions': extensions
+			'constraints': [ tc for tc in self.teamManager.getTeamConstraints(user=request.session['user'].id) if tc.maxcharacters > 0 and tc.maxobjects > 0 and tc.maxrooms > 0 ]
 		})
 	
 	def randomgenerate(self, request):
 		teamname = request.POST['teamname']
 		if len(teamname) == 0: return self.templates.response('message_return', context={ 'error': _('RANDOM_NO_TEAM_NAME')})
 		method = request.POST['randommethod']
-		extensions = request.POST['extensions'].split(',') if request.POST['extensions'] != '' else [] 
 		if len(extensions) == 0: return self.templates.response('message_return', context={ 'error': _('RANDOM_NO_EXTENSION')})
 		teamscount = int(request.POST['teamscount'])
-		characterscount = int(request.POST['characterscount'])
-		objectscount = int(request.POST['objectscount'])
-		roomscount = int(request.POST['roomscount'])
 		constraint = int(request.POST['constraint'])
+		if constraint == -1:
+			tc = request.session['constraint']
+		else:
+			tc = self.teamManager.getTeamConstraint(constraint)
 		repeat = request.POST['randomteam_repeat'] == '1'
 		try:
-			teams = self.teamManager.generateRandomTeam(method, teamscount, extensions, characterscount, objectscount, roomscount, repeat)
+			teams = self.teamManager.generateRandomTeam(method, teamscount, tc, repeat)
 		except Exception as err:
 			return self.templates.response('message_return', context={ 'error': err})
 		user = request.session['user']

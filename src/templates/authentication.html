@@ -28,7 +28,13 @@
 		<div class="translation" id="translation-PASSWORD_GENERATION_PROGRESS">{% trans "PASSWORD_GENERATION_PROGRESS" %}</div>
 		<form id="form_authentication" action="/authenticate" method="post">
 			<div class="text-center">
-				<img src="/static/images/interface/sitelogo.png"/>
+			<div class="header-lang">
+{% for lang in languages %}
+				<img onClick="changeLang('{{ lang }} ');" src="/static/images/flags/{{ lang }}.gif" border="0" class="lang-flag"/>
+{% endfor %}
+				<br/>
+			</div>
+			<img src="/static/images/interface/sitelogo.png"/>
 				<br/><br/>
 				{% if error %}
 				<div class="ui-widget">

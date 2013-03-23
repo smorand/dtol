@@ -1,6 +1,18 @@
+{% load i18n %}
 <select name="constraint">
 	{% for constraint in constraints %}
 		<option value="{{ constraint.id }}" {% if constraint.name == name %}selected="selected"{% endif %}>{{ constraint.name }}</option>
 	{% endfor %}
 </select>
-<img class="pointer" width="20" height="20" border="0" style="vertical-align:middle" src="/static/images/interface/plus.png" onclick="createteamconstraint(1)"/>
+<img class="pointer" width="20" height="20" border="0" style="vertical-align:middle" src="/static/images/interface/plus.png" onclick="createteamconstraint({{ keepcontent }})"/>
+<br/>
+{% if keepcontenterror %}
+<div class="message-warning">
+	<div class="ui-widget">
+		<div class="ui-state-highlight ui-corner-all" style="padding: 0 .7em;">
+			<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span> 
+	 		{% trans "WARNING_TEAM_NOMAX" %}</p>		
+		</div>
+	</div>
+</div>
+{% endif %}

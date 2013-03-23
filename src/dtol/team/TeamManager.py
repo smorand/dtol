@@ -267,10 +267,10 @@ class TeamManager(object):
 			if not found: errors.append(_('CONSTRAINT_FORBIDEN_EXTENSION_%s') % ', '.join([ _('EXTENSION_%s' % (n)) for n in extensions ]))
 		return errors
 
-	def generateRandomTeam(self, method, teamscount, extensions, characterscount, objectscount, roomscount, repeat):
+	def generateRandomTeam(self, method, teamscount, tc, repeat):
 		teams = list()
-		characterslist = self.spawnManager.getCharacters(extensions)
-		objectslist = self.spawnManager.getObjects(extensions)
+		characterslist = self.spawnManager.getCharacters(tc.extensions)
+		objectslist = self.spawnManager.getObjects(tc.extensions)
 		objscount = len(objectslist)
 		extsid = [ int(e) for e in extensions ]
 		objscurrent = set()

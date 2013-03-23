@@ -142,7 +142,7 @@ insert into dt_characters_extensions (dtcharacter_id, dtextension_id) values (16
 insert into dt_objects (id, name) values (7, 'cle');
 insert into dt_objects_capacities (object_id, name) values (7, 'categorie_current');
 insert into dt_objects_capacities (object_id, name) values (7, 'wallmarker_1_herse_herseouverte_1_-1');
-insert into dt_objects_capacities (object_id, name) values (7, 'wallmarker_1_herseouverte_herse_-1_1');
+insert into dt_objects_capacities (object_id, name) values (7, 'wallmarker_1_herseouverte_herse_1_-1');
 insert into dt_objects_extensions (dtobject_id, dtextension_id) values (7, 3);
 insert into dt_objects_extensions (dtobject_id, dtextension_id) values (7, 4);
 insert into dt_objects_extensions (dtobject_id, dtextension_id) values (7, 5);

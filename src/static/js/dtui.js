@@ -332,7 +332,7 @@ function createteamconstraint(keepcontent) {
 function editteamconstraint(id, keepcontent) {
 	createdeficontent = '';
 	display_wait();
-	$.get('/teams/constraints/edit/' + id + '/' + (keepcontent ? '1' : '0'), function(content) {
+	$.get('/teams/constraints/edit/' + id + '/' + (keepcontent ? keepcontent : '0'), function(content) {
 		display_content(content);
 		$('.accordion').accordion({
 			collapsible: true,
@@ -587,13 +587,12 @@ function togglechat() {
 	}
 }
 
-
 /** Reçoit les messages du chat */
 var lastChatId = 0;
 var firstScroll = true;
 function recvChat() {
 	$.get('/recvchat/' + lastChatId, function(content) {
-		var messages = $.trim(content).split('[|][$][|]');
+		var messages = $.trim(content).split(/[|][$][|]/);
 		lastChatId = $.trim(messages[0]) > lastChatId ? $.trim(messages[0]) : lastChatId; 
 		var chat = document.getElementById('chat');
 		if (chat) {
@@ -643,13 +642,14 @@ function saveconstraintdata() {
 		joiner = ',';
 	}
 	var tcname = $('#tc_name').val();
+	var tckc = $('#tc_inmemory').val();
 	$('#tc_extensions').val(extsString);
 	var form = $('#tc_form');
 	$.post(form.attr('action'), form.serialize(), function(content) {
 		if (content.length == 0) {
 			if (createdeficontent != '') {
 				display_content(createdeficontent);
-				updatecreatedeficonstraint(tcname);
+				updatecreatedeficonstraint(tcname, tckc);
 				createdeficontent = '';
 			} else {
 				load_teamsconstraints();
@@ -662,8 +662,8 @@ function saveconstraintdata() {
 }
 
 /** Update the constraint for challenge creation */
-function updatecreatedeficonstraint(tcname) {
-	$.get('/teams/constraints/loadbyname/'+tcname, function(content) {
+function updatecreatedeficonstraint(tcname, tckc) {
+	$.get('/teams/constraints/loadbyname/'+tckc+'/'+tcname, function(content) {
 		$('#constraint_list').html(content);
 	});
 }

@@ -5,6 +5,14 @@ function translate(word) {
 	return $('#translation-' + word).html();
 }
 
+/**
+ * Change language
+ */
+function changeLang(lang) {
+	$.post('/lang', { lang: lang }, function(content) {
+		window.location.reload();
+	});
+}
 
 $(document).ready(function() {
 	$('#dialog_generatepassword').dialog({

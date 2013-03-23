@@ -139,6 +139,7 @@ function load_automenu(src) {
  * Load a page
  */
 function load_page(page) {
+	closeDialogs();
 	if (window.location.hash == '#' + page) {
 		load_menu(page);
 	} else {
@@ -149,7 +150,8 @@ function load_page(page) {
 /**
  * Affiche un message d'attente de chargement de page
  */
-function display_wait() {
+function display_wait(noclose) {
+	if (!noclose) closeDialogs();
 	$('#content').html('<center><img src="/static/images/interface/loading.gif"/><br/>' + translate("LOADING") + '</center>');
 }
 
@@ -157,7 +159,8 @@ function display_wait() {
  * Load the content and parse forbidden page
  * @param content: The content itself
  */
-function display_content(content) {
+function display_content(content, noclose) {
+	if (!noclose) closeDialogs();
 	$('#content').html(content);
 }
 
@@ -921,6 +924,13 @@ function displayTeam(id) {
 		showTeam();
 		$('#teamsdialog').dialog('option', 'title', $('#displayteam_name').val())
 	});
+}
+
+function closeDialogs() {
+	$('#actionsdialog').dialog({}).dialog('close');
+	$('#teamsdialog').dialog({}).dialog('close');
+	$('#dialog_sponsor').dialog({}).dialog('close');
+	$('#dialog_generatepassword').dialog({}).dialog('close');	
 }
 
 /** Enregistrer l'équipe */

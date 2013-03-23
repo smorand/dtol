@@ -85,6 +85,7 @@ $(document).ready(function() {
 	$('#dialog_sponsor').dialog({
 		autoOpen: false,
 		width: 400,
+		height: 'auto',
 		buttons: [
 		    {
 		    	text: translate("SAVE"), 
@@ -815,6 +816,7 @@ function selectionTeamSpawn(typ, name, id, force) {
 			$('#actionsdialog').dialog({
 				autoOpen: true,
 				width: 300,
+				height: 'auto',
 				title: translate('HELP_TITLE') + "&nbsp;-&nbsp;" + $('#spawnhelpname').val()  + '&nbsp;' + '<img class="pointer" width="20" height="20" border="0" style="vertical-align:middle" src="/static/images/interface/plus.png" onclick="selectionTeamSpawn(\'' + typ + '\', \'' + name + '\', \'' + id + '\', 1)"/>'
 			});
 		});
@@ -902,9 +904,12 @@ function helpConstraint(id, name) {
 		$('#actionsdialog').html(content);
 		$('#actionsdialog').dialog({
 			autoOpen: true,
-			width: 500,
+			width: 750,
+			height: 'auto',
 			title: translate('HELP_TITLE') + "&nbsp;-&nbsp;" + name
 		});
+		var iHeight = $('#actionsdialog').height() + 16;
+		
 	});
 }
 
@@ -913,6 +918,7 @@ function showTeam() {
 	$('#teamsdialog').dialog({
 		autoOpen: true,
 		width: 860,
+		height: 'auto',
 		title: translate('CURRENT_TEAM')  
 	});	
 }

@@ -193,7 +193,7 @@ class TeamManager(object):
 			constraint = constraintin
 		if constraint.minobjects != -1 and constraint.minobjects > len(objects): errors.append(_('CONSTRAINT_CHECK_NOT_ENOUGH_OBJECT'))
 		if constraint.maxobjects != -1 and constraint.maxobjects < len(objects): errors.append(_('CONSTRAINT_CHECK_TOO_MANY_OBJECTS'))
-		capcount = reduce(lambda x,y: x+y, [ (1 if 'cursed' in [ b.name for b in c.capacities() ] else 0) for c in objects ], 0)
+		capcount = reduce(lambda x,y: x+y, [ (1 if 'categorie_cursed' in [ b.name for b in c.capacities() ] else 0) for c in objects ], 0)
 		if constraint.mincursed != -1 and constraint.mincursed > capcount: errors.append(_('CONSTRAINT_NOT_ENOUGH_CURSED'))
 		if constraint.maxcursed != -1 and constraint.maxcursed < capcount: errors.append(_('CONSTRAINT_CHECK_TOO_MANY_CURSED'))
 		mapcount = {}
@@ -427,7 +427,6 @@ class TeamManager(object):
 						if 'tenebres' in floors or 'tenebresmagiques' in floors:
 							characterslistf.add(characterslist[idx])
 		if characterslistf is not None: characterslist[:] = characterslistf
-		print [ c.name for c in characterslist ]
 		
 		if tc.mindeplacement != -1:
 			for idx in xrange(len(characterslist)-1, -1, -1):
@@ -482,16 +481,68 @@ class TeamManager(object):
 				if 'antifountain' in [ b.name for b in characterslist[idx].capacities() ]: del characterslist[idx]
 		if tc.maxsamecharacter != -1:
 			for idx in xrange(len(characterslist)-1, -1, -1):
-				if characterslist[idx] in characters: del characterslist[idx]
+				if characterslist[idx] in characters:
+					count = 0
+					for c in characters:
+						if c.name == characterslist[idx].name: count += 1
+					if count >= tc.maxsamecharacter:
+						del characterslist[idx]
 
 	@staticmethod
 	def filterConstraintObjects(tc, objectslist, objects):
-		pass
+		if len(objects) >= tc.maxobjects:
+			objectslist[:] = []
+			return
+
+		capcountcursed = reduce(lambda x,y: x+y, [ (1 if 'categorie_cursed' in [ b.name for b in c.capacities() ] else 0) for c in objects ], 0)
+
+		objectslistf = None
+		if tc.mincursed != -1 and capcountcursed < tc.mincursed:
+			if objectslistf is None: objectslistf = set()
+			for idx in xrange(len(objectslist)-1, -1, -1):
+				if 'categorie_cursed' in [ b.name for b in objectslist[idx].capacities() ]: objectslistf.add(objectslist[idx])
+		if objectslistf is not None: objectslist[:] = objectslistf
+
+		if tc.maxcursed != -1 and capcountcursed >= tc.maxcursed:
+			for idx in xrange(len(objectslist)-1, -1, -1):
+				if 'categorie_cursed' in [ b.name for b in objectslist[idx].capacities() ]: del objectslist[idx]
+
+		if tc.maxcommonobject != -1:
+			for idx in xrange(len(objectslist)-1, -1, -1):
+				if objectslist[idx] in objects and 'categorie_current' in [ cap.name for cap in objectslist[idx].capacities() ]:
+					count = 0
+					for c in objects:
+						if c.name == objectslist[idx].name: count += 1
+					if count >= tc.maxcommonobject:
+						del objectslist[idx]
+		if tc.maxsameobject != -1:
+			for idx in xrange(len(objectslist)-1, -1, -1):
+				if objectslist[idx] in objects and 'categorie_current' not in [ cap.name for cap in objectslist[idx].capacities() ]:
+					count = 0
+					for c in objects:
+						if c.name == objectslist[idx].name: count += 1
+					if count >= tc.maxsameobject:
+						del objectslist[idx]
+
 
 	@staticmethod
 	def filterConstraintRooms(tc, roomslist, rooms):
-		pass
-	
+		if len(rooms) >= tc.maxrooms:
+			roomslist[:] = []
+			return
+			
+		
+			
+		if tc.maxsameroom != -1:
+			for idx in xrange(len(roomslist)-1, -1, -1):
+				if roomslist[idx] in rooms:
+					count = 0
+					for c in rooms:
+						if c == roomslist[idx]: count += 1
+					if count >= tc.maxsameroom:
+						del roomslist[idx]
+
+
 	def _generateRandom(self, arraysrci, key, tc, filtermethod, checkmethod, count, maxtries):
 		''' generate from src using key (to get unique) and not in filters (filters is a set) '''
 		notdone = True

@@ -686,7 +686,7 @@ insert into dt_characters (id, name, deplacement, `force`) values (73, 'exorcist
 insert into dt_characters_capacities (character_id, name) values (73, 'killundeadhurt');
 insert into dt_characters_capacities (character_id, name) values (73, 'holyground');
 insert into dt_characters_extensions (dtcharacter_id, dtextension_id) values (73, 32);
-insert into dt_characters (id, name, deplacement, `force`) values (74, 'angenoir', 4, 2);
+insert into dt_characters (id, name, deplacement, `force`) values (74, 'angenoir', 4, 1);
 insert into dt_characters_capacities (character_id, name) values (74, 'walker_tenebres-tenebresmagiques_object_1');
 insert into dt_characters_capacities (character_id, name) values (74, 'flyer_');
 insert into dt_characters_capacities (character_id, name) values (74, 'darker');
@@ -1014,7 +1014,7 @@ insert into dt_characters_extensions (dtcharacter_id, dtextension_id) values (11
 insert into dt_characters (id, name, deplacement, `force`) values (113, 'pauvre', 5, 1);
 insert into dt_characters_capacities (character_id, name) values (113, 'valueless');
 insert into dt_characters_extensions (dtcharacter_id, dtextension_id) values (113, 20);
-insert into dt_characters (id, name, deplacement, `force`) values (114, 'dragonpourpre', 5, 1);
+insert into dt_characters (id, name, deplacement, `force`) values (114, 'dragonpourpre', 2, 6);
 insert into dt_characters_capacities (character_id, name) values (114, 'prestigious');
 insert into dt_characters_capacities (character_id, name) values (114, 'singintherain');
 insert into dt_characters_extensions (dtcharacter_id, dtextension_id) values (114, 20);

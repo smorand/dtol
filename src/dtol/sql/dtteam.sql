@@ -101,8 +101,8 @@ insert into dt_characters_capacities (character_id, name) values (9, '2objects')
 insert into dt_characters_extensions (dtcharacter_id, dtextension_id) values (9, 3);
 insert into dt_characters_extensions (dtcharacter_id, dtextension_id) values (9, 7);
 insert into dt_characters (id, name, deplacement, `force`) values (10, 'illusionniste', 4, 1);
-insert into dt_characters_capacities (character_id, name) values (10, 'floormarker_2_illusioneboulis/1_1_2_sol_empty_');
-insert into dt_characters_capacities (character_id, name) values (10, 'floormarker_2_illusionfosse/1_1_2_sol_empty_');
+insert into dt_characters_capacities (character_id, name) values (10, 'floormarker_2_illusioneboulis/1_1_1_sol_empty_');
+insert into dt_characters_capacities (character_id, name) values (10, 'floormarker_2_illusionfosse/1_1_1_sol_empty_');
 insert into dt_characters_capacities (character_id, name) values (10, 'spellcaster');
 insert into dt_characters_capacities (character_id, name) values (10, 'woman');
 insert into dt_characters_extensions (dtcharacter_id, dtextension_id) values (10, 3);

@@ -115,7 +115,8 @@ class TeamManager(object):
 	def getTeam(self, teamid):
 		return DtTeam.objects.get(id=teamid)
 
-	def checkTeamConstraint(self, constraintin, characters, objects, rooms):
+	@staticmethod
+	def checkTeamConstraintCharacters(constraintin, characters):
 		errors = list()
 		if type(constraintin) != DtTeamConstraint:
 			constraint = DtTeamConstraint.objects.get(id=constraintin)
@@ -123,10 +124,6 @@ class TeamManager(object):
 			constraint = constraintin
 		if constraint.mincharacters != -1 and constraint.mincharacters > len(characters): errors.append(_('CONSTRAINT_CHECK_NOT_ENOUGH_CHARACTER'))
 		if constraint.maxcharacters != -1 and constraint.maxcharacters < len(characters): errors.append(_('CONSTRAINT_CHECK_TOO_MANY_CHARACTERS'))
-		if constraint.minobjects != -1 and constraint.minobjects > len(objects): errors.append(_('CONSTRAINT_CHECK_NOT_ENOUGH_OBJECT'))
-		if constraint.maxobjects != -1 and constraint.maxobjects < len(objects): errors.append(_('CONSTRAINT_CHECK_TOO_MANY_OBJECTS'))
-		if constraint.minrooms != -1 and constraint.minrooms > len(rooms)/2: errors.append(_('CONSTRAINT_CHECK_NOT_ENOUGH_ROOM'))
-		if constraint.maxrooms != -1 and constraint.maxrooms < len(rooms)/2: errors.append(_('CONSTRAINT_CHECK_TOO_MANY_ROOMS'))
 		deplacements = [ c.deplacement for c in characters ]
 		if constraint.mindeplacement != -1 and (len(deplacements) == 0 or constraint.mindeplacement > min(deplacements)): errors.append(_('CONSTRAINT_CHARACTER_TOO_SLOW'))
 		if constraint.maxdeplacement != -1 and (len(deplacements) == 0 or constraint.maxdeplacement < max(deplacements)): errors.append(_('CONSTRAINT_CHARACTER_TOO_FAST'))
@@ -153,25 +150,88 @@ class TeamManager(object):
 		capcount = reduce(lambda x,y: x+y, [ (1 if 'spellcaster' in [ b.name for b in c.capacities() ] else 0) for c in characters ], 0)
 		if constraint.minspellcaster != -1 and constraint.minspellcaster > capcount: errors.append(_('CONSTRAINT_NOT_ENOUGH_SPELLCASTER'))
 		if constraint.maxspellcaster != -1 and constraint.maxspellcaster < capcount: errors.append(_('CONSTRAINT_CHECK_TOO_SPELLCASTERS'))
-		capcount = reduce(lambda x,y: x+y, [ (1 if 'flying' in [ b.name[:6] for b in c.capacities() ] else 0) for c in characters ], 0)
+		capcount = 0
+		for c in characters:
+			for b in c.capacities():
+				info = b.name.split('_')
+				if len(info) >= 2 and info[0] == 'flyer':
+					capcount += 1
 		if constraint.minflying != -1 and constraint.minflying > capcount: errors.append(_('CONSTRAINT_NOT_ENOUGH_FLYING'))
 		if constraint.maxflying != -1 and constraint.maxflying < capcount: errors.append(_('CONSTRAINT_CHECK_TOO_MANY_FLYING'))
 		capcount = reduce(lambda x,y: x+y, [ (1 if 'immaterial' in [ b.name for b in c.capacities() ] else 0) for c in characters ], 0)
 		if constraint.minintangible != -1 and constraint.minintangible > capcount: errors.append(_('CONSTRAINT_NOT_ENOUGH_IMMATERIAL'))
 		if constraint.maxintangible != -1 and constraint.maxintangible < capcount: errors.append(_('CONSTRAINT_CHECK_TOO_IMMATERIAL'))
-		capcount = reduce(lambda x,y: x+y, [ (1 if 'cursed' in [ b.name for b in c.capacities() ] else 0) for c in objects ], 0)
-		if constraint.mincursed != -1 and constraint.mincursed > capcount: errors.append(_('CONSTRAINT_NOT_ENOUGH_CURSED'))
-		if constraint.maxcursed != -1 and constraint.maxcursed < capcount: errors.append(_('CONSTRAINT_CHECK_TOO_MANY_CURSED'))
 		capcount = 0
-		for c in objects:
+		for c in characters:
 			for b in c.capacities():
 				info = b.name.split('_')
 				if len(info) >= 2 and info[0] == 'walker':
 					floors = info[1].split('-')
 					if 'tenebres' in floors or 'tenebresmagiques' in floors:
-						capcount += 0 
+						capcount += 1
 		if constraint.minshadowwalker != -1 and constraint.minshadowwalker > capcount: errors.append(_('CONSTRAINT_NOT_ENOUGH_SHADOW_WALKER'))
 		if constraint.maxshadowwalker != -1 and constraint.maxshadowwalker < capcount: errors.append(_('CONSTRAINT_CHECK_TOO_MANY_SHADOW_WALKER'))
+		capcount = reduce(lambda x,y: x+y, [ (1 if 'antifountain' in [ b.name for b in c.capacities() ] else 0) for c in characters ], 0)
+		if constraint.mincounterfountain != -1 and constraint.mincounterfountain > capcount: errors.append(_('CONSTRAINT_NOT_ENOUGH_COUNTERFOUNTAIN'))
+		if constraint.maxcounterfountain	 != -1 and constraint.maxcounterfountain < capcount: errors.append(_('CONSTRAINT_CHECK_TOO_MANY_COUNTERFOUNTAIN'))
+		mapcount = {}
+		for c in characters:
+			if c.name in mapcount:
+				mapcount[c.name] += 1
+			else:
+				mapcount[c.name] = 1
+		capcount = reduce(lambda x,y: x if x > y else y, mapcount.values(), 0)
+		if constraint.maxsamecharacter != -1 and constraint.maxsamecharacter < capcount: errors.append(_('CONSTRAINT_TOO_MANY_IDENTICAL_CHARACTERS'))
+		return errors
+
+	@staticmethod
+	def checkTeamConstraintObjets(constraintin, objects):
+		errors = list()
+		if type(constraintin) != DtTeamConstraint:
+			constraint = DtTeamConstraint.objects.get(id=constraintin)
+		else:
+			constraint = constraintin
+		if constraint.minobjects != -1 and constraint.minobjects > len(objects): errors.append(_('CONSTRAINT_CHECK_NOT_ENOUGH_OBJECT'))
+		if constraint.maxobjects != -1 and constraint.maxobjects < len(objects): errors.append(_('CONSTRAINT_CHECK_TOO_MANY_OBJECTS'))
+		capcount = reduce(lambda x,y: x+y, [ (1 if 'cursed' in [ b.name for b in c.capacities() ] else 0) for c in objects ], 0)
+		if constraint.mincursed != -1 and constraint.mincursed > capcount: errors.append(_('CONSTRAINT_NOT_ENOUGH_CURSED'))
+		if constraint.maxcursed != -1 and constraint.maxcursed < capcount: errors.append(_('CONSTRAINT_CHECK_TOO_MANY_CURSED'))
+		mapcount = {}
+		for c in objects:
+			if 'categorie_current' not in [ cap.name for cap in c.capacities() ]:
+				if c.name in mapcount:
+					mapcount[c.name] += 1
+				else:
+					mapcount[c.name] = 1
+		capcount = reduce(lambda x,y: x if x > y else y, mapcount.values(), 0)
+		if constraint.maxsameobject != -1 and constraint.maxsameobject < capcount: errors.append(_('CONSTRAINT_TOO_MANY_SAME_OBJECTS'))
+		mapcount = {}
+		for c in objects:
+			if 'categorie_current' in [ cap.name for cap in c.capacities() ]:
+				if c.name in mapcount:
+					mapcount[c.name] += 1
+				else:
+					mapcount[c.name] = 1
+		capcount = reduce(lambda x,y: x if x > y else y, mapcount.values(), 0)
+		if constraint.maxcommonobject != -1 and constraint.maxcommonobject < capcount: errors.append(_('CONSTRAINT_TOO_MANY_COMMON_OBJETS'))
+		return errors
+		
+	@staticmethod
+	def checkTeamConstraintRooms(constraintin, roomsin):
+		errors = list()
+		if type(constraintin) != DtTeamConstraint:
+			constraint = DtTeamConstraint.objects.get(id=constraintin)
+		else:
+			constraint = constraintin
+		rooms = list()
+		for c in roomsin:
+			if isinstance(c, (list, tuple)):
+				rooms.append(c[0])
+				rooms.append(c[1])
+			else:
+				rooms.append(c)
+		if constraint.minrooms != -1 and constraint.minrooms > len(rooms)/2: errors.append(_('CONSTRAINT_CHECK_NOT_ENOUGH_ROOM'))
+		if constraint.maxrooms != -1 and constraint.maxrooms < len(rooms)/2: errors.append(_('CONSTRAINT_CHECK_TOO_MANY_ROOMS'))
 		capcount = reduce(lambda x,y: x+y, [ (1 if 'tenebres' in [ b.name for b in c.categories.all() ] else 0) for c in rooms ], 0)
 		if constraint.minshadowroom != -1 and constraint.minshadowroom > capcount: errors.append(_('CONSTRAINT_NOT_ENOUGH_SHADOW_ROOMS'))
 		if constraint.maxshadowroom	 != -1 and constraint.maxshadowroom	< capcount: errors.append(_('CONSTRAINT_CHECK_TOO_MANY_SHADOW_ROOMS'))
@@ -181,9 +241,26 @@ class TeamManager(object):
 		capcount = reduce(lambda x,y: x+y, [ (1 if 'fontaine' in [ b.name for b in c.categories.all() ] else 0) for c in rooms ], 0)
 		if constraint.minfountain != -1 and constraint.minfountain > capcount: errors.append(_('CONSTRAINT_NOT_ENOUGH_FOUNTAINS'))
 		if constraint.maxfountain	 != -1 and constraint.maxfountain < capcount: errors.append(_('CONSTRAINT_CHECK_TOO_MANY_FOUNTAINS'))
-		capcount = reduce(lambda x,y: x+y, [ (1 if 'antifountain' in [ b.name for b in c.capacities() ] else 0) for c in characters ], 0)
-		if constraint.mincounterfountain != -1 and constraint.mincounterfountain > capcount: errors.append(_('CONSTRAINT_NOT_ENOUGH_COUNTERFOUNTAIN'))
-		if constraint.maxcounterfountain	 != -1 and constraint.maxcounterfountain < capcount: errors.append(_('CONSTRAINT_CHECK_TOO_MANY_COUNTERFOUNTAIN'))
+		mapcount = {}
+		for c in rooms:
+			if c.rotation == 1:
+				if c.number in mapcount:
+					mapcount[c.number] += 1
+				else:
+					mapcount[c.number] = 1
+		capcount = reduce(lambda x,y: x if x > y else y, mapcount.values(), 0)
+		if constraint.maxsameroom != -1 and constraint.maxsameroom < capcount: errors.append(_('CONSTRAINT_TOO_MANY_IDENTICAL_ROOMS'))
+		return errors
+
+	def checkTeamConstraint(self, constraintin, characters, objects, rooms):
+		errors = list()
+		if type(constraintin) != DtTeamConstraint:
+			constraint = DtTeamConstraint.objects.get(id=constraintin)
+		else:
+			constraint = constraintin
+		errors += TeamManager.checkTeamConstraintCharacters(constraintin, characters)
+		errors += TeamManager.checkTeamConstraintObjects(constraintin, objects)
+		errors += TeamManager.checkTeamConstraintRooms(constraintin, rooms)
 		extensionslistlist = [ [] ]
 		for c in characters:
 			nl = list()
@@ -222,41 +299,6 @@ class TeamManager(object):
 		capcount = reduce(lambda x,y: x if x < y else y, [ len(ell) for ell in extensionslistlist])
 		if constraint.minextensions != -1 and constraint.minextensions > capcount: errors.append(_('CONSTRAINT_NOT_ENOUGH_EXTENSIONS'))
 		if constraint.maxextensions != -1 and constraint.maxextensions < capcount: errors.append(_('CONSTRAINT_CHECK_TOO_MANY_EXTENSIONS'))
-		mapcount = {}
-		for c in characters:
-			if c.name in mapcount:
-				mapcount[c.name] += 1
-			else:
-				mapcount[c.name] = 1
-		capcount = reduce(lambda x,y: x if x > y else y, mapcount.values(), 0)
-		if constraint.maxsamecharacter != -1 and constraint.maxsamecharacter < capcount: errors.append(_('CONSTRAINT_TOO_MANY_IDENTICAL_CHARACTERS'))
-		mapcount = {}
-		for c in objects:
-			if 'categorie_current' not in [ cap.name for cap in c.capacities() ]:
-				if c.name in mapcount:
-					mapcount[c.name] += 1
-				else:
-					mapcount[c.name] = 1
-		capcount = reduce(lambda x,y: x if x > y else y, mapcount.values(), 0)
-		if constraint.maxsameobject != -1 and constraint.maxsameobject < capcount: errors.append(_('CONSTRAINT_TOO_MANY_SAME_OBJECTS'))
-		mapcount = {}
-		for c in objects:
-			if 'categorie_current' in [ cap.name for cap in c.capacities() ]:
-				if c.name in mapcount:
-					mapcount[c.name] += 1
-				else:
-					mapcount[c.name] = 1
-		capcount = reduce(lambda x,y: x if x > y else y, mapcount.values(), 0)
-		if constraint.maxcommonobject != -1 and constraint.maxcommonobject < capcount: errors.append(_('CONSTRAINT_TOO_MANY_COMMON_OBJETS'))
-		mapcount = {}
-		for c in rooms:
-			if c.rotation == 1:
-				if c.number in mapcount:
-					mapcount[c.number] += 1
-				else:
-					mapcount[c.number] = 1
-		capcount = reduce(lambda x,y: x if x > y else y, mapcount.values(), 0)
-		if constraint.maxsameroom != -1 and constraint.maxsameroom < capcount: errors.append(_('CONSTRAINT_TOO_MANY_IDENTICAL_ROOMS'))
 		extensions = set([ e.name for e in constraint.extensions.all() ])
 		if len(extensions) > 0:
 			found = False
@@ -268,11 +310,16 @@ class TeamManager(object):
 		return errors
 
 	def generateRandomTeam(self, method, teamscount, tc, repeat):
+		maxtries = 100
 		teams = list()
-		characterslist = self.spawnManager.getCharacters(tc.extensions)
-		objectslist = self.spawnManager.getObjects(tc.extensions)
+		extensions = self.extensionManager.getExtensions(tc.extensions)
+		extsid = [ e.id for e in extensions ]
+		characterscount = tc.maxcharacters
+		objectscount = tc.maxobjects
+		roomscount = tc.maxrooms
+		characterslist = [ c for c in self.spawnManager.getCharacters(extensions) ]
+		objectslist = self.spawnManager.getObjects(extensions)
 		objscount = len(objectslist)
-		extsid = [ int(e) for e in extensions ]
 		objscurrent = set()
 		for o in objectslist:
 			toadd = 0
@@ -302,42 +349,170 @@ class TeamManager(object):
 		roomsfilters = set()
 		for i in range(0, teamscount):
 			if method == 'random':
-				characters = self._generateRandom(characterslist, lambda x: x.name, charactersfilters, set(), characterscount)
-				objects = self._generateRandom(objectslist, lambda x: x.name, objectsfilters, objscurrent, objectscount)
-				rooms = self._generateRandom(roomslist, lambda x: x[0].number, roomsfilters, set(), roomscount)
+				characters = self._generateRandom(characterslist, lambda x: x.name, tc, TeamManager.filterConstraintCharacters, TeamManager.checkTeamConstraintCharacters, characterscount, maxtries)
+				objects = self._generateRandom(objectslist, lambda x: x.name, tc, TeamManager.filterConstraintObjects, TeamManager.checkTeamConstraintObjets, objectscount, maxtries)
+				rooms = self._generateRandom(roomslist, lambda x: x[0].number, tc, TeamManager.filterConstraintRooms, TeamManager.checkTeamConstraintRooms, roomscount, maxtries)
 			elif method == '3221':
-				characters = self._generate3221(characterslist, charactersfilters, characterscount)
-				objects = self._generateRandom(objectslist, lambda x: x.name, objectsfilters, objscurrent, objectscount)
-				rooms = self._generateRandom(roomslist, lambda x: x[0].number, roomsfilters, set(), roomscount)
+				characters = self._generate3221(characterslist, tc, TeamManager.filterConstraintCharacters, TeamManager.checkTeamConstraintCharacters, characterscount)
+				objects = self._generateRandom(objectslist, lambda x: x.name, tc, TeamManager.filterConstraintObjects, TeamManager.checkTeamConstraintObjets, objectscount, maxtries)
+				rooms = self._generateRandom(roomslist, lambda x: x[0].number, tc, TeamManager.filterConstraintRooms, TeamManager.checkTeamConstraintRooms, roomscount, maxtries)
 			elif method == 'clever':
-				rooms = self._generateRandom(roomslist, lambda x: x[0].number, roomsfilters, set(), roomscount)
-				characters = self._generateCleverCharacters(characterslist, charactersfilters, characterscount, rooms)
-				objects = self._generateCleverObjects(objectslist, objectsfilters, objscurrent, objectscount, rooms, characters)
+				rooms = self._generateRandom(roomslist, lambda x: x[0].number, tc, TeamManager.filterConstraintRooms, TeamManager.checkTeamConstraintRooms, roomscount, maxtries)
+				characters = self._generateCleverCharacters(characterslist, tc, TeamManager.filterConstraintCharacters, TeamManager.checkTeamConstraintCharacters, characterscount, rooms)
+				objects = self._generateCleverObjects(objectslist, objectsfilters, tc, TeamManager.filterConstraintObjects, TeamManager.checkTeamConstraintObjets, objectscount, rooms, characters)
 			teams.append((characters, objects, rooms))
-			if repeat:
-				charactersfilters = set()
-				objectsfilters = set()
-				roomsfilters = set()
+			if not repeat:
+				characterslist -= characters
+				objectslist -= objects
+				roomslist -= rooms
 		return teams
 
-	def filterConstraint(self, constraintin, characterslist, objectslist, roomslist, characters, objects, rooms):
+	@staticmethod
+	def filterConstraintCharacters(tc, characterslist, characters):
 		''' Modify charcterslist, objectslist, roomslist according to characters, objets and rooms already taken '''
-		# TODO:
+		if len(characters) >= tc.maxcharacters:
+			characterslist[:] = []
+			return
+
+		capcountintangible = reduce(lambda x,y: x+y, [ (1 if 'immaterial' in [ b.name for b in c.capacities() ] else 0) for c in characters ], 0)
+		capcountcounterfountain = reduce(lambda x,y: x+y, [ (1 if 'antifountain' in [ b.name for b in c.capacities() ] else 0) for c in characters ], 0)
+		capcountprestigious = reduce(lambda x,y: x+y, [ (1 if 'prestigious' in [ b.name for b in c.capacities() ] else 0) for c in characters ], 0)
+		capcountspellcaster = reduce(lambda x,y: x+y, [ (1 if 'spellcaster' in [ b.name for b in c.capacities() ] else 0) for c in characters ], 0)
+		capcountshadowwalker = 0
+		for c in characters:
+			for b in c.capacities():
+				info = b.name.split('_')
+				if len(info) >= 2 and info[0] == 'walker':
+					floors = info[1].split('-')
+					if 'tenebres' in floors or 'tenebresmagiques' in floors:
+						capcountshadowwalker += 1
+		capcountflyer = 0
+		for c in characters:
+			for b in c.capacities():
+				info = b.name.split('_')
+				if len(info) >= 2 and info[0] == 'flyer':
+					capcountflyer += 1
+
+		characterslistf = None
+		if tc.minintangible != -1 and capcountintangible < tc.minintangible:
+			if characterslistf is None: characterslistf = set()
+			for idx in xrange(len(characterslist)-1, -1, -1):
+				if 'immaterial' in [ b.name for b in characterslist[idx].capacities() ]: characterslistf.add(characterslist[idx])
+		if tc.mincounterfountain != -1 and capcountcounterfountain < tc.mincounterfountain:
+			if characterslistf is None: characterslistf = set()
+			for idx in xrange(len(characterslist)-1, -1, -1):
+				if 'antifountain' in [ b.name for b in characterslist[idx].capacities() ]: characterslistf.add(characterslist[idx])
+		if tc.minspellcaster != -1 and capcountspellcaster < tc.minspellcaster:
+			if characterslistf is None: characterslistf = set()
+			for idx in xrange(len(characterslist)-1, -1, -1):
+				if 'spellcaster' in [ b.name for b in characterslist[idx].capacities() ]: characterslistf.add(characterslist[idx])
+		if tc.minprestigious != -1 and capcountprestigious < tc.minprestigious:
+			if characterslistf is None: characterslistf = set()
+			for idx in xrange(len(characterslist)-1, -1, -1):
+				if 'prestigious' in [ b.name for b in characterslist[idx].capacities() ]: characterslistf.add(characterslist[idx])
+		if tc.minflying != -1 and capcountflyer < tc.minflying:
+			if characterslistf is None: characterslistf = set()
+			for idx in xrange(len(characterslist)-1, -1, -1):
+				for b in characterslist[idx].capacities():
+					info = b.name.split('_')
+					if len(info) >= 2 and info[0] == 'flyer':
+						characterslistf.add(characterslist[idx])
+		if tc.minshadowwalker != -1 and capcountshadowwalker < tc.minshadowwalker:
+			if characterslistf is None: characterslistf = set()
+			for idx in xrange(len(characterslist)-1, -1, -1):
+				for b in characterslist[idx].capacities():
+					info = b.name.split('_')
+					if len(info) >= 2 and info[0] == 'walker':
+						floors = info[1].split('-')
+						if 'tenebres' in floors or 'tenebresmagiques' in floors:
+							characterslistf.add(characterslist[idx])
+		if characterslistf is not None: characterslist[:] = characterslistf
+		print [ c.name for c in characterslist ]
+		
+		if tc.mindeplacement != -1:
+			for idx in xrange(len(characterslist)-1, -1, -1):
+				if characterslist[idx].deplacement < tc.mindeplacement: del characterslist[idx]
+		if tc.maxdeplacement != -1:
+			for idx in xrange(len(characterslist)-1, -1, -1):
+				if characterslist[idx].deplacement > tc.maxdeplacement: del characterslist[idx]
+		if tc.minadvdeplacement != -1:
+			for idx in xrange(len(characterslist)-1, -1, -1):
+				if characterslist[idx].advdeplacement() < tc.minadvdeplacement: del characterslist[idx]
+		if tc.maxadvdeplacement != -1:
+			for idx in xrange(len(characterslist)-1, -1, -1):
+				if characterslist[idx].advdeplacement() > tc.maxadvdeplacement: del characterslist[idx]
+		if tc.minforce != -1:
+			for idx in xrange(len(characterslist)-1, -1, -1):
+				if characterslist[idx].force < tc.minforce: del characterslist[idx]
+		if tc.maxforce != -1:
+			for idx in xrange(len(characterslist)-1, -1, -1):
+				if characterslist[idx].force > tc.maxforce:
+					del characterslist[idx]
+		if tc.minadvforce != -1:
+			for idx in xrange(len(characterslist)-1, -1, -1):
+				if characterslist[idx].advforce() < tc.minadvforce: del characterslist[idx]
+		if tc.maxadvforce != -1:
+			for idx in xrange(len(characterslist)-1, -1, -1):
+				if characterslist[idx].advforce() > tc.maxadvforce: del characterslist[idx]
+		if tc.maxprestigious != -1 and capcountprestigious >= tc.maxprestigious:
+			for idx in xrange(len(characterslist)-1, -1, -1):
+				if 'prestigious' in [ b.name for b in characterslist[idx].capacities() ]: del characterslist[idx]
+		if tc.maxspellcaster != -1 and capcountspellcaster >= tc.maxspellcaster:
+			for idx in xrange(len(characterslist)-1, -1, -1):
+				if 'spellcaster' in [ b.name for b in characterslist[idx].capacities() ]: del characterslist[idx]
+		if tc.maxflying != -1 and capcountflyer >= tc.maxflying:
+			for idx in xrange(len(characterslist)-1, -1, -1):
+				for b in characterslist[idx].capacities():
+					info = b.name.split('_')
+					if len(info) >= 2 and info[0] == 'flyer':
+						del characterslist[idx]
+		if tc.maxintangible != -1 and capcountintangible >= tc.maxintangible:
+			for idx in xrange(len(characterslist)-1, -1, -1):
+				if 'immaterial' in [ b.name for b in characterslist[idx].capacities() ]: del characterslist[idx]
+		if tc.maxshadowwalker != -1 and capcountshadowwalker >= tc.maxshadowwalker:
+			for idx in xrange(len(characterslist)-1, -1, -1):
+				for b in characterslist[idx].capacities():
+					info = b.name.split('_')
+					if len(info) >= 2 and info[0] == 'walker':
+						floors = info[1].split('-')
+						if 'tenebres' in floors or 'tenebresmagiques' in floors:
+							del characterslist[idx]
+		if tc.maxcounterfountain != -1 and capcountcounterfountain >= tc.maxcounterfountain:
+			for idx in xrange(len(characterslist)-1, -1, -1):
+				if 'antifountain' in [ b.name for b in characterslist[idx].capacities() ]: del characterslist[idx]
+		if tc.maxsamecharacter != -1:
+			for idx in xrange(len(characterslist)-1, -1, -1):
+				if characterslist[idx] in characters: del characterslist[idx]
+
+	@staticmethod
+	def filterConstraintObjects(tc, objectslist, objects):
+		pass
+
+	@staticmethod
+	def filterConstraintRooms(tc, roomslist, rooms):
 		pass
 	
-	def _generateRandom(self, arraysrc, key, filters, exceptfilter, count):
+	def _generateRandom(self, arraysrci, key, tc, filtermethod, checkmethod, count, maxtries):
 		''' generate from src using key (to get unique) and not in filters (filters is a set) '''
-		array = list()
-		while len(array) < count:
-			c = random.choice(arraysrc)
-			k = key(c)
-			if k not in filters:
+		notdone = True
+		tries = 0
+		while notdone:
+			array = list()
+			while len(array) < count:
+				arraysrc = arraysrci[:]
+				filtermethod(tc, arraysrc, array)
+				if len(arraysrc) == 0:
+					raise Exception("NO_ENOUGH")
+				c = random.choice(arraysrc)
+				k = key(c)
 				array.append(c)
-				if k not in exceptfilter:
-					filters.add(k)
+			errors = checkmethod(tc, array)
+			notdone = len(errors) != 0
+			tries += 1
+			if tries >= maxtries: raise Exception("UNABLE_TO_GENERATE_RANDOM")
 		return array
 	
-	def _generate3221(self, arraysrc, filters, count):
+	def _generate3221(self, arraysrc, tc, count):
 		''' generate from src using key (to get unique) and not in filters (filters is a set) '''
 		array = list()
 		categslimit = [ int(math.ceil(3*8.0/count)), int(math.ceil(2*8.0/count)), int(math.ceil(2*8.0/count)), int(math.ceil(1*8.0/count)) ]
@@ -351,7 +526,7 @@ class TeamManager(object):
 		for i in range(0, len(categs)):
 			if len(categs[i]) < categslimit[i]:
 				raise Exception(_('RANDOMTEAM_NOT_ENOUGH_CHARACTERS'))
-			array.extend(self._generateRandom(categs[i], lambda x: x.name, filters, set(), categslimit[i]))
+			array.extend(self._generateRandom(categs[i], lambda x: x.name, tc, TeamManager.filterConstraintCharacters, categslimit[i]))
 		return array
 	
 	def _generateCleverCharacters(self, characterslist, charactersfilters, characterscount, rooms):

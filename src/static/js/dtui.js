@@ -810,16 +810,7 @@ function toggleHelp() {
 function selectionTeamSpawn(typ, name, id, force) {
 	if (typ == 'room') name = name.split('-')[0];
 	if (displayHelp == 1 && !force) {
-		$('#actionsdialog').html('');
-		$.get('/spawn/help/' + typ + '/' + id, function(content) {
-			$('#actionsdialog').html(content);
-			$('#actionsdialog').dialog({
-				autoOpen: true,
-				width: 300,
-				height: 'auto',
-				title: translate('HELP_TITLE') + "&nbsp;-&nbsp;" + $('#spawnhelpname').val()  + '&nbsp;' + '<img class="pointer" width="20" height="20" border="0" style="vertical-align:middle" src="/static/images/interface/plus.png" onclick="selectionTeamSpawn(\'' + typ + '\', \'' + name + '\', \'' + id + '\', 1)"/>'
-			});
-		});
+		displayHelpDialog(typ, id);
 	} else {
 		$('#panier_'+typ+'s').val($('#panier_'+typ+'s').val() +id+'_'+name+',');
 		try {
@@ -828,6 +819,20 @@ function selectionTeamSpawn(typ, name, id, force) {
 	}
 	teamContent();
 }
+
+/** display help of spawn */
+function displayHelpDialog(typ, id) {
+	$('#actionsdialog').html('');
+	$.get('/spawn/help/' + typ + '/' + id, function(content) {
+		$('#actionsdialog').html(content);
+		$('#actionsdialog').dialog({
+			autoOpen: true,
+			width: 300,
+			height: 'auto',
+			title: translate('HELP_TITLE') + "&nbsp;-&nbsp;" + $('#spawnhelpname').val()
+		});
+	});
+}	
 
 /** Mets à jour le contenu de l'équipe */
 function unselectionTeamSpawn(typ, name) {

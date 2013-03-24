@@ -21,6 +21,7 @@ class TeamController(CommonController):
 			{ 'pattern': r'^teams/constraints/load/([1-9][0-9]*)$', 'method': 'loadteamsconstraint', 'right': 'connected' },
 			{ 'pattern': r'^teams/constraints/loadbyname/([12])/(.*)$', 'method': 'loadteamsconstraints', 'right': 'connected' },
 			{ 'pattern': r'^teams/constraints/help/([1-9][0-9]*)$', 'method': 'helpteamsconstraint', 'right': 'connected' },
+			{ 'pattern': r'^teams/constraints/help/(-1)$', 'method': 'helpteamsconstraint', 'right': 'connected' },
 			{ 'pattern': r'^teams/constraints/save$', 'method': 'saveteamsconstraint', 'right': 'connected' },
 			{ 'pattern': r'^teams/create$', 'method': 'create', 'parameters': {'gameid':''}, 'right': 'connected' },
 			{ 'pattern': r'^teams/random$', 'method': 'random', 'right': 'connected' },
@@ -67,7 +68,7 @@ class TeamController(CommonController):
 		elif uid == '0':
 			tc = DtTeamConstraint(id=0, name='')
 		else:
-			self.teamManager.getTeamConstraint(uid)
+			tc = self.teamManager.getTeamConstraint(uid)
 		c = {
 			'constraints': self.teamManager.getTeamConstraints(user=request.session['user'].id),
 			'constraint': tc,
@@ -106,8 +107,17 @@ class TeamController(CommonController):
 
 	def helpteamsconstraint(self, request, uid):
 		''' display help a team constraint to reload document '''
+		if uid == '-1' and 'constraint' in request.session:
+			tc = request.session['constraint']
+			extensions = [ e for e in tc.extensions.all() ]
+		else:
+			tc = self.teamManager.getTeamConstraint(uid)
+			extensions = [ e for e in tc.extensions.all() ]
+		if len(extensions) == 0:
+			extensions = self.extensionManager.getExtensions()
 		c = {
-			'constraint': self.teamManager.getTeamConstraint(uid),
+			'constraint': tc,
+			'extensions': extensions
 		}
 		return self.templates.response('team.helpteamconstraint', context=c)
 
@@ -417,7 +427,6 @@ class TeamController(CommonController):
 		teamname = request.POST['teamname']
 		if len(teamname) == 0: return self.templates.response('message_return', context={ 'error': _('RANDOM_NO_TEAM_NAME')})
 		method = request.POST['randommethod']
-		if len(extensions) == 0: return self.templates.response('message_return', context={ 'error': _('RANDOM_NO_EXTENSION')})
 		teamscount = int(request.POST['teamscount'])
 		constraint = int(request.POST['constraint'])
 		if constraint == -1:

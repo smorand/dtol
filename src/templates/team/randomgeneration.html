@@ -20,12 +20,12 @@
 				</td>
 				<th>{% trans "TEAM_CONSTRAINTS" %}</th>
 				<td id="constraint_list">
-					<select name="constraint">
+					<select id="constraint_list_sel" name="constraint">
 {% for constraint in constraints %}
 						<option value="{{ constraint.id }}">{{ constraint.name }}</option>
 {% endfor %}
 					</select>
-					<img class="pointer" width="20" height="20" border="0" style="vertical-align:middle" src="/static/images/interface/plus.png" onclick="createteamconstraint(2)"/>
+					<img class="pointer" src="/static/images/interface/helpsmall.png" onclick="helpConstraint($('#constraint_list_sel>option:selected').val(), $('#constraint_list_sel>option:selected').html())"/><img class="pointer" width="20" height="20" border="0" style="vertical-align:middle" src="/static/images/interface/plus.png" onclick="createteamconstraint(2)"/>
 				</td>
 			</tr><tr>	
 				<th>{% trans "RANDOM_TEAMSCOUNT" %}:</th>

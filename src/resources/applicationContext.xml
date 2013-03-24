@@ -92,6 +92,7 @@
     
     <object id="teamManager" class="dtol.team.TeamManager.TeamManager" scope="singleton">
     	<property name="spawnManager" ref="spawnManager"/>
+    	<property name="extensionManager" ref="extensionManager"/>
     </object>
     
     <object id="spawnManager" class="dtol.common.SpawnManager.SpawnManager" scope="singleton">

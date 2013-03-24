@@ -10,6 +10,6 @@ class ExtensionManager(object):
 	Get information about extension, spawns and rooms
 	'''
 
-	def getExtensions(self):
-		return DtExtension.objects.all()
+	def getExtensions(self, extensions=None):
+		return DtExtension.objects.all() if extensions is None or len(extensions.all()) == 0 else extensions.all()
 

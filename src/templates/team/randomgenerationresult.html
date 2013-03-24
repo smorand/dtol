@@ -7,17 +7,17 @@
 <div class="hrsection1">
 	<div class="hrsection2">
 	{% for c in characters %}
-		<div class="iconcontainer"><img height="80" width="80" src="/static/images/spawns/{{c.name}}.png" border="0" class="zindex2" style="position: absolute;"/><img height="80" width="80" class="zindex1" src="/static/images/spawns/fond-{{spawncolor}}.png" border="0" class="pointer"/></div>
+		<div class="iconcontainer"><img height="80" width="80" src="/static/images/spawns/{{c.name}}.png" border="0" class="zindex2" style="position: absolute;" onclick="displayHelpDialog('character', '{{ c.id }}')"/><img height="80" width="80" class="zindex1" src="/static/images/spawns/fond-{{spawncolor}}.png" border="0" class="pointer"/></div>
 	{% endfor %}
 	</div>
 	<div class="hrsection2">
 	{% for c in objects %}
-		<div class="iconcontainer"><img height="80" width="80" src="/static/images/spawns/{{c.name}}.png" border="0" class="zindex2" style="position: absolute;"/><img height="80" width="80" class="zindex1" src="/static/images/spawns/fond-{{spawncolor}}.png" border="0" class="pointer"/></div>
+		<div class="iconcontainer"><img height="80" width="80" src="/static/images/spawns/{{c.name}}.png" border="0" class="zindex2" style="position: absolute;" onclick="displayHelpDialog('object', '{{ c.id }}')"/><img height="80" width="80" class="zindex1" src="/static/images/spawns/fond-{{spawncolor}}.png" border="0" class="pointer"/></div>
 	{% endfor %}
 	</div>
 	<div>
 	{% for r1, r2 in rooms %}
-		<div class="iconcontainer"><img height="200" width="200" src="/static/images/rooms/{{r1.number}}-1.jpg" border="0"/></div><div class="iconcontainer"><img height="200" width="200" src="/static/images/rooms/{{r2.number}}-2.jpg" border="0"/></div>
+		<div class="iconcontainer"><img height="200" width="200" src="/static/images/rooms/{{r1.number}}-1.jpg" border="0"/></div><div class="iconcontainer" onclick="displayHelpDialog('room', '{{ r1.id }}')"><img height="200" width="200" src="/static/images/rooms/{{r2.number}}-2.jpg" border="0" onclick="displayHelpDialog('room', {{ r2.id }})"/></div>
 	{% endfor %}
 	</div>
 </div>

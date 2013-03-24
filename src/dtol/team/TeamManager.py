@@ -234,7 +234,7 @@ class TeamManager(object):
 		if constraint.maxrooms != -1 and constraint.maxrooms < len(rooms)/2: errors.append(_('CONSTRAINT_CHECK_TOO_MANY_ROOMS'))
 		capcount = reduce(lambda x,y: x+y, [ (1 if 'tenebres' in [ b.name for b in c.categories.all() ] else 0) for c in rooms ], 0)
 		if constraint.minshadowroom != -1 and constraint.minshadowroom > capcount: errors.append(_('CONSTRAINT_NOT_ENOUGH_SHADOW_ROOMS'))
-		if constraint.maxshadowroom	 != -1 and constraint.maxshadowroom	< capcount: errors.append(_('CONSTRAINT_CHECK_TOO_MANY_SHADOW_ROOMS'))
+		if constraint.maxshadowroom	!= -1 and constraint.maxshadowroom < capcount: errors.append(_('CONSTRAINT_CHECK_TOO_MANY_SHADOW_ROOMS'))
 		capcount = reduce(lambda x,y: x+y, [ (1 if 'antimagie' in [ b.name for b in c.categories.all() ] else 0) for c in rooms ], 0)
 		if constraint.minantimagicroom != -1 and constraint.minantimagicroom > capcount: errors.append(_('CONSTRAINT_NOT_ENOUGH_ANTIMAGIC_ROOMS'))
 		if constraint.maxantimagicroom	 != -1 and constraint.maxantimagicroom < capcount: errors.append(_('CONSTRAINT_CHECK_TOO_ANTIMAGIC_ROOMS'))
@@ -530,8 +530,36 @@ class TeamManager(object):
 		if len(rooms) >= tc.maxrooms:
 			roomslist[:] = []
 			return
-			
-		
+
+		capcounttenebres = reduce(lambda x,y: x+y, [ (1 if 'tenebres' in [b.name for b in c[0].categories.all()] else 0) + (1 if 'tenebres' in [b.name for b in c[1].categories.all()] else 0) for c in rooms ], 0)
+		capcountantimagie = reduce(lambda x,y: x+y, [ (1 if 'antimagie' in [b.name for b in c[0].categories.all()] else 0) + (1 if 'antimagie' in [b.name for b in c[1].categories.all()] else 0) for c in rooms ], 0)
+		capcountfontaine = reduce(lambda x,y: x+y, [ (1 if 'fontaine' in [b.name for b in c[0].categories.all()] else 0) + (1 if 'fontaine' in [b.name for b in c[1].categories.all()] else 0) for c in rooms ], 0)
+
+		roomslistf = None
+		if tc.minshadowroom != -1 and capcounttenebres < tc.minshadowroom:
+			if roomslistf is None: roomslistf = set()
+			for idx in xrange(len(roomslist)-1, -1, -1):
+				if 'tenebres' in [b.name for b in roomslist[idx][0].categories.all()] or 'tenebres' in [b.name for b in roomslist[idx][1].categories.all()]: roomslistf.add(roomslist[idx])
+		if tc.minfountain != -1 and capcountfontaine < tc.minfountain:
+			if roomslistf is None: roomslistf = set()
+			for idx in xrange(len(roomslist)-1, -1, -1):
+				if 'fontaine' in [b.name for b in roomslist[idx][0].categories.all()]+[b.name for b in roomslist[idx][1].categories.all()]: roomslistf.add(roomslist[idx])
+		if tc.minantimagicroom != -1 and capcountantimagie < tc.minantimagicroom:
+			if roomslistf is None: roomslistf = set()
+			for idx in xrange(len(roomslist)-1, -1, -1):
+				if 'antimagie' in [b.name for b in roomslist[idx][0].categories.all()]+[b.name for b in roomslist[idx][1].categories.all()]: roomslistf.add(roomslist[idx])
+		if roomslistf is not None: roomslist[:] = roomslistf
+
+		if tc.maxfountain != -1 and capcountfontaine >= tc.maxfountain:
+			for idx in xrange(len(roomslist)-1, -1, -1):
+				if 'fontaine' in [b.name for b in roomslist[idx][0].categories.all()]+[b.name for b in roomslist[idx][1].categories.all()]: del roomslist[idx]
+		if tc.maxantimagicroom != -1 and capcountantimagie >= tc.maxantimagicroommaxfountain:
+			for idx in xrange(len(roomslist)-1, -1, -1):
+				if 'antimagie' in [b.name for b in roomslist[idx][0].categories.all()]+[b.name for b in roomslist[idx][1].categories.all()]: del roomslist[idx]
+		if tc.maxshadowroom != -1 and capcounttenebres >= tc.maxshadowroom:
+			for idx in xrange(len(roomslist)-1, -1, -1):
+				if 'tenebres' in [b.name for b in roomslist[idx][0].categories.all()]+[b.name for b in roomslist[idx][1].categories.all()]: del roomslist[idx]
+		print tc.minshadowroom, capcounttenebres, roomslist
 			
 		if tc.maxsameroom != -1:
 			for idx in xrange(len(roomslist)-1, -1, -1):

@@ -2893,7 +2893,7 @@ msgid "floormarker_2_illusionfosse/1_1_1_sol_empty_"
 msgstr "Peut placer un marqueur illusion fosse sur une case de sol normal."
 
 #: capacities
-msgid "floormarker_2_liane_1_3_obstacle__"
+msgid "floormarker_2_liane_1_3_obstacle__definitif"
 msgstr "Peut placer 3 marqueurs lianes sur des obstacles. Plusieurs marqueurs peuvent être placés en une seule action à condition que les cases obstacles soient adjacentes."
 
 #: capacities

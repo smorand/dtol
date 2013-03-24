@@ -410,7 +410,7 @@ insert into dt_objects_extensions (dtobject_id, dtextension_id) values (25, 6);
 -- Characters CS
 insert into dt_characters (id, name, deplacement, `force`) values (43, 'druide', 4, 1);
 insert into dt_characters_capacities (character_id, name) values (43, 'spellcaster');
-insert into dt_characters_capacities (character_id, name) values (43, 'floormarker_2_liane_1_3_obstacle__');
+insert into dt_characters_capacities (character_id, name) values (43, 'floormarker_2_liane_1_3_obstacle__definitif');
 insert into dt_characters_capacities (character_id, name) values (43, 'floormarker_3_ronces_1_1_sol_empty_');
 insert into dt_characters_extensions (dtcharacter_id, dtextension_id) values (43, 8);
 insert into dt_characters (id, name, deplacement, `force`) values (44, 'enchanteresseelfe', 5, 1);

@@ -1,0 +1,16 @@
+Pour ajouter une contrainte d'équipe :
+
+1/ Modifier models.py (DtTeamConstraint)
+
+2/ Modifier dtteamconstraint.sql
+
+3/ Modifier createconstraint.html
+
+4/ Modifier helpteamconstraint.html
+
+5/ Modifier loadteamconstraint.html
+
+6/ Modifier TeamController.py (contrôle des erreurs + chargement)
+
+7/ Modifier TeamManager.py (sauvegarde + check + filter)
+

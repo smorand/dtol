@@ -194,10 +194,26 @@ class TeamController(CommonController):
 			except: raise Exception('INCORRECT_VALUE_MININTANGIBLE')
 			try: tc.maxintangible = int(request.POST['maxintangible'])
 			except: raise Exception('INCORRECT_VALUE_MAXINTANGIBLE')
+			try: tc.minrunner = int(request.POST['minrunner'])
+			except: raise Exception('INCORRECT_VALUE_MINRUNNER')
+			try: tc.maxrunner = int(request.POST['maxrunner'])
+			except: raise Exception('INCORRECT_VALUE_MAXRUNNER')
+			try: tc.minfighter = int(request.POST['minfighter'])
+			except: raise Exception('INCORRECT_VALUE_MINFIGHTER')
+			try: tc.maxfighter = int(request.POST['maxfighter'])
+			except: raise Exception('INCORRECT_VALUE_MAXFIGHTER')
 			try: tc.mincursed = int(request.POST['mincursed'])
 			except: raise Exception('INCORRECT_VALUE_MINCURSED')
 			try: tc.maxcursed = int(request.POST['maxcursed'])
 			except: raise Exception('INCORRECT_VALUE_MAXCURSED')
+			try: tc.minperchemin = int(request.POST['minperchemin'])
+			except: raise Exception('INCORRECT_VALUE_MINPERCHEMIN')
+			try: tc.maxperchemin = int(request.POST['maxperchemin'])
+			except: raise Exception('INCORRECT_VALUE_MAXPERCHEMIN')
+			try: tc.minweapon = int(request.POST['minweapon'])
+			except: raise Exception('INCORRECT_VALUE_MINWEAPON')
+			try: tc.maxweapon = int(request.POST['maxweapon'])
+			except: raise Exception('INCORRECT_VALUE_MAXWEAPON')
 			try: tc.minshadowwalker = int(request.POST['minshadowwalker'])
 			except: raise Exception('INCORRECT_VALUE_MINSHADOWWALKER')
 			try: tc.maxshadowwalker = int(request.POST['maxshadowwalker'])
@@ -260,8 +276,16 @@ class TeamController(CommonController):
 			tc.maxflying = tc.maxflying if tc.maxflying >= 0 else -1
 			tc.minintangible = tc.minintangible if tc.minintangible >= 0 else -1
 			tc.maxintangible = tc.maxintangible if tc.maxintangible >= 0 else -1
+			tc.minrunner = tc.minrunner if tc.minrunner >= 0 else -1
+			tc.maxrunner = tc.maxrunner if tc.maxrunner >= 0 else -1
+			tc.minfighter = tc.minfighter if tc.minfighter >= 0 else -1
+			tc.maxfighter = tc.maxfighter if tc.maxfighter >= 0 else -1
 			tc.mincursed = tc.mincursed if tc.mincursed >= 0 else -1
 			tc.maxcursed = tc.maxcursed if tc.maxcursed >= 0 else -1
+			tc.minperchemin = tc.minperchemin if tc.minperchemin >= 0 else -1
+			tc.maxperchemin = tc.maxperchemin if tc.maxperchemin >= 0 else -1
+			tc.minweapon = tc.minweapon if tc.minweapon >= 0 else -1
+			tc.maxweapon = tc.maxweapon if tc.maxweapon >= 0 else -1
 			tc.minshadowwalker = tc.minshadowwalker if tc.minshadowwalker >= 0 else -1
 			tc.maxshadowwalker = tc.maxshadowwalker if tc.maxshadowwalker >= 0 else -1
 			tc.minshadowroom = tc.minshadowroom if tc.minshadowroom >= 0 else -1

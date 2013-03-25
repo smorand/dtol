@@ -553,6 +553,22 @@ msgid "INCORRECT_VALUE_MININTANGIBLE"
 msgstr "La valeur min du nombre d'intangibles n'est pas un entier"
 
 #: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MINRUNNER"
+msgstr "La valeur min du nombre de runners n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MAXRUNNER"
+msgstr "La valeur min du nombre de runners n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MINFIGHTER"
+msgstr "La valeur min du nombre de combattants n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MAXFIGHTER"
+msgstr "La valeur min du nombre de combattants n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
 msgid "INCORRECT_VALUE_MAXINTANGIBLE"
 msgstr "La valeur max du nombre d'intangibles n'est pas un entier"
 
@@ -563,6 +579,22 @@ msgstr "La valeur min du nombre d'objets maudits n'est pas un entier"
 #: templates/team/createconstraint.html:3
 msgid "INCORRECT_VALUE_MAXCURSED"
 msgstr "La valeur max du nombre d'objets maudits n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MINPERCHEMIN"
+msgstr "La valeur min du nombre de parchemins n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MAXPERCHEMIN"
+msgstr "La valeur max du nombre de parchemins n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MINWEAPON"
+msgstr "La valeur min du nombre d'armes n'est pas un entier"
+
+#: templates/team/createconstraint.html:3
+msgid "INCORRECT_VALUE_MAXWEAPON"
+msgstr "La valeur max du nombre d'armes n'est pas un entier"
 
 #: templates/team/createconstraint.html:3
 msgid "INCORRECT_VALUE_MINSHADOWWALKER"
@@ -732,6 +764,14 @@ msgstr "Marcheur des ténèbres&nbsp;:"
 msgid "CHARACTER_COUNTERFOUNTAIN"
 msgstr "Anti-fontaine&nbsp;:"
 
+#: templates/team/createconstraint.html:46
+msgid "CHARACTER_RUNNER"
+msgstr "Runners&nbsp;:"
+
+#: templates/team/createconstraint.html:46
+msgid "CHARACTER_FIGHTER"
+msgstr "Combattants&nbsp;:"
+
 #: templates/team/createconstraint.html:47
 msgid "CHARACTER_SAME"
 msgstr "Personnages identiques&nbsp;:"
@@ -743,6 +783,14 @@ msgstr "Limites des objets"
 #: templates/team/createconstraint.html:51
 msgid "OBJECT_CURSED"
 msgstr "Maudits&nbsp;:"
+
+#: templates/team/createconstraint.html:51
+msgid "OBJECT_PERCHEMIN"
+msgstr "Parchemins&nbsp;:"
+
+#: templates/team/createconstraint.html:51
+msgid "OBJECT_WEAPON"
+msgstr "Armes&nbsp;:"
 
 #: templates/team/createconstraint.html:52
 msgid "OBJECT_SAME"
@@ -2373,11 +2421,11 @@ msgid "become_mutantefemme"
 msgstr "Devient automatiquement une femme-mutante lors d'un recyclage."
 
 #: capacities
-msgid "biandans_arbre_"
+msgid "biendans_arbre_"
 msgstr "Apprécie les salles d'arbre pour être performant."
 
 #: capacities
-msgid "biandans_fontaine_"
+msgid "biendans_fontaine_"
 msgstr "Apprécie les salles de fontaine pour être performant."
 
 #: capacities
@@ -3146,7 +3194,7 @@ msgstr "Tous les personnages adjacents en combat ont un malus de 1 en combat (at
 
 #: capacities
 msgid "mirror"
-msgstr "Tout capacité faisant intervenir la ligne de vue ou la notion de même salle est renvoyée au personnage source."
+msgstr "Toute capacité faisant intervenir la ligne de vue ou la notion de même salle est renvoyée au personnage source."
 
 #: capacities
 msgid "musthave_force_3"
@@ -3218,7 +3266,7 @@ msgstr "Permet de gagner 3 points en attaque ou en défense"
 
 #: capacities
 msgid "prestigious"
-msgstr "Le personnage est prestigieux. Il ramène 2PV en cas de mort et "
+msgstr "Le personnage est prestigieux. Il ramène 2PV en cas de mort."
 
 #: capacities
 msgid "prophetie"
@@ -3254,15 +3302,15 @@ msgstr "Permet de reconstruire un objet défaussé durant la partie."
 
 #: capacities
 msgid "regenerater_"
-msgstr "Peut se régénèrer. Ne peut plus agir durant le tour de la régénération"
+msgstr "Peut se régénérer. Ne peut plus agir durant le tour de la régénération"
 
 #: capacities
 msgid "regenerater_5action"
-msgstr "Se régénère automatiquement lorsque la carte 5 action est jouée. Le personnage régénéré ne peut agir durant le tour."
+msgstr "Se régénère automatiquement lorsque la carte 5 actions est jouée. Le personnage régénéré ne peut agir durant le tour."
 
 #: capacities
 msgid "regenerater_lave"
-msgstr "Peut se régénèrer s'il est situé sur une case de lave. Ne peut plus agir durant le tour de la régénération"
+msgstr "Peut se régénérer s'il est situé sur une case de lave. Ne peut plus agir durant le tour de la régénération"
 
 #: capacities
 msgid "reincarner"
@@ -3294,7 +3342,7 @@ msgstr "Peut voler un objet à un personnage adverse adjacent."
 
 #: capacities
 msgid "sangsuemode"
-msgstr "Peut terminer son déplacement sur un adversaire. A chaque tour passé sur l'adversaire elle peut provoquer un personnage de force 0 contre 0 (la force du personnage n'entre pas en ligne de compte). Si la sangsue gagne ou perd, elle doit se placer sur une case valide adjacente et le personnage est blessé dans le cas d'une victoire."
+msgstr "Peut terminer son déplacement sur un adversaire. A chaque tour passé sur l'adversaire, elle peut provoquer un personnage de force 0 contre 0 (la force du personnage n'entre pas en ligne de compte). Si la sangsue gagne ou perd, elle doit se placer sur une case valide adjacente et le personnage est blessé dans le cas d'une victoire."
 
 #: capacities
 msgid "seecombatcard"
@@ -3590,7 +3638,7 @@ msgstr "Peut briser un mur dans une limite de 3 par partie."
 
 #: capacities
 msgid "wallmarker_1_mur-meurtriere-cle-torche-passagesecret_murbrise_2_2"
-msgstr "Peut briser un mur dans une limite de 2 par parties et pour 2PA."
+msgstr "Peut briser un mur dans une limite de 2 par partie et pour 2PA."
 
 #: capacities
 msgid "wallmarker_2_herse_hersebrisee_1_-1"
@@ -3861,12 +3909,44 @@ msgid "CONSTRAINT_CHECK_TOO_IMMATERIAL"
 msgstr "Trop d'immatériels"
 
 #: constraintcheck
+msgid "CONSTRAINT_NOT_ENOUGH_RUNNER"
+msgstr "Pas assez de runners"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHECK_TOO_RUNNER"
+msgstr "Trop de runners"
+
+#: constraintcheck
+msgid "CONSTRAINT_NOT_ENOUGH_FIGHTER"
+msgstr "Pas assez de combattants"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHECK_TOO_FIGHTER"
+msgstr "Trop de combattants"
+
+#: constraintcheck
 msgid "CONSTRAINT_NOT_ENOUGH_CURSED"
 msgstr "Pas assez de maudits"
 
 #: constraintcheck
 msgid "CONSTRAINT_CHECK_TOO_MANY_CURSED"
 msgstr "Trop de maudits"
+
+#: constraintcheck
+msgid "CONSTRAINT_NOT_ENOUGH_PERCHEMIN"
+msgstr "Pas assez de parchemins"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHECK_TOO_MANY_PERCHEMIN"
+msgstr "Trop de parchemins"
+
+#: constraintcheck
+msgid "CONSTRAINT_NOT_ENOUGH_WEAPON"
+msgstr "Pas assez d'armes"
+
+#: constraintcheck
+msgid "CONSTRAINT_CHECK_TOO_MANY_WEAPON"
+msgstr "Trop d'armes"
 
 #: constraintcheck
 msgid "CONSTRAINT_NOT_ENOUGH_SHADOW_WALKER"

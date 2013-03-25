@@ -52,11 +52,23 @@
 	{% if constraint.mincounterfountain != -1 or constraint.maxcounterfountain != -1 %} 
 	<tr><th>{% trans "CHARACTER_COUNTERFOUNTAIN" %}</th><td>&nbsp;{{ constraint.mincounterfountain}}&nbsp;&le;...&le;&nbsp;{{ constraint.maxcounterfountain}}</td></tr>
 	{%endif %}
+	{% if constraint.minrunner != -1 or constraint.maxrunner != -1 %} 
+	<tr><th>{% trans "CHARACTER_RUNNER" %}</th><td>&nbsp;{{ constraint.minrunner}}&nbsp;&le;...&le;&nbsp;{{ constraint.maxrunner}}</td></tr>
+	{%endif %}
+	{% if constraint.minfighter != -1 or constraint.maxfighter != -1 %} 
+	<tr><th>{% trans "CHARACTER_FIGHTER" %}</th><td>&nbsp;{{ constraint.minfighter}}&nbsp;&le;...&le;&nbsp;{{ constraint.maxfighter}}</td></tr>
+	{%endif %}
 	{% if constraint.maxsamecharacter != -1 %} 
 	<tr><th>{% trans "CHARACTER_SAME" %}</th><td>&nbsp;{{ constraint.maxsamecharacter}}</td></tr>
 	{%endif %}
 	{% if constraint.mincursed != -1 or constraint.maxcursed != -1 %} 
 	<tr><th>{% trans "OBJECT_CURSED" %}</th><td>&nbsp;{{ constraint.mincursed}}&nbsp;&le;...&le;&nbsp;{{ constraint.maxcursed}}</td></tr>
+	{%endif %}
+	{% if constraint.minperchemin != -1 or constraint.maxperchemin != -1 %} 
+	<tr><th>{% trans "OBJECT_PERCHEMIN" %}</th><td>&nbsp;{{ constraint.minperchemin}}&nbsp;&le;...&le;&nbsp;{{ constraint.maxperchemin}}</td></tr>
+	{%endif %}
+	{% if constraint.minweapon != -1 or constraint.maxweapon != -1 %} 
+	<tr><th>{% trans "OBJECT_WEAPON" %}</th><td>&nbsp;{{ constraint.minweapon}}&nbsp;&le;...&le;&nbsp;{{ constraint.maxweapon}}</td></tr>
 	{%endif %}
 	{% if constraint.maxsameobject != -1 %} 
 	<tr><th>{% trans "OBJECT_SAME" %}</th><td>&nbsp;{{ constraint.maxsameobject}}</td></tr>

@@ -438,7 +438,7 @@ insert into dt_characters_capacities (character_id, name) values (47, 'shooter_1
 insert into dt_characters_extensions (dtcharacter_id, dtextension_id) values (47, 8);
 insert into dt_characters (id, name, deplacement, `force`) values (48, 'bucheron', 3, 3);
 insert into dt_characters_capacities (character_id, name) values (48, 'floormarker_1_arbrecoupe_1_-1_arbre__');
-insert into dt_characters_capacities (character_id, name) values (48, 'biandans_arbre_');
+insert into dt_characters_capacities (character_id, name) values (48, 'biendans_arbre_');
 insert into dt_characters_extensions (dtcharacter_id, dtextension_id) values (48, 8);
 insert into dt_characters (id, name, deplacement, `force`) values (49, 'piegevivant', 5, 2);
 insert into dt_characters_capacities (character_id, name) values (49, 'shaper_piege_empty_1_0');
@@ -1226,7 +1226,7 @@ insert into dt_characters_extensions (dtcharacter_id, dtextension_id) values (15
 insert into dt_characters (id, name, deplacement, `force`) values (158, 'empoisonneur', 5, 2);
 insert into dt_characters_capacities (character_id, name) values (158, 'floormarker_1_empoisonne_1_1_fontaine__');
 insert into dt_characters_capacities (character_id, name) values (158, 'floormarker_1_leurre_1_2_fontaine__');
-insert into dt_characters_capacities (character_id, name) values (158, 'biandans_fontaine_');
+insert into dt_characters_capacities (character_id, name) values (158, 'biendans_fontaine_');
 insert into dt_characters_capacities (character_id, name) values (158, 'antifountain');
 insert into dt_characters_extensions (dtcharacter_id, dtextension_id) values (158, 40);
 insert into dt_characters (id, name, deplacement, `force`) values (159, 'elfenoir', 4, 1);

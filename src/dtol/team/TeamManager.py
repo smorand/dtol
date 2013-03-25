@@ -57,6 +57,8 @@ class TeamManager(object):
 					capacities.append(capinfo[0])
 				else:
 					capacities.append(capinfo[0])
+			if c.advdeplacement() >= 5: sp['filters'].append('runner')
+			if c.advforce() >= 3: sp['filters'].append('fighter')
 			if 'spellcaster' in capacities: sp['filters'].append('spellcaster')
 			if 'flyer' in capacities: sp['filters'].append('flyer')
 			if 'regenerater' in capacities: sp['filters'].append('regenerater')
@@ -89,6 +91,8 @@ class TeamManager(object):
 			if 'categorie_puissant' in capacities: sp['filters'].append('categorie_puissant')
 			if 'antifountain' in capacities: sp['filters'].append('antifountain')
 			if 'categorie_cursed' in capacities: sp['filters'].append('cursed')
+			if 'parchemin' in capacities: sp['filters'].append('perchemin')
+			if 'categorie_arme' in capacities: sp['filters'].append('weapon')
 			sp['filters'] = '-'.join(sp['filters'])
 			objects.append(sp)
 		for c in self.spawnManager.getRooms(extensions):
@@ -161,6 +165,12 @@ class TeamManager(object):
 		capcount = reduce(lambda x,y: x+y, [ (1 if 'immaterial' in [ b.name for b in c.capacities() ] else 0) for c in characters ], 0)
 		if constraint.minintangible != -1 and constraint.minintangible > capcount: errors.append(_('CONSTRAINT_NOT_ENOUGH_IMMATERIAL'))
 		if constraint.maxintangible != -1 and constraint.maxintangible < capcount: errors.append(_('CONSTRAINT_CHECK_TOO_IMMATERIAL'))
+		capcount = reduce(lambda x,y: x+y, [ (1 if c.advdeplacement() >= 5 else 0) for c in characters ], 0)
+		if constraint.minrunner != -1 and constraint.minrunner > capcount: errors.append(_('CONSTRAINT_NOT_ENOUGH_RUNNER'))
+		if constraint.maxrunner != -1 and constraint.maxrunner < capcount: errors.append(_('CONSTRAINT_CHECK_TOO_RUNNER'))
+		capcount = reduce(lambda x,y: x+y, [ (1 if c.advforce() >= 3 else 0) for c in characters ], 0)
+		if constraint.minfighter != -1 and constraint.minfighter > capcount: errors.append(_('CONSTRAINT_NOT_ENOUGH_FIGHTER'))
+		if constraint.maxfighter != -1 and constraint.maxfighter < capcount: errors.append(_('CONSTRAINT_CHECK_TOO_FIGHTER'))
 		capcount = 0
 		for c in characters:
 			for b in c.capacities():
@@ -196,6 +206,12 @@ class TeamManager(object):
 		capcount = reduce(lambda x,y: x+y, [ (1 if 'categorie_cursed' in [ b.name for b in c.capacities() ] else 0) for c in objects ], 0)
 		if constraint.mincursed != -1 and constraint.mincursed > capcount: errors.append(_('CONSTRAINT_NOT_ENOUGH_CURSED'))
 		if constraint.maxcursed != -1 and constraint.maxcursed < capcount: errors.append(_('CONSTRAINT_CHECK_TOO_MANY_CURSED'))
+		capcount = reduce(lambda x,y: x+y, [ (1 if 'parchemin' in [ b.name for b in c.capacities() ] else 0) for c in objects ], 0)
+		if constraint.minperchemin != -1 and constraint.minperchemin > capcount: errors.append(_('CONSTRAINT_NOT_ENOUGH_PERCHEMIN'))
+		if constraint.maxperchemin != -1 and constraint.maxperchemin < capcount: errors.append(_('CONSTRAINT_CHECK_TOO_MANY_PERCHEMIN'))
+		capcount = reduce(lambda x,y: x+y, [ (1 if 'categorie_arme' in [ b.name for b in c.capacities() ] else 0) for c in objects ], 0)
+		if constraint.minweapon != -1 and constraint.minweapon > capcount: errors.append(_('CONSTRAINT_NOT_ENOUGH_WEAPON'))
+		if constraint.maxweapon != -1 and constraint.maxweapon < capcount: errors.append(_('CONSTRAINT_CHECK_TOO_MANY_WEAPON'))
 		mapcount = {}
 		for c in objects:
 			if 'categorie_current' not in [ cap.name for cap in c.capacities() ]:
@@ -378,6 +394,8 @@ class TeamManager(object):
 		capcountcounterfountain = reduce(lambda x,y: x+y, [ (1 if 'antifountain' in [ b.name for b in c.capacities() ] else 0) for c in characters ], 0)
 		capcountprestigious = reduce(lambda x,y: x+y, [ (1 if 'prestigious' in [ b.name for b in c.capacities() ] else 0) for c in characters ], 0)
 		capcountspellcaster = reduce(lambda x,y: x+y, [ (1 if 'spellcaster' in [ b.name for b in c.capacities() ] else 0) for c in characters ], 0)
+		capcountrunner = reduce(lambda x,y: x+y, [ (1 if c.advdeplacement() >= 5 else 0) for c in characters ], 0)
+		capcountfighter = reduce(lambda x,y: x+y, [ (1 if c.advforce() >= 3 else 0) for c in characters ], 0)
 		capcountshadowwalker = 0
 		for c in characters:
 			for b in c.capacities():
@@ -394,6 +412,14 @@ class TeamManager(object):
 					capcountflyer += 1
 
 		characterslistf = None
+		if tc.minrunner != -1 and capcountrunner < tc.minrunner:
+			if characterslistf is None: characterslistf = set()
+			for idx in xrange(len(characterslist)-1, -1, -1):
+				if characterslist[idx].advdeplacement() >= 5: characterslistf.add(characterslist[idx])
+		if tc.minfighter != -1 and capcountfighter < tc.minfighter:
+			if characterslistf is None: characterslistf = set()
+			for idx in xrange(len(characterslist)-1, -1, -1):
+				if characterslist[idx].advforce() >= 3: characterslistf.add(characterslist[idx])
 		if tc.minintangible != -1 and capcountintangible < tc.minintangible:
 			if characterslistf is None: characterslistf = set()
 			for idx in xrange(len(characterslist)-1, -1, -1):
@@ -468,6 +494,12 @@ class TeamManager(object):
 		if tc.maxintangible != -1 and capcountintangible >= tc.maxintangible:
 			for idx in xrange(len(characterslist)-1, -1, -1):
 				if 'immaterial' in [ b.name for b in characterslist[idx].capacities() ]: del characterslist[idx]
+		if tc.maxrunner != -1 and capcountrunner >= tc.maxrunner:
+			for idx in xrange(len(characterslist)-1, -1, -1):
+				if characterslist[idx].advdeplacement() >= 5: del characterslist[idx]
+		if tc.maxfighter != -1 and capcountfighter >= tc.maxfighter:
+			for idx in xrange(len(characterslist)-1, -1, -1):
+				if characterslist[idx].advforce() >= 3: del characterslist[idx]
 		if tc.maxshadowwalker != -1 and capcountshadowwalker >= tc.maxshadowwalker:
 			for idx in xrange(len(characterslist)-1, -1, -1):
 				for b in characterslist[idx].capacities():
@@ -495,17 +527,33 @@ class TeamManager(object):
 			return
 
 		capcountcursed = reduce(lambda x,y: x+y, [ (1 if 'categorie_cursed' in [ b.name for b in c.capacities() ] else 0) for c in objects ], 0)
+		capcountperchemin = reduce(lambda x,y: x+y, [ (1 if 'parchemin' in [ b.name for b in c.capacities() ] else 0) for c in objects ], 0)
+		capcountarme = reduce(lambda x,y: x+y, [ (1 if 'categorie_arme' in [ b.name for b in c.capacities() ] else 0) for c in objects ], 0)
 
 		objectslistf = None
 		if tc.mincursed != -1 and capcountcursed < tc.mincursed:
 			if objectslistf is None: objectslistf = set()
 			for idx in xrange(len(objectslist)-1, -1, -1):
 				if 'categorie_cursed' in [ b.name for b in objectslist[idx].capacities() ]: objectslistf.add(objectslist[idx])
+		if tc.minperchemin != -1 and capcountperchemin < tc.minperchemin:
+			if objectslistf is None: objectslistf = set()
+			for idx in xrange(len(objectslist)-1, -1, -1):
+				if 'parchemin' in [ b.name for b in objectslist[idx].capacities() ]: objectslistf.add(objectslist[idx])
+		if tc.minweapon != -1 and capcountarme < tc.minweapon:
+			if objectslistf is None: objectslistf = set()
+			for idx in xrange(len(objectslist)-1, -1, -1):
+				if 'categorie_arme' in [ b.name for b in objectslist[idx].capacities() ]: objectslistf.add(objectslist[idx])
 		if objectslistf is not None: objectslist[:] = objectslistf
 
 		if tc.maxcursed != -1 and capcountcursed >= tc.maxcursed:
 			for idx in xrange(len(objectslist)-1, -1, -1):
 				if 'categorie_cursed' in [ b.name for b in objectslist[idx].capacities() ]: del objectslist[idx]
+		if tc.maxperchemin != -1 and capcountperchemin >= tc.maxperchemin:
+			for idx in xrange(len(objectslist)-1, -1, -1):
+				if 'parchemin' in [ b.name for b in objectslist[idx].capacities() ]: del objectslist[idx]
+		if tc.maxweapon != -1 and capcountarme >= tc.maxweapon:
+			for idx in xrange(len(objectslist)-1, -1, -1):
+				if 'categorie_arme' in [ b.name for b in objectslist[idx].capacities() ]: del objectslist[idx]
 
 		if tc.maxcommonobject != -1:
 			for idx in xrange(len(objectslist)-1, -1, -1):
